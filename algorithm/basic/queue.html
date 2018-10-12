@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>深度优先搜索 · GitBook</title>
+        <title>队列 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="bfs.html" />
+    <link rel="next" href="../array/" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="stack.html" />
     
 
     
@@ -128,9 +128,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="../basic/">
+        <li class="chapter " data-level="1.2.1" data-path="./">
             
-                <a href="../basic/">
+                <a href="./">
             
                     
                     基础
@@ -142,9 +142,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1.1" data-path="../basic/stack.html">
+        <li class="chapter " data-level="1.2.1.1" data-path="stack.html">
             
-                <a href="../basic/stack.html">
+                <a href="stack.html">
             
                     
                     栈
@@ -155,9 +155,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.2" data-path="../basic/queue.html">
+        <li class="chapter active" data-level="1.2.1.2" data-path="queue.html">
             
-                <a href="../basic/queue.html">
+                <a href="queue.html">
             
                     
                     队列
@@ -308,9 +308,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="./">
+        <li class="chapter " data-level="1.2.6" data-path="../search/">
             
-                <a href="./">
+                <a href="../search/">
             
                     
                     搜索
@@ -322,9 +322,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.6.1" data-path="dfs.html">
+        <li class="chapter " data-level="1.2.6.1" data-path="../search/dfs.html">
             
-                <a href="dfs.html">
+                <a href="../search/dfs.html">
             
                     
                     深度优先搜索
@@ -335,9 +335,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6.2" data-path="bfs.html">
+        <li class="chapter " data-level="1.2.6.2" data-path="../search/bfs.html">
             
-                <a href="bfs.html">
+                <a href="../search/bfs.html">
             
                     
                     广度优先搜索
@@ -446,7 +446,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >深度优先搜索</a>
+        <a href="../.." >队列</a>
     </h1>
 </div>
 
@@ -461,21 +461,125 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;">&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;</h3>
-<p>Depth-First-Search&#xFF0C;&#x4EE5;&#x4E0B;&#x7B80;&#x79F0;DFS</p>
-<p>&#x4E00;&#x4E2A;&#x4E8C;&#x53C9;&#x6811;&#x5982;&#x4E0B;</p>
-<pre><code>         5
-        /  \
-       2    3
-      /  \  / \
-     1   7 9   8
-    /
-   6
-</code></pre><p>DFS&#x7684;&#x641C;&#x7D22;&#x8FC7;&#x7A0B;&#x4E3A;&#xFF1A;</p>
-<pre><code>    5
-    2-&gt;1-&gt;6-&gt;7
-    3-&gt;9-&gt;8
-</code></pre>
+                                <p>&#x961F;&#x5217;&#x662F;&#x4E00;&#x79CD;&#x64CD;&#x4F5C;&#x53D7;&#x9650;&#x7684;&#x7EBF;&#x6027;&#x8868;&#x3002;&#x652F;&#x6301;enqueue&#x548C;dequeue&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="&#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x5B9E;&#x73B0;">&#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x5B9E;&#x73B0;</h3>
+<pre><code>public struct Queue&lt;T&gt; {
+    fileprivate var array = [T?]()
+    fileprivate var head = 0
+
+    public var isEmpty: Bool {
+        return count == 0
+    }
+
+    public var count: Int {
+        return array.count - head
+    }
+
+    public mutating func enqueue(_ element: T) {
+        array.append(element)
+    }
+
+    public mutating func dequeue() -&gt; T? {
+        guard head &lt; array.count, let element = array[head] else { return nil }
+
+        array[head] = nil
+        head += 1
+
+        let percentage = Double(head) / Double(array.count)
+        if array.count &gt; 50 &amp;&amp; percentage &gt; 0.25 {
+            array.removeFirst(head)
+            head = 0
+        }
+
+        return element
+    }
+
+    public var front: T? {
+        if isEmpty {
+            return nil
+        } else {
+            return array[head]
+        }
+    }
+}
+</code></pre><h3 id="&#x4F7F;&#x7528;&#x94FE;&#x8868;&#x5B9E;&#x73B0;">&#x4F7F;&#x7528;&#x94FE;&#x8868;&#x5B9E;&#x73B0;</h3>
+<pre><code>public struct Queue&lt;T&gt; {
+    fileprivate var head: Node&lt;T&gt;?
+    fileprivate var tail: Node&lt;T&gt;?
+
+    public mutating func enqueue(_ element: T) {
+        let node = Node(element)
+
+        if head == nil {
+            head = node
+        }
+
+        if let tail = tail {
+            tail.next = node
+        }
+        tail = node
+    }
+
+    public mutating func dequeue() -&gt; T? {
+        guard let head = head else { return nil }
+
+        let node = head
+        self.head = head.next
+
+        return node.value
+    }
+}
+
+class Node&lt;T&gt; {
+    var value: T
+    var next: Node&lt;T&gt;?
+
+    init(_ v: T) {
+        value = v
+    }
+}
+</code></pre><h3 id="&#x5FAA;&#x73AF;&#x961F;&#x5217;">&#x5FAA;&#x73AF;&#x961F;&#x5217;</h3>
+<p>&#x73AF;&#x5F62;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x6570;&#x636E;&#x642C;&#x79FB;</p>
+<pre><code>public class CircularQueue {
+    // &#x6570;&#x7EC4;&#xFF1A;items&#xFF0C;&#x6570;&#x7EC4;&#x5927;&#x5C0F;&#xFF1A;n
+    private String[] items;
+    private int n = 0;
+    // head &#x8868;&#x793A;&#x961F;&#x5934;&#x4E0B;&#x6807;&#xFF0C;tail &#x8868;&#x793A;&#x961F;&#x5C3E;&#x4E0B;&#x6807;
+    private int head = 0;
+    private int tail = 0;
+
+    // &#x7533;&#x8BF7;&#x4E00;&#x4E2A;&#x5927;&#x5C0F;&#x4E3A; capacity &#x7684;&#x6570;&#x7EC4;
+    public CircularQueue(int capacity) {
+        items = new String[capacity];
+        n = capacity;
+    }
+
+    // &#x5165;&#x961F;
+    public boolean enqueue(String item) {
+        // &#x961F;&#x5217;&#x6EE1;&#x4E86;
+        if ((tail + 1) % n == head) return false;
+        items[tail] = item;
+        tail = (tail + 1) % n;
+        return true;
+    }
+
+    // &#x51FA;&#x961F;
+    public String dequeue() {
+        // &#x5982;&#x679C; head == tail &#x8868;&#x793A;&#x961F;&#x5217;&#x4E3A;&#x7A7A;
+        if (head == tail) return null;
+        String ret = items[head];
+        head = (head + 1) % n;
+        return ret;
+    }
+}
+</code></pre><h4 id="&#x963B;&#x585E;&#x961F;&#x5217;">&#x963B;&#x585E;&#x961F;&#x5217;</h4>
+<p>&#x5728;&#x961F;&#x5217;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x589E;&#x52A0;&#x4E86;&#x963B;&#x585E;&#x64CD;&#x4F5C;&#x3002;&#x5982;&#x679C;&#x961F;&#x5217;&#x4E3A;&#x7A7A;&#xFF0C;&#x4ECE;&#x961F;&#x5934;&#x53D6;&#x6570;&#x636E;&#x4F1A;&#x88AB;&#x963B;&#x585E;&#xFF1B;&#x5982;&#x679C;&#x961F;&#x5217;&#x6EE1;&#x4E86;&#xFF0C;&#x4ECE;&#x961F;&#x5C3E;&#x63D2;&#x5165;&#x6570;&#x636E;&#x4F1A;&#x88AB;&#x963B;&#x585E;&#xFF0C;&#x77E5;&#x9053;&#x961F;&#x5217;&#x4E2D;&#x6709;&#x7A7A;&#x95F2;&#x4F4D;&#x7F6E;&#x53EF;&#x4EE5;&#x518D;&#x63D2;&#x5165;&#x6570;&#x636E;&#x7136;&#x540E;&#x624D;&#x8FD4;&#x56DE;&#x3002;</p>
+<h3 id="&#x5F85;&#x5B66;&#x4E60;&#xFF1A;">&#x5F85;&#x5B66;&#x4E60;&#xFF1A;</h3>
+<ul>
+<li>linux&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x73AF;&#x5F62;&#x961F;&#x5217;&#xFF1A;<a href="https://www.cnblogs.com/Anker/p/3481373.html" target="_blank">https://www.cnblogs.com/Anker/p/3481373.html</a></li>
+<li>Disruptor&#x961F;&#x5217;&#x4ECB;&#x7ECD;&#xFF1A;<a href="https://tech.meituan.com/disruptor.html" target="_blank">https://tech.meituan.com/disruptor.html</a></li>
+</ul>
+
                                 
                                 </section>
                             
@@ -502,12 +606,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 搜索">
+                <a href="stack.html" class="navigation navigation-prev " aria-label="Previous page: 栈">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="bfs.html" class="navigation navigation-next " aria-label="Next page: 广度优先搜索">
+                <a href="../array/" class="navigation navigation-next " aria-label="Next page: 数组">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -518,7 +622,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"深度优先搜索","level":"1.2.6.1","depth":3,"next":{"title":"广度优先搜索","level":"1.2.6.2","depth":3,"path":"algorithm/search/bfs.md","ref":"algorithm/search/bfs.md","articles":[]},"previous":{"title":"搜索","level":"1.2.6","depth":2,"path":"algorithm/search/index.md","ref":"algorithm/search/index.md","articles":[{"title":"深度优先搜索","level":"1.2.6.1","depth":3,"path":"algorithm/search/dfs.md","ref":"algorithm/search/dfs.md","articles":[]},{"title":"广度优先搜索","level":"1.2.6.2","depth":3,"path":"algorithm/search/bfs.md","ref":"algorithm/search/bfs.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"algorithm/search/dfs.md","mtime":"2018-10-12T03:23:26.999Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-12T07:46:57.726Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"队列","level":"1.2.1.2","depth":3,"next":{"title":"数组","level":"1.2.2","depth":2,"path":"algorithm/array/index.md","ref":"algorithm/array/index.md","articles":[]},"previous":{"title":"栈","level":"1.2.1.1","depth":3,"path":"algorithm/basic/stack.md","ref":"algorithm/basic/stack.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"algorithm/basic/queue.md","mtime":"2018-10-12T07:46:53.285Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-12T07:46:57.726Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
