@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>广度优先搜索 · GitBook</title>
+        <title>快速排序 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../other/" />
+    <link rel="next" href="sort4.html" />
     
     
-    <link rel="prev" href="dfs.html" />
+    <link rel="prev" href="sort2.html" />
     
 
     
@@ -173,9 +173,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../sort/">
+        <li class="chapter " data-level="1.2.2" data-path="./">
             
-                <a href="../sort/">
+                <a href="./">
             
                     
                     排序
@@ -187,9 +187,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.2.1" data-path="../sort/sort1.html">
+        <li class="chapter " data-level="1.2.2.1" data-path="sort1.html">
             
-                <a href="../sort/sort1.html">
+                <a href="sort1.html">
             
                     
                     基础排序
@@ -200,9 +200,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2.2" data-path="../sort/sort2.html">
+        <li class="chapter " data-level="1.2.2.2" data-path="sort2.html">
             
-                <a href="../sort/sort2.html">
+                <a href="sort2.html">
             
                     
                     归并排序
@@ -213,9 +213,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2.3" data-path="../sort/sort3.html">
+        <li class="chapter active" data-level="1.2.2.3" data-path="sort3.html">
             
-                <a href="../sort/sort3.html">
+                <a href="sort3.html">
             
                     
                     快速排序
@@ -226,9 +226,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2.4" data-path="../sort/sort4.html">
+        <li class="chapter " data-level="1.2.2.4" data-path="sort4.html">
             
-                <a href="../sort/sort4.html">
+                <a href="sort4.html">
             
                     
                     桶排序
@@ -239,9 +239,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2.5" data-path="../sort/sort5.html">
+        <li class="chapter " data-level="1.2.2.5" data-path="sort5.html">
             
-                <a href="../sort/sort5.html">
+                <a href="sort5.html">
             
                     
                     基数排序
@@ -379,9 +379,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="./">
+        <li class="chapter " data-level="1.2.6" data-path="../search/">
             
-                <a href="./">
+                <a href="../search/">
             
                     
                     搜索
@@ -393,9 +393,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.6.1" data-path="dfs.html">
+        <li class="chapter " data-level="1.2.6.1" data-path="../search/dfs.html">
             
-                <a href="dfs.html">
+                <a href="../search/dfs.html">
             
                     
                     深度优先搜索
@@ -406,9 +406,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.6.2" data-path="bfs.html">
+        <li class="chapter " data-level="1.2.6.2" data-path="../search/bfs.html">
             
-                <a href="bfs.html">
+                <a href="../search/bfs.html">
             
                     
                     广度优先搜索
@@ -517,7 +517,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >广度优先搜索</a>
+        <a href="../.." >快速排序</a>
     </h1>
 </div>
 
@@ -532,9 +532,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x5E7F;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;">&#x5E7F;&#x5EA6;&#x4F18;&#x5148;&#x641C;&#x7D22;</h3>
-<p>Breadth-First-Search&#xFF0C;&#x4EE5;&#x4E0B;&#x7B80;&#x79F0;BFS</p>
+                                <h3 id="&#x5FEB;&#x901F;&#x6392;&#x5E8F;">&#x5FEB;&#x901F;&#x6392;&#x5E8F;</h3>
+<p>Quick Sort</p>
+<p><img src="https://static001.geekbang.org/resource/image/66/dc/6643bc3cef766f5b3e4526c332c60adc.jpg" alt="img"></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">QuickSort</span> </span>{
 
+  <span class="hljs-comment">// &#x5FEB;&#x901F;&#x6392;&#x5E8F;&#xFF0C;a&#x662F;&#x6570;&#x7EC4;&#xFF0C;n&#x8868;&#x793A;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] a, <span class="hljs-keyword">int</span> n)</span> </span>{
+    quickSortInternally(a, <span class="hljs-number">0</span>, n-<span class="hljs-number">1</span>);
+  }
+
+  <span class="hljs-comment">// &#x5FEB;&#x901F;&#x6392;&#x5E8F;&#x9012;&#x5F52;&#x51FD;&#x6570;&#xFF0C;p,r&#x4E3A;&#x4E0B;&#x6807;</span>
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quickSortInternally</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] a, <span class="hljs-keyword">int</span> p, <span class="hljs-keyword">int</span> r)</span> </span>{
+    <span class="hljs-keyword">if</span> (p &gt;= r) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-keyword">int</span> q = partition(a, p, r); <span class="hljs-comment">// &#x83B7;&#x53D6;&#x5206;&#x533A;&#x70B9;</span>
+    quickSortInternally(a, p, q-<span class="hljs-number">1</span>);
+    quickSortInternally(a, q+<span class="hljs-number">1</span>, r);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">partition</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] a, <span class="hljs-keyword">int</span> p, <span class="hljs-keyword">int</span> r)</span> </span>{
+    <span class="hljs-keyword">int</span> pivot = a[r];
+    <span class="hljs-keyword">int</span> i = p;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = p; j &lt; r; ++j) {
+      <span class="hljs-keyword">if</span> (a[j] &lt; pivot) {
+        <span class="hljs-keyword">int</span> tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+        ++i;
+      }
+    }
+
+    <span class="hljs-keyword">int</span> tmp = a[i];
+    a[i] = a[r];
+    a[r] = tmp;
+
+    System.out.println(<span class="hljs-string">&quot;i=&quot;</span> + i);
+    <span class="hljs-keyword">return</span> i;
+  }
+}
+</code></pre>
+<h3 id="on-&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x5185;&#x6C42;&#x65E0;&#x5E8F;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x7B2C;-k-&#x5927;&#x5143;&#x7D20;">O(n) &#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x5185;&#x6C42;&#x65E0;&#x5E8F;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x7B2C; K &#x5927;&#x5143;&#x7D20;</h3>
+<p>&#x4F7F;&#x7528;&#x5FEB;&#x6392;&#x7684;&#x601D;&#x60F3;  </p>
+<pre><code>&#x6211;&#x4EEC;&#x9009;&#x62E9;&#x6570;&#x7EC4;&#x533A;&#x95F4; A[0&#x2026;n-1] &#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20; A[n-1] &#x4F5C;&#x4E3A; pivot&#xFF0C;&#x5BF9;&#x6570;&#x7EC4; A[0&#x2026;n-1] &#x539F;&#x5730;&#x5206;&#x533A;&#xFF0C;&#x8FD9;&#x6837;&#x6570;&#x7EC4;&#x5C31;&#x5206;&#x6210;&#x4E86;&#x4E09;&#x90E8;&#x5206;&#xFF0C;A[0&#x2026;p-1]&#x3001;A[p]&#x3001;A[p+1&#x2026;n-1]&#x3002; &#x5982;&#x679C; p+1=K&#xFF0C;&#x90A3; A[p] &#x5C31;&#x662F;&#x8981;&#x6C42;&#x89E3;&#x7684;&#x5143;&#x7D20;&#xFF1B;&#x5982;&#x679C; K&gt;p+1, &#x8BF4;&#x660E;&#x7B2C; K &#x5927;&#x5143;&#x7D20;&#x51FA;&#x73B0;&#x5728; A[p+1&#x2026;n-1] &#x533A;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x6309;&#x7167;&#x4E0A;&#x9762;&#x7684;&#x601D;&#x8DEF;&#x9012;&#x5F52;&#x5730;&#x5728; A[p+1&#x2026;n-1] &#x8FD9;&#x4E2A;&#x533A;&#x95F4;&#x5185;&#x67E5;&#x627E;&#x3002;&#x540C;&#x7406;&#xFF0C;&#x5982;&#x679C; K&lt;p+1&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x5C31;&#x5728; A[0&#x2026;p-1] &#x533A;&#x95F4;&#x67E5;&#x627E;&#x3002;
+</code></pre>
                                 
                                 </section>
                             
@@ -561,12 +602,12 @@
 
             
                 
-                <a href="dfs.html" class="navigation navigation-prev " aria-label="Previous page: 深度优先搜索">
+                <a href="sort2.html" class="navigation navigation-prev " aria-label="Previous page: 归并排序">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../other/" class="navigation navigation-next " aria-label="Next page: 其他">
+                <a href="sort4.html" class="navigation navigation-next " aria-label="Next page: 桶排序">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -577,7 +618,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"广度优先搜索","level":"1.2.6.2","depth":3,"next":{"title":"其他","level":"1.2.7","depth":2,"path":"algorithm/other/index.md","ref":"algorithm/other/index.md","articles":[{"title":"斐波切纳数列","level":"1.2.7.1","depth":3,"path":"algorithm/other/fibonacci.md","ref":"algorithm/other/fibonacci.md","articles":[]},{"title":"求最大公约数","level":"1.2.7.2","depth":3,"path":"algorithm/other/gongyueshu.md","ref":"algorithm/other/gongyueshu.md","articles":[]},{"title":"约瑟夫问题","level":"1.2.7.3","depth":3,"path":"algorithm/other/yuesefu.md","ref":"algorithm/other/yuesefu.md","articles":[]}]},"previous":{"title":"深度优先搜索","level":"1.2.6.1","depth":3,"path":"algorithm/search/dfs.md","ref":"algorithm/search/dfs.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"algorithm/search/bfs.md","mtime":"2018-10-11T07:22:04.617Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-24T04:45:54.985Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"快速排序","level":"1.2.2.3","depth":3,"next":{"title":"桶排序","level":"1.2.2.4","depth":3,"path":"algorithm/sort/sort4.md","ref":"algorithm/sort/sort4.md","articles":[]},"previous":{"title":"归并排序","level":"1.2.2.2","depth":3,"path":"algorithm/sort/sort2.md","ref":"algorithm/sort/sort2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"algorithm/sort/sort3.md","mtime":"2018-10-24T06:02:27.429Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-24T04:45:54.985Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
