@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>单链表翻转 · GitBook</title>
+        <title>广度优先搜索 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="circle.html" />
+    <link rel="next" href="../other/" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="bfs.html" />
     
 
     
@@ -244,9 +244,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="./">
+        <li class="chapter " data-level="1.2.3" data-path="../linkedlist/">
             
-                <a href="./">
+                <a href="../linkedlist/">
             
                     
                     链表
@@ -258,9 +258,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.3.1" data-path="reverseList.html">
+        <li class="chapter " data-level="1.2.3.1" data-path="../linkedlist/reverseList.html">
             
-                <a href="reverseList.html">
+                <a href="../linkedlist/reverseList.html">
             
                     
                     单链表翻转
@@ -271,9 +271,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3.2" data-path="circle.html">
+        <li class="chapter " data-level="1.2.3.2" data-path="../linkedlist/circle.html">
             
-                <a href="circle.html">
+                <a href="../linkedlist/circle.html">
             
                     
                     单链表是否有环、环节点、长度
@@ -366,9 +366,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../search/">
+        <li class="chapter " data-level="1.2.6" data-path="./">
             
-                <a href="../search/">
+                <a href="./">
             
                     
                     搜索
@@ -380,9 +380,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.6.1" data-path="../search/dfs.html">
+        <li class="chapter " data-level="1.2.6.1" data-path="dfs.html">
             
-                <a href="../search/dfs.html">
+                <a href="dfs.html">
             
                     
                     深度优先搜索
@@ -393,9 +393,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6.2" data-path="../search/bfs.html">
+        <li class="chapter " data-level="1.2.6.2" data-path="bfs.html">
             
-                <a href="../search/bfs.html">
+                <a href="bfs.html">
             
                     
                     广度优先搜索
@@ -406,9 +406,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6.3" data-path="../search/binarySearch.html">
+        <li class="chapter active" data-level="1.2.6.3" data-path="binarySearch.html">
             
-                <a href="../search/binarySearch.html">
+                <a href="binarySearch.html">
             
                     
                     广度优先搜索
@@ -530,7 +530,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >单链表翻转</a>
+        <a href="../.." >广度优先搜索</a>
     </h1>
 </div>
 
@@ -545,78 +545,56 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h4 id="&#x5355;&#x94FE;&#x8868;&#x7FFB;&#x8F6C;">&#x5355;&#x94FE;&#x8868;&#x7FFB;&#x8F6C;</h4>
-<pre><code>class Node {
-    var value: Int = 0
+                                <h3 id="&#x4E8C;&#x5206;&#x67E5;&#x627E;">&#x4E8C;&#x5206;&#x67E5;&#x627E;</h3>
+<p>&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x9488;&#x5BF9;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x5E8F;&#x7684;&#x6570;&#x636E;&#x96C6;&#x5408;&#xFF0C;&#x67E5;&#x627E;&#x601D;&#x60F3;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;&#x5206;&#x6CBB;&#x601D;&#x60F3;&#x3002;&#x6BCF;&#x6B21;&#x90FD;&#x901A;&#x8FC7;&#x8DDF;&#x533A;&#x95F4;&#x7684;&#x4E2D;&#x95F4;&#x5143;&#x7D20;&#x5BF9;&#x6BD4;&#xFF0C;&#x5C06;&#x5F85;&#x67E5;&#x627E;&#x7684;&#x533A;&#x95F4;&#x7F29;&#x5C0F;&#x4E3A;&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x534A;&#xFF0C;&#x76F4;&#x5230;&#x627E;&#x5230;&#x8981;&#x67E5;&#x627E;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x6216;&#x8005;&#x533A;&#x95F4;&#x88AB;&#x7F29;&#x5C0F;&#x4E3A; 0</p>
+<h4 id="&#x4F7F;&#x7528;&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x7684;&#x524D;&#x7F6E;&#x6761;&#x4EF6;">&#x4F7F;&#x7528;&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x7684;&#x524D;&#x7F6E;&#x6761;&#x4EF6;</h4>
+<ol>
+<li>&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x4F9D;&#x8D56;&#x987A;&#x5E8F;&#x8868;&#x7ED3;&#x6784; &#x6570;&#x7EC4;</li>
+<li>&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x9488;&#x5BF9;&#x7684;&#x662F;&#x6709;&#x5E8F;&#x6570;&#x636E;</li>
+<li>&#x6570;&#x636E;&#x91CF;&#x592A;&#x5C0F;&#x4E0D;&#x9002;&#x5408;&#x4E8C;&#x5206;&#x67E5;&#x627E;</li>
+<li>&#x6570;&#x636E;&#x91CF;&#x592A;&#x5927;&#x4E0D;&#x9002;&#x5408;&#x4E8C;&#x5206;&#x67E5;&#x627E;</li>
+</ol>
+<p>&#x67E5;&#x627E;&#x901F;&#x5EA6; O(logn)</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">bsearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] a, <span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> value)</span> </span>{
+  <span class="hljs-keyword">int</span> low = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">int</span> high = n - <span class="hljs-number">1</span>;
 
-    var next: Node?
-}
-
-
-/// &#x5355;&#x94FE;&#x8868; &#x7FFB;&#x8F6C;
-
-/// &#x975E;&#x9012;&#x5F52;&#x65B9;&#x6CD5; &#x904D;&#x5386; &#x6539;&#x53D8;&#x6BCF;&#x4E2A;node&#x7684;next&#x7684;&#x6307;&#x5411;
-/// &#x4F7F;&#x7528;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#x914D;&#x5408;&#x5DE5;&#x4F5C;&#xFF0C;&#x4F7F;&#x5F97;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x95F4;&#x7684;&#x6307;&#x5411;&#x53CD;&#x5411;&#xFF0C;&#x540C;&#x65F6;&#x7528;r&#x8BB0;&#x5F55;&#x5269;&#x4E0B;&#x7684;&#x94FE;&#x8868;&#x3002;
-func reverseList2(head: Node?) -&gt; Node? {
-    var pre = head
-    var cur = head?.next
-
-    head?.next = nil
-    while let _ = cur {
-        let tmp = cur?.next
-        cur?.next = pre
-
-        pre = cur
-        cur = tmp
+  <span class="hljs-keyword">while</span> (low &lt;= high) {
+    <span class="hljs-keyword">int</span> mid = (low + high) / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">if</span> (a[mid] == value) {
+      <span class="hljs-keyword">return</span> mid;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a[mid] &lt; value) {
+      low = mid + <span class="hljs-number">1</span>;
+    } <span class="hljs-keyword">else</span> {
+      high = mid - <span class="hljs-number">1</span>;
     }
+  }
 
-    return pre
-}
-
-/// &#x975E;&#x9012;&#x5F52;&#x65B9;&#x6CD5; &#x904D;&#x5386; &#x6BCF;&#x6B21;&#x53D6;&#x4E00;&#x4E2A;&#x653E;&#x5165;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4E2D;
-/// &#x5BF9;&#x4E8E;&#x4E00;&#x6761;&#x94FE;&#x8868;&#xFF0C;&#x4ECE;&#x7B2C;2&#x4E2A;&#x8282;&#x70B9;&#x5230;&#x7B2C;N&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x4F9D;&#x6B21;&#x9010;&#x8282;&#x70B9;&#x63D2;&#x5165;&#x5230;&#x7B2C;1&#x4E2A;&#x8282;&#x70B9;(head&#x8282;&#x70B9;)&#x4E4B;&#x540E;&#xFF0C;(N-1)&#x6B21;&#x8FD9;&#x6837;&#x7684;&#x64CD;&#x4F5C;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x5C06;&#x7B2C;1&#x4E2A;&#x8282;&#x70B9;&#x632A;&#x5230;&#x65B0;&#x8868;&#x7684;&#x8868;&#x5C3E;&#x5373;&#x53EF;&#x3002;
-/// &#x4EE3;&#x7801;&#x8DDF;&#x4E0A;&#x9762;&#x7684;&#x4E00;&#x6837; &#x4F46;&#x601D;&#x8DEF;&#x4E0D;&#x592A;&#x4E00;&#x6837;
-func reverseList3(head: Node?) -&gt; Node? {
-    var curHead = head
-    var next = curHead?.next
-
-    while let _ = next {
-        let tmp = next?.next
-
-        next?.next = curHead
-        curHead = next
-        next = tmp
-    }
-
-    head?.next = nil
-    return curHead
-}
-
-/// &#x9012;&#x5F52;&#x64CD;&#x4F5C; &#x601D;&#x8DEF;
-/**
-&#x94FE;&#x8868;&#xFF1A;a-&gt;b-&gt;c-&gt;d
-
-&#x9012;&#x5F52;&#x8FC7;&#x7A0B;&#xFF1A;
-a-&gt;b-&gt;c-&gt;d
-    a-&gt;(b-&gt;c-&gt;d)
-        a-&gt;(b-&gt;(c-&gt;d))
-        a-&gt;(b-&gt;(c&lt;-d))
-    a-&gt;(b&lt;-c&lt;-d)
-a&lt;-b&lt;-c&lt;-d
-
-*/
-func reverseList(head: Node?) -&gt; Node? {
-    if let next = head?.next {
-        var newHead = reverseList(head: next)
-
-        newHead?.next = head
-        head?.next = nil
-        return newHead
-    }
-
-    return head
+  <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
 }
 </code></pre>
+<h4 id="&#x9012;&#x5F52;&#x5B9E;&#x73B0;">&#x9012;&#x5F52;&#x5B9E;&#x73B0;</h4>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x4E8C;&#x5206;&#x67E5;&#x627E;&#x7684;&#x9012;&#x5F52;&#x5B9E;&#x73B0;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">bsearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] a, <span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> val)</span> </span>{
+  <span class="hljs-keyword">return</span> bsearchInternally(a, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>, val);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">bsearchInternally</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] a, <span class="hljs-keyword">int</span> low, <span class="hljs-keyword">int</span> high, <span class="hljs-keyword">int</span> value)</span> </span>{
+  <span class="hljs-keyword">if</span> (low &gt; high) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+
+  <span class="hljs-keyword">int</span> mid =  low + ((high - low) &gt;&gt; <span class="hljs-number">1</span>);
+  <span class="hljs-keyword">if</span> (a[mid] == value) {
+    <span class="hljs-keyword">return</span> mid;
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a[mid] &lt; value) {
+    <span class="hljs-keyword">return</span> bsearchInternally(a, mid+<span class="hljs-number">1</span>, high, value);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> bsearchInternally(a, low, mid-<span class="hljs-number">1</span>, value);
+  }
+}
+</code></pre>
+<h4 id="&#x5982;&#x4F55;&#x5728;-1000-&#x4E07;&#x4E2A;&#x6574;&#x6570;&#x4E2D;&#x5FEB;&#x901F;&#x67E5;&#x627E;&#x67D0;&#x4E2A;&#x6574;&#x6570;&#xFF1F;">&#x5982;&#x4F55;&#x5728; 1000 &#x4E07;&#x4E2A;&#x6574;&#x6570;&#x4E2D;&#x5FEB;&#x901F;&#x67E5;&#x627E;&#x67D0;&#x4E2A;&#x6574;&#x6570;&#xFF1F;</h4>
+<p>&#x6211;&#x4EEC;&#x7684;&#x5185;&#x5B58;&#x9650;&#x5236;&#x662F; 100MB&#xFF0C;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x5927;&#x5C0F;&#x662F; 8 &#x5B57;&#x8282;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x7684;&#x529E;&#x6CD5;&#x5C31;&#x662F;&#x5C06;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5728;&#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x5185;&#x5B58;&#x5360;&#x7528;&#x5DEE;&#x4E0D;&#x591A;&#x662F; 80MB&#xFF0C;&#x7B26;&#x5408;&#x5185;&#x5B58;&#x7684;&#x9650;&#x5236;&#x3002;&#x501F;&#x52A9;&#x4ECA;&#x5929;&#x8BB2;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5148;&#x5BF9;&#x8FD9; 1000 &#x4E07;&#x6570;&#x636E;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x6392;&#x5E8F;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5229;&#x7528;&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x7B97;&#x6CD5;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x5730;&#x67E5;&#x627E;&#x60F3;&#x8981;&#x7684;&#x6570;&#x636E;&#x4E86;&#x3002;</p>
+
                                 
                                 </section>
                             
@@ -643,12 +621,12 @@ func reverseList(head: Node?) -&gt; Node? {
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 链表">
+                <a href="bfs.html" class="navigation navigation-prev " aria-label="Previous page: 广度优先搜索">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="circle.html" class="navigation navigation-next " aria-label="Next page: 单链表是否有环、环节点、长度">
+                <a href="../other/" class="navigation navigation-next " aria-label="Next page: 其他">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -659,7 +637,7 @@ func reverseList(head: Node?) -&gt; Node? {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"单链表翻转","level":"1.2.3.1","depth":3,"next":{"title":"单链表是否有环、环节点、长度","level":"1.2.3.2","depth":3,"path":"algorithm/linkedlist/circle.md","ref":"algorithm/linkedlist/circle.md","articles":[]},"previous":{"title":"链表","level":"1.2.3","depth":2,"path":"algorithm/linkedlist/index.md","ref":"algorithm/linkedlist/index.md","articles":[{"title":"单链表翻转","level":"1.2.3.1","depth":3,"path":"algorithm/linkedlist/reverseList.md","ref":"algorithm/linkedlist/reverseList.md","articles":[]},{"title":"单链表是否有环、环节点、长度","level":"1.2.3.2","depth":3,"path":"algorithm/linkedlist/circle.md","ref":"algorithm/linkedlist/circle.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"algorithm/linkedlist/reverseList.md","mtime":"2018-10-09T01:45:25.472Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-31T10:20:18.750Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"广度优先搜索","level":"1.2.6.3","depth":3,"next":{"title":"其他","level":"1.2.7","depth":2,"path":"algorithm/other/index.md","ref":"algorithm/other/index.md","articles":[{"title":"斐波切纳数列","level":"1.2.7.1","depth":3,"path":"algorithm/other/fibonacci.md","ref":"algorithm/other/fibonacci.md","articles":[]},{"title":"求最大公约数","level":"1.2.7.2","depth":3,"path":"algorithm/other/gongyueshu.md","ref":"algorithm/other/gongyueshu.md","articles":[]},{"title":"约瑟夫问题","level":"1.2.7.3","depth":3,"path":"algorithm/other/yuesefu.md","ref":"algorithm/other/yuesefu.md","articles":[]}]},"previous":{"title":"广度优先搜索","level":"1.2.6.2","depth":3,"path":"algorithm/search/bfs.md","ref":"algorithm/search/bfs.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"algorithm/search/binarySearch.md","mtime":"2018-10-31T02:02:14.434Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-31T10:20:18.750Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
