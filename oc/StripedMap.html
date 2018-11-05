@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>weak · GitBook</title>
+        <title>StripedMap · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="autoreleasepool.html" />
+    <link rel="next" href="../ui/index.md" />
     
     
-    <link rel="prev" href="refCount.html" />
+    <link rel="prev" href="block.html" />
     
 
     
@@ -180,7 +180,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.5" data-path="weak.html">
+        <li class="chapter " data-level="1.2.5" data-path="weak.html">
             
                 <a href="weak.html">
             
@@ -258,7 +258,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.11" data-path="StripedMap.html">
+        <li class="chapter active" data-level="1.2.11" data-path="StripedMap.html">
             
                 <a href="StripedMap.html">
             
@@ -725,7 +725,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >weak</a>
+        <a href=".." >StripedMap</a>
     </h1>
 </div>
 
@@ -740,27 +740,100 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="weak">weak</h3>
-<h4 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h4>
-<ol>
-<li>&#x5BF9;&#x4E8E;TaggedPointer&#x5BF9;&#x8C61;&#xFF0C;weak&#x5F15;&#x7528;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x505A;&#x989D;&#x5916;&#x7BA1;&#x7406;&#xFF08;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x5168;&#x5C40;hash&#x8868;&#x4E2D;&#x505A;&#x8BB0;&#x5F55;&#xFF09;</li>
-</ol>
-<h3 id="&#x5E95;&#x5C42;&#x5B58;&#x50A8;">&#x5E95;&#x5C42;&#x5B58;&#x50A8;</h3>
-<h4 id="stripedmap">StripedMap</h4>
-<p>&#x5305;&#x542B;64&#x4E2A; sidetable &#x5BF9;&#x8C61;&#xFF0C;&#x6839;&#x636E; &#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740; &#x627E;&#x5230;&#x67D0;&#x4E2A;sidetable&#x5BF9;&#x8C61;</p>
-<pre><code>// SideTables&#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;StripedMap&#x5B9E;&#x73B0;&#xFF0C;&#x5305;&#x542B;64&#x4E2A;SideTable&#x5BF9;&#x8C61;
-static StripedMap&lt;SideTable&gt; SideTables()
-</code></pre><h4 id="sidetable">SideTable</h4>
-<p>SideTable &#xFF0C;&#x7528;&#x4E8E;&#x7BA1;&#x7406;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;(RefcountMap)&#x548C; weak &#x8868; (weak_table_t)&#xFF0C;&#x5E76;&#x4F7F;&#x7528; spinlock_lock &#x81EA;&#x65CB;&#x9501;&#x6765;&#x9632;&#x6B62;&#x64CD;&#x4F5C;&#x8868;&#x7ED3;&#x6784;&#x65F6;&#x53EF;&#x80FD;&#x7684;&#x7ADE;&#x6001;&#x6761;&#x4EF6;&#x3002;</p>
-<p>SideTables/RefcountMap/weak_table_t&#x7684;&#x4F7F;&#x7528;</p>
-<pre><code>struct SideTable {
-    // &#x4FDD;&#x5B58;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7684;&#x6563;&#x5217;&#x8868;
-    RefcountMap refcnts;
-    //&#x4FDD;&#x5B58; weak &#x5F15;&#x7528;&#x7684;&#x5168;&#x5C40;&#x6563;&#x5217;&#x8868;
-    weak_table_t weak_table;
-    // &#x4FDD;&#x8BC1;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x7684;&#x81EA;&#x9009;&#x9501;
-    spinlock_t slock;   // &#x9501;&#x4FDD;&#x8BC1; atomic
+                                <h4 id="&#x9501;&#x5206;&#x6BB5;&#x6280;&#x672F;">&#x9501;&#x5206;&#x6BB5;&#x6280;&#x672F;</h4>
+<pre><code>&#x9501;&#x5206;&#x6BB5; &#x5C31;&#x662F;&#x8FDB;&#x4E00;&#x6B65;&#x5BF9;&#x4E00;&#x7EC4;&#x72EC;&#x7ACB;&#x7684;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x5206;&#x89E3;&#x3002;
+&#x5173;&#x4E8E;&#x63D0;&#x9AD8;&#x5E76;&#x53D1;&#x6027; &#x53EF;&#x4EE5;&#x4F7F;&#x7528; &#x9501;&#x5206;&#x79BB;(lock striping) &#x548C; &#x9501;&#x5206;&#x62C6;(lock splitging) &#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x3002;   
+&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x9501;&#x5B88;&#x62A4;&#x591A;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x4E0D;&#x540C;&#x53D8;&#x91CF;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5206;&#x62C6;&#x9501;&#xFF0C;&#x4F7F;&#x4E0D;&#x540C;&#x7684;&#x9501;&#x5B88;&#x62A4;&#x4E0D;&#x540C;&#x53D8;&#x91CF;&#xFF0C;&#x4ECE;&#x800C;&#x964D;&#x4F4E;&#x9501;&#x7684;&#x8BF7;&#x6C42;&#x9891;&#x7387;&#x3002;
+
+&#x4F8B;&#x5982;Java&#x4E2D;&#x7684;ConcurrentHashMap&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;&#x5305;&#x542B;16&#x4E2A;&#x9501;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x6BCF;&#x4E2A;&#x9501;&#x4FDD;&#x62A4;&#x6240;&#x6709;&#x6563;&#x5217;&#x503C;&#x7684;1/16&#xFF0C;&#x7B2C;N&#x4E2A;&#x6563;&#x5217;&#x6876;&#x6709;&#x7B2C;(N mod 16)&#x4E2A;&#x9501;&#x6765;&#x4FDD;&#x62A4;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x5E76;&#x53D1;&#x96C6;&#x5408;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x6700;&#x591A;16&#x4E2A;&#x5E76;&#x53D1;&#x7684;&#x5199;&#x5165;&#x5668;&#x3002;
+</code></pre><p>&#x4F8B;&#x5982;&#x5728;ObjC&#x7684;runtime&#x4E2D;&#x4F7F;&#x7528;&#x7684;StripedMap&#x4E2D;&#x5305;&#x542B;&#x4E86;64&#x4E2A;&#x9501;&#x7684;&#x6570;&#x7EC4;&#x3002;</p>
+<pre><code>/**
+&#x4E0B;&#x9762;&#x662F;runtime&#x5E93;&#x4E2D;&#x7684;&#x4EE3;&#x7801;
+*/
+template&lt;typename T&gt;
+class StripedMap {
+    enum { StripeCount = 64 };
+    static unsigned int indexForPointer(const void *p) {
+        // c++ &#x4ECE;&#x6307;&#x9488;&#x7C7B;&#x578B; &#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x8DB3;&#x591F;&#x5927;&#x7684;&#x6574;&#x6570;&#x7C7B;&#x578B;
+        uintptr_t addr = reinterpret_cast&lt;uintptr_t&gt;(p);
+        // &#x53F3;&#x79FB;&#x540E; &#x53D6; &#x5F02;&#x6216;&#x8FD0;&#x7B97;&#xFF0C;&#x518D;&#x53D6;&#x4F59; &#xFF08;&#x6700;&#x7EC8;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x5C0F;&#x4E8E;StripeCount&#x7684;&#x968F;&#x673A;&#x6570;&#xFF09;
+        return ((addr &gt;&gt; 4) ^ (addr &gt;&gt; 9)) % StripeCount;
+    }
+
+    T array[StripCount];
+
+public:
+    // &#x91CD;&#x5199;&#x4E86;[]&#x8FD0;&#x7B97; map[&#x6307;&#x9488;&#x5730;&#x5740;] &#x5373;&#x53EF;&#x83B7;&#x53D6;&#x5230;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;
+    T&amp; operator[] (const void *p) {
+        return array[indexForPointer(p)].value;
+    }
 };
+</code></pre><p>&#x5728;runtime&#x5E93;&#x4E2D;&#x7684;&#x7528;&#x6CD5;</p>
+<pre><code>//&#x91CC;&#x9762;&#x653E;&#x4E86;64&#x4E2A;spinklock&#x5BF9;&#x8C61;&#xFF0C;&#x7528;&#x4E8E;&#x83B7;&#x53D6;lock
+static StripedMap&lt;spinlock_t&gt; PropertyLocks;  
+// &#x4F7F;&#x7528;
+spinlock_t&amp; slotlock = PropertyLocks[slot];
+slotlock.lock();
+    oldValue = *slot;
+    *slot = newValue;
+slotlock.unlock();
+</code></pre><h4 id="spinlockt&#x7684;&#x4F7F;&#x7528;">spinlock_t&#x7684;&#x4F7F;&#x7528;</h4>
+<pre><code>class spinlock_t {
+    os_lock_handoff_s mLock;
+public:
+    spinlock_t() : mLock(OS_LOCK_HANDOFF_INIT) { }
+
+    void lock() { os_lock_lock(&amp;mLock); }
+    void unlock() { os_lock_unlock(&amp;mLock); }
+    bool trylock() { return os_lock_trylock(&amp;mLock); }
+
+
+    // Address-ordered lock discipline for a pair of locks.
+    // &#x4E24;&#x4E2A;&#x6307;&#x9488;&#x6307;&#x5411;&#x7684;&#x5185;&#x5BB9;&#x4E92;&#x6362;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x9501;&#x5B9A;&#x4E24;&#x4E2A;&#x5730;&#x5740;&#x6307;&#x5411;&#x7684;&#x5185;&#x5BB9;
+    static void lockTwo(spinlock_t *lock1, spinlock_t *lock2) {
+        if (lock1 &gt; lock2) { // lock1 lock2 &#x9501;&#x6709;&#x5148;&#x540E;&#x987A;&#x5E8F;&#xFF1F;
+            lock1-&gt;lock();
+            lock2-&gt;lock();
+        } else {
+            lock2-&gt;lock();
+            if (lock2 != lock1) lock1-&gt;lock(); 
+        }
+    }
+
+    static void unlockTwo(spinlock_t *lock1, spinlock_t *lock2) {
+        lock1-&gt;unlock();
+        if (lock2 != lock1) lock2-&gt;unlock();
+    }
+};
+</code></pre><h4 id="sidetablesrefcountmapweaktablet&#x7684;&#x4F7F;&#x7528;">SideTables/RefcountMap/weak_table_t&#x7684;&#x4F7F;&#x7528;</h4>
+<pre><code>struct SideTable {
+    spinlock_t slock;   // &#x9501;&#x4FDD;&#x8BC1; atomic
+
+    /**
+    RefcountMap disguises its pointers because we 
+    don&apos;t want the table to act as a root for `leaks`.
+    &#x5BF9;&#x8C61;&#x5177;&#x4F53;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5B58;&#x50A8;&#x5728;&#x8FD9;&#x91CC;
+    */
+    RefcountMap refcnts;
+
+    /**
+    * The global weak references table. 
+    * Stores object ids as keys, and weak_entry_t structs as their values.
+    */
+    weak_table_t weak_table;
+
+    void lock() { slock.lock(); }
+    void unlock() { slock.unlock(); }
+    bool trylock() { return slock.trylock(); }
+
+    // Address-ordered lock discipline for a pair of side tables.
+
+    template&lt;bool HaveOld, bool HaveNew&gt;
+    static void lockTwo(SideTable *lock1, SideTable *lock2);
+    template&lt;bool HaveOld, bool HaveNew&gt;
+    static void unlockTwo(SideTable *lock1, SideTable *lock2);
+};
+
 
 struct weak_table_t {
     weak_entry_t *weak_entries; // &#x6570;&#x7EC4; &#x5B58;&#x50A8;&#x4E86;&#x6307;&#x5411;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x6307;&#x9488;
@@ -769,63 +842,23 @@ struct weak_table_t {
     uintptr_t max_hash_displacement;
 };
 
+/**
+
+*/
 struct weak_entry_t {
     DisguisedPtr&lt;objc_object&gt; referent; // &#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;
     weak_referrer_t *referrers; // &#x6570;&#x7EC4; &#x5BF9;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x5730;&#x5740;&#x5B58;&#x5728;&#x8FD9;&#x91CC;
 };
-</code></pre><h4 id="weak&#x7684;&#x5B9E;&#x73B0;">weak&#x7684;&#x5B9E;&#x73B0;</h4>
-<pre><code>id objc_initWeak(id *object, id value) {
-    if (!newObj) {
-        *location = nil;
-        return nil;
-    }
 
-    return storeWeak&lt;false/*old*/, true/*new*/, true/*crash*/&gt;
-        (location, (objc_object*)newObj);
-}
+/// The address of a __weak object reference
+typedef objc_object ** weak_referrer_t;  
+</code></pre><h2 id="">#</h2>
+<h4 id="&#x53C2;&#x8003;&#xFF1A;">&#x53C2;&#x8003;&#xFF1A;</h4>
+<ul>
+<li>os_lock_handoff_s&#x53C2;&#x8003;&#xFF1A;<a href="https://opensource.apple.com/source/libmalloc/libmalloc-116.30.3/src/locking.h.auto.html" target="_blank">https://opensource.apple.com/source/libmalloc/libmalloc-116.30.3/src/locking.h.auto.html</a></li>
+<li></li>
+</ul>
 
-id objc_loadWeak(id _Nullable *location) {
-    if (!*location) return nil;
-    return objc_autorelease(objc_loadWeakRetained(location));
-}
-
-id objc_loadWeakRetained(id *object) {
-    id result;
-
-    SideTable *table;
-
-retry:
-    result = *location;
-    if (!result) return nil;
-
-    table = &amp;SideTables()[result];
-
-    table-&gt;lock();
-    if (*location != result) {
-        table-&gt;unlock();
-        goto retry;
-    }
-
-    result = weak_read_no_lock(&amp;table-&gt;weak_table, location);
-
-    table-&gt;unlock();
-    return result;
-}
-
-id objc_storeWeak(id _Nullable *location, id obj) {
-    return storeWeak(location, (objc_object *)obj)
-}
-
-void objc_copyWeak(id *dest, id *src) {
-    id obj = objc_loadWeakRetained(src);
-    objc_initWeak(dst, obj);
-    objc_release(obj);
-}
-
-void objc_destroyWeak(id *object) {
-    objc_storeWeak(object, nil);
-}
-</code></pre>
                                 
                                 </section>
                             
@@ -852,12 +885,12 @@ void objc_destroyWeak(id *object) {
 
             
                 
-                <a href="refCount.html" class="navigation navigation-prev " aria-label="Previous page: referecne count">
+                <a href="block.html" class="navigation navigation-prev " aria-label="Previous page: block">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="autoreleasepool.html" class="navigation navigation-next " aria-label="Next page: autoreleasepool">
+                <a href="../ui/index.md" class="navigation navigation-next " aria-label="Next page: UI基础">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -868,7 +901,7 @@ void objc_destroyWeak(id *object) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"weak","level":"1.2.5","depth":2,"next":{"title":"autoreleasepool","level":"1.2.6","depth":2,"path":"oc/autoreleasepool.md","ref":"oc/autoreleasepool.md","articles":[]},"previous":{"title":"referecne count","level":"1.2.4","depth":2,"path":"oc/refCount.md","ref":"oc/refCount.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"oc/weak.md","mtime":"2018-11-05T06:43:09.485Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T06:48:00.741Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"StripedMap","level":"1.2.11","depth":2,"next":{"title":"UI基础","level":"2.1","depth":1,"path":"ui/index.md","ref":"ui/index.md","articles":[{"title":"animation","level":"2.1.1","depth":2,"path":"ui/animation.md","ref":"ui/animation.md","articles":[]}]},"previous":{"title":"block","level":"1.2.10","depth":2,"path":"oc/block.md","ref":"oc/block.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"oc/StripedMap.md","mtime":"2018-11-05T06:54:29.460Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T06:48:00.741Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
