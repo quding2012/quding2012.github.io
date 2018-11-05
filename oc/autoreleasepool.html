@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>weak · GitBook</title>
+        <title>autoreleasepool · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="runloop.html" />
+    <link rel="next" href="weak.html" />
     
     
-    <link rel="prev" href="autoreleasepool.html" />
+    <link rel="prev" href="refCount.html" />
     
 
     
@@ -193,7 +193,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="autoreleasepool.html">
+        <li class="chapter active" data-level="1.2.6" data-path="autoreleasepool.html">
             
                 <a href="autoreleasepool.html">
             
@@ -206,7 +206,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.7" data-path="weak.html">
+        <li class="chapter " data-level="1.2.7" data-path="weak.html">
             
                 <a href="weak.html">
             
@@ -660,7 +660,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >weak</a>
+        <a href=".." >autoreleasepool</a>
     </h1>
 </div>
 
@@ -675,111 +675,135 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="weak">weak</h3>
-<h4 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h4>
-<ol>
-<li>&#x5BF9;&#x4E8E;TaggedPointer&#x5BF9;&#x8C61;&#xFF0C;weak&#x5F15;&#x7528;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x505A;&#x989D;&#x5916;&#x7BA1;&#x7406;&#xFF08;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x5168;&#x5C40;hash&#x8868;&#x4E2D;&#x505A;&#x8BB0;&#x5F55;&#xFF09;</li>
-</ol>
-<h3 id="&#x5E95;&#x5C42;&#x5B58;&#x50A8;">&#x5E95;&#x5C42;&#x5B58;&#x50A8;</h3>
-<pre><code>// SideTables&#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;StripedMap&#x5B9E;&#x73B0;&#xFF0C;&#x5305;&#x542B;64&#x4E2A;SideTable&#x5BF9;&#x8C61;
-static StripedMap&lt;SideTable&gt; SideTables()
+                                <h3 id="autoreleasepool">autoreleasepool</h3>
+<h3 id="&#x63D2;&#x5165;&#x4E86;&#x4EC0;&#x4E48;&#x4EE3;&#x7801;&#xFF1F;&#x5BF9;obj-&#x600E;&#x4E48;&#x5904;&#x7406;&#xFF1F;">&#x63D2;&#x5165;&#x4E86;&#x4EC0;&#x4E48;&#x4EE3;&#x7801;&#xFF1F;&#x5BF9;obj &#x600E;&#x4E48;&#x5904;&#x7406;&#xFF1F;</h3>
+<p>&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>@autoreleasepool {
+    //
+}
+</code></pre><p>&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>void* pool = objc_autoreleasePoolPush();
+// do sth
+// objc_autorelease(obj);
+objc_autoreleasePoolPop(pool);
+</code></pre><p>&#x66F4;&#x8FDB;&#x4E00;&#x6B65;</p>
+<pre><code>- &#x8C03;&#x7528; AutoreleasePoolPage::push() &#x4F1A;&#x751F;&#x6210;
+- &#x5F53;&#x5BF9;&#x8C61;&#x8C03;&#x7528; autorelease &#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4F1A;&#x5C06;&#x5BF9;&#x8C61;&#x52A0;&#x5165; AutoreleasePoolPage &#x7684;&#x6808;&#x4E2D;
+- &#x8C03;&#x7528; AutoreleasePoolPage::pop &#x65B9;&#x6CD5;&#x4F1A;&#x5411;&#x6808;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x53D1;&#x9001; release &#x6D88;&#x606F;
 
-
-// SideTable 
-#### SideTables/RefcountMap/weak_table_t&#x7684;&#x4F7F;&#x7528;
-struct SideTable {
-    spinlock_t slock;   // &#x9501;&#x4FDD;&#x8BC1; atomic
-
-    /**
-    RefcountMap disguises its pointers because we 
-    don&apos;t want the table to act as a root for `leaks`.
-    &#x5BF9;&#x8C61;&#x5177;&#x4F53;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5B58;&#x50A8;&#x5728;&#x8FD9;&#x91CC;
-    */
-    RefcountMap refcnts;
-
-    /**
-    * The global weak references table. 
-    * Stores object ids as keys, and weak_entry_t structs as their values.
-    */
-    weak_table_t weak_table;
-
-    void lock() { slock.lock(); }
-    void unlock() { slock.unlock(); }
-    bool trylock() { return slock.trylock(); }
-
-    // Address-ordered lock discipline for a pair of side tables.
-
-    template&lt;bool HaveOld, bool HaveNew&gt;
-    static void lockTwo(SideTable *lock1, SideTable *lock2);
-    template&lt;bool HaveOld, bool HaveNew&gt;
-    static void unlockTwo(SideTable *lock1, SideTable *lock2);
+void *objc_autoreleasePoolPush(void) {
+    return AutoreleasePoolPage::push();
+}
+void objc_autoreleasePoolPop(void *pool) {
+    AutoreleasePoolPage::pop(pool);
+}
+</code></pre><h3 id="&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x539F;&#x7406;">&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x539F;&#x7406;</h3>
+<h4 id="autoreleasepoolpage">AutoreleasePoolPage</h4>
+<pre><code>class AutoreleasePoolPage {
+    magic_t const magic;
+    id *next;
+    pthread_t const thread; // &#x5F53;&#x524D;page&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;
+    AutoreleasePoolPage * const parent; // &#x7528;&#x6765;&#x6784;&#x9020;&#x53CC;&#x5411;&#x94FE;&#x8868;
+    AutoreleasePoolPage *child; // &#x53CC;&#x5411;&#x94FE;&#x8868;
+    uint32_t const depth;
+    uint32_t hiwat;
 };
+</code></pre><p>&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x662F;&#x7531; AutoreleasePoolPage &#x4EE5;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x90FD;&#x662F;&#x7531;&#x4E00;&#x7CFB;&#x5217;&#x7684; AutoreleasePoolPage &#x7EC4;&#x6210;&#xFF0C;&#x5E76;&#x4E14;&#x6BCF;&#x4E00;&#x4E2A; AutoreleasePoolPage &#x7684;&#x5927;&#x5C0F;&#x90FD;&#x662F; 4096 &#x5B57;&#x8282;</p>
+<h4 id="autoreleasepoolpagepush">AutoreleasePoolPage::push()</h4>
+<pre><code>static inline void *push() {
+   return autoreleaseFast(POOL_SENTINEL);   // POOL_SENTINEL&#x4E3A;&#x54E8;&#x5175;
+}
 
-struct weak_table_t {
-    weak_entry_t *weak_entries; // &#x6570;&#x7EC4; &#x5B58;&#x50A8;&#x4E86;&#x6307;&#x5411;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x6307;&#x9488;
-    size_t    num_entries;
-    uintptr_t mask;
-    uintptr_t max_hash_displacement;
-};
+/*
+    &#x6709; hotPage &#x5E76;&#x4E14;&#x5F53;&#x524D; page &#x4E0D;&#x6EE1;
+        &#x8C03;&#x7528; page-&gt;add(obj) &#x65B9;&#x6CD5;&#x5C06;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x81F3; AutoreleasePoolPage &#x7684;&#x6808;&#x4E2D;
+    &#x6709; hotPage &#x5E76;&#x4E14;&#x5F53;&#x524D; page &#x5DF2;&#x6EE1;
+        &#x8C03;&#x7528; autoreleaseFullPage &#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x9875;
+        &#x8C03;&#x7528; page-&gt;add(obj) &#x65B9;&#x6CD5;&#x5C06;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x81F3; AutoreleasePoolPage &#x7684;&#x6808;&#x4E2D;
+    &#x65E0; hotPage
+        &#x8C03;&#x7528; autoreleaseNoPage &#x521B;&#x5EFA;&#x4E00;&#x4E2A; hotPage
+        &#x8C03;&#x7528; page-&gt;add(obj) &#x65B9;&#x6CD5;&#x5C06;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x81F3; AutoreleasePoolPage &#x7684;&#x6808;&#x4E2D;
+    &#x6700;&#x540E;&#x7684;&#x90FD;&#x4F1A;&#x8C03;&#x7528; page-&gt;add(obj) &#x5C06;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x5230;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x4E2D;&#x3002;
+*/
+static inline id *autoreleaseFast(id obj)
+{
+   // hotPage &#x4E3A;&#x5F53;&#x524D;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684; AutoreleasePoolPage
+   AutoreleasePoolPage *page = hotPage();
+   if (page &amp;&amp; !page-&gt;full()) {
+       return page-&gt;add(obj);
+   } else if (page) {
+       return autoreleaseFullPage(obj, page);
+   } else {
+       return autoreleaseNoPage(obj);
+   }
+}
 
-struct weak_entry_t {
-    DisguisedPtr&lt;objc_object&gt; referent; // &#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;
-    weak_referrer_t *referrers; // &#x6570;&#x7EC4; &#x5BF9;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x5730;&#x5740;&#x5B58;&#x5728;&#x8FD9;&#x91CC;
-};
-</code></pre><h4 id="weak&#x7684;&#x5B9E;&#x73B0;">weak&#x7684;&#x5B9E;&#x73B0;</h4>
-<pre><code>id objc_initWeak(id *object, id value) {
-    if (!newObj) {
-        *location = nil;
-        return nil;
+// hotPage&#x5DF2;&#x6EE1;
+static id *autoreleaseFullPage(id obj, AutoreleasePoolPage *page) {
+    do {
+        if (page-&gt;child) page = page-&gt;child;
+        else page = new AutoreleasePoolPage(page);
+    } while (page-&gt;full());
+    setHotPage(page);
+    return page-&gt;add(obj);
+}
+
+// &#x6CA1;&#x6709;hotPage
+static id *autoreleaseNoPage(id obj) {
+    AutoreleasePoolPage *page = new AutoreleasePoolPage(nil);
+    setHotPage(page);
+    if (obj != POOL_SENTINEL) {
+        page-&gt;add(POOL_SENTINEL);
     }
-
-    return storeWeak&lt;false/*old*/, true/*new*/, true/*crash*/&gt;
-        (location, (objc_object*)newObj);
+    return page-&gt;add(obj);
 }
 
-id objc_loadWeak(id _Nullable *location) {
-    if (!*location) return nil;
-    return objc_autorelease(objc_loadWeakRetained(location));
+// page-&gt;add(obj)  &#x538B;&#x6808;&#x64CD;&#x4F5C;
+id *add(id obj) {
+    id *ret = next;
+    *next = obj;
+    next++;
+    return ret;
 }
+</code></pre><h4 id="autoreleasepoolpagepopctxt">AutoreleasePoolPage::pop(ctxt);</h4>
+<p>&#x904D;&#x5386;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x6240;&#x6709;page&#x5BF9;&#x8C61;&#xFF0C;&#x5BF9;page&#x4E2D;&#x5B58;&#x50A8;&#x7684;obj &#x51FA;&#x6808; &#x5206;&#x522B;&#x505A;release&#x64CD;&#x4F5C;</p>
+<pre><code>static inline void pop(void *token) {
+    AutoreleasePoolPage *page = pageForPointer(token);
+    id *stop = (id *)token;
 
-id objc_loadWeakRetained(id *object) {
+    page-&gt;releaseUntil(stop);
 
-    id result;
-
-    SideTable *table;
-
-retry:
-    result = *location;
-    if (!result) return nil;
-
-    table = &amp;SideTables()[result];
-
-    table-&gt;lock();
-    if (*location != result) {
-        table-&gt;unlock();
-        goto retry;
+    if (page-&gt;child) {
+        if (page-&gt;lessThanHalfFull()) {
+            page-&gt;child-&gt;kill();
+        } else if (page-&gt;child-&gt;child) {
+            page-&gt;child-&gt;child-&gt;kill();
+        }
     }
-
-    result = weak_read_no_lock(&amp;table-&gt;weak_table, location);
-
-    table-&gt;unlock();
-    return result;
+}
+</code></pre><h3 id="&#x5C0F;&#x7ED3;">&#x5C0F;&#x7ED3;</h3>
+<pre><code>// &#x628A;value&#x52A0;&#x5230;&#x6700;&#x9760;&#x8FD1;&#x7684;autorelease pool&#x4E2D;&#xFF0C;&#x56DE;&#x8C03;&#x7528; [value autorelease]
+id objc_autorelease(id obj) {
+    if (!obj) return obj;
+    if (obj-&gt;isTaggedPointer()) return obj;
+    return obj-&gt;autorelease();
 }
 
-id objc_storeWeak(id _Nullable *location, id obj) {
-    return storeWeak(location, (objc_object *)obj)
+
+id objc_autoreleaseReturnValue(id value) {
+    // if (prepareOptimizedReturn(ReturnAtPlus1)) return obj;
+
+    return objc_autorelease(obj);
 }
 
-void objc_copyWeak(id *dest, id *src) {
-    id obj = objc_loadWeakRetained(src);
-    objc_initWeak(dst, obj);
-    objc_release(obj);
+@autoreleasepool {
+    // 
 }
+</code></pre><h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<ul>
+<li><a href="https://draveness.me/autoreleasepool" target="_blank">https://draveness.me/autoreleasepool</a></li>
+</ul>
 
-void objc_destroyWeak(id *object) {
-   objc_storeWeak(object, nil);
-}
-</code></pre>
                                 
                                 </section>
                             
@@ -806,12 +830,12 @@ void objc_destroyWeak(id *object) {
 
             
                 
-                <a href="autoreleasepool.html" class="navigation navigation-prev " aria-label="Previous page: autoreleasepool">
+                <a href="refCount.html" class="navigation navigation-prev " aria-label="Previous page: 引用计数">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="runloop.html" class="navigation navigation-next " aria-label="Next page: runloop">
+                <a href="weak.html" class="navigation navigation-next " aria-label="Next page: weak">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -822,7 +846,7 @@ void objc_destroyWeak(id *object) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"weak","level":"1.2.7","depth":2,"next":{"title":"runloop","level":"1.2.8","depth":2,"path":"oc/runloop.md","ref":"oc/runloop.md","articles":[]},"previous":{"title":"autoreleasepool","level":"1.2.6","depth":2,"path":"oc/autoreleasepool.md","ref":"oc/autoreleasepool.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"oc/weak.md","mtime":"2018-11-05T02:47:26.749Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T02:58:12.359Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"autoreleasepool","level":"1.2.6","depth":2,"next":{"title":"weak","level":"1.2.7","depth":2,"path":"oc/weak.md","ref":"oc/weak.md","articles":[]},"previous":{"title":"引用计数","level":"1.2.5","depth":2,"path":"oc/refCount.md","ref":"oc/refCount.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"oc/autoreleasepool.md","mtime":"2018-11-05T04:24:02.817Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T02:58:12.359Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>weak · GitBook</title>
+        <title>runloop · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="runloop.html" />
+    <link rel="next" href="associatedObject.html" />
     
     
-    <link rel="prev" href="autoreleasepool.html" />
+    <link rel="prev" href="weak.html" />
     
 
     
@@ -206,7 +206,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.7" data-path="weak.html">
+        <li class="chapter " data-level="1.2.7" data-path="weak.html">
             
                 <a href="weak.html">
             
@@ -219,7 +219,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.8" data-path="runloop.html">
+        <li class="chapter active" data-level="1.2.8" data-path="runloop.html">
             
                 <a href="runloop.html">
             
@@ -660,7 +660,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >weak</a>
+        <a href=".." >runloop</a>
     </h1>
 </div>
 
@@ -675,111 +675,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="weak">weak</h3>
-<h4 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h4>
-<ol>
-<li>&#x5BF9;&#x4E8E;TaggedPointer&#x5BF9;&#x8C61;&#xFF0C;weak&#x5F15;&#x7528;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x505A;&#x989D;&#x5916;&#x7BA1;&#x7406;&#xFF08;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x5168;&#x5C40;hash&#x8868;&#x4E2D;&#x505A;&#x8BB0;&#x5F55;&#xFF09;</li>
-</ol>
-<h3 id="&#x5E95;&#x5C42;&#x5B58;&#x50A8;">&#x5E95;&#x5C42;&#x5B58;&#x50A8;</h3>
-<pre><code>// SideTables&#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;StripedMap&#x5B9E;&#x73B0;&#xFF0C;&#x5305;&#x542B;64&#x4E2A;SideTable&#x5BF9;&#x8C61;
-static StripedMap&lt;SideTable&gt; SideTables()
+                                <h3 id="runloop">runloop</h3>
+<h3 id="&#x4E00;&#x4E9B;&#x7591;&#x95EE;">&#x4E00;&#x4E9B;&#x7591;&#x95EE;</h3>
+<ul>
+<li>RunLoop&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x6240;&#x5904;&#x7684;&#x89D2;&#x8272;</li>
+<li>RunLoop&#x5177;&#x4F53;&#x4F5C;&#x7528;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#x6709;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x7C7B;&#x4F3C;&#x7684;&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x4EE3;&#x66FF;&#x89D2;&#x8272;&#xFF1F;</li>
+<li>&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;RunLoop&#x5BF9;&#x8C61;&#x5417;&#xFF1F;</li>
+<li>RunLoop &#x6709;&#x54EA;&#x4E9B;&#x4E8B;&#x4EF6;&#xFF1F;&#x5982;&#x4F55;&#x76D1;&#x542C;&#xFF1F;</li>
+<li>RunLoop &#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4EC0;&#x4E48;property&#xFF1F;&#x5206;&#x522B;&#x6709;&#x4EC0;&#x4E48;&#x4F5C;&#x7528;&#xFF1F;&#x8BBE;&#x7F6E;&#x7684;&#x5C5E;&#x6027; &#x600E;&#x4E48;&#x8D77;&#x4F5C;&#x7528;&#x7684;&#xFF1F;&#x5B9E;&#x8D28;&#x662F;&#x4E0E;&#x7CFB;&#x7EDF;&#x4EA4;&#x4E92;&#x7684;api</li>
+<li>&#x5B9E;&#x9645;&#x5DE5;&#x4F5C;&#x4E2D; &#x6709;&#x54EA;&#x4E9B;&#x7ECF;&#x5178;&#x5B9E;&#x7528;&#xFF1F;&#x5361;&#x987F;&#x76D1;&#x542C;&#xFF1F;asynckit&#x4E2D;&#x7684;&#x7ECF;&#x5178;&#x5B9E;&#x7528;&#xFF1F;autoreleasepool&#x3001;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x7684;&#x5904;&#x7406;&#xFF1F;</li>
+<li>mainRunLoop &#x4E0E; &#x5176;&#x4ED6;RunLoop&#x7684;&#x533A;&#x522B;&#xFF1F;&#x6709;&#x54EA;&#x4E9B;&#x7279;&#x6743;&#xFF1F;</li>
+<li>&#x5177;&#x4F53;&#x5982;&#x4F55;&#x8FD0;&#x8F6C;&#xFF1F;</li>
+</ul>
+<h3 id="&#x5361;&#x987F;&#x76D1;&#x542C;">&#x5361;&#x987F;&#x76D1;&#x542C;</h3>
+<h3 id="performselectorafterdelay">performSelector:afterDelay:</h3>
 
-
-// SideTable 
-#### SideTables/RefcountMap/weak_table_t&#x7684;&#x4F7F;&#x7528;
-struct SideTable {
-    spinlock_t slock;   // &#x9501;&#x4FDD;&#x8BC1; atomic
-
-    /**
-    RefcountMap disguises its pointers because we 
-    don&apos;t want the table to act as a root for `leaks`.
-    &#x5BF9;&#x8C61;&#x5177;&#x4F53;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5B58;&#x50A8;&#x5728;&#x8FD9;&#x91CC;
-    */
-    RefcountMap refcnts;
-
-    /**
-    * The global weak references table. 
-    * Stores object ids as keys, and weak_entry_t structs as their values.
-    */
-    weak_table_t weak_table;
-
-    void lock() { slock.lock(); }
-    void unlock() { slock.unlock(); }
-    bool trylock() { return slock.trylock(); }
-
-    // Address-ordered lock discipline for a pair of side tables.
-
-    template&lt;bool HaveOld, bool HaveNew&gt;
-    static void lockTwo(SideTable *lock1, SideTable *lock2);
-    template&lt;bool HaveOld, bool HaveNew&gt;
-    static void unlockTwo(SideTable *lock1, SideTable *lock2);
-};
-
-struct weak_table_t {
-    weak_entry_t *weak_entries; // &#x6570;&#x7EC4; &#x5B58;&#x50A8;&#x4E86;&#x6307;&#x5411;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x6307;&#x9488;
-    size_t    num_entries;
-    uintptr_t mask;
-    uintptr_t max_hash_displacement;
-};
-
-struct weak_entry_t {
-    DisguisedPtr&lt;objc_object&gt; referent; // &#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;
-    weak_referrer_t *referrers; // &#x6570;&#x7EC4; &#x5BF9;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x5730;&#x5740;&#x5B58;&#x5728;&#x8FD9;&#x91CC;
-};
-</code></pre><h4 id="weak&#x7684;&#x5B9E;&#x73B0;">weak&#x7684;&#x5B9E;&#x73B0;</h4>
-<pre><code>id objc_initWeak(id *object, id value) {
-    if (!newObj) {
-        *location = nil;
-        return nil;
-    }
-
-    return storeWeak&lt;false/*old*/, true/*new*/, true/*crash*/&gt;
-        (location, (objc_object*)newObj);
-}
-
-id objc_loadWeak(id _Nullable *location) {
-    if (!*location) return nil;
-    return objc_autorelease(objc_loadWeakRetained(location));
-}
-
-id objc_loadWeakRetained(id *object) {
-
-    id result;
-
-    SideTable *table;
-
-retry:
-    result = *location;
-    if (!result) return nil;
-
-    table = &amp;SideTables()[result];
-
-    table-&gt;lock();
-    if (*location != result) {
-        table-&gt;unlock();
-        goto retry;
-    }
-
-    result = weak_read_no_lock(&amp;table-&gt;weak_table, location);
-
-    table-&gt;unlock();
-    return result;
-}
-
-id objc_storeWeak(id _Nullable *location, id obj) {
-    return storeWeak(location, (objc_object *)obj)
-}
-
-void objc_copyWeak(id *dest, id *src) {
-    id obj = objc_loadWeakRetained(src);
-    objc_initWeak(dst, obj);
-    objc_release(obj);
-}
-
-void objc_destroyWeak(id *object) {
-   objc_storeWeak(object, nil);
-}
-</code></pre>
                                 
                                 </section>
                             
@@ -806,12 +716,12 @@ void objc_destroyWeak(id *object) {
 
             
                 
-                <a href="autoreleasepool.html" class="navigation navigation-prev " aria-label="Previous page: autoreleasepool">
+                <a href="weak.html" class="navigation navigation-prev " aria-label="Previous page: weak">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="runloop.html" class="navigation navigation-next " aria-label="Next page: runloop">
+                <a href="associatedObject.html" class="navigation navigation-next " aria-label="Next page: AssociatedObject">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -822,7 +732,7 @@ void objc_destroyWeak(id *object) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"weak","level":"1.2.7","depth":2,"next":{"title":"runloop","level":"1.2.8","depth":2,"path":"oc/runloop.md","ref":"oc/runloop.md","articles":[]},"previous":{"title":"autoreleasepool","level":"1.2.6","depth":2,"path":"oc/autoreleasepool.md","ref":"oc/autoreleasepool.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"oc/weak.md","mtime":"2018-11-05T02:47:26.749Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T02:58:12.359Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"runloop","level":"1.2.8","depth":2,"next":{"title":"AssociatedObject","level":"1.2.9","depth":2,"path":"oc/associatedObject.md","ref":"oc/associatedObject.md","articles":[]},"previous":{"title":"weak","level":"1.2.7","depth":2,"path":"oc/weak.md","ref":"oc/weak.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"oc/runloop.md","mtime":"2018-11-05T03:04:43.468Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T02:58:12.359Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

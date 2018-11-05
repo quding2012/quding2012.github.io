@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>weak · GitBook</title>
+        <title>引用计数 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="runloop.html" />
+    <link rel="next" href="autoreleasepool.html" />
     
     
-    <link rel="prev" href="autoreleasepool.html" />
+    <link rel="prev" href="arc.html" />
     
 
     
@@ -180,7 +180,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="refCount.html">
+        <li class="chapter active" data-level="1.2.5" data-path="refCount.html">
             
                 <a href="refCount.html">
             
@@ -206,7 +206,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.7" data-path="weak.html">
+        <li class="chapter " data-level="1.2.7" data-path="weak.html">
             
                 <a href="weak.html">
             
@@ -660,7 +660,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >weak</a>
+        <a href=".." >引用计数</a>
     </h1>
 </div>
 
@@ -675,111 +675,178 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="weak">weak</h3>
-<h4 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h4>
-<ol>
-<li>&#x5BF9;&#x4E8E;TaggedPointer&#x5BF9;&#x8C61;&#xFF0C;weak&#x5F15;&#x7528;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x505A;&#x989D;&#x5916;&#x7BA1;&#x7406;&#xFF08;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x5168;&#x5C40;hash&#x8868;&#x4E2D;&#x505A;&#x8BB0;&#x5F55;&#xFF09;</li>
-</ol>
-<h3 id="&#x5E95;&#x5C42;&#x5B58;&#x50A8;">&#x5E95;&#x5C42;&#x5B58;&#x50A8;</h3>
-<pre><code>// SideTables&#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;StripedMap&#x5B9E;&#x73B0;&#xFF0C;&#x5305;&#x542B;64&#x4E2A;SideTable&#x5BF9;&#x8C61;
-static StripedMap&lt;SideTable&gt; SideTables()
+                                <p>arc&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7684;&#x5B58;&#x50A8;&#x6709;3&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5206;&#x522B;&#x6587;TaggedPointer&#x3001;isa&#x6307;&#x9488;&#x3001;&#x6563;&#x5217;&#x8868;&#x3002;</p>
+<h3 id="taggedpointer">TaggedPointer</h3>
+<p>TaggedPointer&#x4E13;&#x95E8;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x5C0F;&#x7684;&#x5BF9;&#x8C61;&#xFF08;&#x4F8B;&#x5982; NSNumber&#x3001;NSDate&#x3001;&#x5C0F;&#x5B57;&#x7B26;&#x4E32;&#xFF09;&#xFF0C;TaggedPointer&#x6307;&#x9488;&#x7684;&#x5730;&#x5740;&#x4E0D;&#x518D;&#x662F;&#x5730;&#x5740;&#x4E86;&#xFF0C;&#x800C;&#x662F;&#x771F;&#x6B63;&#x7684;&#x503C;&#x3002;&#x5B83;&#x7684;&#x5185;&#x5B58;&#x5E76;&#x4E0D;&#x5B58;&#x50A8;&#x5728;&#x5806;&#x4E2D;&#xFF0C;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x8C03;&#x7528;malloc &#x548C; free&#x3002;</p>
+<p>64&#x4F4D;&#x673A;&#x5668;&#x4E0A;&#xFF0C;&#x5E76;&#x4E14;&#x662F;iPhone&#x5E73;&#x53F0;&#x652F;&#x6301;TaggedPointer</p>
+<pre><code>#if !(__OBJC2__  &amp;&amp;  __LP64__)
+#   define SUPPORT_TAGGED_POINTERS 0
+#else
+#   define SUPPORT_TAGGED_POINTERS 1
+#endif
+
+#if !SUPPORT_TAGGED_POINTERS  ||  !TARGET_OS_IPHONE
+#   define SUPPORT_MSB_TAGGED_POINTERS 0
+#else
+#   define SUPPORT_MSB_TAGGED_POINTERS 1
+#endif
+
+&#x4E4B;&#x540E;&#x6839;&#x636E; SUPPORT_MSB_TAGGED_POINTERS&#x6765;&#x786E;&#x5B9A; TAG_MASK
+#if SUPPORT_MSB_TAGGED_POINTERS
+#   define TAG_MASK (1ULL&lt;&lt;63)    // &#x6807;&#x8BB0;&#x4F4D;
+#else
+#   define TAG_MASK 1
+#endif
+
+// 64&#x4F4D;&#x7684;&#x6700;&#x9AD8;&#x4F4D;&#x4E0A;&#x662F;&#x5426;&#x4E3A;1 &#x4E3A;1&#x5219;&#x4E3A;aggedPointer
+inline bool 
+objc_object::isTaggedPointer() 
+{
+    return ((uintptr_t)this &amp; TAG_MASK);
+}
+
+&#x5B98;&#x65B9;&#x63CF;&#x8FF0;&#xFF1A;objc-runtime-new.mm&#x4E2D;
+/***********************************************************************
+* Tagged pointer objects.
+*
+* Tagged pointer objects store the class and the object value in the 
+* object pointer; the &quot;pointer&quot; does not actually point to anything.
+* 
+* Tagged pointer objects currently use this representation:
+* (LSB) // &#x6700;&#x4F4E;&#x6709;&#x6548;&#x4F4D; Least Significant Bit
+*  1 bit   set if tagged, clear if ordinary object pointer
+*  3 bits  tag index
+* 60 bits  payload
+* (MSB) // &#x6700;&#x9AD8;&#x6709;&#x6548;&#x4F4D; Most Significant Bit
+* The tag index defines the object&apos;s class. 
+* The payload format is defined by the object&apos;s class.
+*
+* This representation is subject to change. Representation-agnostic SPI is:
+* objc-internal.h for class implementers.
+* objc-gdb.h for debuggers.
+**********************************************************************/
+</code></pre><p>&#x7531;&#x4E8E;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x5806;&#x4E2D;&#x5B58;&#x50A8;&#xFF0C;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x3002;&#x6240;&#x4EE5;&#x5728;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x4E2D; retain&#x548C;release&#x90FD;&#x4E0D;&#x8FFD;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x3002;retainCount&#x4F1A;&#x8FD4;&#x56DE;&#x81EA;&#x5DF1;&#x7684;&#x5730;&#x5740;&#x3002;</p>
+<pre><code>id objc_retain(id obj) {
+    if (obj-&gt;isTaggedPointer()) return obj;
+}
+
+void objc_release(id obj) {
+    if (obj-&gt;isTaggedPointer()) return;
+}
+
+inline uintptr_t objc_object::rootRetainCount() {
+    if (isTaggedPointer()) return (uintptr_t)this;
+}
+</code></pre><p>&#x5BF9;&#x4E8E;TaggedPointer&#x5BF9;&#x8C61;&#xFF0C;weak&#x5F15;&#x7528;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x505A;&#x989D;&#x5916;&#x7BA1;&#x7406;&#xFF08;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x5168;&#x5C40;hash&#x8868;&#x4E2D;&#x505A;&#x8BB0;&#x5F55;&#xFF09;</p>
+<pre><code>id weak_register_no_lock(weak_table_t *weak_table, id referent_id,
+                    id *referrer_id, bool crashIfDeallocating)
+{
+    objc_object *referent = (objc_object *)referent_id;
+    objc_object **referrer = (objc_object **)referrer_id;
+    if (!referent  ||  referent-&gt;isTaggedPointer()) return referent_id;
+}
+
+id weak_read_no_lock(weak_table_t *weak_table, id *referrer_id)
+{
+    objc_object **referrer = (objc_object **)referrer_id;
+    objc_object *referent = *referrer;
+    if (referent-&gt;isTaggedPointer()) return (id)referent;
+}
+</code></pre><h3 id="is-a&#x6307;&#x9488;&#x5B58;&#x50A8;">is-a&#x6307;&#x9488;&#x5B58;&#x50A8;</h3>
+<p>&#x53EA;&#x6709;&#x5728;64&#x4F4D;&#x7684;&#x771F;&#x673A;&#x4E0A;&#x624D;&#x4F1A;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#xFF1A;
+    union isa_t
+    {
+        isa_t() { }
+        isa_t(uintptr_t value) : bits(value) { }</p>
+<pre><code>    Class cls;
+    uintptr_t bits;
 
 
-// SideTable 
-#### SideTables/RefcountMap/weak_table_t&#x7684;&#x4F7F;&#x7528;
-struct SideTable {
-    spinlock_t slock;   // &#x9501;&#x4FDD;&#x8BC1; atomic
+    // extra_rc must be the MSB-most field (so it matches carry/overflow flags)
+    // indexed must be the LSB (fixme or get rid of it)
+    // shiftcls must occupy the same bits that a real class pointer would
+    // bits + RC_ONE is equivalent to extra_rc + 1
+    // RC_HALF is the high bit of extra_rc (i.e. half of its range)
 
-    /**
-    RefcountMap disguises its pointers because we 
-    don&apos;t want the table to act as a root for `leaks`.
-    &#x5BF9;&#x8C61;&#x5177;&#x4F53;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5B58;&#x50A8;&#x5728;&#x8FD9;&#x91CC;
-    */
-    RefcountMap refcnts;
+    // future expansion:
+    // uintptr_t fast_rr : 1;     // no r/r overrides
+    // uintptr_t lock : 2;        // lock for atomic property, @synch
+    // uintptr_t extraBytes : 1;  // allocated with extra bytes
 
-    /**
-    * The global weak references table. 
-    * Stores object ids as keys, and weak_entry_t structs as their values.
-    */
-    weak_table_t weak_table;
-
-    void lock() { slock.lock(); }
-    void unlock() { slock.unlock(); }
-    bool trylock() { return slock.trylock(); }
-
-    // Address-ordered lock discipline for a pair of side tables.
-
-    template&lt;bool HaveOld, bool HaveNew&gt;
-    static void lockTwo(SideTable *lock1, SideTable *lock2);
-    template&lt;bool HaveOld, bool HaveNew&gt;
-    static void unlockTwo(SideTable *lock1, SideTable *lock2);
+#   define ISA_MASK        0x0000000ffffffff8ULL
+#   define ISA_MAGIC_MASK  0x000003f000000001ULL
+#   define ISA_MAGIC_VALUE 0x000001a000000001ULL
+    struct {
+// 0&#x8868;&#x793A;&#x666E;&#x901A;isa&#x6307;&#x9488;&#xFF0C;1&#x8868;&#x793A;&#x4F7F;&#x7528;&#x4F18;&#x5316;&#xFF0C;&#x5B58;&#x50A8;&#x5F15;&#x7528;&#x8BA1;&#x6570;
+        uintptr_t indexed           : 1;
+// &#x662F;&#x5426;&#x5305;&#x542B;associated object
+        uintptr_t has_assoc         : 1;
+// 
+        uintptr_t has_cxx_dtor      : 1;
+// &#x7C7B;&#x7684;&#x6307;&#x9488;
+        uintptr_t shiftcls          : 33; // MACH_VM_MAX_ADDRESS 0x1000000000
+// unknow
+        uintptr_t magic             : 6;
+// &#x662F;&#x5426;&#x6709;weak&#x5BF9;&#x8C61;
+        uintptr_t weakly_referenced : 1;
+// &#x662F;&#x5426;&#x5728;&#x6790;&#x6784;
+        uintptr_t deallocating      : 1;
+// &#x5F15;&#x7528;&#x8BA1;&#x6570;&#x503C;&#x8FC7;&#x5927;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x5B58;&#x50A8;&#x5728;sidetable&#x4E2D;
+        uintptr_t has_sidetable_rc  : 1;
+// &#x5B58;&#x50A8;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x503C;&#x51CF;1&#x540E;&#x7684;&#x7ED3;&#x679C;
+        uintptr_t extra_rc          : 19;
+#       define RC_ONE   (1ULL&lt;&lt;45)
+#       define RC_HALF  (1ULL&lt;&lt;18)
+    };
 };
+</code></pre><p>&#x4F7F;&#x7528;is-a&#x6307;&#x9488;&#x8BB0;&#x5F55;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x65F6;&#x7684;&#x6E90;&#x7801; &#xFF08;&#x4EE3;&#x7801;&#x6709;&#x4FEE;&#x6539;&#xFF0C;&#x6E90;&#x7801;&#x5728;NSObject.mm&#x4E2D;&#x627E;&#xFF09;</p>
+<pre><code>id objc_object::rootRetain(bool tryRetain, bool handleOverflow) {
+    isa_t oldisa;
+    isa_t newisa;
 
-struct weak_table_t {
-    weak_entry_t *weak_entries; // &#x6570;&#x7EC4; &#x5B58;&#x50A8;&#x4E86;&#x6307;&#x5411;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x6307;&#x9488;
-    size_t    num_entries;
-    uintptr_t mask;
-    uintptr_t max_hash_displacement;
-};
+    transcribeToSideTable = false;
+    oldisa = LoadExclusive(&amp;isa.bits);
+    newisa = oldisa;
+    if (newisa.indexed) {
+        uintptr_t carry;
+        newisa.bits = addc(newisa.bits, RC_ONE, 0, &amp;carry);  // &#x7ED9;extra_rc++
 
-struct weak_entry_t {
-    DisguisedPtr&lt;objc_object&gt; referent; // &#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;
-    weak_referrer_t *referrers; // &#x6570;&#x7EC4; &#x5BF9;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x5730;&#x5740;&#x5B58;&#x5728;&#x8FD9;&#x91CC;
-};
-</code></pre><h4 id="weak&#x7684;&#x5B9E;&#x73B0;">weak&#x7684;&#x5B9E;&#x73B0;</h4>
-<pre><code>id objc_initWeak(id *object, id value) {
-    if (!newObj) {
-        *location = nil;
-        return nil;
+        // extra_rc &#x65E0;&#x6CD5;&#x50A8;&#x5B58;&#x4E86;&#xFF0C;
+        if (carry) {
+            // newisa.extra_rc++ overflowed
+            if (!handleOverflow) return rootRetain_overflow(tryRetain);
+            // Leave half of the retain counts inline and
+            // prepare to copy the other half to the side table.
+            if (!tryRetain &amp;&amp; !sideTableLocked) sidetable_lock();
+            sideTableLocked = true;
+            transcribeToSideTable = true;
+            newisa.extra_rc = RC_HALF;
+            newisa.has_sidetable_rc = true;
+
+            // Copy the other half of the retain counts to the side table.
+            sidetable_addExtraRC_nolock(RC_HALF);
+
+            if (!tryRetain &amp;&amp; sideTableLocked) sidetable_unlock();
+            return (id)this;
+        }
     }
-
-    return storeWeak&lt;false/*old*/, true/*new*/, true/*crash*/&gt;
-        (location, (objc_object*)newObj);
 }
 
-id objc_loadWeak(id _Nullable *location) {
-    if (!*location) return nil;
-    return objc_autorelease(objc_loadWeakRetained(location));
-}
-
-id objc_loadWeakRetained(id *object) {
-
-    id result;
-
-    SideTable *table;
-
-retry:
-    result = *location;
-    if (!result) return nil;
-
-    table = &amp;SideTables()[result];
-
-    table-&gt;lock();
-    if (*location != result) {
-        table-&gt;unlock();
-        goto retry;
+inline uintptr_t objc_object::rootRetainCount()
+{
+    sidetable_lock();
+    isa_t bits = LoadExclusive(&amp;isa.bits);
+    if (bits.indexed) {
+        uintptr_t rc = 1 + bits.extra_rc;
+        if (bits.has_sidetable_rc) {     // &#x5F15;&#x7528;&#x8BA1;&#x6570;&#x503C;&#x8FC7;&#x5927;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x5B58;&#x50A8;&#x5728;sidetable&#x4E2D;
+            rc += sidetable_getExtraRC_nolock();
+        }
+        sidetable_unlock();
+        return rc;
     }
-
-    result = weak_read_no_lock(&amp;table-&gt;weak_table, location);
-
-    table-&gt;unlock();
-    return result;
 }
+</code></pre><h3 id="&#x6563;&#x5217;&#x8868;&#x5B58;&#x50A8;">&#x6563;&#x5217;&#x8868;&#x5B58;&#x50A8;</h3>
 
-id objc_storeWeak(id _Nullable *location, id obj) {
-    return storeWeak(location, (objc_object *)obj)
-}
-
-void objc_copyWeak(id *dest, id *src) {
-    id obj = objc_loadWeakRetained(src);
-    objc_initWeak(dst, obj);
-    objc_release(obj);
-}
-
-void objc_destroyWeak(id *object) {
-   objc_storeWeak(object, nil);
-}
-</code></pre>
                                 
                                 </section>
                             
@@ -806,12 +873,12 @@ void objc_destroyWeak(id *object) {
 
             
                 
-                <a href="autoreleasepool.html" class="navigation navigation-prev " aria-label="Previous page: autoreleasepool">
+                <a href="arc.html" class="navigation navigation-prev " aria-label="Previous page: arc">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="runloop.html" class="navigation navigation-next " aria-label="Next page: runloop">
+                <a href="autoreleasepool.html" class="navigation navigation-next " aria-label="Next page: autoreleasepool">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -822,7 +889,7 @@ void objc_destroyWeak(id *object) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"weak","level":"1.2.7","depth":2,"next":{"title":"runloop","level":"1.2.8","depth":2,"path":"oc/runloop.md","ref":"oc/runloop.md","articles":[]},"previous":{"title":"autoreleasepool","level":"1.2.6","depth":2,"path":"oc/autoreleasepool.md","ref":"oc/autoreleasepool.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"oc/weak.md","mtime":"2018-11-05T02:47:26.749Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T02:58:12.359Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"引用计数","level":"1.2.5","depth":2,"next":{"title":"autoreleasepool","level":"1.2.6","depth":2,"path":"oc/autoreleasepool.md","ref":"oc/autoreleasepool.md","articles":[]},"previous":{"title":"arc","level":"1.2.4","depth":2,"path":"oc/arc.md","ref":"oc/arc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"oc/refCount.md","mtime":"2018-11-05T03:03:06.426Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-05T02:58:12.359Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
