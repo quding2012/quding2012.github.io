@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>显示器原理 · GitBook</title>
+        <title>tcp · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,7 +62,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="render.html" />
+    <link rel="next" href="../algorithm/" />
     
     
     <link rel="prev" href="./" />
@@ -302,9 +302,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="../ui/">
             
-                <a href="./">
+                <a href="../ui/">
             
                     
                     UI基础
@@ -316,9 +316,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.3.1" data-path="screen.html">
+        <li class="chapter " data-level="1.3.1" data-path="../ui/screen.html">
             
-                <a href="screen.html">
+                <a href="../ui/screen.html">
             
                     
                     显示器原理
@@ -329,9 +329,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="render.html">
+        <li class="chapter " data-level="1.3.2" data-path="../ui/render.html">
             
-                <a href="render.html">
+                <a href="../ui/render.html">
             
                     
                     render
@@ -342,9 +342,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="cpu.html">
+        <li class="chapter " data-level="1.3.3" data-path="../ui/cpu.html">
             
-                <a href="cpu.html">
+                <a href="../ui/cpu.html">
             
                     
                     cpu渲染
@@ -355,9 +355,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="gpu.html">
+        <li class="chapter " data-level="1.3.4" data-path="../ui/gpu.html">
             
-                <a href="gpu.html">
+                <a href="../ui/gpu.html">
             
                     
                     gpu渲染
@@ -368,9 +368,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="animation.html">
+        <li class="chapter " data-level="1.3.5" data-path="../ui/animation.html">
             
-                <a href="animation.html">
+                <a href="../ui/animation.html">
             
                     
                     animation
@@ -381,9 +381,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="layout.html">
+        <li class="chapter " data-level="1.3.6" data-path="../ui/layout.html">
             
-                <a href="layout.html">
+                <a href="../ui/layout.html">
             
                     
                     layout
@@ -399,9 +399,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="../other/">
+        <li class="chapter " data-level="1.4" data-path="./">
             
-                <a href="../other/">
+                <a href="./">
             
                     
                     other
@@ -413,9 +413,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../other/tcp.html">
+        <li class="chapter active" data-level="1.4.1" data-path="tcp.html">
             
-                <a href="../other/tcp.html">
+                <a href="tcp.html">
             
                     
                     tcp
@@ -854,7 +854,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >显示器原理</a>
+        <a href=".." >tcp</a>
     </h1>
 </div>
 
@@ -869,19 +869,62 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x663E;&#x793A;&#x5668;&#x539F;&#x7406;">&#x663E;&#x793A;&#x5668;&#x539F;&#x7406;</h3>
-<p>CRT&#x663E;&#x793A;&#x5668; &#x5B66;&#x540D;&#xFF1A;&#x9634;&#x6781;&#x5C04;&#x7EBF;&#x663E;&#x50CF;&#x7BA1;&#x3002;</p>
-<p>&#x662F;&#x4E00;&#x79CD;&#x4F7F;&#x7528;&#x9634;&#x6781;&#x5C04;&#x7EBF;&#x7BA1;&#x7684;&#x663E;&#x793A;&#x5668;&#x3002;</p>
-<p>LCD Liquid Crystal Display &#x4E2D;&#x6587;&#xFF1A;&#x6DB2;&#x6676;&#x663E;&#x793A;&#x5668;&#x3002;</p>
-<p>Retina &#x663E;&#x793A;&#x5C4F; &#x5C31;&#x662F;&#x666E;&#x901A;&#x7684;&#x6DB2;&#x6676;&#x5C4F;&#x3002;</p>
-<p>&#x663E;&#x793A;&#x5668;&#x663E;&#x793A;&#x539F;&#x7406;&#xFF1A;</p>
-<p><img src="http://pc5ouzvhg.bkt.clouddn.com/158CBCE1-05EE-4687-A658-F16AF76B5CC9.jpg" alt=""></p>
-<p>CRT&#x7684;&#x7535;&#x5B50;&#x67AA;&#x6309;&#x7167;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E0A;&#x5230;&#x4E0B;&#x4E00;&#x884C;&#x884C;&#x626B;&#x63CF;&#xFF0C;&#x626B;&#x63CF;&#x5B8C;&#x6210;&#x540E;&#x663E;&#x793A;&#x5668;&#x5C31;&#x5448;&#x73B0;&#x4E00;&#x5E27;&#x753B;&#x9762;&#xFF0C;&#x968F;&#x540E;&#x7535;&#x5B50;&#x67AA;&#x56DE;&#x5230;&#x521D;&#x59CB;&#x4F4D;&#x7F6E;&#x7EE7;&#x7EED;&#x4E0B;&#x4E00;&#x6B21;&#x626B;&#x63CF;&#x3002;</p>
-<p>&#x5F53;&#x7535;&#x5B50;&#x67AA;&#x6362;&#x5230;&#x65B0;&#x7684;&#x4E00;&#x884C;&#xFF0C;&#x51C6;&#x5907;&#x8FDB;&#x884C;&#x626B;&#x63CF;&#x65F6;&#xFF0C;&#x663E;&#x793A;&#x5668;&#x4F1A;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x6C34;&#x5E73;&#x540C;&#x6B65;&#x4FE1;&#x53F7;&#xFF08;horizonal synchronization&#xFF09;&#xFF0C;&#x7B80;&#x79F0; HSync&#xFF1B;</p>
-<p>&#x800C;&#x5F53;&#x4E00;&#x5E27;&#x753B;&#x9762;&#x7ED8;&#x5236;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x7535;&#x5B50;&#x67AA;&#x56DE;&#x590D;&#x5230;&#x539F;&#x4F4D;&#xFF0C;&#x51C6;&#x5907;&#x753B;&#x4E0B;&#x4E00;&#x5E27;&#x524D;&#xFF0C;&#x663E;&#x793A;
-&#x5668;&#x4F1A;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x5782;&#x76F4;&#x540C;&#x6B65;&#x4FE1;&#x53F7;&#xFF08;vertical synchronization&#xFF09;&#xFF0C;&#x7B80;&#x79F0; VSync&#x3002;</p>
-<p>&#x663E;&#x793A;&#x5668;&#x901A;&#x5E38;&#x4EE5;&#x56FA;&#x5B9A;&#x9891;&#x7387;&#x8FDB;&#x884C;&#x5237;&#x65B0;&#xFF0C;&#x8FD9;&#x4E2A;&#x5237;&#x65B0;&#x7387;&#x5C31;&#x662F; VSync &#x4FE1;&#x53F7;&#x4EA7;&#x751F;&#x7684;&#x9891;&#x7387;&#x3002;</p>
-<p>&#x663E;&#x793A;&#x5668;&#x7684;VSync&#x5E73;&#x7387;&#x662F;&#x56FA;&#x5B9A;&#x4E0D;&#x53D8;&#x7684;&#x3002;</p>
+                                <h3 id="tcp">tcp</h3>
+<p>TCP&#x662F;&#x9762;&#x5411;&#x8FDE;&#x63A5;&#x7684;&#x3001;&#x53EF;&#x9760;&#x7684;&#x6D41;&#x534F;&#x8BAE;&#x3002;</p>
+<p><strong>&#x9762;&#x5411;&#x8FDE;&#x63A5;</strong>&#x6307;&#x5728;&#x4EA4;&#x6362;&#x6570;&#x636E;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x9996;&#x5148;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x3002;
+<strong>&#x9762;&#x50CF;&#x5B57;&#x8282;&#x6D41;&#x7684;&#x534F;&#x8BAE;</strong>&#x6307;&#x4E24;&#x7AEF;&#x72EC;&#x7ACB;&#x9009;&#x62E9;&#x81EA;&#x5DF1;&#x7684;&#x8BFB;&#x548C;&#x5199;&#x5927;&#x5C0F;&#xFF0C;&#x5E76;&#x4E0D;&#x5173;&#x6CE8;&#x5BF9;&#x65B9;&#x4E00;&#x6B21;&#x8BFB;&#x6216;&#x5199;&#x7684;&#x6570;&#x636E;&#x5927;&#x5C0F;&#x3002;
+<strong>&#x53CC;&#x5DE5;&#x670D;&#x52A1;</strong>&#x6570;&#x636E;&#x53EF;&#x5411;&#x4E24;&#x4E2A;&#x65B9;&#x5411;&#x6D41;&#x52A8;&#xFF0C;&#x4E24;&#x4E2A;&#x65B9;&#x5411;&#x76F8;&#x4E92;&#x72EC;&#x7ACB;&#x3002;</p>
+<h4 id="&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x53EF;&#x9760;">&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x53EF;&#x9760;</h4>
+<ul>
+<li>&#x8FDE;&#x63A5;&#x7BA1;&#x7406; &#xFF08;&#x521B;&#x5EFA;&#x8FDE;&#x63A5;&#x548C;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#xFF09;&#xFF0C;&#x521B;&#x5EFA;&#x8FDE;&#x63A5;&#x540E;&#x624D;&#x4F1A;&#x53D1;&#x9001;&#x6570;&#x636E;</li>
+<li>&#x901A;&#x8FC7; &#x786E;&#x8BA4;&#x5E94;&#x7B54;ack &#x786E;&#x4FDD;&#x6570;&#x636E;&#x5DF2;&#x5230;&#x8FBE;</li>
+<li>&#x901A;&#x8FC7; &#x9A8C;&#x548C;checkSum &#x786E;&#x4FDD;&#x6570;&#x636E;&#x6CA1;&#x6709;&#x635F;&#x574F;</li>
+<li>&#x901A;&#x8FC7; &#x5E8F;&#x5217;&#x53F7; &#x786E;&#x4FDD;&#x6570;&#x636E;&#x7684;&#x987A;&#x5E8F;</li>
+<li>&#xFF08;&#x91CD;&#x53D1;&#x63A7;&#x5236;&#xFF09;&#x4E22;&#x5305;&#x540E;&#x7684;&#x91CD;&#x53D1;&#x673A;&#x5236;</li>
+<li>&#x901A;&#x8FC7;&#x7A97;&#x53E3;&#x63A7;&#x5236;&#xFF0C;&#x5B9E;&#x73B0;&#x9AD8;&#x901F;&#x4F20;&#x8F93;&#xFF0C;&#x51CF;&#x5C11;&#x5EF6;&#x8FDF;</li>
+</ul>
+<h3 id="1-&#x8FDE;&#x63A5;&#x7BA1;&#x7406;">1. &#x8FDE;&#x63A5;&#x7BA1;&#x7406;</h3>
+<h4 id="&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;">&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</h4>
+<p>3&#x6B21;handshake</p>
+<p>&#x5BA2;&#x6237;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x7AEF;&#x901A;&#x8FC7;SYN&#x62A5;&#x6587;&#x6BB5;&#x4EA4;&#x6362;&#x5F7C;&#x6B64;&#x7684;seq&#x3002;</p>
+<h4 id="&#x7ED3;&#x675F;&#x8FDE;&#x63A5;">&#x7ED3;&#x675F;&#x8FDE;&#x63A5;</h4>
+<p>4&#x6B21;handshake</p>
+<p><strong>mars&#x7684;&#x4F18;&#x5316;</strong>
+iOS &#x7684; connect &#x8D85;&#x65F6;&#x91CD;&#x4F20;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x3002;&#x8D85;&#x65F6;&#x95F4;&#x9694;&#x4F9D;&#x6B21;&#x4E3A;&#xFF08;1&#xFF0C;1&#xFF0C;1&#xFF0C;1&#xFF0C;1&#xFF0C;2&#xFF0C;4&#xFF0C;8&#xFF0C;16&#xFF0C;32&#xFF09;&#xFF0C;&#x603B;&#x5171;&#x662F;67s&#x3002;</p>
+<p>&#x8FD9;&#x5C31;&#x610F;&#x5473;&#x7740;&#xFF0C;&#x5728;&#x4E0D;&#x80FD;&#x7ACB;&#x523B;&#x786E;&#x8BA4;&#x5931;&#x8D25;&#xFF08;&#x4F8B;&#x5982; unreachable &#x7B49;&#xFF09;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9700;&#x8981;67&#x79D2;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x624D;&#x80FD;&#x83B7;&#x5F97;&#x7ED3;&#x679C;&#x3002;&#x5982;&#x679C;&#x771F;&#x76F8;&#x5E76;&#x4E0D;&#x662F;&#x7528;&#x6237;&#x7684;&#x7F51;&#x7EDC;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x67D0;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x6545;&#x969C;&#x3001;&#x7E41;&#x5FD9;&#x3001;&#x7F51;&#x7EDC;&#x4E0D;&#x7A33;&#x5B9A;&#x7B49;&#x56E0;&#x7D20;&#xFF0C;&#x90A3;75&#x79D2;&#x7684;&#x65F6;&#x95F4;&#x53EA;&#x80FD;&#x5C1D;&#x8BD5;1&#x4E2A; IP&amp;Port &#x8D44;&#x6E90;&#xFF0C;&#x5BF9;&#x4E8E;&#x5927;&#x591A;&#x6570;&#x79FB;&#x52A8;&#x5E94;&#x7528;&#x800C;&#x8A00;&#xFF0C;&#x662F;&#x4E0D;&#x53EF;&#x63A5;&#x53D7;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x66F4;&#x79EF;&#x6781;&#x7684;&#x8D85;&#x65F6;&#x91CD;&#x4F20;&#x673A;&#x5236;&#xFF01;&#xFF01;&#xFF01;</p>
+<p>&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x4FEE;&#x6539;TCP&#x7684;&#x8D85;&#x65F6;&#x673A;&#x5236;&#x3002;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x8D85;&#x65F6;&#x91CD;&#x4F20;&#xFF0C;&#x5178;&#x578B;&#x505A;&#x6CD5;&#x5C31;&#x662F;&#x63D0;&#x524D;&#x7ED3;&#x675F; connect &#x7684;&#x963B;&#x585E;&#x8C03;&#x7528;&#xFF0C;&#x4F7F;&#x7528;&#x65B0;&#x7684; IP&amp;Port &#x8D44;&#x6E90;&#x8FDB;&#x884C; connect &#x91CD;&#x8BD5;&#x3002;</p>
+<p>&#x66F4;&#x591A;&#x8BE6;&#x7EC6;&#xFF1A;<a href="https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=2649286458&amp;idx=1&amp;sn=320f690faa4f97f7a49a291d4de174a9&amp;chksm=8334c3b8b4434aae904b6d590027b100283ef175938610805dd33ca53f004bd3c56040b11fa6#rd" target="_blank">https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=2649286458&amp;idx=1&amp;sn=320f690faa4f97f7a49a291d4de174a9&amp;chksm=8334c3b8b4434aae904b6d590027b100283ef175938610805dd33ca53f004bd3c56040b11fa6#rd</a></p>
+<h3 id="2-&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x8BD5;&#x673A;&#x5236;--&#xFF08;&#x53EF;&#x4EE5;&#x4E3B;&#x52A8;&#x91CD;&#x8BD5;&#xFF0C;1-1-1-5-10-&#x7C7B;&#x4F3C;&#x8FD9;&#x79CD;&#xFF09;">2. &#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x8BD5;&#x673A;&#x5236;  &#xFF08;&#x53EF;&#x4EE5;&#x4E3B;&#x52A8;&#x91CD;&#x8BD5;&#xFF0C;1 1 1 5 10 &#x7C7B;&#x4F3C;&#x8FD9;&#x79CD;&#xFF09;</h3>
+<p>&#x53D1;&#x9001;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x4E00;&#x76F4;&#x6CA1;&#x6709;&#x7B49;&#x5230;ack&#xFF0C;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;&#x4E86;&#x8BBE;&#x5B9A;&#x65F6;&#x95F4;&#x3002;</p>
+<pre><code>* &#x91CD;&#x53D1;&#x8D85;&#x65F6; &#x7684;&#x8BA1;&#x7B97;&#x3002;&#x901A;&#x8FC7;&#x5F80;&#x8FD4;&#x65F6;&#x95F4;&#x548C;&#x504F;&#x5DEE; &#x8BA1;&#x7B97;&#x6240;&#x5F97;&#x3002;&#x4E00;&#x822C;&#x4E3A;6s&#x3002;
+* &#x91CD;&#x53D1;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x6B21;&#x6570;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x4ECD;&#x7136;&#x6CA1;&#x6709;&#x7ED3;&#x679C;&#xFF0C;&#x4F1A;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#x3002;
+</code></pre><p>&#x5728;iOS&#x6D4B;&#x8BD5;&#xFF0C;tcp&#x91CD;&#x8BD5;&#x673A;&#x5236;&#xFF1A;&#x4E00;&#x5171;&#x8BD5;11&#x6B21;&#xFF0C;&#x524D;6&#x6B21;&#x95F4;&#x9694;1s&#xFF0C;&#x6700;&#x540E;&#x95F4;&#x9694; 32s&#xFF0C;&#x5171;&#x8017;&#x65F6;67s&#x3002;67s&#x540E;&#xFF0C;&#x8D85;&#x65F6;&#x3002;&#x524D;10s&#x6709;6&#x6B21;&#x91CD;&#x8BD5;&#x3002;
+&#x65F6;&#x95F4;&#x95F4;&#x9694;&#xFF1A;1&#x3001;1&#x3001;1&#x3001;1&#x3001;1&#x3001;2&#x3001;4&#x3001;8&#x3001;16&#x3001;32</p>
+<p>&#x91CD;&#x8BD5;&#x7684;&#x5173;&#x952E;&#x662F; <strong>&#x6839;&#x636E;&#x7ED9;&#x5B9A;&#x8FDE;&#x63A5;&#x7684;RTT&#x8BBE;&#x7F6E;RTO</strong></p>
+<p>&#x82E5; RTO &#x8BBE;&#x7F6E;&#x592A;&#x77ED;&#xFF0C;&#x53EF;&#x80FD;&#x5728;ACK&#x56DE;&#x6765;&#x4E4B;&#x524D;&#xFF0C;&#x5F00;&#x59CB;&#x91CD;&#x4F20;</p>
+<p>&#x82E5; RTO &#x8BBE;&#x7F6E;&#x592A;&#x957F;&#xFF0C;&#x5219;&#x53EF;&#x80FD;&#x4F1A;&#x5EF6;&#x8FDF;&#x91CD;&#x4F20;&#xFF0C;&#x964D;&#x4F4E;&#x7F51;&#x8DEF;&#x7684;&#x5229;&#x7528;&#x7387;</p>
+<p>&#x6839;&#x636E;&#x6BCF;&#x6B21;ACK&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x53EF;&#x4EE5;&#x786E;&#x5B9A; RTT&#x3002;RTT &#x662F;&#x4F1A;&#x52A8;&#x6001;&#x53D8;&#x5316;&#x7684;&#x3002;</p>
+<h5 id="&#x5E73;&#x6ED1;&#x7684;rtt&#x4F30;&#x8BA1;&#x503C;">&#x5E73;&#x6ED1;&#x7684;RTT&#x4F30;&#x8BA1;&#x503C;</h5>
+<p>&#x4F7F;&#x7528;n&#x4E2A;&#x6837;&#x672C;&#xFF0C;&#x901A;&#x8FC7;&#x6C42;&#x5E73;&#x5747;&#x503C;&#x6765;&#x8BA1;&#x7B97;&#x3002;&#x6BCF;&#x5F53;&#x6709;&#x65B0;&#x7684;&#x503C;&#xFF0C;RTT&#x7684;&#x4F30;&#x8BA1;&#x503C;&#x5C31;&#x4F1A;&#x6709;&#x66F4;&#x65B0;&#x3002;</p>
+<h3 id="3-&#x6570;&#x636E;&#x6D41;&#x4E0E;&#x7A97;&#x53E3;&#x7BA1;&#x7406;">3. &#x6570;&#x636E;&#x6D41;&#x4E0E;&#x7A97;&#x53E3;&#x7BA1;&#x7406;</h3>
+<h3 id="4-&#x62E5;&#x585E;&#x63A7;&#x5236;&#xFF08;&#x4E3A;&#x4E86;-&#x51CF;&#x5C11;&#x5931;&#x8D25;&#x7387;&#xFF0C;&#x63D0;&#x5347;&#x53D1;&#x9001;&#x901F;&#x5EA6;&#xFF09;">4. &#x62E5;&#x585E;&#x63A7;&#x5236;&#xFF08;&#x4E3A;&#x4E86; &#x51CF;&#x5C11;&#x5931;&#x8D25;&#x7387;&#xFF0C;&#x63D0;&#x5347;&#x53D1;&#x9001;&#x901F;&#x5EA6;&#xFF09;</h3>
+<h3 id="5-&#x4FDD;&#x6D3B;&#x673A;&#x5236;&#xFF08;&#x5FC3;&#x8DF3;&#x5305;--keepalive&#x65F6;&#x95F4;-&#xFF09;">5. &#x4FDD;&#x6D3B;&#x673A;&#x5236;&#xFF08;&#x5FC3;&#x8DF3;&#x5305;  keepalive&#x65F6;&#x95F4; &#xFF09;</h3>
+<h3 id="&#x672F;&#x8BED;">&#x672F;&#x8BED;</h3>
+<p><strong>SYN</strong> &#x5728;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x7528;&#x4E8E;&#x540C;&#x6B65;&#x5E8F;&#x5217;&#x53F7;
+<strong>FIN</strong> &#x8BE5;&#x4FDD;&#x6E29;&#x888B;&#x7684;&#x53D1;&#x9001;&#x65B9;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#x5411;&#x5BF9;&#x65B9;&#x53D1;&#x9001;&#x6570;&#x636E;
+<strong>ACK</strong> &#x786E;&#x8BA4;
+<strong>RST</strong> &#x91CD;&#x7F6E;&#x8FDE;&#x63A5;</p>
+<p><strong>ISN(c)</strong> &#x5BA2;&#x6237;&#x7AEF;&#x521D;&#x59CB;&#x5E8F;&#x5217;&#x53F7;
+<strong>ISN(s)</strong> &#x670D;&#x52A1;&#x5668;&#x7AEF;&#x521D;&#x59CB;&#x5E8F;&#x5217;&#x53F7;</p>
+<p><strong>RTT</strong> 
+<strong>RTO</strong> &#x91CD;&#x8BD5;&#x65F6;&#x95F4;</p>
+<h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<ul>
+<li>mars&#xFF1A;</li>
+<li>&#xFF08;&#x6D41;&#x662F;&#x4E0D;&#x95F4;&#x65AD;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x7C7B;&#x4F3C;&#x7BA1;&#x9053;&#x4E2D;&#x7684;&#x6C34;&#x6D41;&#xFF09;</li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=2649286458&amp;idx=1&amp;sn=320f690faa4f97f7a49a291d4de174a9&amp;chksm=8334c3b8b4434aae904b6d590027b100283ef175938610805dd33ca53f004bd3c56040b11fa6#rd" target="_blank">https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=2649286458&amp;idx=1&amp;sn=320f690faa4f97f7a49a291d4de174a9&amp;chksm=8334c3b8b4434aae904b6d590027b100283ef175938610805dd33ca53f004bd3c56040b11fa6#rd</a></li>
+<li></li>
+</ul>
 
                                 
                                 </section>
@@ -909,12 +952,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: UI基础">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: other">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="render.html" class="navigation navigation-next " aria-label="Next page: render">
+                <a href="../algorithm/" class="navigation navigation-next " aria-label="Next page: 算法">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -925,7 +968,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"显示器原理","level":"1.3.1","depth":2,"next":{"title":"render","level":"1.3.2","depth":2,"path":"ui/render.md","ref":"ui/render.md","articles":[]},"previous":{"title":"UI基础","level":"1.3","depth":1,"path":"ui/index.md","ref":"ui/index.md","articles":[{"title":"显示器原理","level":"1.3.1","depth":2,"path":"ui/screen.md","ref":"ui/screen.md","articles":[]},{"title":"render","level":"1.3.2","depth":2,"path":"ui/render.md","ref":"ui/render.md","articles":[]},{"title":"cpu渲染","level":"1.3.3","depth":2,"path":"ui/cpu.md","ref":"ui/cpu.md","articles":[]},{"title":"gpu渲染","level":"1.3.4","depth":2,"path":"ui/gpu.md","ref":"ui/gpu.md","articles":[]},{"title":"animation","level":"1.3.5","depth":2,"path":"ui/animation.md","ref":"ui/animation.md","articles":[]},{"title":"layout","level":"1.3.6","depth":2,"path":"ui/layout.md","ref":"ui/layout.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"ui/screen.md","mtime":"2018-11-08T06:25:41.471Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-09T01:29:44.162Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"tcp","level":"1.4.1","depth":2,"next":{"title":"算法","level":"2.1","depth":1,"path":"algorithm/index.md","ref":"algorithm/index.md","articles":[{"title":"基础","level":"2.1.1","depth":2,"path":"algorithm/basic/index.md","ref":"algorithm/basic/index.md","articles":[{"title":"栈","level":"2.1.1.1","depth":3,"path":"algorithm/basic/stack.md","ref":"algorithm/basic/stack.md","articles":[]},{"title":"队列","level":"2.1.1.2","depth":3,"path":"algorithm/basic/queue.md","ref":"algorithm/basic/queue.md","articles":[]},{"title":"B树","level":"2.1.1.3","depth":3,"path":"algorithm/basic/b-tree.md","ref":"algorithm/basic/b-tree.md","articles":[]}]},{"title":"排序","level":"2.1.2","depth":2,"path":"algorithm/sort/index.md","ref":"algorithm/sort/index.md","articles":[{"title":"基础排序","level":"2.1.2.1","depth":3,"path":"algorithm/sort/sort1.md","ref":"algorithm/sort/sort1.md","articles":[]},{"title":"归并排序","level":"2.1.2.2","depth":3,"path":"algorithm/sort/sort2.md","ref":"algorithm/sort/sort2.md","articles":[]},{"title":"快速排序","level":"2.1.2.3","depth":3,"path":"algorithm/sort/sort3.md","ref":"algorithm/sort/sort3.md","articles":[]},{"title":"桶排序","level":"2.1.2.4","depth":3,"path":"algorithm/sort/sort4.md","ref":"algorithm/sort/sort4.md","articles":[]}]},{"title":"链表","level":"2.1.3","depth":2,"path":"algorithm/linkedlist/index.md","ref":"algorithm/linkedlist/index.md","articles":[{"title":"单链表翻转","level":"2.1.3.1","depth":3,"path":"algorithm/linkedlist/reverseList.md","ref":"algorithm/linkedlist/reverseList.md","articles":[]},{"title":"单链表是否有环、环节点、长度","level":"2.1.3.2","depth":3,"path":"algorithm/linkedlist/circle.md","ref":"algorithm/linkedlist/circle.md","articles":[]}]},{"title":"符号表","level":"2.1.4","depth":2,"path":"algorithm/symbolTable/index.md","ref":"algorithm/symbolTable/index.md","articles":[{"title":"哈希表","level":"2.1.4.1","depth":3,"path":"algorithm/symbolTable/hashTable.md","ref":"algorithm/symbolTable/hashTable.md","articles":[]}]},{"title":"二叉树","level":"2.1.5","depth":2,"path":"algorithm/binarytree/index.md","ref":"algorithm/binarytree/index.md","articles":[{"title":"二叉树遍历","level":"2.1.5.1","depth":3,"path":"algorithm/binarytree/travesal.md","ref":"algorithm/binarytree/travesal.md","articles":[]},{"title":"二叉堆","level":"2.1.5.2","depth":3,"path":"algorithm/binarytree/binaryheap.md","ref":"algorithm/binarytree/binaryheap.md","articles":[]}]},{"title":"搜索","level":"2.1.6","depth":2,"path":"algorithm/search/index.md","ref":"algorithm/search/index.md","articles":[{"title":"深度优先搜索","level":"2.1.6.1","depth":3,"path":"algorithm/search/dfs.md","ref":"algorithm/search/dfs.md","articles":[]},{"title":"广度优先搜索","level":"2.1.6.2","depth":3,"path":"algorithm/search/bfs.md","ref":"algorithm/search/bfs.md","articles":[]},{"title":"广度优先搜索","level":"2.1.6.3","depth":3,"path":"algorithm/search/binarySearch.md","ref":"algorithm/search/binarySearch.md","articles":[]}]},{"title":"其他","level":"2.1.7","depth":2,"path":"algorithm/other/index.md","ref":"algorithm/other/index.md","articles":[{"title":"斐波切纳数列","level":"2.1.7.1","depth":3,"path":"algorithm/other/fibonacci.md","ref":"algorithm/other/fibonacci.md","articles":[]},{"title":"求最大公约数","level":"2.1.7.2","depth":3,"path":"algorithm/other/gongyueshu.md","ref":"algorithm/other/gongyueshu.md","articles":[]},{"title":"约瑟夫问题","level":"2.1.7.3","depth":3,"path":"algorithm/other/yuesefu.md","ref":"algorithm/other/yuesefu.md","articles":[]}]}]},"previous":{"title":"other","level":"1.4","depth":1,"path":"other/index.md","ref":"other/index.md","articles":[{"title":"tcp","level":"1.4.1","depth":2,"path":"other/tcp.md","ref":"other/tcp.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"other/tcp.md","mtime":"2018-11-09T01:30:55.474Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-09T01:29:44.162Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
