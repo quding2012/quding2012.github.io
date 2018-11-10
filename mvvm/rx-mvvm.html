@@ -431,7 +431,20 @@
                 <a href="rxswift.html">
             
                     
-                    rxswift
+                    RxSwift
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="rxcocoa.html">
+            
+                <a href="rxcocoa.html">
+            
+                    
+                    RxCocoa
             
                 </a>
             
@@ -955,8 +968,116 @@
 <li>model&#x6570;&#x636E;&#x66F4;&#x65B0;&#x65F6;&#x5982;&#x4F55;&#x901A;&#x77E5;&#x5230;view</li>
 <li>&#x5177;&#x4F53;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;&#x5E94;&#x8BE5;&#x5199;&#x5728;&#x54EA;&#x91CC;</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/quding0308/RxLogin-MVVM-Example/master/docs/15318830258947.jpg" alt=""></p>
+<h4 id="vc&#x4F5C;&#x7528;">VC&#x4F5C;&#x7528;</h4>
+<h5 id="1&#x521D;&#x59CB;&#x5316;view&#xFF0C;viewmodel">1.&#x521D;&#x59CB;&#x5316;view&#xFF0C;viewModel</h5>
+<pre><code class="lang-Swfit">private var nameField: UITextField!
+private var loginButton: UIButton!
+
+private func setup() {
+    nameField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        view.addSubview(textField)
+        textField.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(200)
+            $0.width.equalTo(200)
+            $0.height.equalTo(40)
+            $0.centerX.equalToSuperview()
+        }
+        return textField
+    }()    
+
+    loginButton = {
+        let button = UIButton()
+        button.setTitleColor(UIColor.gray, for: .normal)
+        view.addSubview(button)
+        button.snp.makeConstraints {
+            $0.top.equalTo(passwordField.snp.bottom).offset(20)
+            $0.width.equalTo(200)
+            $0.height.equalTo(40)
+            $0.centerX.equalToSuperview()
+        }
+        return button
+    }()
+}
+</code></pre>
+<h5 id="2-view-&#x4E0E;-viewmodel-&#x76F8;&#x4E92;&#x7ED1;&#x5B9A;">2. view &#x4E0E; viewModel &#x76F8;&#x4E92;&#x7ED1;&#x5B9A;</h5>
+<pre><code class="lang-Swift"><span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">bind</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-comment">// ==== &#x4E8B;&#x4EF6;&#x7ED1;&#x5B9A; view -&gt; viewModel</span>
+    loginButton.rx.tap
+        .flatMapLatest({ [<span class="hljs-keyword">weak</span> <span class="hljs-keyword">self</span>] <span class="hljs-number">_</span> -&gt; <span class="hljs-type">Observable</span>&lt;(username: <span class="hljs-type">String</span>?, password: <span class="hljs-type">String</span>?)&gt; <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> `<span class="hljs-keyword">self</span>` = <span class="hljs-keyword">self</span> <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> <span class="hljs-type">Observable</span>.error(<span class="hljs-type">RxLoginVCError</span>.fail) }
+            <span class="hljs-keyword">return</span> <span class="hljs-type">Observable</span>.just((username: <span class="hljs-keyword">self</span>.nameField.text, password: <span class="hljs-keyword">self</span>.passwordField.text))
+        })
+        .bind(to: viewModel.loginButtonTapObserver)
+        .disposed(by: bag)
+
+    <span class="hljs-comment">// ==== viewModel -&gt; view</span>
+    <span class="hljs-comment">// navigation title</span>
+    viewModel.navigationBarTitleDriver
+        .drive(rx.title)
+        .disposed(by: bag)
+
+    <span class="hljs-comment">// &#x5C01;&#x88C5; alert &#x7684;&#x903B;&#x8F91;</span>
+    showAlertObserver = <span class="hljs-type">AnyObserver</span>(eventHandler: { [<span class="hljs-keyword">weak</span> <span class="hljs-keyword">self</span>] (event) <span class="hljs-keyword">in</span>
+        <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> `<span class="hljs-keyword">self</span>` = <span class="hljs-keyword">self</span>, <span class="hljs-keyword">let</span> element = event.element <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> }
+        <span class="hljs-keyword">self</span>.showAlert(element)
+    })
+
+    viewModel.showAlertDriver
+        .drive(showAlertObserver)
+        .disposed(by: bag)
+
+}
+</code></pre>
+<h4 id="viewmodel-&#x4F5C;&#x7528;">viewModel &#x4F5C;&#x7528;</h4>
+<p>&#x5C01;&#x88C5;&#x4E86; &#x90E8;&#x5206;&#x4E1A;&#x52A1;&#x903B;&#x8F91;</p>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RxLoginVM</span>: <span class="hljs-title">NSObject</span> </span>{
+    <span class="hljs-comment">// MARK: Output</span>
+    <span class="hljs-keyword">var</span> navigationBarTitleDriver: <span class="hljs-type">Driver</span>&lt;<span class="hljs-type">String</span>&gt;!
+
+    <span class="hljs-comment">// MARK: Input</span>
+    <span class="hljs-keyword">var</span> loginButtonTapObserver: <span class="hljs-type">AnyObserver</span>&lt;(username: <span class="hljs-type">String</span>?, password: <span class="hljs-type">String</span>?)&gt; {
+        <span class="hljs-keyword">return</span> loginButtonTapSubject.asObserver()
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">bind</span><span class="hljs-params">()</span></span> {   
+        <span class="hljs-comment">// ViewModel -&gt; View</span>
+        navigationBarTitleDriver = <span class="hljs-type">Driver</span>&lt;<span class="hljs-type">String</span>&gt;
+            .just(<span class="hljs-string">&quot;Login Page&quot;</span>)
+
+        <span class="hljs-comment">// Model &lt;-&gt; ViewModel &lt;-&gt; View</span>
+        loginButtonTapSubject.asObserver()   <span class="hljs-comment">// &#x7528;&#x6237;&#x70B9;&#x51FB;&#x767B;&#x5F55;&#x6309;&#x94AE; VM &lt;- View</span>
+            .throttle(<span class="hljs-number">1</span>, scheduler: <span class="hljs-type">MainScheduler</span>.instance)  <span class="hljs-comment">// &#x8282;&#x6D41;&#xFF0C;&#x4E00;&#x79D2;&#x6700;&#x591A;&#x5904;&#x7406;&#x4E00;&#x6B21; VM &lt;- View </span>
+            .flatMapLatest({ [<span class="hljs-keyword">weak</span> <span class="hljs-keyword">self</span>] tuple -&gt; <span class="hljs-type">Observable</span>&lt;<span class="hljs-type">Bool</span>?&gt; <span class="hljs-keyword">in</span>
+                <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> `<span class="hljs-keyword">self</span>` = <span class="hljs-keyword">self</span> <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> <span class="hljs-type">Observable</span>.just(<span class="hljs-literal">nil</span>) }
+                <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> username = tuple.username, !username.isEmpty <span class="hljs-keyword">else</span> {
+                    <span class="hljs-keyword">self</span>.showAlertSubject.onNext(<span class="hljs-string">&quot;empty username&quot;</span>)  <span class="hljs-comment">// &#x63D0;&#x793A;&#xFF1A;&#x7528;&#x6237;&#x6CA1;&#x8F93;&#x5165;&#x7528;&#x6237;&#x540D; VM -&gt; View</span>
+                    <span class="hljs-keyword">return</span> <span class="hljs-type">Observable</span>.just(<span class="hljs-literal">nil</span>)
+                }
+                <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> password = tuple.password, !password.isEmpty <span class="hljs-keyword">else</span> {
+                    <span class="hljs-keyword">self</span>.showAlertSubject.onNext(<span class="hljs-string">&quot;empty password&quot;</span>)                          <span class="hljs-comment">// &#x63D0;&#x793A;&#xFF1A;&#x7528;&#x6237;&#x6CA1;&#x8F93;&#x5165;&#x5BC6;&#x7801; VM -&gt; View</span>
+                    <span class="hljs-keyword">return</span> <span class="hljs-type">Observable</span>.just(<span class="hljs-literal">nil</span>)
+                }
+                <span class="hljs-keyword">self</span>.setLoginButtonHiddeSubject.onNext(<span class="hljs-literal">true</span>)                                <span class="hljs-comment">// &#x6B63;&#x5E38;&#x767B;&#x5F55;&#x524D;&#x9690;&#x85CF;&#x767B;&#x5F55;&#x6309;&#x94AE; VM -&gt; View</span>
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>.model.login(username: tuple.username, password: tuple.password) <span class="hljs-comment">// &#x6B63;&#x5E38;&#x767B;&#x5F55;&#x8C03;&#x7528; Model &lt;-&gt; VM</span>
+            })
+            .<span class="hljs-keyword">do</span>(onNext: { [<span class="hljs-keyword">weak</span> <span class="hljs-keyword">self</span>] <span class="hljs-number">_</span> <span class="hljs-keyword">in</span>
+                <span class="hljs-keyword">self</span>?.setLoginButtonHiddeSubject.onNext(<span class="hljs-literal">false</span>)                              <span class="hljs-comment">// &#x65E0;&#x8BBA;&#x7ED3;&#x679C;&#x5982;&#x4F55;&#x663E;&#x793A;&#x767B;&#x5F55;&#x6309;&#x94AE; VM -&gt; View</span>
+            })
+            .<span class="hljs-built_in">filter</span>({
+                $<span class="hljs-number">0</span> != <span class="hljs-literal">nil</span>                                                                   <span class="hljs-comment">// &#x628A;&#x5F02;&#x5E38;&#x60C5;&#x51B5;&#x8FC7;&#x6EE4;&#xFF0C;&#x56E0;&#x4E3A;&#x5DF2;&#x7ECF;&#x63D0;&#x793A;&#x8FC7;</span>
+            })
+            .<span class="hljs-built_in">map</span> { ($<span class="hljs-number">0</span> ?? <span class="hljs-literal">false</span>) ? <span class="hljs-string">&quot;Login Succeed&quot;</span> : <span class="hljs-string">&quot;Login Failed&quot;</span> }                       <span class="hljs-comment">// &#x628A;&#x767B;&#x5F55;&#x7ED3;&#x679C;&#x7684;bool&#x503C;&#x8F6C;&#x6362;&#x4E3A;&#x9002;&#x5F53;&#x6587;&#x672C;</span>
+            .bind(to: showAlertSubject)                                                     <span class="hljs-comment">// &#x628A;&#x6587;&#x672C;&#x7ED1;&#x5B9A;&#x5230;UI&#x7684;&#x63D0;&#x793A;&#x63A7;&#x4EF6;&#x4E0A;&#x5C55;&#x793A; VM -&gt; View</span>
+            .disposed(by: bag)
+    }
+}
+</code></pre>
 <h3 id="&#x4F7F;&#x7528;rxswift&#x5E93;&#xFF0C;&#x89E3;&#x51B3;&#x7ED1;&#x5B9A;&#x95EE;&#x9898;">&#x4F7F;&#x7528;RxSwift&#x5E93;&#xFF0C;&#x89E3;&#x51B3;&#x7ED1;&#x5B9A;&#x95EE;&#x9898;</h3>
-<p>demo&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/quding0308/RxLogin-MVVM-Example" target="_blank">https://github.com/quding0308/RxLogin-MVVM-Example</a></p>
+<h3 id="demo&#x5730;&#x5740;">demo&#x5730;&#x5740;</h3>
+<p><a href="https://github.com/quding0308/RxLogin-MVVM-Example" target="_blank">https://github.com/quding0308/RxLogin-MVVM-Example</a></p>
 
                                 
                                 </section>
@@ -989,7 +1110,7 @@
                 </a>
                 
                 
-                <a href="rxswift.html" class="navigation navigation-next " aria-label="Next page: rxswift">
+                <a href="rxswift.html" class="navigation navigation-next " aria-label="Next page: RxSwift">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1000,7 +1121,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"rx-mvvm","level":"1.4.1","depth":2,"next":{"title":"rxswift","level":"1.4.2","depth":2,"path":"mvvm/rxswift.md","ref":"mvvm/rxswift.md","articles":[]},"previous":{"title":"mvvm","level":"1.4","depth":1,"path":"mvvm/index.md","ref":"mvvm/index.md","articles":[{"title":"rx-mvvm","level":"1.4.1","depth":2,"path":"mvvm/rx-mvvm.md","ref":"mvvm/rx-mvvm.md","articles":[]},{"title":"rxswift","level":"1.4.2","depth":2,"path":"mvvm/rxswift.md","ref":"mvvm/rxswift.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"mvvm/rx-mvvm.md","mtime":"2018-11-10T03:50:24.069Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-10T02:17:13.817Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"rx-mvvm","level":"1.4.1","depth":2,"next":{"title":"RxSwift","level":"1.4.2","depth":2,"path":"mvvm/rxswift.md","ref":"mvvm/rxswift.md","articles":[]},"previous":{"title":"mvvm","level":"1.4","depth":1,"path":"mvvm/index.md","ref":"mvvm/index.md","articles":[{"title":"rx-mvvm","level":"1.4.1","depth":2,"path":"mvvm/rx-mvvm.md","ref":"mvvm/rx-mvvm.md","articles":[]},{"title":"RxSwift","level":"1.4.2","depth":2,"path":"mvvm/rxswift.md","ref":"mvvm/rxswift.md","articles":[]},{"title":"RxCocoa","level":"1.4.3","depth":2,"path":"mvvm/rxcocoa.md","ref":"mvvm/rxcocoa.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","favicon","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"mvvm/rx-mvvm.md","mtime":"2018-11-10T06:22:17.699Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-10T03:51:10.865Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
