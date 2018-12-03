@@ -540,6 +540,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.5.3" data-path="../web/html-header.html">
+            
+                <a href="../web/html-header.html">
+            
+                    
+                    html header
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../web/json.html">
+            
+                <a href="../web/json.html">
+            
+                    
+                    json的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -747,6 +773,32 @@
             
                     
                     动态规划
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.5" data-path="../algorithm/basic/graph.html">
+            
+                <a href="../algorithm/basic/graph.html">
+            
+                    
+                    图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.6" data-path="../algorithm/basic/graph-bfs-dfs.html">
+            
+                <a href="../algorithm/basic/graph-bfs-dfs.html">
+            
+                    
+                    图的BFS、DFS
             
                 </a>
             
@@ -1157,7 +1209,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="rxswift">rxswift</h3>
+                                <h3 id="rxwwift">RxWwift</h3>
 <p>An API for asynchronous programming with observable streams</p>
 <p>&#x4F7F;&#x7528;Observable&#x6D41; &#x5B9E;&#x73B0;&#x4E86; &#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#x7684;api&#x3002;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x4E86; Observer&#x6A21;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x3002;</p>
 <h4 id="&#x51E0;&#x4E2A;&#x6838;&#x5FC3;&#x6982;&#x5FF5;&#xFF1A;">&#x51E0;&#x4E2A;&#x6838;&#x5FC3;&#x6982;&#x5FF5;&#xFF1A;</h4>
@@ -1165,7 +1217,6 @@
 <li>Observable</li>
 <li>Observer</li>
 <li>Subject (&#x65E2;&#x662F;Observeable &#x53C8;&#x662F; Observer)</li>
-<li>Driver</li>
 <li>Disposable</li>
 <li>Scheduler</li>
 </ul>
@@ -1187,7 +1238,6 @@
 <pre><code>When does an Observable begin emitting its sequence of items? It depends on the Observable. A &#x201C;hot&#x201D; Observable may begin emitting items as soon as it is created, and so any observer who later subscribes to that Observable may start observing the sequence somewhere in the middle. A &#x201C;cold&#x201D; Observable, on the other hand, waits until an observer subscribes to it before it begins to emit items, and so such an observer is guaranteed to see the whole sequence from the beginning.
 </code></pre><p>Variable&#x3001;ControlProperty&#x3001;ControlEvent&#x3001;Driver&#x7B49;&#x90FD;&#x662F; Hot Observable &#x3002;&#x4E0D;&#x7BA1;&#x6709;&#x6CA1;&#x6709;&#x8BA2;&#x9605;&#x8005;&#xFF0C;&#x90FD;&#x4F1A;&#x53D1;&#x51FA; element &#x3002;Observable &#x4E2D;&#x4E00;&#x822C;&#x4F1A;&#x6709;&#x591A;&#x4E2A; element &#x3002;&#x4F1A;&#x5171;&#x4EAB;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x3002;</p>
 <p>Async Operation&#x3001;Http Connection&#x7B49;&#x662F; Cold Observable &#x3002;&#x6709;&#x4E86;&#x8BA2;&#x9605;&#x8005;&#x540E;&#x624D;&#x4F1A;&#x53D1;&#x51FA; element &#x3002;Observable &#x4E00;&#x822C;&#x53EA;&#x6709;&#x4E00;&#x4E2A; element&#x3002;&#x4E0D;&#x4F1A;&#x5171;&#x4EAB;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x3002;</p>
-<h4 id="&#x5171;&#x4EAB;&#x72B6;&#x6001;&#x7684;observable">&#x5171;&#x4EAB;&#x72B6;&#x6001;&#x7684;Observable</h4>
 <h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
 <ul>
 <li><a href="https://beeth0ven.github.io/RxSwift-Chinese-Documentation/content/why_rxswift.html" target="_blank">https://beeth0ven.github.io/RxSwift-Chinese-Documentation/content/why_rxswift.html</a></li>
@@ -1236,7 +1286,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RxSwift","level":"1.4.2","depth":2,"next":{"title":"RxCocoa","level":"1.4.3","depth":2,"path":"mvvm/rxcocoa.md","ref":"mvvm/rxcocoa.md","articles":[]},"previous":{"title":"rx-mvvm","level":"1.4.1","depth":2,"path":"mvvm/rx-mvvm.md","ref":"mvvm/rx-mvvm.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"mvvm/rxswift.md","mtime":"2018-11-13T01:07:51.820Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-27T06:37:27.851Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RxSwift","level":"1.4.2","depth":2,"next":{"title":"RxCocoa","level":"1.4.3","depth":2,"path":"mvvm/rxcocoa.md","ref":"mvvm/rxcocoa.md","articles":[]},"previous":{"title":"rx-mvvm","level":"1.4.1","depth":2,"path":"mvvm/rx-mvvm.md","ref":"mvvm/rx-mvvm.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"mvvm/rxswift.md","mtime":"2018-11-29T05:43:19.029Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-03T02:12:52.322Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

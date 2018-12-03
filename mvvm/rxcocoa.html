@@ -540,6 +540,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.5.3" data-path="../web/html-header.html">
+            
+                <a href="../web/html-header.html">
+            
+                    
+                    html header
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../web/json.html">
+            
+                <a href="../web/json.html">
+            
+                    
+                    json的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -747,6 +773,32 @@
             
                     
                     动态规划
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.5" data-path="../algorithm/basic/graph.html">
+            
+                <a href="../algorithm/basic/graph.html">
+            
+                    
+                    图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.6" data-path="../algorithm/basic/graph-bfs-dfs.html">
+            
+                <a href="../algorithm/basic/graph-bfs-dfs.html">
+            
+                    
+                    图的BFS、DFS
             
                 </a>
             
@@ -1190,11 +1242,12 @@
   .share(replay: <span class="hljs-number">1</span>, scope: .whileConnected)<span class="hljs-comment">// &#x5171;&#x4EAB;&#x72B6;&#x6001;&#x53D8;&#x5316;</span>
 </code></pre>
 <h4 id="controlproperty">ControlProperty</h4>
-<p>&#x65E2;&#x662F;Observable&#xFF0C;&#x53C8;&#x662F; Observer&#xFF0C;&#x7528;&#x4E8E;&#x5C01;&#x88C5;UI&#x63A7;&#x4EF6;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x5177;&#x6709;&#x4E00;&#x4E0B;&#x7279;&#x70B9;&#xFF1A;</p>
+<p>&#x65E2;&#x662F;Observable&#xFF0C;&#x53C8;&#x662F; Observer&#xFF0C;&#x7528;&#x4E8E;&#x5C01;&#x88C5;UI&#x63A7;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5177;&#x6709;&#x4E00;&#x4E0B;&#x7279;&#x70B9;&#xFF1A;</p>
 <ol>
 <li>&#x4E0D;&#x4EA7;&#x751F;error</li>
 <li>&#x8BA2;&#x9605; &#x548C; &#x76D1;&#x542C; &#x90FD;&#x5728; &#x4E3B;&#x7EBF;&#x7A0B;</li>
 <li>&#x5171;&#x4EAB;&#x72B6;&#x6001;&#x53D8;&#x5316;&#xFF0C;&#x6709; shareReplay(1) &#x7684;&#x884C;&#x4E3A;</li>
+<li>&#x6709;&#x521D;&#x59CB;&#x503C;</li>
 </ol>
 <p>&#x4F7F;&#x7528;&#xFF1A;</p>
 <pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Reactive</span> <span class="hljs-title">where</span> <span class="hljs-title">Base</span>: <span class="hljs-title">UITextField</span> </span>{
@@ -1223,7 +1276,7 @@ textField.rx.text.bind(to: label.rx.text)
 observable.bind(to: textField.rx.text)
 </code></pre>
 <h4 id="controlevent">ControlEvent</h4>
-<p>&#x65E2;&#x662F; Observable&#xFF0C;&#x53C8;&#x662F; Observer&#xFF0C;&#x7528;&#x4E8E;&#x5C01;&#x88C5; UI&#x63A7;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x70B9;&#xFF1A;</p>
+<p>Observable&#xFF0C;&#x7528;&#x4E8E;&#x5C01;&#x88C5; UI&#x63A7;&#x4EF6;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x70B9;&#xFF1A;</p>
 <ol>
 <li>&#x4E0D;&#x4EA7;&#x751F;error</li>
 <li>&#x8BA2;&#x9605; &#x548C; &#x76D1;&#x542C; &#x90FD;&#x5728; &#x4E3B;&#x7EBF;&#x7A0B;</li>
@@ -1289,7 +1342,7 @@ btn.rx.tap.subscribe(onNext: {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RxCocoa","level":"1.4.3","depth":2,"next":{"title":"web","level":"1.5","depth":1,"path":"web/index.md","ref":"web/index.md","articles":[{"title":"javascript","level":"1.5.1","depth":2,"path":"web/js6.md","ref":"web/js6.md","articles":[]},{"title":"Content Security Policy","level":"1.5.2","depth":2,"path":"web/csp.md","ref":"web/csp.md","articles":[]}]},"previous":{"title":"RxSwift","level":"1.4.2","depth":2,"path":"mvvm/rxswift.md","ref":"mvvm/rxswift.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"mvvm/rxcocoa.md","mtime":"2018-11-13T01:07:51.818Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-27T06:37:27.851Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RxCocoa","level":"1.4.3","depth":2,"next":{"title":"web","level":"1.5","depth":1,"path":"web/index.md","ref":"web/index.md","articles":[{"title":"javascript","level":"1.5.1","depth":2,"path":"web/js6.md","ref":"web/js6.md","articles":[]},{"title":"Content Security Policy","level":"1.5.2","depth":2,"path":"web/csp.md","ref":"web/csp.md","articles":[]},{"title":"html header","level":"1.5.3","depth":2,"path":"web/html-header.md","ref":"web/html-header.md","articles":[]},{"title":"json的使用","level":"1.5.4","depth":2,"path":"web/json.md","ref":"web/json.md","articles":[]}]},"previous":{"title":"RxSwift","level":"1.4.2","depth":2,"path":"mvvm/rxswift.md","ref":"mvvm/rxswift.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"mvvm/rxcocoa.md","mtime":"2018-11-30T09:27:36.139Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-03T02:12:52.322Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
