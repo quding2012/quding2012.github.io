@@ -359,6 +359,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.2" >
+            
+                <span>
+            
+                    
+                    [codable])(swift/codable.md)
+            
+                </span>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -369,7 +382,7 @@
                 <a href="../ui/">
             
                     
-                    UI基础
+                    UI
             
                 </a>
             
@@ -1266,12 +1279,177 @@
 <li>mainRunLoop &#x4E0E; &#x5176;&#x4ED6;RunLoop&#x7684;&#x533A;&#x522B;&#xFF1F;&#x6709;&#x54EA;&#x4E9B;&#x7279;&#x6743;&#xFF1F;</li>
 <li>&#x5177;&#x4F53;&#x5982;&#x4F55;&#x8FD0;&#x8F6C;&#xFF1F;</li>
 </ul>
-<h3 id="&#x5361;&#x987F;&#x76D1;&#x542C;">&#x5361;&#x987F;&#x76D1;&#x542C;</h3>
+<h3 id="runloop-&#x7B80;&#x4ECB;">Runloop &#x7B80;&#x4ECB;</h3>
+<p>&#x6240;&#x8C13; Runloop &#x5C31;&#x662F; &#x82F9;&#x679C;&#x8BBE;&#x8BA1;&#x7684;&#x4E00;&#x79CD; <strong>&#x5728;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF0C;&#x6301;&#x7EED;&#x8C03;&#x5EA6;&#x5404;&#x79CD;&#x4EFB;&#x52A1;</strong> &#x7684;&#x8FD0;&#x884C;&#x673A;&#x5236;&#x3002;</p>
+<p>&#x4F2A;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-Swift"><span class="hljs-keyword">while</span>(alive) {
+    performTask() <span class="hljs-comment">// &#x6267;&#x884C;&#x4EFB;&#x52A1;</span>
+    call_to_observer() <span class="hljs-comment">// &#x56DE;&#x8C03; &#x901A;&#x77E5;&#x5916;&#x90E8;&#x5F53;&#x524D;&#x5904;&#x4E8E;&#x54EA;&#x4E2A;&#x9636;&#x6BB5;</span>
+    sleep() <span class="hljs-comment">// &#x4F11;&#x7720;</span>
+}
+</code></pre>
+<h3 id="runloop-&#x7684;-mode">Runloop &#x7684; mode</h3>
+<p>Runloop &#x8FD0;&#x884C;&#x65F6;&#x53EA;&#x53EF;&#x80FD;&#x5904;&#x4E8E;&#x4E00;&#x4E2A;mode&#x6A21;&#x5F0F;(currentMode)&#xFF0C;&#x5207;&#x6362;mode&#x65F6;&#x9700;&#x8981;&#x505C;&#x6B62;&#x91CD;&#x65B0;&#x8FD0;&#x884C;&#x3002;&#x4E00;&#x4E2A; mode &#x53EF;&#x4EE5;&#x5C06;&#x81EA;&#x5DF1;&#x6807;&#x8BB0;&#x4E3A;&#x201D;Common&#x201D;&#x5C5E;&#x6027;&#xFF08;&#x901A;&#x8FC7;&#x5C06;&#x5176; ModeName &#x6DFB;&#x52A0;&#x5230; RunLoop &#x7684; &#x201C;commonModes&#x201D; &#x4E2D;&#xFF09;&#x3002;</p>
+<p>iOS&#x516C;&#x5F00;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x4E2A;Mode&#xFF1A;</p>
+<ul>
+<li>UITrackingRunLoopMode</li>
+<li>NSDefaultRunLoopMode</li>
+</ul>
+<pre><code>main Runloop &#x4E2D;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A; mode &#x90FD;&#x5728; commonModes &#x4E2D;
+
+UITrackingRunLoopMode
+&#x754C;&#x9762;&#x8DDF;&#x8E2A; Mode&#xFF0C;&#x7528;&#x4E8E; ScrollView &#x8FFD;&#x8E2A;&#x89E6;&#x6478;&#x6ED1;&#x52A8;&#xFF0C;&#x4FDD;&#x8BC1;&#x754C;&#x9762;&#x6ED1;&#x52A8;&#x65F6;&#x4E0D;&#x53D7;&#x5176;&#x4ED6; mode &#x5F71;&#x54CD;
+
+NSDefaultRunLoopMode
+&#x9ED8;&#x8BA4;Mode&#xFF0C;&#x4E3B;&#x7EBF;&#x7A0B;&#x662F;&#x5728;&#x8FD9;&#x4E2A;Mode&#x8FD0;&#x884C;
+</code></pre><p><strong>CommonMode</strong></p>
+<p>&#x4E00;&#x4E2A; Mode &#x53EF;&#x4EE5;&#x5C06;&#x81EA;&#x5DF1;&#x6807;&#x8BB0;&#x4E3A;&#x201D;Common&#x201D;&#x5C5E;&#x6027;&#xFF08;&#x901A;&#x8FC7;&#x5C06;&#x5176; ModeName &#x6DFB;&#x52A0;&#x5230; RunLoop &#x7684; &#x201C;commonModes&#x201D; &#x4E2D;&#xFF09;&#x3002;</p>
+<p>&#x6BCF;&#x5F53; RunLoop &#x7684;&#x5185;&#x5BB9;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;RunLoop &#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x5C06; _commonModeItems &#x91CC;&#x7684; Source/Observer/Timer &#x540C;&#x6B65;&#x5230;&#x5177;&#x6709; &#x201C;Common&#x201D; &#x6807;&#x8BB0;&#x7684;&#x6240;&#x6709;Mode&#x91CC;&#x3002;</p>
+<pre><code>_commonModes&#x5B58;&#x50A8;&#x4E86;&#x6807;&#x8BB0;&#x4E3A;common&#x7684;mode
+
+_commonModeItems&#x91CC;&#x5B58;&#x50A8;&#x7684;&#x662F;common mode&#x4E2D;&#x7684;Set&lt;Source/Observer/Timer&gt;
+
+// &#x5C06;mode&#x6807;&#x8BB0;&#x4E3A;common   
+CFRunLoopAddCommonMode(loop, mode);
+
+&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#xFF1A;
+main runloop&#x4E2D;&#x589E;&#x52A0;&#x4E00;&#x4E2A;timer &#x5982;&#x679C;&#x53EA;&#x589E;&#x52A0;&#x5230;  kCFRunLoopDefaultMode&#xFF0C;&#x5219;&#x5F53;&#x9875;&#x9762;&#x6ED1;&#x52A8;&#x51FA;&#x53D1;  mode&#xFF1A;UITrackingRunLoopMode&#xFF0C;&#x6539;timer&#x5C31;&#x65E0;&#x6CD5;&#x88AB;&#x89E6;&#x53D1;&#x3002;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x628A;timer&#x589E;&#x52A0;&#x5230;  kCFRunLoopCommonModes&#xFF0C;&#x65E0;&#x8BBA;kCFRunLoopDefaultMode &#x6216; UITrackingRunLoopMode &#x90FD;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;timer
+</code></pre><p>&#x4E00;&#x4E2A; mode &#x4E2D;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0; source&#x3001;observer&#x3001;timer</p>
+<p>Runloop</p>
+<ul>
+<li>mode1<ul>
+<li>source0</li>
+<li>source1</li>
+<li>Observer</li>
+<li>Timer</li>
+</ul>
+</li>
+<li>mode2<ul>
+<li>source0</li>
+<li>source1</li>
+<li>Observer</li>
+<li>Timer</li>
+</ul>
+</li>
+</ul>
+<h4 id="runloop-&#x7684;-observer">Runloop &#x7684; Observer</h4>
+<p>RunLoop&#x53EF;&#x4EE5;&#x89C2;&#x5BDF;&#x7684;&#x65F6;&#x95F4;&#x70B9;&#xFF1A;</p>
+<pre><code class="lang-Swift">typedef <span class="hljs-type">CF_OPTIONS</span>(<span class="hljs-type">CFOptionFlags</span>, <span class="hljs-type">CFRunLoopActivity</span>) {
+    kCFRunLoopEntry = (1UL &lt;&lt; <span class="hljs-number">0</span>), <span class="hljs-comment">// &#x5373;&#x5C06;&#x8FDB;&#x5165;Loop&#xFF08;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF09;</span>
+    kCFRunLoopBeforeTimers = (1UL &lt;&lt; <span class="hljs-number">1</span>), <span class="hljs-comment">// &#x5373;&#x5C06;&#x5904;&#x7406; Timer</span>
+    kCFRunLoopBeforeSources = (1UL &lt;&lt; <span class="hljs-number">2</span>), <span class="hljs-comment">// &#x5373;&#x5C06;&#x5904;&#x7406; Source</span>
+    kCFRunLoopBeforeWaiting = (1UL &lt;&lt; <span class="hljs-number">5</span>), <span class="hljs-comment">// &#x5373;&#x5C06;&#x4F11;&#x7720;</span>
+    kCFRunLoopAfterWaiting = (1UL &lt;&lt; <span class="hljs-number">6</span>), <span class="hljs-comment">// &#x521A;&#x4ECE;&#x4F11;&#x7720;&#x4E2D;&#x88AB;&#x5524;&#x9192;</span>
+    kCFRunLoopExit = (1UL &lt;&lt; <span class="hljs-number">7</span>) <span class="hljs-comment">// Loop&#x5373;&#x5C06;&#x9000;&#x51FA;&#xFF08;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF09;</span>
+};
+</code></pre>
+<p>&#x6DFB;&#x52A0; obsrver</p>
+<pre><code class="lang-Swift"><span class="hljs-type">CFRunLoopRef</span> loop = <span class="hljs-type">CFRunLoopGetMain</span>();
+<span class="hljs-type">CFRunLoopObserverRef</span> observer = <span class="hljs-type">CFRunLoopObserverCreateWithHandler</span>(<span class="hljs-type">NULL</span>, kCFRunLoopBeforeSources, <span class="hljs-literal">true</span>, <span class="hljs-number">0</span>, ^(<span class="hljs-type">CFRunLoopObserverRef</span> observer, <span class="hljs-type">CFRunLoopActivity</span> activity) {
+    <span class="hljs-type">NSLog</span>(@<span class="hljs-string">&quot;observer %lu&quot;</span>, activity);
+});
+<span class="hljs-type">CFRunLoopAddObserver</span>(loop, observer, kCFRunLoopCommonModes);
+</code></pre>
+<h3 id="runloop-&#x6E90;&#x7801;">Runloop &#x6E90;&#x7801;</h3>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">__CFRunLoop</span> </span>{
+    <span class="hljs-type">CFMutableSetRef</span> _commonModes;     <span class="hljs-comment">// Set&lt;CFRunLoopMode&gt;</span>
+    <span class="hljs-type">CFMutableSetRef</span> _commonModeItems; <span class="hljs-comment">// Set&lt;Source/Observer/Timer&gt;</span>
+    <span class="hljs-type">CFRunLoopModeRef</span> _currentMode;    <span class="hljs-comment">// Current Runloop Mode</span>
+    <span class="hljs-type">CFMutableSetRef</span> _modes;           <span class="hljs-comment">// Set</span>
+};
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">__CFRunLoopMode</span> </span>{
+    <span class="hljs-type">CFStringRef</span> _name;            <span class="hljs-comment">// Mode Name, &#x4F8B;&#x5982; @&quot;kCFRunLoopDefaultMode&quot;</span>
+    <span class="hljs-type">CFMutableSetRef</span> _sources0;    <span class="hljs-comment">// Set</span>
+    <span class="hljs-type">CFMutableSetRef</span> _sources1;    <span class="hljs-comment">// Set</span>
+    <span class="hljs-type">CFMutableArrayRef</span> _observers; <span class="hljs-comment">// Array</span>
+    <span class="hljs-type">CFMutableArrayRef</span> _timers;    <span class="hljs-comment">// Array</span>
+    ...
+};
+</code></pre>
+<p>&#x5E95;&#x5C42;&#x5B58;&#x50A8;&#xFF1A;</p>
+<pre><code class="lang-Swift"><span class="hljs-comment">// &#x83B7;&#x53D6;RunLoop&#x5BF9;&#x8C61;</span>
+<span class="hljs-type">CFRunLoopRef</span> _CFRunLoopGet0(pthread_t t) {
+    <span class="hljs-keyword">if</span> (pthread_equal(t, kNilPthreadT)) {
+        t = pthread_main_thread_np(); <span class="hljs-comment">// t == 0 &#x4E3A;main thread</span>
+    }
+
+    __CFLock(&amp;loopsLock);
+    <span class="hljs-comment">/// __CFRunLoops&#x662F;&#x4E00;&#x4E2A;CFDictionary&#x5BF9;&#x8C61;&#xFF0C;&#x5168;&#x5C40;&#x5B58;&#x50A8;RunLoop&#xFF0C;key&#x4E3A;pthread&#xFF0C;value&#x4E3A;Runloop</span>
+    <span class="hljs-keyword">if</span> (!__CFRunLoops) {
+        <span class="hljs-type">CFMutableDictionaryRef</span> dict = <span class="hljs-type">CFDictionaryCreateMutable</span>(kCFAllocatorSystemDefault, <span class="hljs-number">0</span>, <span class="hljs-type">NULL</span>, &amp;kCFTypeDictionaryValueCallBacks);
+        <span class="hljs-type">CFRunLoopRef</span> mainLoop = __CFRunLoopCreate(pthread_main_thread_np());
+        <span class="hljs-type">CFDictionarySetValue</span>(dict, pthreadPointer(pthread_main_thread_np()), mainLoop);
+        <span class="hljs-keyword">if</span> (!<span class="hljs-type">OSAtomicCompareAndSwapPtrBarrier</span>(<span class="hljs-type">NULL</span>, dict, (void * volatile *)&amp;__CFRunLoops)) {
+          <span class="hljs-type">CFRelease</span>(dict);
+        }
+        <span class="hljs-type">CFRelease</span>(mainLoop);
+    }
+
+    <span class="hljs-type">CFRunLoopRef</span> newLoop = <span class="hljs-type">NULL</span>;
+    <span class="hljs-comment">// &#x4ECE;&#x5168;&#x5C40;&#x7684;Dictionary&#x4E2D;&#x53D6;&#x7F13;&#x5B58;&#x7684;RunLoop&#x5BF9;&#x8C61;</span>
+    <span class="hljs-type">CFRunLoopRef</span> loop = (<span class="hljs-type">CFRunLoopRef</span>)<span class="hljs-type">CFDictionaryGetValue</span>(__CFRunLoops, pthreadPointer(t));
+    <span class="hljs-keyword">if</span> (!loop) {
+        <span class="hljs-comment">// &#x5982;&#x679C;&#x6CA1;&#x6709;&#x5219;&#x65B0;&#x5EFA;RunLoop &#x3010;&#x4ECE;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x521B;&#x5EFA;thread&#x65F6;&#x5E76;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x7684;RunLoop&#xFF0C;&#x53EA;&#x6709;&#x4E3B;&#x52A8;CFRunLoopGetCurrent&#x624D;&#x4F1A;&#x521B;&#x5EFA;&#x3011;</span>
+        newLoop = __CFRunLoopCreate(t);
+        <span class="hljs-type">CFDictionarySetValue</span>(__CFRunLoops, pthreadPointer(t), newLoop);
+        loop = newLoop;
+    }
+    __CFUnlock(&amp;loopsLock);
+
+    <span class="hljs-comment">// don&apos;t release run loops inside the loopsLock, because CFRunLoopDeallocate may end up taking it</span>
+    <span class="hljs-keyword">if</span> (newLoop) { <span class="hljs-type">CFRelease</span>(newLoop); }
+    <span class="hljs-keyword">if</span> (pthread_equal(t, pthread_self())) {
+        _CFSetTSD(__CFTSDKeyRunLoop, (void *)loop, <span class="hljs-type">NULL</span>);
+        <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> == _CFGetTSD(__CFTSDKeyRunLoopCntr)) {
+             _CFSetTSD(__CFTSDKeyRunLoopCntr, (void *)(<span class="hljs-type">PTHREAD_DESTRUCTOR_ITERATIONS</span>-<span class="hljs-number">1</span>), (void (*)(void *))__CFFinalizeRunLoop);
+        }
+    }
+
+    <span class="hljs-keyword">return</span> loop;
+}
+
+<span class="hljs-comment">// &#x83B7;&#x53D6; main Runloop</span>
+<span class="hljs-type">CFRunLoopRef</span> <span class="hljs-type">CFRunLoopGetMain</span>(void) {
+    <span class="hljs-keyword">static</span> <span class="hljs-type">CFRunLoopRef</span> __main = <span class="hljs-type">NULL</span>; <span class="hljs-comment">// static &#x53EA;&#x4F1A;&#x83B7;&#x53D6;&#x4E00;&#x6B21;</span>
+    <span class="hljs-keyword">if</span> (!__main) __main = _CFRunLoopGet0(pthread_main_thread_np());
+    <span class="hljs-keyword">return</span> __main;
+}
+
+<span class="hljs-comment">// &#x83B7;&#x53D6;&#x5F53;&#x524D;thread&#x5BF9;&#x8C61;&#x7684;Runloop</span>
+<span class="hljs-type">CFRunLoopRef</span> <span class="hljs-type">CFRunLoopGetCurrent</span>(void) {
+    <span class="hljs-type">CHECK_FOR_FORK</span>();
+    <span class="hljs-type">CFRunLoopRef</span> rl = (<span class="hljs-type">CFRunLoopRef</span>)_CFGetTSD(__CFTSDKeyRunLoop);
+    <span class="hljs-keyword">if</span> (rl) <span class="hljs-keyword">return</span> rl;
+    <span class="hljs-keyword">return</span> _CFRunLoopGet0(pthread_self()); <span class="hljs-comment">//#include &lt;pthread.h&gt; &#x4E2D;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;pthread_self</span>
+}
+</code></pre>
+<h3 id="&#x83B7;&#x53D6;-fps">&#x83B7;&#x53D6; fps</h3>
+<p>&#x901A;&#x8FC7; CADisplayLink &#x6216; &#x6CE8;&#x518C; observer &#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x65F6;&#x95F4;&#xFF0C;&#x5F97;&#x51FA; fps</p>
+<pre><code>if (_lastTime == 0) {
+    _lastTime = link.timestamp;
+    return;
+}
+
+_count++;
+NSTimeInterval delta = link.timestamp - _lastTime;
+if (delta &lt; 1) return;
+_lastTime = link.timestamp;
+float fps = _count / delta;
+_count = 0;
+</code></pre><h3 id="&#x5361;&#x987F;&#x76D1;&#x542C;">&#x5361;&#x987F;&#x76D1;&#x542C;</h3>
+<p>&#x542F;&#x52A8;&#x5B50;&#x7EBF;&#x7A0B;&#xFF0C;&#x5B9A;&#x65F6;&#x50CF;&#x4E3B;&#x7EBF;&#x7A0B;&#x53D1;&#x9001; ping&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x65F6;&#x6CA1;&#x6709;&#x6536;&#x5230;pong&#xFF0C;&#x5219;&#x8BA4;&#x4E3A; &#x6B64;&#x65F6;&#x4E3B;&#x7EBF;&#x7A0B;&#x5361;&#x987F;&#x3002;&#x83B7;&#x53D6;&#x5F53;&#x65F6;&#x7684; stack trace</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="http://mrpeak.cn/blog/ui-detect/" target="_blank">http://mrpeak.cn/blog/ui-detect/</a></li>
+<li><a href="http://ios.jobbole.com/93085/" target="_blank">http://ios.jobbole.com/93085/</a></li>
+</ul>
 <h3 id="performselectorafterdelay">performSelector:afterDelay:</h3>
 <h3 id="&#x53C2;&#x8003;&#xFF1A;">&#x53C2;&#x8003;&#xFF1A;</h3>
 <ul>
 <li><a href="https://blog.ibireme.com/2015/05/18/runloop/" target="_blank">https://blog.ibireme.com/2015/05/18/runloop/</a></li>
-<li></li>
+<li><a href="https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw" target="_blank">https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw</a></li>
+<li>MrPeak: <a href="https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw" target="_blank">https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw</a></li>
 </ul>
 
                                 
@@ -1316,7 +1494,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"runloop","level":"1.2.7","depth":2,"next":{"title":"AssociatedObject","level":"1.2.8","depth":2,"path":"oc/associatedObject.md","ref":"oc/associatedObject.md","articles":[]},"previous":{"title":"autoreleasepool","level":"1.2.6","depth":2,"path":"oc/autoreleasepool.md","ref":"oc/autoreleasepool.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runloop.md","mtime":"2018-11-05T05:45:38.248Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-05T06:05:17.254Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"runloop","level":"1.2.7","depth":2,"next":{"title":"AssociatedObject","level":"1.2.8","depth":2,"path":"oc/associatedObject.md","ref":"oc/associatedObject.md","articles":[]},"previous":{"title":"autoreleasepool","level":"1.2.6","depth":2,"path":"oc/autoreleasepool.md","ref":"oc/autoreleasepool.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runloop.md","mtime":"2018-12-14T06:27:22.584Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-14T02:30:12.569Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
