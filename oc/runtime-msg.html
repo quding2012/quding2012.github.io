@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>build · 学习笔记</title>
+        <title>runtime-消息分发 · 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -66,10 +66,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="gcd.html" />
+    <link rel="next" href="runtime-api.html" />
     
     
-    <link rel="prev" href="StripedMap.html" />
+    <link rel="prev" href="runtime-model.html" />
     
 
     
@@ -275,7 +275,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.12" data-path="build.html">
+        <li class="chapter " data-level="1.2.12" data-path="build.html">
             
                 <a href="build.html">
             
@@ -366,7 +366,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.19" data-path="runtime-msg.html">
+        <li class="chapter active" data-level="1.2.19" data-path="runtime-msg.html">
             
                 <a href="runtime-msg.html">
             
@@ -1388,7 +1388,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >build</a>
+        <a href=".." >runtime-消息分发</a>
     </h1>
 </div>
 
@@ -1403,21 +1403,81 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="xcode-&#x7F16;&#x8BD1;&#x6D41;&#x7A0B;">Xcode &#x7F16;&#x8BD1;&#x6D41;&#x7A0B;</h3>
-<ul>
-<li>&#x7F16;&#x8BD1;&#x4FE1;&#x606F;&#x5199;&#x5165;&#x8F85;&#x52A9;&#x6587;&#x4EF6;&#xFF0C;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x67B6;&#x6784; .app &#x6587;&#x4EF6;</li>
-<li>&#x5904;&#x7406;&#x6587;&#x4EF6;&#x6253;&#x5305;&#x4FE1;&#x606F;</li>
-<li>&#x6267;&#x884C; CocoaPod &#x7F16;&#x8BD1;&#x524D;&#x811A;&#x672C;&#xFF0C;checkPods Manifest.lock</li>
-<li>&#x7F16;&#x8BD1;.m&#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528; CompileC &#x548C; clang &#x547D;&#x4EE4;</li>
-<li>&#x94FE;&#x63A5;&#x9700;&#x8981;&#x7684; Framework</li>
-<li>&#x7F16;&#x8BD1; xib</li>
-<li>&#x62F7;&#x8D1D; xib &#xFF0C;&#x8D44;&#x6E90;&#x6587;&#x4EF6;</li>
-<li>&#x7F16;&#x8BD1; ImageAssets</li>
-<li>&#x5904;&#x7406; info.plist</li>
-<li>&#x6267;&#x884C; CocoaPod &#x811A;&#x672C;</li>
-<li>&#x62F7;&#x8D1D;&#x6807;&#x51C6;&#x5E93;</li>
-<li>&#x521B;&#x5EFA; .app &#x6587;&#x4EF6;&#x548C;&#x7B7E;&#x540D;</li>
-</ul>
+                                <h2 id="runtime">Runtime</h2>
+<h3 id="&#x5BF9;&#x8C61;&#x6A21;&#x578B;">&#x5BF9;&#x8C61;&#x6A21;&#x578B;</h3>
+<p><img src="http://img.hb.aicdn.com/0758b56e18366766703caed4e437c1841c15ab1c17576-QSbr16_fw658" alt=""></p>
+<h3 id="&#x6D88;&#x606F;&#x5206;&#x53D1;&#x673A;&#x5236;">&#x6D88;&#x606F;&#x5206;&#x53D1;&#x673A;&#x5236;</h3>
+<p>&#x50CF;&#x5BF9;&#x8C61;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#xFF0C;&#x4F1A;&#x5728; Runtime &#x4E2D;&#x8C03;&#x7528;&#xFF1A;</p>
+<pre><code>objc_msgSend(receiver, selector, arg1, arg2, ...)
+</code></pre><h3 id="&#x6D88;&#x606F;&#x8F6C;&#x53D1;">&#x6D88;&#x606F;&#x8F6C;&#x53D1;</h3>
+<h4 id="&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;&#x57FA;&#x672C;&#x5206;&#x4E3A;&#x4E09;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;">&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;&#x57FA;&#x672C;&#x5206;&#x4E3A;&#x4E09;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</h4>
+<ol>
+<li>&#x52A8;&#x6001;&#x65B9;&#x6CD5;&#x89E3;&#x6790;</li>
+<li>&#x5907;&#x7528;&#x63A5;&#x53D7;&#x8005;</li>
+<li>&#x5B8C;&#x6574;&#x8F6C;&#x53D1;</li>
+</ol>
+<p>&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x52A8;&#x6001;&#x65B9;&#x6CD5;&#x89E3;&#x6790;</p>
+<p>&#x5BF9;&#x8C61;&#x5728;&#x63A5;&#x6536;&#x5230;&#x672A;&#x77E5;&#x7684;&#x6D88;&#x606F;&#x65F6;&#xFF0C;&#x9996;&#x5148;&#x4F1A;&#x8C03;&#x7528;&#x4E0B;&#x9762;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>+ (BOOL)resolveInstanceMethod:(SEL)sel
++ (BOOL)resolveClassMethod:(SEL)sel
+</code></pre><p>&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-Swift">#<span class="hljs-keyword">import</span> &lt;objc/runtime.h&gt;
+
+- (void)viewDidLoad {
+    [<span class="hljs-keyword">super</span> viewDidLoad];
+    [<span class="hljs-keyword">self</span> performSelector:@selector(unknownMethod)];
+}
+
++ (<span class="hljs-type">BOOL</span>)resolveInstanceMethod:(<span class="hljs-type">SEL</span>)sel {
+    <span class="hljs-type">NSString</span> *selectorString = <span class="hljs-type">NSStringFromSelector</span>(sel);
+
+    <span class="hljs-comment">// &#x5BF9; unknownMethod &#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x88AB;&#x622A;&#x83B7;&#x4E86;&#x5E76;&#x5728; dealWithExceptionForUnknownMethod &#x51FD;&#x6570;&#x4E2D;&#x8FDB;&#x884C;&#x4E86;&#x5904;&#x7406;&#xFF0C;&#x7A0B;&#x5E8F;&#x6CA1;&#x6709;&#x518D;&#x5D29;&#x6E83;&#x3002;@dynamic &#x5C5E;&#x6027;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6848;&#x6765;&#x5B9E;&#x73B0;</span>
+    <span class="hljs-keyword">if</span> ([selectorString isEqualToString:@<span class="hljs-string">&quot;unknownMethod&quot;</span>]) {
+        class_addMethod(<span class="hljs-keyword">self</span>.<span class="hljs-keyword">class</span>, @selector(unknownMethod), (<span class="hljs-type">IMP</span>) dealWithExceptionForUnknownMethod, <span class="hljs-string">&quot;v@:&quot;</span>);
+    }
+
+    <span class="hljs-keyword">return</span> [<span class="hljs-keyword">super</span> resolveInstanceMethod:sel];
+}
+
+void dealWithExceptionForUnknownMethod(id <span class="hljs-keyword">self</span>, <span class="hljs-type">SEL</span> _cmd) {
+    <span class="hljs-type">NSLog</span>(@<span class="hljs-string">&quot;%@, %p&quot;</span>, <span class="hljs-keyword">self</span>, _cmd); <span class="hljs-comment">// Print: &lt;ViewController: 0x7ff96be33e60&gt;, 0x1078259fc</span>
+}
+</code></pre>
+<p>&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x5907;&#x7528;&#x63A5;&#x6536;&#x8005;</p>
+<p>&#x5982;&#x679C;&#x5728;&#x7B2C;&#x4E00;&#x6B65;&#x8FD8;&#x662F;&#x65E0;&#x6CD5;&#x5904;&#x7406;&#x6D88;&#x606F;&#xFF0C;&#x5219; Runtime &#x4F1A;&#x7EE7;&#x7EED;&#x8C03;&#x7528;&#xFF1A;</p>
+<pre><code>-(id)forwardingTargetForSelector:(SEL)aSelector
+</code></pre><p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x4E86;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x975E; nil &#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4F1A;&#x4F5C;&#x4E3A;&#x6D88;&#x606F;&#x7684;&#x65B0;&#x63A5;&#x6536;&#x8005;&#xFF0C;&#x4E14;&#x6D88;&#x606F;&#x4F1A;&#x88AB;&#x5206;&#x53D1;&#x5230;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;&#x5F53;&#x7136;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4E0D;&#x80FD;&#x662F; self &#x81EA;&#x8EAB;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x76F8;&#x5E94;&#x7684;&#x5BF9;&#x8C61;&#x6765;&#x5904;&#x7406; aSelector&#xFF0C;&#x5219;&#x5E94;&#x8BE5;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x5B9E;&#x73B0;&#x6765;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x3002;</p>
+<pre><code>- (id)forwardingTargetForSelector:(SEL)aSelector {
+    NSString *selectorString = NSStringFromSelector(aSelector);
+    if ([selectorString isEqualToString:@&quot;unknownMethod2&quot;]) {
+        return [[RuntimeMethodHelper alloc] init];
+    }
+
+    return [super forwardingTargetForSelector:aSelector];
+}
+</code></pre><p>&#x7B2C;&#x4E09;&#x6B65;&#xFF1A;&#x5B8C;&#x6574;&#x8F6C;&#x53D1;</p>
+<p>&#x5982;&#x679C;&#x524D;&#x4E24;&#x6B65;&#x672A;&#x5904;&#x7406;&#x6D88;&#x606F;&#xFF0C;&#x90A3;&#x4E48;&#x63A5;&#x4E0B;&#x6765;&#x53EA;&#x6709;&#x542F;&#x7528;&#x5B8C;&#x6574;&#x7684;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;&#x4E86;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x4F1A;&#x8C03;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>- (void)forwardInvocation:(NSInvocation *)anInvocation
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+</code></pre><p>&#x5BF9;&#x8C61;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x6D88;&#x606F;&#x7684; NSInvocation &#x5BF9;&#x8C61;&#xFF0C;&#x6D88;&#x606F;&#x6709;&#x5173;&#x7684;&#x5168;&#x90E8;&#x7EC6;&#x8282;&#x90FD;&#x5C01;&#x88C5;&#x5728; NSInvocation &#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x5305;&#x62EC;&#xFF1A;selector&#x3001;&#x76EE;&#x6807;(target)&#x548C;&#x53C2;&#x6570;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728; -forwardInvocation: &#x65B9;&#x6CD5;&#x4E2D;&#x9009;&#x62E9;&#x5C06;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x7ED9;&#x5176;&#x5B83;&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code>- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+    NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];
+    if (!signature) {
+        if ([RuntimeMethodHelper instancesRespondToSelector:aSelector]) {
+            signature = [RuntimeMethodHelper instanceMethodSignatureForSelector:aSelector];
+        }
+    }
+    return signature;
+}
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    if ([RuntimeMethodHelper instancesRespondToSelector:anInvocation.selector]) {
+        [anInvocation invokeWithTarget:[[RuntimeMethodHelper alloc] init]];
+    }
+}
+</code></pre><h4 id="&#x4F7F;&#x7528;&#x6848;&#x4F8B;">&#x4F7F;&#x7528;&#x6848;&#x4F8B;</h4>
+<h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<p><img src="https://raw.githubusercontent.com/quding0308/gitbook_study/master/assets/images/runtime-message-forward.jpg" alt=""></p>
 
                                 
                                 </section>
@@ -1445,12 +1505,12 @@
 
             
                 
-                <a href="StripedMap.html" class="navigation navigation-prev " aria-label="Previous page: StripedMap">
+                <a href="runtime-model.html" class="navigation navigation-prev " aria-label="Previous page: runtime-对象模型">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="gcd.html" class="navigation navigation-next " aria-label="Next page: GCD">
+                <a href="runtime-api.html" class="navigation navigation-next " aria-label="Next page: runtime-API">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1461,7 +1521,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"build","level":"1.2.12","depth":2,"next":{"title":"GCD","level":"1.2.13","depth":2,"path":"oc/gcd.md","ref":"oc/gcd.md","articles":[]},"previous":{"title":"StripedMap","level":"1.2.11","depth":2,"path":"oc/StripedMap.md","ref":"oc/StripedMap.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/build.md","mtime":"2018-12-15T06:00:15.443Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-15T06:01:30.605Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"runtime-消息分发","level":"1.2.19","depth":2,"next":{"title":"runtime-API","level":"1.2.20","depth":2,"path":"oc/runtime-api.md","ref":"oc/runtime-api.md","articles":[]},"previous":{"title":"runtime-对象模型","level":"1.2.18","depth":2,"path":"oc/runtime-model.md","ref":"oc/runtime-model.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runtime-msg.md","mtime":"2018-12-15T06:32:04.875Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-15T06:01:30.605Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
