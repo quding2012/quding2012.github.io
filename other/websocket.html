@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>正则表达式 · 学习笔记</title>
+        <title>WebSocket · 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -66,10 +66,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../optimize/" />
+    <link rel="next" href="xlog.html" />
     
     
-    <link rel="prev" href="https.html" />
+    <link rel="prev" href="mars.html" />
     
 
     
@@ -785,7 +785,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.4" data-path="websocket.html">
+        <li class="chapter active" data-level="1.8.4" data-path="websocket.html">
             
                 <a href="websocket.html">
             
@@ -824,7 +824,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.7" data-path="rejex.html">
+        <li class="chapter " data-level="1.8.7" data-path="rejex.html">
             
                 <a href="rejex.html">
             
@@ -1420,7 +1420,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >正则表达式</a>
+        <a href=".." >WebSocket</a>
     </h1>
 </div>
 
@@ -1435,92 +1435,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;-regular-expression">&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F; Regular Expression</h3>
-<p>&#x7528;&#x9014;&#xFF1A;</p>
-<ul>
-<li>&#x5B57;&#x7B26;&#x4E32;&#x641C;&#x7D22;</li>
-<li>&#x5B57;&#x7B26;&#x4E32;&#x66FF;&#x6362;</li>
-</ul>
-<h4 id="&#x9650;&#x5B9A;&#x7B26;">&#x9650;&#x5B9A;&#x7B26;</h4>
-<pre><code class="lang-Swift">^ &#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;
-$ &#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;
-
-* &#x5339;&#x914D;&#x524D;&#x9762;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;<span class="hljs-number">0</span>&#x6B21;&#x6216;&#x591A;&#x6B21; &#x7B49;&#x4EF7;&#x4E8E; {<span class="hljs-number">0</span>,}
-+ &#x5339;&#x914D;&#x524D;&#x9762;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;<span class="hljs-number">1</span>&#x6B21;&#x6216;&#x591A;&#x6B21; &#x7B49;&#x4EF7;&#x4E8E; {<span class="hljs-number">1</span>,}
-&#xFF1F; &#x5339;&#x914D;&#x524D;&#x9762;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;<span class="hljs-number">0</span>&#x6B21;&#x6216;<span class="hljs-number">1</span>&#x6B21; &#x7B49;&#x4EF7;&#x4E8E; {<span class="hljs-number">0</span>,<span class="hljs-number">1</span>}
-
-{n} &#x5339;&#x914D;&#x786E;&#x5B9A;&#x7684;n&#x6B21;
-{n,} &#x81F3;&#x5C11;n&#x6B21;
-{n,m} n&#x5230;m&#x6B21;
-
-[xyz] &#x5339;&#x914D;&#x5305;&#x542B;&#x7684;&#x4EFB;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;   
-[^xyz] &#x5339;&#x914D;&#x9664;xyz&#x5916;&#x7684;&#x4EFB;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;
-[a-z]
-[^a-z] &#x5339;&#x914D;a-z&#x4E4B;&#x5916;&#x7684;&#x4EFB;&#x4E00;&#x5B57;&#x7B26;
-
-&#x53C2;&#x8003;&#xFF1A;https:<span class="hljs-comment">//zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F</span>
-</code></pre>
-<h4 id="&#x5E38;&#x7528;&#x7684;&#x6B63;&#x5219;">&#x5E38;&#x7528;&#x7684;&#x6B63;&#x5219;</h4>
-<pre><code class="lang-Swift">^[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]*$ &#x5B57;&#x7B26;&#x4E32;&#x53EA;&#x5305;&#x62EC;<span class="hljs-number">0</span>-<span class="hljs-number">9</span>&#x7684;&#x6570;&#x5B57;  &#x5305;&#x62EC;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;
-^[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]+$ &#x5B57;&#x7B26;&#x4E32;&#x53EA;&#x5305;&#x62EC;<span class="hljs-number">0</span>-<span class="hljs-number">9</span>&#x7684;&#x6570;&#x5B57;  &#x4E0D;&#x5305;&#x62EC;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;
-^[<span class="hljs-type">A</span>-<span class="hljs-type">Za</span>-z]*$ &#x662F;&#x5426;&#x4E3A;&#x5927;&#x5C0F;&#x5199;&#x5B57;&#x6BCD;&#xFF0C;&#x5305;&#x62EC;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;
-
-\\d &#x662F;&#x5426;&#x4E3A;&#x6570;&#x5B57;  &#x4F8B;&#x5982;  <span class="hljs-number">11.2</span>   <span class="hljs-number">3.14</span>   <span class="hljs-number">444</span>
-</code></pre>
-<h4 id="swift&#x4E2D;&#x6B63;&#x5219;&#x7684;&#x4F7F;&#x7528;">Swift&#x4E2D;&#x6B63;&#x5219;&#x7684;&#x4F7F;&#x7528;</h4>
-<pre><code class="lang-Swift">fileprivate <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">isPureNumber</span><span class="hljs-params">(<span class="hljs-number">_</span> string: String)</span></span> -&gt; <span class="hljs-type">Bool</span> {
-    <span class="hljs-keyword">return</span> textRegex(content: string, pattern: <span class="hljs-string">&quot;^[0-9]*$&quot;</span>)
-}
-
-fileprivate <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">isPureLetter</span><span class="hljs-params">(<span class="hljs-number">_</span> string: String)</span></span> -&gt; <span class="hljs-type">Bool</span> {
-    <span class="hljs-keyword">return</span> textRegex(content: string, pattern: <span class="hljs-string">&quot;^[A-Za-z]*$&quot;</span>)
-}
-
-fileprivate <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">isPureSymbol</span><span class="hljs-params">(<span class="hljs-number">_</span> string: String)</span></span> -&gt; <span class="hljs-type">Bool</span> {
-    <span class="hljs-comment">//        let regex: NSPredicate = NSPredicate(format: &quot;SELF MATCHES %@&quot;, &quot;^[~\\^{}[]()&lt;&gt;&lt;&gt;_\\$@#%&amp;/\\|=-+*`&#x2018;&#x201D;;:\\.,!?]*$&quot;)</span>
-
-    <span class="hljs-keyword">return</span> !hasLetter(string) &amp;&amp; !hasNumber(string)
-}
-
-fileprivate <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">isNumberAndLetterAndSymbol</span><span class="hljs-params">(<span class="hljs-number">_</span> string: String)</span></span> -&gt; <span class="hljs-type">Bool</span> {
-    <span class="hljs-keyword">return</span> hasNumber(string) &amp;&amp; hasLetter(string) &amp;&amp; !isNumberAndLetter(string)
-}
-
-<span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">isNumberAndLetter</span><span class="hljs-params">(<span class="hljs-number">_</span> string: String)</span></span> -&gt; <span class="hljs-type">Bool</span> {
-    <span class="hljs-keyword">let</span> regex: <span class="hljs-type">NSPredicate</span> = <span class="hljs-type">NSPredicate</span>(format: <span class="hljs-string">&quot;SELF MATCHES %@&quot;</span>, <span class="hljs-string">&quot;^[0-9A-Za-z]*$&quot;</span>)
-    <span class="hljs-keyword">return</span> regex.evaluate(with: string)
-}
-
-<span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">hasNumber</span><span class="hljs-params">(<span class="hljs-number">_</span> string: String)</span></span> -&gt; <span class="hljs-type">Bool</span> {
-    <span class="hljs-keyword">return</span> textRegex(content: string, pattern: <span class="hljs-string">&quot;[0-9]&quot;</span>)
-}
-
-<span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">hasLetter</span><span class="hljs-params">(<span class="hljs-number">_</span> string: String)</span></span> -&gt; <span class="hljs-type">Bool</span> {
-    <span class="hljs-keyword">return</span> textRegex(content: string, pattern: <span class="hljs-string">&quot;[A-Za-z]&quot;</span>)
-}
-
-<span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">textRegex</span><span class="hljs-params">(content: String, pattern: String)</span></span> -&gt; <span class="hljs-type">Bool</span>{
-    <span class="hljs-keyword">do</span> {
-        <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x89C4;&#x5219;</span>
-        <span class="hljs-comment">// let pattern = &quot;ben&quot;</span>
-
-        <span class="hljs-comment">// &#x521B;&#x5EFA;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5BF9;&#x8C61;</span>
-        <span class="hljs-keyword">let</span> regex = <span class="hljs-keyword">try</span> <span class="hljs-type">NSRegularExpression</span>(pattern: pattern, options: <span class="hljs-type">NSRegularExpression</span>.<span class="hljs-type">Options</span>.caseInsensitive)
-
-        <span class="hljs-comment">// &#x5F00;&#x59CB;&#x5339;&#x914D;</span>
-        <span class="hljs-keyword">let</span> result = regex.matches(<span class="hljs-keyword">in</span>: content, options: <span class="hljs-type">NSRegularExpression</span>.<span class="hljs-type">MatchingOptions</span>(rawValue: <span class="hljs-number">0</span>), range: <span class="hljs-type">NSMakeRange</span>(<span class="hljs-number">0</span>, content.<span class="hljs-built_in">count</span>))
-
-        <span class="hljs-comment">//            print(result.count)</span>
-        <span class="hljs-keyword">if</span>  result.<span class="hljs-built_in">count</span> &gt; <span class="hljs-number">0</span> {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
-        }
-    } <span class="hljs-keyword">catch</span> {
-        <span class="hljs-built_in">print</span>(error)
-    }
-
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-}
-</code></pre>
+                                <h2 id="websocket">WebSocket</h2>
 
                                 
                                 </section>
@@ -1548,12 +1463,12 @@ fileprivate <span class="hljs-function"><span class="hljs-keyword">func</span> <
 
             
                 
-                <a href="https.html" class="navigation navigation-prev " aria-label="Previous page: https">
+                <a href="mars.html" class="navigation navigation-prev " aria-label="Previous page: mars">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../optimize/" class="navigation navigation-next " aria-label="Next page: App优化">
+                <a href="xlog.html" class="navigation navigation-next " aria-label="Next page: xlog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1479,7 @@ fileprivate <span class="hljs-function"><span class="hljs-keyword">func</span> <
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"正则表达式","level":"1.8.7","depth":2,"next":{"title":"App优化","level":"1.9","depth":1,"path":"optimize/index.md","ref":"optimize/index.md","articles":[{"title":"Crash优化","level":"1.9.1","depth":2,"path":"optimize/crash.md","ref":"optimize/crash.md","articles":[]},{"title":"卡顿优化","level":"1.9.2","depth":2,"path":"optimize/kadun.md","ref":"optimize/kadun.md","articles":[]},{"title":"内存优化","level":"1.9.3","depth":2,"path":"optimize/memory.md","ref":"optimize/memory.md","articles":[]}]},"previous":{"title":"https","level":"1.8.6","depth":2,"path":"other/https.md","ref":"other/https.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/rejex.md","mtime":"2018-11-16T09:04:32.277Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T02:22:11.290Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"WebSocket","level":"1.8.4","depth":2,"next":{"title":"xlog","level":"1.8.5","depth":2,"path":"other/xlog.md","ref":"other/xlog.md","articles":[]},"previous":{"title":"mars","level":"1.8.3","depth":2,"path":"other/mars.md","ref":"other/mars.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/websocket.md","mtime":"2018-12-17T02:30:52.486Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T02:22:11.290Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
