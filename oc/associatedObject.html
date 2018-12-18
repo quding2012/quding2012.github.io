@@ -566,6 +566,45 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.8" data-path="../ui/image-render.html">
+            
+                <a href="../ui/image-render.html">
+            
+                    
+                    图片解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../ui/richtext.html">
+            
+                <a href="../ui/richtext.html">
+            
+                    
+                    富文本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../ui/calayer.md">
+            
+                <span>
+            
+                    
+                    CALayer 子类
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -811,7 +850,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="../other/https.html">
+        <li class="chapter " data-level="1.8.6" data-path="../other/http.html">
+            
+                <a href="../other/http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../other/https.html">
             
                 <a href="../other/https.html">
             
@@ -824,7 +876,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="../other/rejex.html">
+        <li class="chapter " data-level="1.8.8" data-path="../other/rejex.html">
             
                 <a href="../other/rejex.html">
             
@@ -1435,8 +1487,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="associatedobject">AssociatedObject</h3>
-<h4 id="associationsmanager">AssociationsManager</h4>
+                                <h2 id="associatedobject">AssociatedObject</h2>
+<p>ask</p>
+<pre><code>class AssociationsManager {
+    // key &#x4E3A; obj&#xFF0C;value &#x4E3A; ObjectAssociationMap &#x5BF9;&#x8C61;
+    AssociationsHashMap *map;
+    static spinlock_t _lock;
+}
+
+// key &#x4E3A; &#x81EA;&#x5B9A;&#x4E49;&#x7684;key @selector(method_name)&#xFF0C; value &#x4E3A;  ObjcAssociation
+ObjectAssociationMap
+
+class ObjcAssociation {
+    uintptr_t _policy;
+    id _value;
+};
+
+AssociationsHashMap
+    { 
+        key: obj, 
+        value: ObjectAssociationMap {
+            key : your_name,
+            value: ObjcAssociation
+        }
+    }
+</code></pre><h4 id="associationsmanager">AssociationsManager</h4>
 <p>AssociationsManager &#x4E3A;&#x5168;&#x5C40;&#x7684;&#x5355;&#x4F8B;  </p>
 <pre><code>class AssociationsManager {
     static spinlock_t _lock;
@@ -1521,7 +1596,7 @@ typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AssociatedObject","level":"1.2.9","depth":2,"next":{"title":"copy","level":"1.2.10","depth":2,"path":"oc/copy.md","ref":"oc/copy.md","articles":[]},"previous":{"title":"runloop","level":"1.2.8","depth":2,"path":"oc/runloop.md","ref":"oc/runloop.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/associatedObject.md","mtime":"2018-11-08T08:06:31.459Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T02:22:11.290Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AssociatedObject","level":"1.2.9","depth":2,"next":{"title":"copy","level":"1.2.10","depth":2,"path":"oc/copy.md","ref":"oc/copy.md","articles":[]},"previous":{"title":"runloop","level":"1.2.8","depth":2,"path":"oc/runloop.md","ref":"oc/runloop.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/associatedObject.md","mtime":"2018-12-18T02:25:20.674Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-18T01:40:14.587Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

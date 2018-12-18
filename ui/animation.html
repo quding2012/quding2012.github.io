@@ -566,6 +566,45 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.8" data-path="image-render.html">
+            
+                <a href="image-render.html">
+            
+                    
+                    图片解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="richtext.html">
+            
+                <a href="richtext.html">
+            
+                    
+                    富文本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="calayer.md">
+            
+                <span>
+            
+                    
+                    CALayer 子类
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -811,7 +850,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="../other/https.html">
+        <li class="chapter " data-level="1.8.6" data-path="../other/http.html">
+            
+                <a href="../other/http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../other/https.html">
             
                 <a href="../other/https.html">
             
@@ -824,7 +876,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="../other/rejex.html">
+        <li class="chapter " data-level="1.8.8" data-path="../other/rejex.html">
             
                 <a href="../other/rejex.html">
             
@@ -1435,10 +1487,38 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+                                <h2 id="core-animation">Core Animation</h2>
+<h3 id="&#x76F8;&#x5173;&#x7C7B;">&#x76F8;&#x5173;&#x7C7B;</h3>
+<ul>
+<li>CATransition &#x63D0;&#x4F9B;&#x6E10;&#x53D8;&#x6548;&#x679C;:(&#x63A8;&#x62C9;push&#x6548;&#x679C;,&#x6D88;&#x9000;fade&#x6548;&#x679C;,&#x63ED;&#x5F00;reveal&#x6548;&#x679C;)</li>
+<li>CAAnimationGroup &#x5141;&#x8BB8;&#x591A;&#x4E2A;&#x52A8;&#x753B;&#x540C;&#x65F6;&#x64AD;&#x653E;</li>
+<li>CABasicAnimation &#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x5355;&#x4E00;&#x52A8;&#x753B;&#x7684;&#x5B9E;&#x73B0;</li>
+<li>CAKeyframeAnimation &#x5173;&#x952E;&#x6862;&#x52A8;&#x753B;,&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x884C;&#x52A8;&#x8DEF;&#x7EBF;</li>
+<li>CAConstraint &#x7EA6;&#x675F;&#x7C7B;,&#x5728;&#x5E03;&#x5C40;&#x7BA1;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7528;&#x5B83;&#x6765;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;</li>
+<li>CAConstraintLayoutManager &#x7EA6;&#x675F;&#x5E03;&#x5C40;&#x7BA1;&#x7406;&#x5668;,&#x662F;&#x7528;&#x6765;&#x5C06;&#x591A;&#x4E2A;CALayer&#x8FDB;&#x884C;&#x5E03;&#x5C40;&#x7684;.&#x5404;&#x4E2A;CALayer&#x662F;&#x901A;&#x8FC7;&#x540D;&#x79F0;&#x6765;&#x533A;&#x5206;,&#x800C;&#x5E03;&#x5C40;&#x5C5E;&#x6027;&#x662F;&#x901A;&#x8FC7;CAConstraint&#x6765;&#x8BBE;&#x7F6E;&#x7684;.</li>
+<li>CATransaction &#x4E8B;&#x52A1;&#x7C7B;,&#x53EF;&#x4EE5;&#x5BF9;&#x591A;&#x4E2A;layer&#x7684;&#x5C5E;&#x6027;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#x4FEE;&#x6539;.&#x5B83;&#x5206;&#x9690;&#x5F0F;&#x4E8B;&#x52A1;,&#x548C;&#x663E;&#x5F0F;&#x4E8B;&#x52A1;.</li>
+</ul>
+<h3 id="catransaction">CATransaction</h3>
+<p>CATransaction&#x662F; Core Animation &#x4E2D;&#x7684;&#x4E8B;&#x52A1;&#x7C7B;&#xFF0C;&#x5728;iOS&#x4E2D;&#x7684;&#x56FE;&#x5C42;&#x4E2D;&#xFF0C;&#x56FE;&#x5C42;&#x7684;&#x6BCF;&#x4E2A;&#x6539;&#x53D8;&#x90FD;&#x662F;&#x4E8B;&#x52A1;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
+<p>CATransaction&#x53EF;&#x4EE5;&#x5BF9;&#x591A;&#x4E2A;layer&#x7684;&#x5C5E;&#x6027;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#xFF0C;&#x540C;&#x65F6;&#x8D1F;&#x8D23;&#x6210;&#x6279;&#x7684;&#x628A;&#x591A;&#x4E2A;&#x56FE;&#x5C42;&#x6811;&#x7684;&#x4FEE;&#x6539;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x539F;&#x5B50;&#x66F4;&#x65B0;&#x5230;&#x6E32;&#x67D3;&#x6811;&#x3002;</p>
+<p>CATransaction&#x4E8B;&#x52A1;&#x7C7B;&#x5206;&#x4E3A;&#x9690;&#x5F0F;&#x4E8B;&#x52A1;&#x548C;&#x663E;&#x5F0F;&#x4E8B;&#x52A1;&#xFF0C;&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x4E24;&#x7EC4;&#x6982;&#x5FF5;&#x7684;&#x533A;&#x5206;&#xFF1A;</p>
+<ol>
+<li>&#x9690;&#x5F0F;&#x52A8;&#x753B;&#x548C;&#x9690;&#x5F0F;&#x4E8B;&#x52A1;:</li>
+</ol>
+<p>&#x9690;&#x5F0F;&#x52A8;&#x753B;&#x901A;&#x8FC7;&#x9690;&#x5F0F;&#x4E8B;&#x52A1;&#x5B9E;&#x73B0;&#x52A8;&#x753B; &#x3002;</p>
+<ol>
+<li>&#x663E;&#x5F0F;&#x52A8;&#x753B;&#x548C;&#x663E;&#x5F0F;&#x4E8B;&#x52A1;:</li>
+</ol>
+<p>&#x663E;&#x5F0F;&#x52A8;&#x753B;&#x6709;&#x591A;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x663E;&#x5F0F;&#x4E8B;&#x52A1;&#x662F;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#x663E;&#x5F0F;&#x52A8;&#x753B;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>layer &#x5185;&#x90E8;&#x7EF4;&#x62A4;&#x7740;&#x4E09;&#x5206; layer tree,</p>
+<ul>
+<li>presentLayer Tree(&#x52A8;&#x753B;&#x6811;),</li>
+<li>modeLayer Tree(&#x6A21;&#x578B;&#x6811;)</li>
+<li>Render Tree (&#x6E32;&#x67D3;&#x6811;)</li>
+</ul>
+<h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
 <ul>
 <li><a href="http://studentdeng.github.io/blog/2014/06/24/core-animation/" target="_blank">http://studentdeng.github.io/blog/2014/06/24/core-animation/</a></li>
-<li></li>
 </ul>
 
                                 
@@ -1483,7 +1563,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"animation","level":"1.4.5","depth":2,"next":{"title":"layout","level":"1.4.6","depth":2,"path":"ui/layout.md","ref":"ui/layout.md","articles":[]},"previous":{"title":"gpu渲染","level":"1.4.4","depth":2,"path":"ui/gpu.md","ref":"ui/gpu.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ui/animation.md","mtime":"2018-11-05T06:01:53.405Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T02:22:11.290Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"animation","level":"1.4.5","depth":2,"next":{"title":"layout","level":"1.4.6","depth":2,"path":"ui/layout.md","ref":"ui/layout.md","articles":[]},"previous":{"title":"gpu渲染","level":"1.4.4","depth":2,"path":"ui/gpu.md","ref":"ui/gpu.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ui/animation.md","mtime":"2018-12-18T05:23:42.370Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-18T01:40:14.587Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

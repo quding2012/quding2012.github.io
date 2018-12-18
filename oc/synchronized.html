@@ -566,6 +566,45 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.8" data-path="../ui/image-render.html">
+            
+                <a href="../ui/image-render.html">
+            
+                    
+                    图片解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../ui/richtext.html">
+            
+                <a href="../ui/richtext.html">
+            
+                    
+                    富文本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../ui/calayer.md">
+            
+                <span>
+            
+                    
+                    CALayer 子类
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -811,7 +850,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="../other/https.html">
+        <li class="chapter " data-level="1.8.6" data-path="../other/http.html">
+            
+                <a href="../other/http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../other/https.html">
             
                 <a href="../other/https.html">
             
@@ -824,7 +876,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="../other/rejex.html">
+        <li class="chapter " data-level="1.8.8" data-path="../other/rejex.html">
             
                 <a href="../other/rejex.html">
             
@@ -1436,7 +1488,21 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="synchronized">@synchronized</h3>
-<p>&#x5177;&#x4F53;&#x4F7F;&#x7528;&#xFF1A;</p>
+<p>ask</p>
+<pre><code>StripMap&lt;SyncList&gt;
+
+struct SyncList {
+    spinlock_t lock;
+    SyncData *data;
+}
+
+// &#x4E00;&#x4E2A; obj &#x5BF9;&#x5E94;&#x4E00;&#x4E2A; SyncData &#x5BF9;&#x8C61;&#xFF0C;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A; &#x9012;&#x5F52;&#x9501;
+struct SyncData {
+    recusive_mutex_t mutex;
+    SyncData *next;
+    DisguisedPtr&lt;objc_object&gt; object;
+}
+</code></pre><p>&#x5177;&#x4F53;&#x4F7F;&#x7528;&#xFF1A;</p>
 <pre><code>NSObject* obj = [NSObject new];
 @synchronized (obj) {
     //
@@ -1512,7 +1578,7 @@ http://blog.quding0308.com/objc,/runtime/2018/09/11/ObjC%E4%B8%AD@synchronized%E
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"synchronized","level":"1.2.3","depth":2,"next":{"title":"arc","level":"1.2.4","depth":2,"path":"oc/arc.md","ref":"oc/arc.md","articles":[]},"previous":{"title":"atomic","level":"1.2.2","depth":2,"path":"oc/atomic.md","ref":"oc/atomic.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/synchronized.md","mtime":"2018-11-05T02:47:26.749Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T02:22:11.290Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"synchronized","level":"1.2.3","depth":2,"next":{"title":"arc","level":"1.2.4","depth":2,"path":"oc/arc.md","ref":"oc/arc.md","articles":[]},"previous":{"title":"atomic","level":"1.2.2","depth":2,"path":"oc/atomic.md","ref":"oc/atomic.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/synchronized.md","mtime":"2018-12-18T02:11:24.618Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-18T01:40:14.587Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -566,6 +566,45 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.8" data-path="../ui/image-render.html">
+            
+                <a href="../ui/image-render.html">
+            
+                    
+                    图片解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../ui/richtext.html">
+            
+                <a href="../ui/richtext.html">
+            
+                    
+                    富文本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../ui/calayer.md">
+            
+                <span>
+            
+                    
+                    CALayer 子类
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -811,7 +850,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="../other/https.html">
+        <li class="chapter " data-level="1.8.6" data-path="../other/http.html">
+            
+                <a href="../other/http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../other/https.html">
             
                 <a href="../other/https.html">
             
@@ -824,7 +876,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="../other/rejex.html">
+        <li class="chapter " data-level="1.8.8" data-path="../other/rejex.html">
             
                 <a href="../other/rejex.html">
             
@@ -1534,7 +1586,28 @@
 <li>differentor &#x7684;&#x4F7F;&#x7528;&#xFF0C;tableview &#x4F18;&#x5316; &#x518D;&#x6574;&#x7406;&#x4E0B;</li>
 <li>block</li>
 </ul>
+<h3 id="new-&#x4E0E;-alloc-&#x533A;&#x522B;">new &#x4E0E; alloc &#x533A;&#x522B;</h3>
+<pre><code>// &#x4F7F;&#x7528; _zoneAlloc &#x5206;&#x914D;&#x5185;&#x5B58;&#xFF0C;&#x81EA;&#x5DF1;&#x663E;&#x793A;&#x8C03;&#x7528; initXX &#x6765;&#x521D;&#x59CB;&#x5316;&#x5BF9;&#x8C61;
++ alloc {
+    return (*_zoneAlloc)((Class)self, 0, malloc_default_zone());
+}
 
+// &#x4F7F;&#x7528; _alloc &#x5206;&#x914D;&#x5185;&#x5B58;&#xFF0C;&#x53EA;&#x80FD;&#x4F7F;&#x7528; init &#x521D;&#x59CB;&#x5316;&#x5BF9;&#x8C61;
++ new {
+    id newObject = (*_alloc)((Class)self, 0);
+    Class metaClass = self-&gt;isa;
+    if (class_getVersion(metaClass) &gt; 1)
+        return [newObject init];
+    else
+        return newObject;
+}
+
+- init {
+    return self;
+}
+
+&#x8865;&#x5145;&#xFF1A; NSZone&#x662F;Apple&#x7528;&#x6765;&#x5206;&#x914D;&#x548C;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5B83;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;C&#x7ED3;&#x6784;&#x5B58;&#x50A8;&#x4E86;&#x5173;&#x4E8E;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7684;&#x4FE1;&#x606F;&#x3002;iOS App &#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;NSZone&#x6765;&#x5BF9;&#x5E94;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x4F1A;&#x5BF9;&#x5185;&#x5B58;&#x505A;&#x4E00;&#x5B9A;&#x4F18;&#x5316;&#xFF0C;&#x51CF;&#x5C11;&#x5185;&#x5B58;&#x788E;&#x7247;&#x3002;
+</code></pre>
                                 
                                 </section>
                             
@@ -1577,7 +1650,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"oc","level":"1.2","depth":1,"next":{"title":"runtime","level":"1.2.1","depth":2,"path":"oc/runtime/index.md","ref":"oc/runtime/index.md","articles":[{"title":"对象模型","level":"1.2.1.1","depth":3,"path":"oc/runtime/runtime-model.md","ref":"oc/runtime/runtime-model.md","articles":[]},{"title":"消息分发","level":"1.2.1.2","depth":3,"path":"oc/runtime/runtime-msg.md","ref":"oc/runtime/runtime-msg.md","articles":[]},{"title":"API","level":"1.2.1.3","depth":3,"path":"oc/runtime/runtime-api.md","ref":"oc/runtime/runtime-api.md","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/index.md","mtime":"2018-11-14T02:26:16.475Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T02:22:11.290Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"oc","level":"1.2","depth":1,"next":{"title":"runtime","level":"1.2.1","depth":2,"path":"oc/runtime/index.md","ref":"oc/runtime/index.md","articles":[{"title":"对象模型","level":"1.2.1.1","depth":3,"path":"oc/runtime/runtime-model.md","ref":"oc/runtime/runtime-model.md","articles":[]},{"title":"消息分发","level":"1.2.1.2","depth":3,"path":"oc/runtime/runtime-msg.md","ref":"oc/runtime/runtime-msg.md","articles":[]},{"title":"API","level":"1.2.1.3","depth":3,"path":"oc/runtime/runtime-api.md","ref":"oc/runtime/runtime-api.md","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/index.md","mtime":"2018-12-18T01:46:27.219Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-18T01:40:14.587Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

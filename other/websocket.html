@@ -566,6 +566,45 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.8" data-path="../ui/image-render.html">
+            
+                <a href="../ui/image-render.html">
+            
+                    
+                    图片解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../ui/richtext.html">
+            
+                <a href="../ui/richtext.html">
+            
+                    
+                    富文本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../ui/calayer.md">
+            
+                <span>
+            
+                    
+                    CALayer 子类
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -811,7 +850,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="https.html">
+        <li class="chapter " data-level="1.8.6" data-path="http.html">
+            
+                <a href="http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="https.html">
             
                 <a href="https.html">
             
@@ -824,7 +876,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="rejex.html">
+        <li class="chapter " data-level="1.8.8" data-path="rejex.html">
             
                 <a href="rejex.html">
             
@@ -1436,6 +1488,36 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="websocket">WebSocket</h2>
+<h3 id="&#x4ECB;&#x7ECD;">&#x4ECB;&#x7ECD;</h3>
+<p>WebSocket&#x662F;&#x4E00;&#x79CD;&#x5728;&#x5355;&#x4E2A;TCP&#x8FDE;&#x63A5;&#x4E0A;&#x8FDB;&#x884C;&#x5168;&#x53CC;&#x5DE5;&#x901A;&#x4FE1;&#x7684;&#x534F;&#x8BAE;&#x3002;</p>
+<p>&#x5728;WebSocket API&#x4E2D;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x548C;&#x670D;&#x52A1;&#x5668;&#x53EA;&#x9700;&#x8981;&#x5B8C;&#x6210;&#x4E00;&#x6B21;&#x63E1;&#x624B;&#xFF0C;&#x4E24;&#x8005;&#x4E4B;&#x95F4;&#x5C31;&#x76F4;&#x63A5;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x6301;&#x4E45;&#x6027;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x53CC;&#x5411;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x3002;</p>
+<p>Websocket&#x4F7F;&#x7528;ws&#x6216;wss&#x7684;&#x7EDF;&#x4E00;&#x8D44;&#x6E90;&#x6807;&#x5FD7;&#x7B26;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;HTTPS&#xFF0C;&#x5176;&#x4E2D;wss&#x8868;&#x793A;&#x5728;TLS&#x4E4B;&#x4E0A;&#x7684;Websocket&#x3002;&#x5982;&#xFF1A;</p>
+<pre><code>ws://example.com/wsapi
+wss://secure.example.com/
+</code></pre><p>Websocket&#x4F7F;&#x7528;&#x548C; HTTP &#x76F8;&#x540C;&#x7684; TCP &#x7AEF;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED5;&#x8FC7;&#x5927;&#x591A;&#x6570;&#x9632;&#x706B;&#x5899;&#x7684;&#x9650;&#x5236;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Websocket&#x534F;&#x8BAE;&#x4F7F;&#x7528;80&#x7AEF;&#x53E3;&#xFF1B;&#x8FD0;&#x884C;&#x5728;TLS&#x4E4B;&#x4E0A;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;443&#x7AEF;&#x53E3;&#x3002;</p>
+<h3 id="&#x63E1;&#x624B;">&#x63E1;&#x624B;</h3>
+<p>WebSocket &#x662F;&#x72EC;&#x7ACB;&#x7684;&#x3001;&#x521B;&#x5EFA;&#x5728; TCP &#x4E0A;&#x7684;&#x534F;&#x8BAE;&#x3002;</p>
+<p>Websocket &#x901A;&#x8FC7; HTTP/1.1 &#x534F;&#x8BAE;&#x7684;101&#x72B6;&#x6001;&#x7801;&#x8FDB;&#x884C;&#x63E1;&#x624B;&#x3002;</p>
+<p>&#x63E1;&#x624B;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<p>Client</p>
+<pre><code>GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: example.com
+Origin: http://example.com
+Sec-WebSocket-Key: sN9cRrP/n9NdMgdcy2VJFQ==
+Sec-WebSocket-Version: 13
+</code></pre><p>Server</p>
+<pre><code>HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: fFBooB7FAkLlXgRSz0BT3v4hq5s=
+Sec-WebSocket-Location: ws://example.com/
+</code></pre><h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<ul>
+<li>&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<a href="https://tools.ietf.org/html/rfc6455" target="_blank">https://tools.ietf.org/html/rfc6455</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2017/05/websocket.html" target="_blank">http://www.ruanyifeng.com/blog/2017/05/websocket.html</a></li>
+</ul>
 
                                 
                                 </section>
@@ -1479,7 +1561,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"WebSocket","level":"1.8.4","depth":2,"next":{"title":"xlog","level":"1.8.5","depth":2,"path":"other/xlog.md","ref":"other/xlog.md","articles":[]},"previous":{"title":"mars","level":"1.8.3","depth":2,"path":"other/mars.md","ref":"other/mars.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/websocket.md","mtime":"2018-12-17T02:30:52.486Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T02:22:11.290Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"WebSocket","level":"1.8.4","depth":2,"next":{"title":"xlog","level":"1.8.5","depth":2,"path":"other/xlog.md","ref":"other/xlog.md","articles":[]},"previous":{"title":"mars","level":"1.8.3","depth":2,"path":"other/mars.md","ref":"other/mars.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/websocket.md","mtime":"2018-12-18T06:07:14.731Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-18T01:40:14.587Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
