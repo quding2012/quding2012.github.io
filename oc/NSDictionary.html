@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>atomic · 学习笔记</title>
+        <title>NSDictionary · 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -66,10 +66,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="synchronized.html" />
+    <link rel="next" href="../swift/" />
     
     
-    <link rel="prev" href="runtime/runtime-api.html" />
+    <link rel="prev" href="audio.html" />
     
 
     
@@ -826,7 +826,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.1.2" data-path="atomic.html">
+        <li class="chapter " data-level="4.1.2" data-path="atomic.html">
             
                 <a href="atomic.html">
             
@@ -1047,7 +1047,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.19" data-path="NSDictionary.html">
+        <li class="chapter active" data-level="4.1.19" data-path="NSDictionary.html">
             
                 <a href="NSDictionary.html">
             
@@ -1599,7 +1599,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >atomic</a>
+        <a href=".." >NSDictionary</a>
     </h1>
 </div>
 
@@ -1614,41 +1614,113 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x539F;&#x5B50;&#x6027;-atomic">&#x539F;&#x5B50;&#x6027; Atomic</h3>
-<p>&#x539F;&#x5B50;&#x6027;&#x662F;&#x6307;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x662F;&#x4E0D;&#x53EF;&#x4E2D;&#x65AD;&#x7684;&#xFF0C;&#x8981;&#x4E48;&#x5168;&#x90E8;&#x6267;&#x884C;&#x6210;&#x529F;&#x8981;&#x4E48;&#x5168;&#x90E8;&#x6267;&#x884C;&#x5931;&#x8D25;&#x3002;&#x5373;&#x4F7F;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E00;&#x8D77;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x4E00;&#x65E6;&#x5F00;&#x59CB;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x88AB;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x6240;&#x5E72;&#x6270;&#x3002;</p>
-<pre><code>int a = 10;  // &#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x3002;&#x53EA;&#x6709;&#x8D4B;&#x503C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;
-int b = a;  // &#x4E0D;&#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x3002;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#xFF1A;&#x8BFB;&#x53D6;a&#xFF1B;&#x7ED9;b&#x8D4B;&#x503C;
-a++; // &#x4E0D;&#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#xFF0C;&#x5305;&#x542B;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#xFF1A;&#x8BFB;&#x53D6;a&#xFF1B;&#x8FDB;&#x884C; a + 1 &#x64CD;&#x4F5C;&#xFF1B;&#x7ED9;a&#x8D4B;&#x503C; 
-</code></pre><p>&#x975E;&#x539F;&#x5B50;&#x6027;&#x64CD;&#x4F5C;&#xFF0C;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x64CD;&#x4F5C;&#x4E2D;&#x662F;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x3002;</p>
-<p>&#x7EBF;&#x7A0B;&#x4E0D;&#x5B89;&#x5168;&#x5C31;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x6267;&#x884C;&#x53EF;&#x80FD;&#x4E0D;&#x4F1A;&#x5F97;&#x5230;&#x6B63;&#x786E;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
-<h3 id="property&#x7684;&#x4FEE;&#x9970;&#x7B26;&#xFF1A;-atomic-&#x4E0E;-nonatomic">property&#x7684;&#x4FEE;&#x9970;&#x7B26;&#xFF1A; atomic &#x4E0E; nonatomic</h3>
-<p>&#x5B9E;&#x9645;&#x662F; &#x5BF9; set &#x548C; get &#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x6574; &#x5982;&#x679C;&#x662F; atomic &#x5219;&#x4F7F;&#x7528; spinlock_t &#x6765;&#x52A0;&#x9501;</p>
-<pre><code>static setProperty(...) {
-    if (atomic) {
-        spinlock_t&amp; slotlock = PropertyLocks[slot];
-        slotlock.lock();
-        oldValue = *slot;
-        *slot = newValue;        
-        slotlock.unlock();
-    } else {
-        oldValue = *slot;
-        *slot = newValue;
-    }
+                                <h2 id="nsmutabledictionary-&#x4E0E;-nsdictionary-&#x4F7F;&#x7528;">NSMutableDictionary &#x4E0E; NSDictionary &#x4F7F;&#x7528;</h2>
+<h3 id="key-&#x4E0E;-value-&#x7C7B;&#x578B;">Key &#x4E0E; Value &#x7C7B;&#x578B;</h3>
+<p>a key-value paire is called an entry</p>
+<p>&#x5728; Dictionary &#x4E2D;&#xFF0C;key &#x662F;&#x552F;&#x4E00;&#x7684;(&#x4F7F;&#x7528; isEqual: &#x6765;&#x6BD4;&#x8F83;)&#x3002;</p>
+<p>key &#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x610F;&#x5BF9;&#x8C61;(&#x4FDD;&#x8BC1;&#x5B9E;&#x73B0;&#x4E86; NSCopying &#x534F;&#x8BAE;&#x5373;&#x53EF;)</p>
+<p>key &#x4E0E; value &#x90FD;&#x4E0D;&#x53EF;&#x4EE5;&#x4E3A; nil&#xFF0C;&#x4F46;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; [NSNull null]</p>
+<p>&#x5B9A;&#x4E49;&#x7C7B;&#xFF0C;&#x5B9E;&#x73B0;NSCopying&#x534F;&#x8BAE;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5C31;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;key</p>
+<pre><code class="lang-c">@interface MyKey: NSObject &lt;NSCopying&gt;
+@end
+
+@implementation MyKey
+- (id)copyWithZone:(NSZone *)zone {
+    MyKey *copy = [[MyKey alloc] init];
+    <span class="hljs-keyword">return</span> copy;
 }
-
-static id objc_getProperty(...) {
-    id *slot = (id*) ((char*)self + offset);
-    if (!atomic) return *slot;  // nonatomic
-
-    // Atomic retain release world
-    spinlock_t&amp; slotlock = PropertyLocks[slot];
-    slotlock.lock();
-    id value = objc_retain(*slot);
-    slotlock.unlock();
-
-    return value;
-}
+@end
 </code></pre>
+<p>&#x5177;&#x4F53;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code>NSMutableDictionary&lt;MyKey *, NSNumber *&gt; *dict1 = @{}.mutableCopy;
+
+// MyKey &#x4F5C;&#x4E3A; key&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x4F1A;copy&#x4E00;&#x4E2A;&#x65B0;&#x5B9E;&#x4F8B;&#x4F5C;&#x4E3A; &#x5B57;&#x5178;&#x7684;key
+MyKey *key = [[MyKey alloc] init];
+
+// @(2) &#x4E3A; NSNumber &#x7684;&#x7B80;&#x5199;
+[dict1 setObject:@(2) forKey:key];
+
+// value &#x53EF;&#x4EE5;&#x4E3A; [NSNull null]
+[dict1 setObject:[NSNull null] forKey:key];
+[dict1 setObject:[NSNull null] forKey:key];
+
+// key &#x53EF;&#x4EE5;&#x4F7F;&#x7528; [NSNull null] &#x552F;&#x4E00;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x8986;&#x76D6;
+[dict1 setObject:@(3) forKey:[NSNull null]];
+[dict1 setObject:@(4) forKey:[NSNull null]];
+
+&#x6CE8;&#x610F; - (void)setValue:(nullable id)value forKey:(NSString *)key;  &#x4E2D;&#x7684;key&#x4E3A; NSString
+[dict1 setValue:[NSNumber numberWithInt:1] forKey: key];
+
+&#x6253;&#x5370;&#x7ED3;&#x679C;&#xFF1A;
+(lldb) po dict1
+{
+    &quot;&lt;MyKey: 0x60800001f2c0&gt;&quot; = 1;
+    &quot;&lt;MyKey: 0x60800001f2e0&gt;&quot; = &quot;&lt;null&gt;&quot;;
+    &quot;&lt;MyKey: 0x60800001f1e0&gt;&quot; = &quot;&lt;null&gt;&quot;;
+    &quot;&lt;null&gt;&quot; = 4;
+    &quot;&lt;MyKey: 0x60800001f2d0&gt;&quot; = 2;
+}
+</code></pre><h3 id="&#x6865;&#x63A5;">&#x6865;&#x63A5;</h3>
+<p>&#x901A;&#x8FC7; __bridge &#x6865;&#x63A5; Core Foundation &#x4E0E; Cocoa &#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;</p>
+<pre><code>NSString *str = (__bridge NSString *)strRef;
+
+NSString *hello = @&quot;hello&quot;;
+CFStringRef helloRef = (__bridge CFStringRef)hello;
+</code></pre><p>CFDictionaryRef</p>
+<pre><code>NSDictionary is &#x201C;toll-free bridged&#x201D; with its Core Foundation counterpart, CFDictionaryRef. 
+typedef struct __CFDictionary *CFDictionaryRef;
+
+CFStringRef keys[3];
+keys[0] = CFSTR(&quot;key1&quot;);
+keys[1] = CFSTR(&quot;key2&quot;);
+keys[2] = CFSTR(&quot;key3&quot;);
+
+CFStringRef values[3];
+values[0] = CFSTR(&quot;values1&quot;);
+values[1] = CFSTR(&quot;values2&quot;);
+values[2] = CFSTR(&quot;values3&quot;);
+
+/// immutable
+CFDictionaryRef dictRef = CFDictionaryCreate(kCFAllocatorDefault, (void *)keys, (void *)values, 3, NULL, NULL);
+CFIndex count = CFDictionaryGetCount(dictRef);
+// copy
+CFDictionaryRef dict1Ref = CFDictionaryCreateCopy(kCFAllocatorDefault, dictRef);
+
+// ...
+
+CFRelease(dictRef);
+CFRelease(dict1Ref);
+</code></pre><p>CFMutableDictionaryRef</p>
+<pre><code>/// mutable &#x4E2A;&#x6570;&#x4E3A;0 &#x8868;&#x793A;&#x4E0D;&#x9650;&#x5236;&#x4E2A;&#x6570;
+CFMutableDictionaryRef mDictRef = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, NULL, NULL);
+
+// add
+CFDictionaryAddValue(mDictRef, CFSTR(&quot;key0&quot;), CFSTR(&quot;value0&quot;));
+
+const void * value = CFDictionaryGetValue(mDictRef, CFSTR(&quot;key0&quot;));
+
+// &#x4F7F;&#x7528;&#x5B8C;&#x91CA;&#x653E;
+CFRelease(mDictRef);
+</code></pre><p>CFStringRef &#x4E0E; CFMutableStringRef</p>
+<pre><code>CFStringRef strRef = CFSTR(&quot;&#x4F60;&#x597D;&quot;);
+
+// 0 &#x4E3A; &#x6CA1;&#x6709;&#x5927;&#x5C0F;&#x9650;&#x5236;
+CFMutableStringRef mStrRef = CFStringCreateMutable(kCFAllocatorDefault, 0);
+
+CFStringAppend(mStrRef, strRef);
+CFStringAppend(mStrRef, CFSTR(&quot;&#xFF0C;Peter&quot;));
+
+CFRelease(strRef);
+CFRelease(mStrRef);
+</code></pre><p>CFArrayRef</p>
+<pre><code>
+
+</code></pre><h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<ul>
+<li>&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<a href="https://developer.apple.com/documentation/foundation/nsdictionary?language=objc" target="_blank">https://developer.apple.com/documentation/foundation/nsdictionary?language=objc</a></li>
+<li></li>
+</ul>
+
                                 
                                 </section>
                             
@@ -1675,12 +1747,12 @@ static id objc_getProperty(...) {
 
             
                 
-                <a href="runtime/runtime-api.html" class="navigation navigation-prev " aria-label="Previous page: API">
+                <a href="audio.html" class="navigation navigation-prev " aria-label="Previous page: 音频">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="synchronized.html" class="navigation navigation-next " aria-label="Next page: synchronized">
+                <a href="../swift/" class="navigation navigation-next " aria-label="Next page: Swift">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1691,7 +1763,7 @@ static id objc_getProperty(...) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"atomic","level":"4.1.2","depth":2,"next":{"title":"synchronized","level":"4.1.3","depth":2,"path":"oc/synchronized.md","ref":"oc/synchronized.md","articles":[]},"previous":{"title":"API","level":"4.1.1.3","depth":3,"path":"oc/runtime/runtime-api.md","ref":"oc/runtime/runtime-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/atomic.md","mtime":"2018-12-18T01:53:20.514Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-19T07:17:01.784Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"NSDictionary","level":"4.1.19","depth":2,"next":{"title":"Swift","level":"4.2","depth":1,"path":"swift/index.md","ref":"swift/index.md","articles":[{"title":"where","level":"4.2.1","depth":2,"path":"swift/where.md","ref":"swift/where.md","articles":[]},{"title":"[codable])(swift/codable.md)","level":"4.2.2","depth":2,"ref":"","articles":[]}]},"previous":{"title":"音频","level":"4.1.18","depth":2,"path":"oc/audio.md","ref":"oc/audio.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/NSDictionary.md","mtime":"2018-12-19T07:19:28.872Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-19T07:17:01.784Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
