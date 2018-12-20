@@ -995,20 +995,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.15" data-path="../../oc/startup.html">
-            
-                <a href="../../oc/startup.html">
-            
-                    
-                    startup
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.1.16" data-path="../../oc/objc-start.html">
+        <li class="chapter " data-level="4.1.15" data-path="../../oc/objc-start.html">
             
                 <a href="../../oc/objc-start.html">
             
@@ -1021,7 +1008,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.17" data-path="../../oc/swift-oc.html">
+        <li class="chapter " data-level="4.1.16" data-path="../../oc/swift-oc.html">
             
                 <a href="../../oc/swift-oc.html">
             
@@ -1034,7 +1021,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.18" data-path="../../oc/audio.html">
+        <li class="chapter " data-level="4.1.17" data-path="../../oc/audio.html">
             
                 <a href="../../oc/audio.html">
             
@@ -1047,7 +1034,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.19" data-path="../../oc/NSDictionary.html">
+        <li class="chapter " data-level="4.1.18" data-path="../../oc/NSDictionary.html">
             
                 <a href="../../oc/NSDictionary.html">
             
@@ -1259,9 +1246,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4" data-path="../../optimize/">
+        <li class="chapter " data-level="4.4" data-path="../optimize/">
             
-                <a href="../../optimize/">
+                <a href="../optimize/">
             
                     
                     App优化
@@ -1273,9 +1260,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.4.1" data-path="../../optimize/crash.html">
+        <li class="chapter " data-level="4.4.1" data-path="../optimize/crash.html">
             
-                <a href="../../optimize/crash.html">
+                <a href="../optimize/crash.html">
             
                     
                     Crash优化
@@ -1286,9 +1273,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4.2" data-path="../../optimize/kadun.html">
+        <li class="chapter " data-level="4.4.2" data-path="../optimize/kadun.html">
             
-                <a href="../../optimize/kadun.html">
+                <a href="../optimize/kadun.html">
             
                     
                     卡顿优化
@@ -1299,12 +1286,25 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4.3" data-path="../../optimize/memory.html">
+        <li class="chapter " data-level="4.4.3" data-path="../optimize/memory.html">
             
-                <a href="../../optimize/memory.html">
+                <a href="../optimize/memory.html">
             
                     
                     内存优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.4" data-path="../optimize/appsize.html">
+            
+                <a href="../optimize/appsize.html">
+            
+                    
+                    减小ipa包体积
             
                 </a>
             
@@ -1615,6 +1615,14 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="&#x7F16;&#x8BD1;">&#x7F16;&#x8BD1;</h2>
+<p><strong>&#x7F16;&#x8BD1;</strong></p>
+<p>&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x628A;&#x6BCF;&#x4E2A; .m/.c/.mm &#x6587;&#x4EF6; &#x7F16;&#x8BD1;&#x6210; .o &#x6587;&#x4EF6; (&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x6709; .d/.dia &#x4E2D;&#x95F4;&#x6587;&#x4EF6;&#x751F;&#x6210;)
+MyClass.m -&gt; MyClass.d + MyClass.dia  MyClass.o</p>
+<p>&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x540E;&#xFF0C;linker &#x4F1A;&#x94FE;&#x63A5; .o &#x6587;&#x4EF6;&#xFF0C;&#x5408;&#x5E76;&#x540E;&#x751F;&#x6210;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;</p>
+<p>&#x4E3E;&#x4F8B;&#x7F16;&#x8BD1; </p>
+<p><strong>&#x94FE;&#x63A5;</strong></p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<p><a href="https://www.jianshu.com/p/9fc7776cce9b" target="_blank">https://www.jianshu.com/p/9fc7776cce9b</a></p>
 <h3 id="xcode-&#x5DE5;&#x7A0B;&#x7F16;&#x8BD1;&#x6D41;&#x7A0B;">Xcode &#x5DE5;&#x7A0B;&#x7F16;&#x8BD1;&#x6D41;&#x7A0B;</h3>
 <ul>
 <li>&#x7F16;&#x8BD1;&#x4FE1;&#x606F;&#x5199;&#x5165;&#x8F85;&#x52A9;&#x6587;&#x4EF6;&#xFF0C;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x67B6;&#x6784; .app &#x6587;&#x4EF6;</li>
@@ -1638,15 +1646,100 @@
 <p><a href="https://medium.com/swift-programming/swift-build-time-optimizations-part-2-37b0a7514cbe" target="_blank">https://medium.com/swift-programming/swift-build-time-optimizations-part-2-37b0a7514cbe</a></p>
 <h3 id="linkmap-&#x6587;&#x4EF6;">LinkMap &#x6587;&#x4EF6;</h3>
 <h4 id="&#x5982;&#x4F55;&#x751F;&#x6210;-linkmap-&#x6587;&#x4EF6;">&#x5982;&#x4F55;&#x751F;&#x6210; LinkMap &#x6587;&#x4EF6;</h4>
-<p>Build Setting &#x4E2D;&#x8BBE;&#x7F6E; writie Link Map File &#x4E3A;YES&#xFF0C;build&#x5B8C;&#x540E;&#x5728; 
-LinkMap&#x6587;&#x4EF6;&#x5305;&#x542B;3&#x90E8;&#x5206;&#xFF1A;</p>
-<ol>
-<li>Object Files  &#x5217;&#x51FA;&#x4E86;&#x6240;&#x6709;&#x7684;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x5217;&#x8868;&#xFF0C;&#x5305;&#x62EC;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x7801;&#x548C;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x3002;</li>
-<li>Sections </li>
-<li>Symbols </li>
-</ol>
-<p>&#x53C2;&#x8003;&#xFF1A;
-<a href="http://blog.cnbang.net/tech/2296/" target="_blank">http://blog.cnbang.net/tech/2296/</a></p>
+<p>Build Setting &#x4E2D;&#x8BBE;&#x7F6E; writie Link Map File &#x4E3A;YES&#xFF0C;build&#x5B8C;&#x540E;&#x5728;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x67E5;&#x627E;&#x3002;</p>
+<p>LinkMap&#x6587;&#x4EF6;&#x5305;&#x542B;3&#x90E8;&#x5206;&#xFF1A;</p>
+<p>1.Object Files</p>
+<p>&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x90FD;&#x662F; .m&#x6587;&#x4EF6;&#x7F16;&#x8BD1;&#x540E;&#x7684;.o&#x6587;&#x4EF6;&#x548C;&#x9700;&#x8981;link&#x7684;.a&#x6587;&#x4EF6;&#x3002;&#x7B7E;&#x540D;&#x662F;&#x6587;&#x4EF6;&#x7F16;&#x53F7;&#xFF0C;&#x540E;&#x9762;&#x662F;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x3002;</p>
+<pre><code># Object files:
+[  0] linker synthesized
+[  1] /Users/hour/Library/Developer/Xcode/DerivedData/TestObjC-ehiipviorxrstxesehwsodphwccc/Build/Intermediates.noindex/TestObjC.build/Debug-iphonesimulator/TestObjC.build/TestObjC.app-Simulated.xcent
+[  2] /Users/hour/Library/Developer/Xcode/DerivedData/TestObjC-ehiipviorxrstxesehwsodphwccc/Build/Intermediates.noindex/TestObjC.build/Debug-iphonesimulator/TestObjC.build/Objects-normal/x86_64/HelloWorld.o
+[  3] /Users/hour/Library/Developer/Xcode/DerivedData/TestObjC-ehiipviorxrstxesehwsodphwccc/Build/Intermediates.noindex/TestObjC.build/Debug-iphonesimulator/TestObjC.build/Objects-normal/x86_64/ViewController.o
+&#x7B49;&#x7B49;
+[ 10] /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.1.sdk/System/Library/Frameworks//UIKit.framework/UIKit.tbd
+</code></pre><p>2.Sections </p>
+<p>&#x8FD9;&#x91CC;&#x63CF;&#x8FF0;&#x7684;&#x662F;&#x6BCF;&#x4E2A; Section &#x5728;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x5927;&#x5C0F;&#x3002;&#x6BCF;&#x4E2A; Section &#x7684; Segment &#x5206;&#x4E3A; <strong>TEXT&#x4EE3;&#x7801;&#x6BB5; &#x548C; </strong>DATA&#x6570;&#x636E;&#x6BB5; &#x4E24;&#x79CD;&#x7C7B;&#x578B;</p>
+<pre><code># Sections:
+# Address    Size        Segment    Section
+0x100001450    0x00000567    __TEXT    __text
+0x1000019B8    0x0000004E    __TEXT    __stubs
+0x100001A08    0x00000092    __TEXT    __stub_helper
+0x100001A9A    0x000000B0    __TEXT    __cstring
+0x100001B4A    0x0000004F    __TEXT    __objc_classname
+0x100001B99    0x00000A2D    __TEXT    __objc_methname
+0x1000025C6    0x0000086D    __TEXT    __objc_methtype
+0x100002E33    0x00000178    __TEXT    __entitlements
+0x100002FAC    0x00000048    __TEXT    __unwind_info
+0x100003000    0x00000010    __DATA    __nl_symbol_ptr
+0x100003010    0x00000018    __DATA    __got
+0x100003028    0x00000068    __DATA    __la_symbol_ptr
+0x100003090    0x00000030    __DATA    __const
+0x1000030C0    0x00000040    __DATA    __cfstring
+0x100003100    0x00000020    __DATA    __objc_classlist
+0x100003120    0x00000010    __DATA    __objc_protolist
+0x100003130    0x00000008    __DATA    __objc_imageinfo
+0x100003138    0x00000D48    __DATA    __objc_const
+0x100003E80    0x00000010    __DATA    __objc_selrefs
+0x100003E90    0x00000008    __DATA    __objc_classrefs
+0x100003E98    0x00000008    __DATA    __objc_superrefs
+0x100003EA0    0x00000008    __DATA    __objc_ivar
+0x100003EA8    0x00000140    __DATA    __objc_data
+0x100003FE8    0x000000C0    __DATA    __data
+</code></pre><p>3.Symbols </p>
+<p>Symbols &#x5BF9; Section &#x8FDB;&#x884C;&#x4E86;&#x518D;&#x5212;&#x5206;&#x3002;&#x8FD9;&#x91CC;&#x4F1A;&#x63CF;&#x8FF0;&#x6240;&#x6709;&#x7684; methods&#x3001;ivar&#x548C;&#x5B57;&#x7B26;&#x4E32;&#x7B49;&#x5BF9;&#x5E94;&#x7684;&#x5730;&#x5740;&#x3001;&#x5927;&#x5C0F;&#x3001;&#x6587;&#x4EF6;&#x7F16;&#x53F7;&#x4FE1;&#x606F;&#x3002;</p>
+<pre><code># Symbols:
+# Address    Size        File  Name
+0x100001450    0x00000027    [  2] -[HelloWorld hello]
+0x100001480    0x00000040    [  3] -[ViewController viewDidLoad]
+0x1000014C0    0x00000027    [  3] -[MyClass hello]
+0x1000014F0    0x00000092    [  4] _main
+0x100001590    0x00000080    [  5] -[AppDelegate application:didFinishLaunchingWithOptions:]
+0x100001610    0x00000040    [  5] -[AppDelegate applicationWillResignActive:]
+...
+</code></pre><h3 id="dsym&#x6587;&#x4EF6;">dsym&#x6587;&#x4EF6;</h3>
+<p>&#x7A0B;&#x5E8F;&#x5728;&#x6267;&#x884C;&#x65F6;&#x901A;&#x8FC7;&#x5730;&#x5740;&#x6765;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x3002;dsym&#x6587;&#x4EF6;&#x4E2D;&#x50A8;&#x5B58;&#x4E86;&#x51FD;&#x6570;&#x5730;&#x5740;&#x6620;&#x5C04;&#xFF0C;&#x51FD;&#x6570;&#x5730;&#x5740;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;dsym&#x6587;&#x4EF6;&#x6620;&#x5C04;&#x5230;&#x5177;&#x4F53;&#x51FD;&#x6570;&#x4F4D;&#x7F6E;&#x3002;</p>
+<h3 id="&#x4EE3;&#x7801;&#x6587;&#x4EF6;">&#x4EE3;&#x7801;&#x6587;&#x4EF6;</h3>
+<ul>
+<li>&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;</li>
+<li>Object</li>
+<li>&#x9759;&#x6001;&#x5E93;&#x6587;&#x4EF6;</li>
+<li>&#x52A8;&#x6001;&#x5E93;&#x6587;&#x4EF6;</li>
+</ul>
+<p>&#x6807;&#x8BC6; &#x4ECE; Mach64 Header &#x4E2D;&#x53EF;&#x4EE5;&#x8BFB;&#x51FA; File Type</p>
+<h4 id="&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E2D;&#x6570;&#x636E;">&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E2D;&#x6570;&#x636E;</h4>
+<p>&#x4E00;&#x4E2A;&#x4EE3;&#x7801;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x4E2D; &#x5305;&#x542B;&#x7684;&#x4E0D;&#x540C;&#x533A;&#x57DF; &#x6210;&#x4E3A; Segment</p>
+<p>&#x5728;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x4F1A;&#x628A;segment&#x6620;&#x5C04;&#x5230;&#x8FDB;&#x7A0B;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x6309;&#x9700;&#x52A0;&#x8F7D;(mmap&#x6280;&#x672F;)</p>
+<p>Segment &#x5177;&#x4F53;&#x5206;&#x4E3A;&#xFF1A;</p>
+<p><strong>__TEXT</strong> segment</p>
+<p>&#x5305;&#x542B;&#x88AB;&#x6267;&#x884C;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x88AB;&#x53EA;&#x8BFB;&#x548C;&#x53EF;&#x6267;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x6620;&#x5C04;&#x3002;</p>
+<ul>
+<li>__cstring &#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;</li>
+<li>__const &#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x5E38;&#x91CF;</li>
+<li>__text  &#x5305;&#x542B;&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x673A;&#x5668;&#x7801;</li>
+<li><strong>stubs &#x548C; </strong>stub_helper &#x662F;&#x7ED9;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5668; dyld &#x4F7F;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x5141;&#x8BB8;&#x5EF6;&#x8FDF;&#x94FE;&#x63A5;</li>
+</ul>
+<p><strong>__DATA</strong> segment</p>
+<p>&#x4EE5;&#x53EF;&#x8BFB;&#x5199;&#x548C;&#x4E0D;&#x53EF;&#x6267;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x6620;&#x5C04;&#xFF08;&#x91CC;&#x9762;&#x7684;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x88AB;&#x6539;&#x53D8;&#xFF09;</p>
+<p><strong>__LINKEDIT</strong></p>
+<p><strong>__PAGEZERO</strong></p>
+<h3 id="mach-o&#x6587;&#x4EF6;">Mach-O&#x6587;&#x4EF6;</h3>
+<p>&#x5934;&#x90E8;&#x4FE1;&#x606F;</p>
+<pre><code>struct mach_header {
+  uint32_t      magic;
+  cpu_type_t    cputype;
+  cpu_subtype_t cpusubtype;
+  uint32_t      filetype;
+  uint32_t      ncmds;
+  uint32_t      sizeofcmds;
+  uint32_t      flags;
+};
+
+&#x4F5C;&#x8005;&#xFF1A;&#x661F;&#x5149;&#x793E;&#x7684;&#x6234;&#x94ED;
+&#x94FE;&#x63A5;&#xFF1A;https://www.jianshu.com/p/9fc7776cce9b
+&#x4F86;&#x6E90;&#xFF1A;&#x7B80;&#x4E66;
+&#x7B80;&#x4E66;&#x8457;&#x4F5C;&#x6743;&#x5F52;&#x4F5C;&#x8005;&#x6240;&#x6709;&#xFF0C;&#x4EFB;&#x4F55;&#x5F62;&#x5F0F;&#x7684;&#x8F6C;&#x8F7D;&#x90FD;&#x8BF7;&#x8054;&#x7CFB;&#x4F5C;&#x8005;&#x83B7;&#x5F97;&#x6388;&#x6743;&#x5E76;&#x6CE8;&#x660E;&#x51FA;&#x5904;&#x3002;
+</code></pre><h3 id="&#x53C2;&#x8003;&#xFF1A;">&#x53C2;&#x8003;&#xFF1A;</h3>
+<p><a href="http://blog.cnbang.net/tech/2296/" target="_blank">http://blog.cnbang.net/tech/2296/</a></p>
 <p><a href="http://www.cloudchou.com/android/post-992.html" target="_blank">http://www.cloudchou.com/android/post-992.html</a></p>
 <p><a href="https://stackoverflow.com/questions/32003262/find-size-contributed-by-each-external-library-on-ios" target="_blank">https://stackoverflow.com/questions/32003262/find-size-contributed-by-each-external-library-on-ios</a></p>
 
@@ -1692,7 +1785,7 @@ LinkMap&#x6587;&#x4EF6;&#x5305;&#x542B;3&#x90E8;&#x5206;&#xFF1A;</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"编译","level":"4.6.1","depth":2,"next":{"title":"链接","level":"4.6.2","depth":2,"path":"ios/basic/linker.md","ref":"ios/basic/linker.md","articles":[]},"previous":{"title":"iOS运行","level":"4.6","depth":1,"path":"ios/basic/index.md","ref":"ios/basic/index.md","articles":[{"title":"编译","level":"4.6.1","depth":2,"path":"ios/basic/compile.md","ref":"ios/basic/compile.md","articles":[]},{"title":"链接","level":"4.6.2","depth":2,"path":"ios/basic/linker.md","ref":"ios/basic/linker.md","articles":[]},{"title":"App运行","level":"4.6.3","depth":2,"path":"ios/basic/mdstartapp.md","ref":"ios/basic/mdstartapp.md","articles":[]},{"title":"签名流程","level":"4.6.4","depth":2,"path":"ios/basic/signature.md","ref":"ios/basic/signature.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ios/basic/compile.md","mtime":"2018-12-19T09:31:33.447Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-19T07:17:01.784Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"编译","level":"4.6.1","depth":2,"next":{"title":"链接","level":"4.6.2","depth":2,"path":"ios/basic/linker.md","ref":"ios/basic/linker.md","articles":[]},"previous":{"title":"iOS运行","level":"4.6","depth":1,"path":"ios/basic/index.md","ref":"ios/basic/index.md","articles":[{"title":"编译","level":"4.6.1","depth":2,"path":"ios/basic/compile.md","ref":"ios/basic/compile.md","articles":[]},{"title":"链接","level":"4.6.2","depth":2,"path":"ios/basic/linker.md","ref":"ios/basic/linker.md","articles":[]},{"title":"App运行","level":"4.6.3","depth":2,"path":"ios/basic/mdstartapp.md","ref":"ios/basic/mdstartapp.md","articles":[]},{"title":"签名流程","level":"4.6.4","depth":2,"path":"ios/basic/signature.md","ref":"ios/basic/signature.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ios/basic/compile.md","mtime":"2018-12-19T16:19:36.429Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-19T15:32:30.693Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
