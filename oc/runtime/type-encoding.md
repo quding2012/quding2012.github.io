@@ -25,7 +25,7 @@ char* buf2 = @encode(char *);
 
 对于的类型：
 ```
-c char 
+c char
 
 ```
 
