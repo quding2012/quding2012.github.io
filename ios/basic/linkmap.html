@@ -66,7 +66,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../bug/" />
+    <link rel="next" href="c.html" />
     
     
     <link rel="prev" href="signature.html" />
@@ -1415,9 +1415,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.3" data-path="mdstartapp.md">
+        <li class="chapter " data-level="4.6.3" data-path="startapp.html">
             
-                <span>
+                <a href="startapp.html">
             
                     
                     App运行
@@ -1428,7 +1428,20 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.4" data-path="objectfile.html">
+        <li class="chapter " data-level="4.6.4" data-path="startruntime.html">
+            
+                <a href="startruntime.html">
+            
+                    
+                    start-runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.5" data-path="objectfile.html">
             
                 <a href="objectfile.html">
             
@@ -1441,7 +1454,20 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.5" data-path="signature.html">
+        <li class="chapter " data-level="4.6.6" data-path="macho.html">
+            
+                <a href="macho.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.7" data-path="signature.html">
             
                 <a href="signature.html">
             
@@ -1454,12 +1480,25 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.6.6" data-path="linkmap.html">
+        <li class="chapter active" data-level="4.6.8" data-path="linkmap.html">
             
                 <a href="linkmap.html">
             
                     
                     LinkMap文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.9" data-path="c.html">
+            
+                <a href="c.html">
+            
+                    
+                    C语言
             
                 </a>
             
@@ -1659,6 +1698,14 @@ XCode -&gt; Project -&gt; Build Settings -&gt; &#x628A;Write Link Map File&#x900
 [ 10] /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.1.sdk/System/Library/Frameworks//UIKit.framework/UIKit.tbd
 </code></pre><p>2.Sections </p>
 <p>&#x8FD9;&#x91CC;&#x63CF;&#x8FF0;&#x7684;&#x662F;&#x6BCF;&#x4E2A; Section &#x5728;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x5927;&#x5C0F;&#x3002;&#x6BCF;&#x4E2A; Section &#x7684; Segment &#x5206;&#x4E3A; <strong>TEXT&#x4EE3;&#x7801;&#x6BB5; &#x548C; </strong>DATA&#x6570;&#x636E;&#x6BB5; &#x4E24;&#x79CD;&#x7C7B;&#x578B;</p>
+<p>&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre><code>struct Section {
+    Address
+    Size
+    Segment
+    Section
+}
+</code></pre><p>Demo:</p>
 <pre><code># Sections:
 # Address    Size        Segment    Section
 0x100001450    0x00000567    __TEXT    __text
@@ -1687,6 +1734,14 @@ XCode -&gt; Project -&gt; Build Settings -&gt; &#x628A;Write Link Map File&#x900
 0x100003FE8    0x000000C0    __DATA    __data
 </code></pre><p>3.Symbols </p>
 <p>Symbols &#x5BF9; Section &#x8FDB;&#x884C;&#x4E86;&#x518D;&#x5212;&#x5206;&#x3002;&#x8FD9;&#x91CC;&#x4F1A;&#x63CF;&#x8FF0;&#x6240;&#x6709;&#x7684; methods&#x3001;ivar&#x548C;&#x5B57;&#x7B26;&#x4E32;&#x7B49;&#x5BF9;&#x5E94;&#x7684;&#x5730;&#x5740;&#x3001;&#x5927;&#x5C0F;&#x3001;&#x6587;&#x4EF6;&#x7F16;&#x53F7;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre><code>struct Symbol {
+    Address
+    Size
+    File
+    Name
+}
+</code></pre><p>Demo&#xFF1A;</p>
 <pre><code># Symbols:
 # Address    Size        File  Name
 0x100001450    0x00000027    [  2] -[HelloWorld hello]
@@ -1699,8 +1754,12 @@ XCode -&gt; Project -&gt; Build Settings -&gt; &#x628A;Write Link Map File&#x900
 </code></pre><h3 id="&#x67E5;&#x770B;-linkmap-&#x6587;&#x4EF6;&#x7684;&#x5DE5;&#x5177;">&#x67E5;&#x770B; LinkMap &#x6587;&#x4EF6;&#x7684;&#x5DE5;&#x5177;</h3>
 <p>&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF1A;
 <a href="https://github.com/quding0308/LinkMap" target="_blank">https://github.com/quding0308/LinkMap</a></p>
-<p>&#x5176;&#x4ED6;&#x53C2;&#x8003;&#xFF1A;
-<a href="https://github.com/778477/iOS-LinkMapAnalyzer" target="_blank">https://github.com/778477/iOS-LinkMapAnalyzer</a></p>
+<p>&#x5176;&#x4ED6;&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://github.com/778477/iOS-LinkMapAnalyzer" target="_blank">https://github.com/778477/iOS-LinkMapAnalyzer</a></li>
+<li><a href="http://zwgeek.com/2018/01/08/%E5%9F%BA%E4%BA%8ELinkMap%E5%88%86%E6%9E%90iOSAPP%E5%90%84%E6%A8%A1%E5%9D%97%E4%BD%93%E7%A7%AF/" target="_blank">http://zwgeek.com/2018/01/08/%E5%9F%BA%E4%BA%8ELinkMap%E5%88%86%E6%9E%90iOSAPP%E5%90%84%E6%A8%A1%E5%9D%97%E4%BD%93%E7%A7%AF/</a></li>
+<li><a href="https://blog.cnbang.net/tech/2296/" target="_blank">https://blog.cnbang.net/tech/2296/</a></li>
+</ul>
 
                                 
                                 </section>
@@ -1733,7 +1792,7 @@ XCode -&gt; Project -&gt; Build Settings -&gt; &#x628A;Write Link Map File&#x900
                 </a>
                 
                 
-                <a href="../bug/" class="navigation navigation-next " aria-label="Next page: 常见bug">
+                <a href="c.html" class="navigation navigation-next " aria-label="Next page: C语言">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1744,7 +1803,7 @@ XCode -&gt; Project -&gt; Build Settings -&gt; &#x628A;Write Link Map File&#x900
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LinkMap文件","level":"4.6.6","depth":2,"next":{"title":"常见bug","level":"4.7","depth":1,"path":"ios/bug/index.md","ref":"ios/bug/index.md","articles":[]},"previous":{"title":"签名流程","level":"4.6.5","depth":2,"path":"ios/basic/signature.md","ref":"ios/basic/signature.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ios/basic/linkmap.md","mtime":"2018-12-21T05:31:35.500Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-21T05:26:38.728Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LinkMap文件","level":"4.6.8","depth":2,"next":{"title":"C语言","level":"4.6.9","depth":2,"path":"ios/basic/c.md","ref":"ios/basic/c.md","articles":[]},"previous":{"title":"签名流程","level":"4.6.7","depth":2,"path":"ios/basic/signature.md","ref":"ios/basic/signature.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ios/basic/linkmap.md","mtime":"2018-12-25T12:43:31.095Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-25T12:45:09.672Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

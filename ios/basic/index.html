@@ -1415,9 +1415,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.3" data-path="mdstartapp.md">
+        <li class="chapter " data-level="4.6.3" data-path="startapp.html">
             
-                <span>
+                <a href="startapp.html">
             
                     
                     App运行
@@ -1428,7 +1428,20 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.4" data-path="objectfile.html">
+        <li class="chapter " data-level="4.6.4" data-path="startruntime.html">
+            
+                <a href="startruntime.html">
+            
+                    
+                    start-runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.5" data-path="objectfile.html">
             
                 <a href="objectfile.html">
             
@@ -1441,7 +1454,20 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.5" data-path="signature.html">
+        <li class="chapter " data-level="4.6.6" data-path="macho.html">
+            
+                <a href="macho.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.7" data-path="signature.html">
             
                 <a href="signature.html">
             
@@ -1454,12 +1480,25 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.6" data-path="linkmap.html">
+        <li class="chapter " data-level="4.6.8" data-path="linkmap.html">
             
                 <a href="linkmap.html">
             
                     
                     LinkMap文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.9" data-path="c.html">
+            
+                <a href="c.html">
+            
+                    
+                    C语言
             
                 </a>
             
@@ -1649,6 +1688,13 @@
 <p>&#x7A0B;&#x5E8F;&#x88AB;&#x52A0;&#x8F7D;&#x5668;(loader)&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x5E76;&#x6267;&#x884C;</p>
 <p><strong>run time</strong></p>
 <p>&#x7531;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6765;&#x6267;&#x884C;</p>
+<p><strong>LLVM</strong></p>
+<p>LLVM&#x662F;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x5316;&#x548C;&#x53EF;&#x91CD;&#x7528;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x548C;&#x5DE5;&#x5177;&#x94FE;&#x6280;&#x672F;&#x7684;&#x96C6;&#x5408;&#xFF0C;Clang &#x662F; LLVM &#x7684;&#x5B50;&#x9879;&#x76EE;&#xFF0C;&#x662F; C&#xFF0C;C++ &#x548C; Objective-C &#x7F16;&#x8BD1;&#x5668;&#x3002;</p>
+<p>&#x66F4;&#x591A;&#x4ECB;&#x7ECD;&#xFF1A;<a href="http://www.aosabook.org/en/llvm.html" target="_blank">http://www.aosabook.org/en/llvm.html</a></p>
+<p><strong>clang static analyzer</strong></p>
+<p>&#x4E3B;&#x8981;&#x662F;&#x8FDB;&#x884C;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#xFF0C;&#x8BED;&#x4E49;&#x5206;&#x6790;&#x548C;&#x751F;&#x6210;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#xFF0C;&#x5F53;&#x7136;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4F1A;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#xFF0C;&#x51FA;&#x9519;&#x7684;&#x548C;&#x9700;&#x8981;&#x8B66;&#x544A;&#x7684;&#x4F1A;&#x6807;&#x6CE8;&#x51FA;&#x6765;&#x3002;</p>
+<p><strong>lld</strong> &#x662F; Clang / LLVM &#x7684;&#x5185;&#x7F6E;&#x94FE;&#x63A5;&#x5668;&#xFF0C;clang &#x5FC5;&#x987B;&#x8C03;&#x7528;&#x94FE;&#x63A5;&#x5668;&#x6765;&#x4EA7;&#x751F;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://ming1016.github.io/2017/03/01/deeply-analyse-llvm/" target="_blank">https://ming1016.github.io/2017/03/01/deeply-analyse-llvm/</a></p>
 
                                 
                                 </section>
@@ -1692,7 +1738,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"iOS运行","level":"4.6","depth":1,"next":{"title":"编译","level":"4.6.1","depth":2,"path":"ios/basic/compile.md","ref":"ios/basic/compile.md","articles":[]},"previous":{"title":"RxCocoa","level":"4.5.3","depth":2,"path":"mvvm/rxcocoa.md","ref":"mvvm/rxcocoa.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ios/basic/index.md","mtime":"2018-12-20T01:59:15.930Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-21T05:26:38.728Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"iOS运行","level":"4.6","depth":1,"next":{"title":"编译","level":"4.6.1","depth":2,"path":"ios/basic/compile.md","ref":"ios/basic/compile.md","articles":[]},"previous":{"title":"RxCocoa","level":"4.5.3","depth":2,"path":"mvvm/rxcocoa.md","ref":"mvvm/rxcocoa.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ios/basic/index.md","mtime":"2018-12-25T12:44:29.236Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-25T12:45:09.672Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
