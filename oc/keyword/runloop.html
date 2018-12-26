@@ -1,0 +1,2151 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>runloop · 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="quding0308">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="associatedObject.html" />
+    
+    
+    <link rel="prev" href="autoreleasepool.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../../assets/images/favicon.ico' type="image/x-icon">
+    
+    
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">概述</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">计算机基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../other/">
+            
+                <a href="../../other/">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../../other/comm.html">
+            
+                <a href="../../other/comm.html">
+            
+                    
+                    common
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../../other/tcp.html">
+            
+                <a href="../../other/tcp.html">
+            
+                    
+                    tcp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../../other/mars.html">
+            
+                <a href="../../other/mars.html">
+            
+                    
+                    mars
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../../other/websocket.html">
+            
+                <a href="../../other/websocket.html">
+            
+                    
+                    WebSocket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../../other/xlog.html">
+            
+                <a href="../../other/xlog.html">
+            
+                    
+                    xlog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../../other/http.html">
+            
+                <a href="../../other/http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../../other/https.html">
+            
+                <a href="../../other/https.html">
+            
+                    
+                    https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../../other/rejex.html">
+            
+                <a href="../../other/rejex.html">
+            
+                    
+                    正则表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数据结构与算法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../algorithm/">
+            
+                <a href="../../algorithm/">
+            
+                    
+                    算法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../algorithm/basic/">
+            
+                <a href="../../algorithm/basic/">
+            
+                    
+                    基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="../../algorithm/basic/recursion.html">
+            
+                <a href="../../algorithm/basic/recursion.html">
+            
+                    
+                    递归
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../../algorithm/basic/stack.html">
+            
+                <a href="../../algorithm/basic/stack.html">
+            
+                    
+                    栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3" data-path="../../algorithm/basic/queue.html">
+            
+                <a href="../../algorithm/basic/queue.html">
+            
+                    
+                    队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.4" data-path="../../algorithm/basic/b-tree.html">
+            
+                <a href="../../algorithm/basic/b-tree.html">
+            
+                    
+                    B树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.5" data-path="../../algorithm/basic/DynamicProgramming.html">
+            
+                <a href="../../algorithm/basic/DynamicProgramming.html">
+            
+                    
+                    动态规划
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.6" data-path="../../algorithm/basic/graph.html">
+            
+                <a href="../../algorithm/basic/graph.html">
+            
+                    
+                    图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.7" data-path="../../algorithm/basic/graph-bfs-dfs.html">
+            
+                <a href="../../algorithm/basic/graph-bfs-dfs.html">
+            
+                    
+                    图的BFS、DFS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.8" data-path="../../algorithm/basic/PriorityQueue.html">
+            
+                <a href="../../algorithm/basic/PriorityQueue.html">
+            
+                    
+                    优先队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../algorithm/sort/">
+            
+                <a href="../../algorithm/sort/">
+            
+                    
+                    排序
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="../../algorithm/sort/sort1.html">
+            
+                <a href="../../algorithm/sort/sort1.html">
+            
+                    
+                    基础排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" data-path="../../algorithm/sort/sort2.html">
+            
+                <a href="../../algorithm/sort/sort2.html">
+            
+                    
+                    归并排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" data-path="../../algorithm/sort/sort3.html">
+            
+                <a href="../../algorithm/sort/sort3.html">
+            
+                    
+                    快速排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" data-path="../../algorithm/sort/sort4.html">
+            
+                <a href="../../algorithm/sort/sort4.html">
+            
+                    
+                    桶排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../algorithm/linkedlist/">
+            
+                <a href="../../algorithm/linkedlist/">
+            
+                    
+                    链表
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.3.1" data-path="../../algorithm/linkedlist/reverseList.html">
+            
+                <a href="../../algorithm/linkedlist/reverseList.html">
+            
+                    
+                    单链表翻转
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.2" data-path="../../algorithm/linkedlist/circle.html">
+            
+                <a href="../../algorithm/linkedlist/circle.html">
+            
+                    
+                    单链表是否有环、环节点、长度
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../algorithm/symbolTable/">
+            
+                <a href="../../algorithm/symbolTable/">
+            
+                    
+                    符号表
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.4.1" data-path="../../algorithm/symbolTable/hashTable.html">
+            
+                <a href="../../algorithm/symbolTable/hashTable.html">
+            
+                    
+                    哈希表
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../algorithm/binarytree/">
+            
+                <a href="../../algorithm/binarytree/">
+            
+                    
+                    二叉树
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="../../algorithm/binarytree/travesal.html">
+            
+                <a href="../../algorithm/binarytree/travesal.html">
+            
+                    
+                    二叉树遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5.2" data-path="../../algorithm/binarytree/binaryheap.html">
+            
+                <a href="../../algorithm/binarytree/binaryheap.html">
+            
+                    
+                    二叉堆
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../../algorithm/search/">
+            
+                <a href="../../algorithm/search/">
+            
+                    
+                    搜索
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.6.1" data-path="../../algorithm/search/dfs.html">
+            
+                <a href="../../algorithm/search/dfs.html">
+            
+                    
+                    深度优先搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6.2" data-path="../../algorithm/search/bfs.html">
+            
+                <a href="../../algorithm/search/bfs.html">
+            
+                    
+                    广度优先搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6.3" data-path="../../algorithm/search/binarySearch.html">
+            
+                <a href="../../algorithm/search/binarySearch.html">
+            
+                    
+                    广度优先搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../../algorithm/other/">
+            
+                <a href="../../algorithm/other/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.7.1" data-path="../../algorithm/other/fibonacci.html">
+            
+                <a href="../../algorithm/other/fibonacci.html">
+            
+                    
+                    斐波切纳数列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.2" data-path="../../algorithm/other/gongyueshu.html">
+            
+                <a href="../../algorithm/other/gongyueshu.html">
+            
+                    
+                    求最大公约数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.3" data-path="../../algorithm/other/yuesefu.html">
+            
+                <a href="../../algorithm/other/yuesefu.html">
+            
+                    
+                    约瑟夫问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.4" data-path="../../algorithm/other/lcsubstring.html">
+            
+                <a href="../../algorithm/other/lcsubstring.html">
+            
+                    
+                    最长公共子串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.5" data-path="../../algorithm/other/lcsubsequence.html">
+            
+                <a href="../../algorithm/other/lcsubsequence.html">
+            
+                    
+                    最长公共子序列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7.6" data-path="../../algorithm/other/dp-bag.html">
+            
+                <a href="../../algorithm/other/dp-bag.html">
+            
+                    
+                    背包问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">iOS相关</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Objective-C
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../runtime/">
+            
+                <a href="../runtime/">
+            
+                    
+                    runtime
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1.1" data-path="../runtime/runtime-model.html">
+            
+                <a href="../runtime/runtime-model.html">
+            
+                    
+                    对象模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.2" data-path="../runtime/runtime-msg.html">
+            
+                <a href="../runtime/runtime-msg.html">
+            
+                    
+                    消息分发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3" data-path="../runtime/api/">
+            
+                <a href="../runtime/api/">
+            
+                    
+                    API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1.3.1" data-path="../runtime/api/library.html">
+            
+                <a href="../runtime/api/library.html">
+            
+                    
+                    获取library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.2" data-path="../runtime/api/class.html">
+            
+                <a href="../runtime/api/class.html">
+            
+                    
+                    操作class
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.3" data-path="../runtime/api/class2.html">
+            
+                <a href="../runtime/api/class2.html">
+            
+                    
+                    创建Class、实例化对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.4" data-path="../runtime/api/object.html">
+            
+                <a href="../runtime/api/object.html">
+            
+                    
+                    操作对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.5" data-path="../runtime/api/method.html">
+            
+                <a href="../runtime/api/method.html">
+            
+                    
+                    method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.6" data-path="../runtime/api/ivar.html">
+            
+                <a href="../runtime/api/ivar.html">
+            
+                    
+                    ivar
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.7" data-path="../runtime/api/category.html">
+            
+                <a href="../runtime/api/category.html">
+            
+                    
+                    category
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.8" data-path="../runtime/api/protocol.html">
+            
+                <a href="../runtime/api/protocol.html">
+            
+                    
+                    protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.9" data-path="../runtime/api/property.html">
+            
+                <a href="../runtime/api/property.html">
+            
+                    
+                    property
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.10" data-path="../runtime/api/selector.html">
+            
+                <a href="../runtime/api/selector.html">
+            
+                    
+                    selector
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.11" data-path="../runtime/api/associatedObject.html">
+            
+                <a href="../runtime/api/associatedObject.html">
+            
+                    
+                    associatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.12" data-path="../runtime/api/sendMsg.html">
+            
+                <a href="../runtime/api/sendMsg.html">
+            
+                    
+                    sendMessage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3.13" data-path="../runtime/api/other.html">
+            
+                <a href="../runtime/api/other.html">
+            
+                    
+                    其他api
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    ObjC其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1" data-path="atomic.html">
+            
+                <a href="atomic.html">
+            
+                    
+                    atomic
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2" data-path="synchronized.html">
+            
+                <a href="synchronized.html">
+            
+                    
+                    synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3" data-path="arc.html">
+            
+                <a href="arc.html">
+            
+                    
+                    arc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4" data-path="refCount.html">
+            
+                <a href="refCount.html">
+            
+                    
+                    referecne count
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5" data-path="weak.html">
+            
+                <a href="weak.html">
+            
+                    
+                    weak
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.6" data-path="autoreleasepool.html">
+            
+                <a href="autoreleasepool.html">
+            
+                    
+                    autoreleasepool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.2.7" data-path="runloop.html">
+            
+                <a href="runloop.html">
+            
+                    
+                    runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.8" data-path="associatedObject.html">
+            
+                <a href="associatedObject.html">
+            
+                    
+                    AssociatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.9" data-path="copy.html">
+            
+                <a href="copy.html">
+            
+                    
+                    copy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.10" data-path="block.html">
+            
+                <a href="block.html">
+            
+                    
+                    block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.11" data-path="StripedMap.html">
+            
+                <a href="StripedMap.html">
+            
+                    
+                    StripedMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.12" data-path="build.html">
+            
+                <a href="build.html">
+            
+                    
+                    build
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.13" data-path="gcd.html">
+            
+                <a href="gcd.html">
+            
+                    
+                    GCD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.14" data-path="objc-start.html">
+            
+                <a href="objc-start.html">
+            
+                    
+                    objc-start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.15" data-path="swift-oc.html">
+            
+                <a href="swift-oc.html">
+            
+                    
+                    Swift与ObjC比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.16" data-path="audio.html">
+            
+                <a href="audio.html">
+            
+                    
+                    音频
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.17" data-path="NSDictionary.html">
+            
+                <a href="NSDictionary.html">
+            
+                    
+                    NSDictionary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../ios/basic/">
+            
+                <a href="../../ios/basic/">
+            
+                    
+                    iOS运行
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../ios/basic/compile.html">
+            
+                <a href="../../ios/basic/compile.html">
+            
+                    
+                    编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../../ios/basic/linker.html">
+            
+                <a href="../../ios/basic/linker.html">
+            
+                    
+                    链接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../../ios/basic/startapp.html">
+            
+                <a href="../../ios/basic/startapp.html">
+            
+                    
+                    App运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../../ios/basic/startruntime.html">
+            
+                <a href="../../ios/basic/startruntime.html">
+            
+                    
+                    start-runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.5" data-path="../../ios/basic/objectfile.html">
+            
+                <a href="../../ios/basic/objectfile.html">
+            
+                    
+                    目标文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.6" data-path="../../ios/basic/macho.html">
+            
+                <a href="../../ios/basic/macho.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.7" data-path="../../ios/basic/signature.html">
+            
+                <a href="../../ios/basic/signature.html">
+            
+                    
+                    签名流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.8" data-path="../../ios/basic/linkmap.html">
+            
+                <a href="../../ios/basic/linkmap.html">
+            
+                    
+                    LinkMap文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.9" data-path="../../ios/basic/c.html">
+            
+                <a href="../../ios/basic/c.html">
+            
+                    
+                    C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../../swift/">
+            
+                <a href="../../swift/">
+            
+                    
+                    Swift
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../swift/where.html">
+            
+                <a href="../../swift/where.html">
+            
+                    
+                    where
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" >
+            
+                <span>
+            
+                    
+                    [codable])(swift/codable.md)
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../../ui/">
+            
+                <a href="../../ui/">
+            
+                    
+                    UI渲染
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="../../ui/screen.html">
+            
+                <a href="../../ui/screen.html">
+            
+                    
+                    显示器原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.2" data-path="../../ui/render.html">
+            
+                <a href="../../ui/render.html">
+            
+                    
+                    render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.3" data-path="../../ui/cpu.html">
+            
+                <a href="../../ui/cpu.html">
+            
+                    
+                    cpu渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.4" data-path="../../ui/gpu.html">
+            
+                <a href="../../ui/gpu.html">
+            
+                    
+                    gpu渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.5" data-path="../../ui/animation.html">
+            
+                <a href="../../ui/animation.html">
+            
+                    
+                    animation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.6" data-path="../../ui/layout.html">
+            
+                <a href="../../ui/layout.html">
+            
+                    
+                    layout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.7" data-path="../../ui/response-chain.html">
+            
+                <a href="../../ui/response-chain.html">
+            
+                    
+                    响应链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.8" data-path="../../ui/image-render.html">
+            
+                <a href="../../ui/image-render.html">
+            
+                    
+                    图片解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.9" data-path="../../ui/richtext.html">
+            
+                <a href="../../ui/richtext.html">
+            
+                    
+                    富文本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.10" data-path="../../ui/calayer.md">
+            
+                <span>
+            
+                    
+                    CALayer 子类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../../ios/optimize/">
+            
+                <a href="../../ios/optimize/">
+            
+                    
+                    App优化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="../../ios/optimize/crash.html">
+            
+                <a href="../../ios/optimize/crash.html">
+            
+                    
+                    Crash优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2" data-path="../../ios/optimize/kadun.html">
+            
+                <a href="../../ios/optimize/kadun.html">
+            
+                    
+                    卡顿优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.3" data-path="../../ios/optimize/memory.html">
+            
+                <a href="../../ios/optimize/memory.html">
+            
+                    
+                    内存优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.4" data-path="../../ios/optimize/appsize.html">
+            
+                <a href="../../ios/optimize/appsize.html">
+            
+                    
+                    减小ipa包体积
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../../mvvm/">
+            
+                <a href="../../mvvm/">
+            
+                    
+                    mvvm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.6.1" data-path="../../mvvm/rx-mvvm.html">
+            
+                <a href="../../mvvm/rx-mvvm.html">
+            
+                    
+                    rx-mvvm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.2" data-path="../../mvvm/rxswift.html">
+            
+                <a href="../../mvvm/rxswift.html">
+            
+                    
+                    RxSwift
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6.3" data-path="../../mvvm/rxcocoa.html">
+            
+                <a href="../../mvvm/rxcocoa.html">
+            
+                    
+                    RxCocoa
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../../ios/bug/">
+            
+                <a href="../../ios/bug/">
+            
+                    
+                    常见bug
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">其他</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../web/">
+            
+                <a href="../../web/">
+            
+                    
+                    web
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../../web/js6.html">
+            
+                <a href="../../web/js6.html">
+            
+                    
+                    javascript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../../web/csp.html">
+            
+                <a href="../../web/csp.html">
+            
+                    
+                    Content Security Policy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../../web/html-header.html">
+            
+                <a href="../../web/html-header.html">
+            
+                    
+                    html header
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../../web/json.html">
+            
+                <a href="../../web/json.html">
+            
+                    
+                    json的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../android/">
+            
+                <a href="../../android/">
+            
+                    
+                    android
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../android/activity.html">
+            
+                <a href="../../android/activity.html">
+            
+                    
+                    activity
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >runloop</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="runloop">runloop</h3>
+<h3 id="&#x4E00;&#x4E9B;&#x7591;&#x95EE;">&#x4E00;&#x4E9B;&#x7591;&#x95EE;</h3>
+<ul>
+<li>RunLoop&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x6240;&#x5904;&#x7684;&#x89D2;&#x8272;</li>
+<li>RunLoop&#x5177;&#x4F53;&#x4F5C;&#x7528;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#x6709;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x7C7B;&#x4F3C;&#x7684;&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x4EE3;&#x66FF;&#x89D2;&#x8272;&#xFF1F;</li>
+<li>&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;RunLoop&#x5BF9;&#x8C61;&#x5417;&#xFF1F;</li>
+<li>RunLoop &#x6709;&#x54EA;&#x4E9B;&#x4E8B;&#x4EF6;&#xFF1F;&#x5982;&#x4F55;&#x76D1;&#x542C;&#xFF1F;</li>
+<li>RunLoop &#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4EC0;&#x4E48;property&#xFF1F;&#x5206;&#x522B;&#x6709;&#x4EC0;&#x4E48;&#x4F5C;&#x7528;&#xFF1F;&#x8BBE;&#x7F6E;&#x7684;&#x5C5E;&#x6027; &#x600E;&#x4E48;&#x8D77;&#x4F5C;&#x7528;&#x7684;&#xFF1F;&#x5B9E;&#x8D28;&#x662F;&#x4E0E;&#x7CFB;&#x7EDF;&#x4EA4;&#x4E92;&#x7684;api</li>
+<li>&#x5B9E;&#x9645;&#x5DE5;&#x4F5C;&#x4E2D; &#x6709;&#x54EA;&#x4E9B;&#x7ECF;&#x5178;&#x5B9E;&#x7528;&#xFF1F;&#x5361;&#x987F;&#x76D1;&#x542C;&#xFF1F;asynckit&#x4E2D;&#x7684;&#x7ECF;&#x5178;&#x5B9E;&#x7528;&#xFF1F;autoreleasepool&#x3001;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x7684;&#x5904;&#x7406;&#xFF1F;</li>
+<li>mainRunLoop &#x4E0E; &#x5176;&#x4ED6;RunLoop&#x7684;&#x533A;&#x522B;&#xFF1F;&#x6709;&#x54EA;&#x4E9B;&#x7279;&#x6743;&#xFF1F;</li>
+<li>&#x5177;&#x4F53;&#x5982;&#x4F55;&#x8FD0;&#x8F6C;&#xFF1F;</li>
+</ul>
+<h3 id="runloop-&#x7B80;&#x4ECB;">Runloop &#x7B80;&#x4ECB;</h3>
+<p>&#x6240;&#x8C13; Runloop &#x5C31;&#x662F; &#x82F9;&#x679C;&#x8BBE;&#x8BA1;&#x7684;&#x4E00;&#x79CD; <strong>&#x5728;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF0C;&#x6301;&#x7EED;&#x8C03;&#x5EA6;&#x5404;&#x79CD;&#x4EFB;&#x52A1;</strong> &#x7684;&#x8FD0;&#x884C;&#x673A;&#x5236;&#x3002;</p>
+<p>&#x4F2A;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-Swift"><span class="hljs-keyword">while</span>(alive) {
+    performTask() <span class="hljs-comment">// &#x6267;&#x884C;&#x4EFB;&#x52A1;</span>
+    call_to_observer() <span class="hljs-comment">// &#x56DE;&#x8C03; &#x901A;&#x77E5;&#x5916;&#x90E8;&#x5F53;&#x524D;&#x5904;&#x4E8E;&#x54EA;&#x4E2A;&#x9636;&#x6BB5;</span>
+    sleep() <span class="hljs-comment">// &#x4F11;&#x7720;</span>
+}
+</code></pre>
+<h3 id="runloop-&#x7684;-mode">Runloop &#x7684; mode</h3>
+<p>Runloop &#x8FD0;&#x884C;&#x65F6;&#x53EA;&#x53EF;&#x80FD;&#x5904;&#x4E8E;&#x4E00;&#x4E2A;mode&#x6A21;&#x5F0F;(currentMode)&#xFF0C;&#x5207;&#x6362;mode&#x65F6;&#x9700;&#x8981;&#x505C;&#x6B62;&#x91CD;&#x65B0;&#x8FD0;&#x884C;&#x3002;&#x4E00;&#x4E2A; mode &#x53EF;&#x4EE5;&#x5C06;&#x81EA;&#x5DF1;&#x6807;&#x8BB0;&#x4E3A;&#x201D;Common&#x201D;&#x5C5E;&#x6027;&#xFF08;&#x901A;&#x8FC7;&#x5C06;&#x5176; ModeName &#x6DFB;&#x52A0;&#x5230; RunLoop &#x7684; &#x201C;commonModes&#x201D; &#x4E2D;&#xFF09;&#x3002;</p>
+<p>iOS&#x516C;&#x5F00;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x4E2A;Mode&#xFF1A;</p>
+<ul>
+<li>UITrackingRunLoopMode</li>
+<li>NSDefaultRunLoopMode</li>
+</ul>
+<pre><code>main Runloop &#x4E2D;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A; mode &#x90FD;&#x5728; commonModes &#x4E2D;
+
+UITrackingRunLoopMode
+&#x754C;&#x9762;&#x8DDF;&#x8E2A; Mode&#xFF0C;&#x7528;&#x4E8E; ScrollView &#x8FFD;&#x8E2A;&#x89E6;&#x6478;&#x6ED1;&#x52A8;&#xFF0C;&#x4FDD;&#x8BC1;&#x754C;&#x9762;&#x6ED1;&#x52A8;&#x65F6;&#x4E0D;&#x53D7;&#x5176;&#x4ED6; mode &#x5F71;&#x54CD;
+
+NSDefaultRunLoopMode
+&#x9ED8;&#x8BA4;Mode&#xFF0C;&#x4E3B;&#x7EBF;&#x7A0B;&#x662F;&#x5728;&#x8FD9;&#x4E2A;Mode&#x8FD0;&#x884C;
+</code></pre><p><strong>CommonMode</strong></p>
+<p>&#x4E00;&#x4E2A; Mode &#x53EF;&#x4EE5;&#x5C06;&#x81EA;&#x5DF1;&#x6807;&#x8BB0;&#x4E3A;&#x201D;Common&#x201D;&#x5C5E;&#x6027;&#xFF08;&#x901A;&#x8FC7;&#x5C06;&#x5176; ModeName &#x6DFB;&#x52A0;&#x5230; RunLoop &#x7684; &#x201C;commonModes&#x201D; &#x4E2D;&#xFF09;&#x3002;</p>
+<p>&#x6BCF;&#x5F53; RunLoop &#x7684;&#x5185;&#x5BB9;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;RunLoop &#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x5C06; _commonModeItems &#x91CC;&#x7684; Source/Observer/Timer &#x540C;&#x6B65;&#x5230;&#x5177;&#x6709; &#x201C;Common&#x201D; &#x6807;&#x8BB0;&#x7684;&#x6240;&#x6709;Mode&#x91CC;&#x3002;</p>
+<pre><code>_commonModes&#x5B58;&#x50A8;&#x4E86;&#x6807;&#x8BB0;&#x4E3A;common&#x7684;mode
+
+_commonModeItems&#x91CC;&#x5B58;&#x50A8;&#x7684;&#x662F;common mode&#x4E2D;&#x7684;Set&lt;Source/Observer/Timer&gt;
+
+// &#x5C06;mode&#x6807;&#x8BB0;&#x4E3A;common   
+CFRunLoopAddCommonMode(loop, mode);
+
+&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#xFF1A;
+main runloop&#x4E2D;&#x589E;&#x52A0;&#x4E00;&#x4E2A;timer &#x5982;&#x679C;&#x53EA;&#x589E;&#x52A0;&#x5230;  kCFRunLoopDefaultMode&#xFF0C;&#x5219;&#x5F53;&#x9875;&#x9762;&#x6ED1;&#x52A8;&#x51FA;&#x53D1;  mode&#xFF1A;UITrackingRunLoopMode&#xFF0C;&#x6539;timer&#x5C31;&#x65E0;&#x6CD5;&#x88AB;&#x89E6;&#x53D1;&#x3002;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x628A;timer&#x589E;&#x52A0;&#x5230;  kCFRunLoopCommonModes&#xFF0C;&#x65E0;&#x8BBA;kCFRunLoopDefaultMode &#x6216; UITrackingRunLoopMode &#x90FD;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;timer
+</code></pre><p>&#x4E00;&#x4E2A; mode &#x4E2D;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0; source&#x3001;observer&#x3001;timer</p>
+<p>Runloop</p>
+<ul>
+<li>mode1<ul>
+<li>source0</li>
+<li>source1</li>
+<li>Observer</li>
+<li>Timer</li>
+</ul>
+</li>
+<li>mode2<ul>
+<li>source0</li>
+<li>source1</li>
+<li>Observer</li>
+<li>Timer</li>
+</ul>
+</li>
+</ul>
+<h4 id="runloop-&#x7684;-observer">Runloop &#x7684; Observer</h4>
+<p>RunLoop&#x53EF;&#x4EE5;&#x89C2;&#x5BDF;&#x7684;&#x65F6;&#x95F4;&#x70B9;&#xFF1A;</p>
+<pre><code class="lang-Swift">typedef <span class="hljs-type">CF_OPTIONS</span>(<span class="hljs-type">CFOptionFlags</span>, <span class="hljs-type">CFRunLoopActivity</span>) {
+    kCFRunLoopEntry = (1UL &lt;&lt; <span class="hljs-number">0</span>), <span class="hljs-comment">// &#x5373;&#x5C06;&#x8FDB;&#x5165;Loop&#xFF08;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF09;</span>
+    kCFRunLoopBeforeTimers = (1UL &lt;&lt; <span class="hljs-number">1</span>), <span class="hljs-comment">// &#x5373;&#x5C06;&#x5904;&#x7406; Timer</span>
+    kCFRunLoopBeforeSources = (1UL &lt;&lt; <span class="hljs-number">2</span>), <span class="hljs-comment">// &#x5373;&#x5C06;&#x5904;&#x7406; Source</span>
+    kCFRunLoopBeforeWaiting = (1UL &lt;&lt; <span class="hljs-number">5</span>), <span class="hljs-comment">// &#x5373;&#x5C06;&#x4F11;&#x7720;</span>
+    kCFRunLoopAfterWaiting = (1UL &lt;&lt; <span class="hljs-number">6</span>), <span class="hljs-comment">// &#x521A;&#x4ECE;&#x4F11;&#x7720;&#x4E2D;&#x88AB;&#x5524;&#x9192;</span>
+    kCFRunLoopExit = (1UL &lt;&lt; <span class="hljs-number">7</span>) <span class="hljs-comment">// Loop&#x5373;&#x5C06;&#x9000;&#x51FA;&#xFF08;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF09;</span>
+};
+</code></pre>
+<p>&#x6DFB;&#x52A0; obsrver</p>
+<pre><code class="lang-Swift"><span class="hljs-type">CFRunLoopRef</span> loop = <span class="hljs-type">CFRunLoopGetMain</span>();
+<span class="hljs-type">CFRunLoopObserverRef</span> observer = <span class="hljs-type">CFRunLoopObserverCreateWithHandler</span>(<span class="hljs-type">NULL</span>, kCFRunLoopBeforeSources, <span class="hljs-literal">true</span>, <span class="hljs-number">0</span>, ^(<span class="hljs-type">CFRunLoopObserverRef</span> observer, <span class="hljs-type">CFRunLoopActivity</span> activity) {
+    <span class="hljs-type">NSLog</span>(@<span class="hljs-string">&quot;observer %lu&quot;</span>, activity);
+});
+<span class="hljs-type">CFRunLoopAddObserver</span>(loop, observer, kCFRunLoopCommonModes);
+</code></pre>
+<h3 id="runloop-&#x6E90;&#x7801;">Runloop &#x6E90;&#x7801;</h3>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">__CFRunLoop</span> </span>{
+    <span class="hljs-type">CFMutableSetRef</span> _commonModes;     <span class="hljs-comment">// Set&lt;CFRunLoopMode&gt;</span>
+    <span class="hljs-type">CFMutableSetRef</span> _commonModeItems; <span class="hljs-comment">// Set&lt;Source/Observer/Timer&gt;</span>
+    <span class="hljs-type">CFRunLoopModeRef</span> _currentMode;    <span class="hljs-comment">// Current Runloop Mode</span>
+    <span class="hljs-type">CFMutableSetRef</span> _modes;           <span class="hljs-comment">// Set</span>
+};
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">__CFRunLoopMode</span> </span>{
+    <span class="hljs-type">CFStringRef</span> _name;            <span class="hljs-comment">// Mode Name, &#x4F8B;&#x5982; @&quot;kCFRunLoopDefaultMode&quot;</span>
+    <span class="hljs-type">CFMutableSetRef</span> _sources0;    <span class="hljs-comment">// Set</span>
+    <span class="hljs-type">CFMutableSetRef</span> _sources1;    <span class="hljs-comment">// Set</span>
+    <span class="hljs-type">CFMutableArrayRef</span> _observers; <span class="hljs-comment">// Array</span>
+    <span class="hljs-type">CFMutableArrayRef</span> _timers;    <span class="hljs-comment">// Array</span>
+    ...
+};
+</code></pre>
+<p>&#x5E95;&#x5C42;&#x5B58;&#x50A8;&#xFF1A;</p>
+<pre><code class="lang-Swift"><span class="hljs-comment">// &#x83B7;&#x53D6;RunLoop&#x5BF9;&#x8C61;</span>
+<span class="hljs-type">CFRunLoopRef</span> _CFRunLoopGet0(pthread_t t) {
+    <span class="hljs-keyword">if</span> (pthread_equal(t, kNilPthreadT)) {
+        t = pthread_main_thread_np(); <span class="hljs-comment">// t == 0 &#x4E3A;main thread</span>
+    }
+
+    __CFLock(&amp;loopsLock);
+    <span class="hljs-comment">/// __CFRunLoops&#x662F;&#x4E00;&#x4E2A;CFDictionary&#x5BF9;&#x8C61;&#xFF0C;&#x5168;&#x5C40;&#x5B58;&#x50A8;RunLoop&#xFF0C;key&#x4E3A;pthread&#xFF0C;value&#x4E3A;Runloop</span>
+    <span class="hljs-keyword">if</span> (!__CFRunLoops) {
+        <span class="hljs-type">CFMutableDictionaryRef</span> dict = <span class="hljs-type">CFDictionaryCreateMutable</span>(kCFAllocatorSystemDefault, <span class="hljs-number">0</span>, <span class="hljs-type">NULL</span>, &amp;kCFTypeDictionaryValueCallBacks);
+        <span class="hljs-type">CFRunLoopRef</span> mainLoop = __CFRunLoopCreate(pthread_main_thread_np());
+        <span class="hljs-type">CFDictionarySetValue</span>(dict, pthreadPointer(pthread_main_thread_np()), mainLoop);
+        <span class="hljs-keyword">if</span> (!<span class="hljs-type">OSAtomicCompareAndSwapPtrBarrier</span>(<span class="hljs-type">NULL</span>, dict, (void * volatile *)&amp;__CFRunLoops)) {
+          <span class="hljs-type">CFRelease</span>(dict);
+        }
+        <span class="hljs-type">CFRelease</span>(mainLoop);
+    }
+
+    <span class="hljs-type">CFRunLoopRef</span> newLoop = <span class="hljs-type">NULL</span>;
+    <span class="hljs-comment">// &#x4ECE;&#x5168;&#x5C40;&#x7684;Dictionary&#x4E2D;&#x53D6;&#x7F13;&#x5B58;&#x7684;RunLoop&#x5BF9;&#x8C61;</span>
+    <span class="hljs-type">CFRunLoopRef</span> loop = (<span class="hljs-type">CFRunLoopRef</span>)<span class="hljs-type">CFDictionaryGetValue</span>(__CFRunLoops, pthreadPointer(t));
+    <span class="hljs-keyword">if</span> (!loop) {
+        <span class="hljs-comment">// &#x5982;&#x679C;&#x6CA1;&#x6709;&#x5219;&#x65B0;&#x5EFA;RunLoop &#x3010;&#x4ECE;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x521B;&#x5EFA;thread&#x65F6;&#x5E76;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x7684;RunLoop&#xFF0C;&#x53EA;&#x6709;&#x4E3B;&#x52A8;CFRunLoopGetCurrent&#x624D;&#x4F1A;&#x521B;&#x5EFA;&#x3011;</span>
+        newLoop = __CFRunLoopCreate(t);
+        <span class="hljs-type">CFDictionarySetValue</span>(__CFRunLoops, pthreadPointer(t), newLoop);
+        loop = newLoop;
+    }
+    __CFUnlock(&amp;loopsLock);
+
+    <span class="hljs-comment">// don&apos;t release run loops inside the loopsLock, because CFRunLoopDeallocate may end up taking it</span>
+    <span class="hljs-keyword">if</span> (newLoop) { <span class="hljs-type">CFRelease</span>(newLoop); }
+    <span class="hljs-keyword">if</span> (pthread_equal(t, pthread_self())) {
+        _CFSetTSD(__CFTSDKeyRunLoop, (void *)loop, <span class="hljs-type">NULL</span>);
+        <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> == _CFGetTSD(__CFTSDKeyRunLoopCntr)) {
+             _CFSetTSD(__CFTSDKeyRunLoopCntr, (void *)(<span class="hljs-type">PTHREAD_DESTRUCTOR_ITERATIONS</span>-<span class="hljs-number">1</span>), (void (*)(void *))__CFFinalizeRunLoop);
+        }
+    }
+
+    <span class="hljs-keyword">return</span> loop;
+}
+
+<span class="hljs-comment">// &#x83B7;&#x53D6; main Runloop</span>
+<span class="hljs-type">CFRunLoopRef</span> <span class="hljs-type">CFRunLoopGetMain</span>(void) {
+    <span class="hljs-keyword">static</span> <span class="hljs-type">CFRunLoopRef</span> __main = <span class="hljs-type">NULL</span>; <span class="hljs-comment">// static &#x53EA;&#x4F1A;&#x83B7;&#x53D6;&#x4E00;&#x6B21;</span>
+    <span class="hljs-keyword">if</span> (!__main) __main = _CFRunLoopGet0(pthread_main_thread_np());
+    <span class="hljs-keyword">return</span> __main;
+}
+
+<span class="hljs-comment">// &#x83B7;&#x53D6;&#x5F53;&#x524D;thread&#x5BF9;&#x8C61;&#x7684;Runloop</span>
+<span class="hljs-type">CFRunLoopRef</span> <span class="hljs-type">CFRunLoopGetCurrent</span>(void) {
+    <span class="hljs-type">CHECK_FOR_FORK</span>();
+    <span class="hljs-type">CFRunLoopRef</span> rl = (<span class="hljs-type">CFRunLoopRef</span>)_CFGetTSD(__CFTSDKeyRunLoop);
+    <span class="hljs-keyword">if</span> (rl) <span class="hljs-keyword">return</span> rl;
+    <span class="hljs-keyword">return</span> _CFRunLoopGet0(pthread_self()); <span class="hljs-comment">//#include &lt;pthread.h&gt; &#x4E2D;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;pthread_self</span>
+}
+</code></pre>
+<h3 id="&#x83B7;&#x53D6;-fps">&#x83B7;&#x53D6; fps</h3>
+<p>&#x901A;&#x8FC7; CADisplayLink &#x6216; &#x6CE8;&#x518C; observer &#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x65F6;&#x95F4;&#xFF0C;&#x5F97;&#x51FA; fps</p>
+<pre><code>if (_lastTime == 0) {
+    _lastTime = link.timestamp;
+    return;
+}
+
+_count++;
+NSTimeInterval delta = link.timestamp - _lastTime;
+if (delta &lt; 1) return;
+_lastTime = link.timestamp;
+float fps = _count / delta;
+_count = 0;
+</code></pre><h3 id="&#x5361;&#x987F;&#x76D1;&#x542C;">&#x5361;&#x987F;&#x76D1;&#x542C;</h3>
+<p>&#x542F;&#x52A8;&#x5B50;&#x7EBF;&#x7A0B;&#xFF0C;&#x5B9A;&#x65F6;&#x50CF;&#x4E3B;&#x7EBF;&#x7A0B;&#x53D1;&#x9001; ping&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x65F6;&#x6CA1;&#x6709;&#x6536;&#x5230;pong&#xFF0C;&#x5219;&#x8BA4;&#x4E3A; &#x6B64;&#x65F6;&#x4E3B;&#x7EBF;&#x7A0B;&#x5361;&#x987F;&#x3002;&#x83B7;&#x53D6;&#x5F53;&#x65F6;&#x7684; stack trace</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="http://mrpeak.cn/blog/ui-detect/" target="_blank">http://mrpeak.cn/blog/ui-detect/</a></li>
+<li><a href="http://ios.jobbole.com/93085/" target="_blank">http://ios.jobbole.com/93085/</a></li>
+</ul>
+<h3 id="performselectorafterdelay">performSelector:afterDelay:</h3>
+<h3 id="&#x53C2;&#x8003;&#xFF1A;">&#x53C2;&#x8003;&#xFF1A;</h3>
+<ul>
+<li><a href="https://blog.ibireme.com/2015/05/18/runloop/" target="_blank">https://blog.ibireme.com/2015/05/18/runloop/</a></li>
+<li><a href="https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw" target="_blank">https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw</a></li>
+<li>MrPeak: <a href="https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw" target="_blank">https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="autoreleasepool.html" class="navigation navigation-prev " aria-label="Previous page: autoreleasepool">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="associatedObject.html" class="navigation navigation-next " aria-label="Next page: AssociatedObject">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"runloop","level":"4.1.2.7","depth":3,"next":{"title":"AssociatedObject","level":"4.1.2.8","depth":3,"path":"oc/keyword/associatedObject.md","ref":"oc/keyword/associatedObject.md","articles":[]},"previous":{"title":"autoreleasepool","level":"4.1.2.6","depth":3,"path":"oc/keyword/autoreleasepool.md","ref":"oc/keyword/autoreleasepool.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","favicon","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":{"shortcut":"assets/images/favicon.ico"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/keyword/runloop.md","mtime":"2018-12-18T02:15:35.878Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-26T03:00:47.856Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
