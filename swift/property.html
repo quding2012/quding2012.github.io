@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>汇编语言 · 学习笔记</title>
+        <title>Property · 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../other/" />
+    <link rel="next" href="../ios/basic/" />
     
     
-    <link rel="prev" href="cpu.html" />
+    <link rel="prev" href="generic.html" />
     
 
     </head>
@@ -119,9 +119,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="./">
+        <li class="chapter " data-level="2.1" data-path="../computer/">
             
-                <a href="./">
+                <a href="../computer/">
             
                     
                     计算机系统
@@ -133,9 +133,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="cpu.html">
+        <li class="chapter " data-level="2.1.1" data-path="../computer/cpu.html">
             
-                <a href="cpu.html">
+                <a href="../computer/cpu.html">
             
                     
                     CPU
@@ -146,9 +146,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.2" data-path="assembly_language.html">
+        <li class="chapter " data-level="2.1.2" data-path="../computer/assembly_language.html">
             
-                <a href="assembly_language.html">
+                <a href="../computer/assembly_language.html">
             
                     
                     汇编语言
@@ -1283,9 +1283,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="../swift/">
+        <li class="chapter " data-level="4.2" data-path="./">
             
-                <a href="../swift/">
+                <a href="./">
             
                     
                     Swift
@@ -1297,9 +1297,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.2.1" data-path="../swift/where.html">
+        <li class="chapter " data-level="4.2.1" data-path="where.html">
             
-                <a href="../swift/where.html">
+                <a href="where.html">
             
                     
                     where
@@ -1310,9 +1310,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.2" data-path="../swift/codable.html">
+        <li class="chapter " data-level="4.2.2" data-path="codable.html">
             
-                <a href="../swift/codable.html">
+                <a href="codable.html">
             
                     
                     codable
@@ -1323,9 +1323,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.3" data-path="../swift/closure.html">
+        <li class="chapter " data-level="4.2.3" data-path="closure.html">
             
-                <a href="../swift/closure.html">
+                <a href="closure.html">
             
                     
                     闭包
@@ -1336,9 +1336,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.4" data-path="../swift/generic.html">
+        <li class="chapter " data-level="4.2.4" data-path="generic.html">
             
-                <a href="../swift/generic.html">
+                <a href="generic.html">
             
                     
                     泛型
@@ -1349,9 +1349,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.5" data-path="../swift/property.html">
+        <li class="chapter active" data-level="4.2.5" data-path="property.html">
             
-                <a href="../swift/property.html">
+                <a href="property.html">
             
                     
                     Property
@@ -1934,7 +1934,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >汇编语言</a>
+        <a href=".." >Property</a>
     </h1>
 </div>
 
@@ -1949,16 +1949,216 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x6C47;&#x7F16;&#x8BED;&#x8A00;">&#x6C47;&#x7F16;&#x8BED;&#x8A00;</h2>
-<p>Assembly Language &#x7B80;&#x79F0; asm</p>
-<p>&#x5BF9;&#x4E8E;&#x4EBA;&#x7C7B;&#x6765;&#x8BF4;&#xFF0C;&#x4E8C;&#x8FDB;&#x5236;&#x7A0B;&#x5E8F;&#x662F;&#x4E0D;&#x53EF;&#x8BFB;&#x7684;&#xFF0C;&#x6839;&#x672C;&#x770B;&#x4E0D;&#x51FA;&#x6765;&#x673A;&#x5668;&#x5E72;&#x4E86;&#x4EC0;&#x4E48;&#x3002;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x53EF;&#x8BFB;&#x6027;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4EE5;&#x53CA;&#x5076;&#x5C14;&#x7684;&#x7F16;&#x8F91;&#x9700;&#x6C42;&#xFF0C;&#x5C31;&#x8BDE;&#x751F;&#x4E86;&#x6C47;&#x7F16;&#x8BED;&#x8A00;&#x3002;</p>
-<p>&#x6C47;&#x7F16;&#x8BED;&#x8A00;&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x6307;&#x4EE4;&#x7684;&#x6587;&#x672C;&#x5F62;&#x5F0F;&#xFF0C;&#x4E0E;&#x6307;&#x4EE4;&#x662F;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#x5173;&#x7CFB;&#x3002;</p>
-<p>&#x6BCF;&#x4E00;&#x79CD; CPU &#x7684;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x90FD;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5BF9;&#x5E94;&#x7684;&#x6C47;&#x7F16;&#x8BED;&#x8A00;&#x4E5F;&#x4E0D;&#x4E00;&#x6837;&#x3002;</p>
+                                <h2 id="property">Property</h2>
+<h3 id="stored-property">Stored Property</h3>
+<ol>
+<li>Stored Property &#x53EF;&#x4EE5;&#x4E3A; var &#x6216; let &#xFF0C;&#x4F1A;&#x5B58;&#x50A8; value &#x4F5C;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x90E8;&#x5206;</li>
+<li>Stored Property &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x503C;</li>
+<li>&#x53EF;&#x4EE5;&#x5728; init &#x65B9;&#x6CD5;&#x4E2D;&#x4FEE;&#x6539; Stored Property &#x7684;&#x503C;(let &#x4E5F;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;)</li>
+</ol>
+<pre><code class="lang-Swift"><span class="hljs-keyword">var</span> firstName: <span class="hljs-type">String</span> = <span class="hljs-string">&quot;&quot;</span>
+<span class="hljs-keyword">var</span> lastName: <span class="hljs-type">String</span>?
+</code></pre>
+<p>Class &#x548C; Struct &#x7684;&#x4F7F;&#x7528;&#x533A;&#x522B;&#xFF1A;</p>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+    <span class="hljs-keyword">var</span> firstName: <span class="hljs-type">String</span> = <span class="hljs-string">&quot;&quot;</span>
+    <span class="hljs-keyword">var</span> lastName: <span class="hljs-type">String</span>
+
+    <span class="hljs-comment">// class &#x7684; Stored Property &#x5728; init &#x7684;&#x65F6;&#x5019;&#x5FC5;&#x987B;&#x521D;&#x59CB;&#x5316;</span>
+    <span class="hljs-keyword">init</span>(<span class="hljs-number">_</span> lastName_: <span class="hljs-type">String</span>) {
+        lastName = lastName_
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">FixedRange</span> </span>{
+    <span class="hljs-keyword">var</span> firstValue: <span class="hljs-type">Int</span>
+    <span class="hljs-keyword">let</span> length: <span class="hljs-type">Int</span>
+}
+
+<span class="hljs-comment">// class &#x4E3A; reference type&#xFF0C;&#x5982;&#x679C;&#x4E3A;let&#xFF0C;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x4FEE;&#x6539; var property </span>
+<span class="hljs-keyword">let</span> person = <span class="hljs-type">Person</span>(<span class="hljs-string">&quot;LBJ&quot;</span>)
+person.firstName = <span class="hljs-string">&quot;Peter&quot;</span>
+person.lastName = <span class="hljs-string">&quot;LBJ&quot;</span>
+
+<span class="hljs-comment">// struct &#x4E3A; value type&#xFF0C;&#x5982;&#x679C;&#x4E3A;let&#xFF0C;&#x5219;&#x6240;&#x6709;&#x7684; property &#x90FD;&#x4E3A;let&#xFF0C;&#x4E0D;&#x53EF;&#x4FEE;&#x6539;</span>
+<span class="hljs-keyword">let</span> range = <span class="hljs-type">FixedRange</span>(firstValue: <span class="hljs-number">5</span>, length: <span class="hljs-number">10</span>)
+range.firstValue = <span class="hljs-number">6</span>    <span class="hljs-comment">// &#x7F16;&#x8BD1;&#x9519;&#x8BEF;</span>
+</code></pre>
+<h4 id="lazy-stored-property">Lazy Stored Property</h4>
+<p>Lazy Stored Property &#x7684;&#x521D;&#x59CB;&#x5316;&#x4F1A;&#x5EF6;&#x8FDF;&#x5230; &#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x8C03;&#x7528;</p>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataManager</span> </span>{
+    <span class="hljs-built_in">lazy</span> <span class="hljs-keyword">var</span> importer = <span class="hljs-type">DataImporter</span>()
+    <span class="hljs-keyword">var</span> data = [<span class="hljs-type">String</span>]()
+
+    <span class="hljs-built_in">lazy</span> <span class="hljs-keyword">var</span> fullName = {
+        <span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF1A;&#x6B63;&#x5E38;&#x53EA;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF1B;&#x4F46;&#x5982;&#x679C;&#x591A;&#x7EBF;&#x7A0B;&#x64CD;&#x4F5C;&#xFF0C;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x53EA;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x6B21;</span>
+        <span class="hljs-keyword">return</span> firstName + lastName
+    }()****
+}
+</code></pre>
+<h3 id="computed-property">Computed Property</h3>
+<p>Computed Property &#x4E0D;&#x4F1A;&#x5B58;&#x50A8;&#x503C;&#xFF0C;&#x4F1A;&#x9ED8;&#x8BA4;&#x751F;&#x6210; getter &#x65B9;&#x6CD5;&#xFF0C;&#x9ED8;&#x8BA4;&#x6CA1;&#x6709; setter &#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x8BBE;&#x7F6E; setter &#x65B9;&#x6CD5;&#x3002;</p>
+<p>class/struct/enum &#x53EF;&#x4EE5;&#x5B9A;&#x4E49; Computed Property&#x3002;</p>
+<pre><code class="lang-Swift"><span class="hljs-keyword">var</span> firstName: <span class="hljs-type">String</span> = <span class="hljs-string">&quot;&quot;</span>
+<span class="hljs-keyword">var</span> lastName: <span class="hljs-type">String</span> = <span class="hljs-string">&quot;&quot;</span>
+
+<span class="hljs-comment">// default getter&#xFF0C;&#x6CA1;&#x6709; setter&#xFF0C; readonly</span>
+<span class="hljs-keyword">var</span> fullName: <span class="hljs-type">String</span> {
+    <span class="hljs-keyword">return</span> firstName + lastName
+}
+
+<span class="hljs-comment">// &#x663E;&#x793A;&#x7684; getter&#xFF0C;&#x6CA1;&#x6709; setter&#xFF0C; readonly</span>
+<span class="hljs-keyword">var</span> fullName: <span class="hljs-type">String</span> {
+    <span class="hljs-keyword">get</span> {
+        <span class="hljs-keyword">return</span> firstName + lastName
+    }
+}
+
+<span class="hljs-comment">// setter and **getter**</span>
+<span class="hljs-keyword">var</span> fullName: <span class="hljs-type">String</span> {
+    <span class="hljs-keyword">get</span> {
+        <span class="hljs-keyword">return</span> firstName + lastName
+    }
+    <span class="hljs-keyword">set</span>(newName) {
+        firstName = newName
+    }
+}
+
+<span class="hljs-comment">// setter &#x7684;&#x7B80;&#x5199;</span>
+<span class="hljs-keyword">var</span> fullName: <span class="hljs-type">String</span> {
+    <span class="hljs-keyword">get</span> {
+        <span class="hljs-keyword">return</span> firstName + lastName
+    }
+    <span class="hljs-keyword">set</span> {
+        firstName = newValue
+    }
+}
+
+<span class="hljs-comment">// Computed Property &#x8C03;&#x7528;&#xFF1A;</span>
+<span class="hljs-number">_</span> = person.fullName
+person.fullName = <span class="hljs-string">&quot;&quot;</span>
+
+<span class="hljs-comment">//// &#x5B9E;&#x9645;&#x4F5C;&#x7528;&#x7B49;&#x4EF7;&#x4E8E;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570; </span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">fullName</span><span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">String</span> {
+    <span class="hljs-keyword">return</span> firstName + lastName
+}
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">fullName</span><span class="hljs-params">(<span class="hljs-number">_</span> newName: String)</span></span> {
+    firstName = newName
+}
+
+<span class="hljs-comment">// &#x51FD;&#x6570;&#x8C03;&#x7528;</span>
+<span class="hljs-number">_</span> = person.fullName()
+person.fullName(<span class="hljs-string">&quot;&quot;</span>)
+</code></pre>
+<h3 id="property-observer">Property Observer</h3>
+<ol>
+<li>Observer &#x5206;&#x4E3A; willSet &#x548C; didSet &#x4E24;&#x79CD;</li>
+<li>&#x53EF;&#x4EE5;&#x4E3A; Stored Property &#x6DFB;&#x52A0; Observer&#xFF08;&#x4E0D;&#x53EF;&#x4EE5;&#x7ED9; Lazy Stored Property &#x6DFB;&#x52A0; Observer&#xFF09;</li>
+<li>class&#xFF1A;&#x7EE7;&#x627F;&#x7684; Stored Property &#x548C; Computed Property &#x90FD;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0; Observer&#xFF08;overriding Property&#xFF09;</li>
+<li>&#x5BF9;&#x4E8E;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x7684; Computed Property &#x5E76;&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0; Observer&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728; setter &#x4E2D;&#x5904;&#x7406;()</li>
+<li>&#x5728; init &#x4E2D;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x4F1A;&#x8C03;&#x7528; Observer</li>
+</ol>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>{
+    <span class="hljs-keyword">var</span> firstName: <span class="hljs-type">String</span> {
+        <span class="hljs-keyword">get</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>
+        }
+        <span class="hljs-keyword">set</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;set&quot;</span>)
+        }
+    }
+
+    <span class="hljs-keyword">var</span> age: <span class="hljs-type">Int</span> = <span class="hljs-number">0</span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>: <span class="hljs-title">Animal</span> </span>{
+    <span class="hljs-keyword">var</span> lastName: <span class="hljs-type">String</span> = <span class="hljs-string">&quot;&quot;</span> {
+        <span class="hljs-keyword">willSet</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;old: &quot;</span> + lastName + <span class="hljs-string">&quot;, new: &quot;</span> + newValue)
+        }
+        <span class="hljs-keyword">didSet</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;old: &quot;</span> + oldValue + <span class="hljs-string">&quot;, new: &quot;</span> + lastName)
+        }
+    }
+
+    <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x4F1A;&#x62A5;&#x9519; lazy &#x65E0;&#x6CD5;&#x6DFB;&#x52A0; observer</span>
+<span class="hljs-comment">//    lazy var firstName: String = &quot;&quot; {</span>
+<span class="hljs-comment">//        willSet {</span>
+<span class="hljs-comment">//            print(&quot;old: &quot; + lastName + &quot;, new: &quot; + newValue)</span>
+<span class="hljs-comment">//        }</span>
+<span class="hljs-comment">//    }</span>
+
+    <span class="hljs-comment">// override Stored Property</span>
+    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> age: <span class="hljs-type">Int</span> {
+        <span class="hljs-keyword">willSet</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;willSet age&quot;</span>)
+        }
+        <span class="hljs-keyword">didSet</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;didSet age&quot;</span>)
+        }
+    }
+
+    <span class="hljs-comment">// override Computed Property</span>
+    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> firstName: <span class="hljs-type">String</span> {
+        <span class="hljs-keyword">willSet</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;willSet&quot;</span>)
+        }
+        <span class="hljs-keyword">didSet</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;didSet&quot;</span>)
+        }
+    }
+}
+</code></pre>
+<h3 id="type-property">Type Property</h3>
+<p>&#x7C7B;&#x4F3C;&#x4E8E; c &#x4E2D;&#x7684; static&#xFF0C;&#x5FC5;&#x987B;&#x6709;&#x9ED8;&#x8BA4;&#x503C;(default value)</p>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> lastName: <span class="hljs-type">String</span> = <span class="hljs-string">&quot;&quot;</span> {
+        <span class="hljs-keyword">willSet</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;old: &quot;</span> + lastName + <span class="hljs-string">&quot;, new: &quot;</span> + newValue)
+        }
+        <span class="hljs-keyword">didSet</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;old: &quot;</span> + oldValue + <span class="hljs-string">&quot;, new: &quot;</span> + lastName)
+        }
+    }
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> firstName1: <span class="hljs-type">String</span> {
+        <span class="hljs-keyword">get</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>
+        }
+        <span class="hljs-keyword">set</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>)
+        }
+    }
+
+    <span class="hljs-comment">// &#x4F7F;&#x7528; class &#x4FEE;&#x9970; Computed Property &#xFF0C; subclass &#x53EF;&#x4EE5; override</span>
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">var</span> <span class="hljs-title">firstName</span>: <span class="hljs-title">String</span> </span>{
+        <span class="hljs-keyword">get</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>
+        }
+        <span class="hljs-keyword">set</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>)
+        }
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">FixedRange</span> </span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> firstValue: <span class="hljs-type">Int</span> = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">let</span> length: <span class="hljs-type">Int</span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">KDError</span> </span>{
+    <span class="hljs-keyword">case</span> networkError
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> firstValue: <span class="hljs-type">Int</span> = <span class="hljs-number">0</span>
+}
+
+<span class="hljs-comment">// &#x8C03;&#x7528;&#x65B9;&#x5F0F;&#xFF1A;</span>
+<span class="hljs-type">Person</span>.lastName = <span class="hljs-string">&quot;&quot;</span>
+<span class="hljs-type">FixedRange</span>.firstValue = <span class="hljs-number">10</span>
+</code></pre>
 <h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
 <ul>
-<li><a href="http://www.ruanyifeng.com/blog/2018/01/assembly-language-primer.html" target="_blank">http://www.ruanyifeng.com/blog/2018/01/assembly-language-primer.html</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80" target="_blank">https://zh.wikipedia.org/wiki/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80</a></li>
-<li><a href="https://www.w3cschool.cn/assembly/assembly-language.html" target="_blank">https://www.w3cschool.cn/assembly/assembly-language.html</a></li>
+<li><a href="https://docs.swift.org/swift-book/LanguageGuide/Properties.html#ID255" target="_blank">https://docs.swift.org/swift-book/LanguageGuide/Properties.html#ID255</a></li>
 </ul>
 
                                 
@@ -1987,12 +2187,12 @@
 
             
                 
-                <a href="cpu.html" class="navigation navigation-prev " aria-label="Previous page: CPU">
+                <a href="generic.html" class="navigation navigation-prev " aria-label="Previous page: 泛型">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../other/" class="navigation navigation-next " aria-label="Next page: 网络">
+                <a href="../ios/basic/" class="navigation navigation-next " aria-label="Next page: iOS系统">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2003,7 +2203,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"汇编语言","level":"2.1.2","depth":2,"next":{"title":"网络","level":"2.2","depth":1,"path":"other/index.md","ref":"other/index.md","articles":[{"title":"common","level":"2.2.1","depth":2,"path":"other/comm.md","ref":"other/comm.md","articles":[]},{"title":"tcp","level":"2.2.2","depth":2,"path":"other/tcp.md","ref":"other/tcp.md","articles":[]},{"title":"mars","level":"2.2.3","depth":2,"path":"other/mars.md","ref":"other/mars.md","articles":[]},{"title":"WebSocket","level":"2.2.4","depth":2,"path":"other/websocket.md","ref":"other/websocket.md","articles":[]},{"title":"xlog","level":"2.2.5","depth":2,"path":"other/xlog.md","ref":"other/xlog.md","articles":[]},{"title":"http","level":"2.2.6","depth":2,"path":"other/http.md","ref":"other/http.md","articles":[]},{"title":"https","level":"2.2.7","depth":2,"path":"other/https.md","ref":"other/https.md","articles":[]},{"title":"正则表达式","level":"2.2.8","depth":2,"path":"other/rejex.md","ref":"other/rejex.md","articles":[]}]},"previous":{"title":"CPU","level":"2.1.1","depth":2,"path":"computer/cpu.md","ref":"computer/cpu.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"computer/assembly_language.md","mtime":"2019-01-02T02:01:42.638Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T05:31:57.596Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Property","level":"4.2.5","depth":2,"next":{"title":"iOS系统","level":"4.3","depth":1,"path":"ios/basic/index.md","ref":"ios/basic/index.md","articles":[{"title":"编译","level":"4.3.1","depth":2,"path":"ios/basic/compile.md","ref":"ios/basic/compile.md","articles":[]},{"title":"链接","level":"4.3.2","depth":2,"path":"ios/basic/linker.md","ref":"ios/basic/linker.md","articles":[]},{"title":"App运行","level":"4.3.3","depth":2,"path":"ios/basic/startapp.md","ref":"ios/basic/startapp.md","articles":[]},{"title":"start-runtime","level":"4.3.4","depth":2,"path":"ios/basic/startruntime.md","ref":"ios/basic/startruntime.md","articles":[]},{"title":"目标文件","level":"4.3.5","depth":2,"path":"ios/basic/objectfile.md","ref":"ios/basic/objectfile.md","articles":[]},{"title":"Mach-O","level":"4.3.6","depth":2,"path":"ios/basic/macho.md","ref":"ios/basic/macho.md","articles":[]},{"title":"签名流程","level":"4.3.7","depth":2,"path":"ios/basic/signature.md","ref":"ios/basic/signature.md","articles":[]},{"title":"LinkMap文件","level":"4.3.8","depth":2,"path":"ios/basic/linkmap.md","ref":"ios/basic/linkmap.md","articles":[]},{"title":"C语言","level":"4.3.9","depth":2,"path":"ios/basic/c.md","ref":"ios/basic/c.md","articles":[]}]},"previous":{"title":"泛型","level":"4.2.4","depth":2,"path":"swift/generic.md","ref":"swift/generic.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"swift/property.md","mtime":"2019-01-04T05:29:26.076Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T05:31:57.596Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
