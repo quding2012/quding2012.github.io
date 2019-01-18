@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Content Security Policy · 学习笔记</title>
+        <title>CSS · 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="render.html" />
+    <link rel="next" href="js6.html" />
     
     
-    <link rel="prev" href="js6.html" />
+    <link rel="prev" href="html.html" />
     
 
     </head>
@@ -1841,7 +1841,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.1.2" data-path="css.html">
+        <li class="chapter active" data-level="5.1.2" data-path="css.html">
             
                 <a href="css.html">
             
@@ -1867,7 +1867,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.1.4" data-path="csp.html">
+        <li class="chapter " data-level="5.1.4" data-path="csp.html">
             
                 <a href="csp.html">
             
@@ -2012,7 +2012,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Content Security Policy</a>
+        <a href=".." >CSS</a>
     </h1>
 </div>
 
@@ -2027,66 +2027,311 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="content-security-policy">Content Security Policy</h2>
-<p>CSP &#x7684;&#x5B9E;&#x8D28;&#x5C31;&#x662F;&#x767D;&#x540D;&#x5355;&#x5236;&#x5EA6;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x660E;&#x786E;&#x544A;&#x8BC9;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x54EA;&#x4E9B;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#x53EF;&#x4EE5;&#x52A0;&#x8F7D;&#x548C;&#x6267;&#x884C;&#xFF0C;&#x7B49;&#x540C;&#x4E8E;&#x63D0;&#x4F9B;&#x767D;&#x540D;&#x5355;&#x3002;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x548C;&#x6267;&#x884C;&#x5168;&#x90E8;&#x7531;&#x6D4F;&#x89C8;&#x5668;&#x5B8C;&#x6210;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x53EA;&#x9700;&#x63D0;&#x4F9B;&#x914D;&#x7F6E;&#x3002;&#x4F7F;&#x7528; CSP &#x4E3B;&#x8981;&#x9632;&#x6B62; XSS &#x653B;&#x51FB;&#x3002;</p>
-<h3 id="&#x542F;&#x7528;csp">&#x542F;&#x7528;CSP</h3>
-<h4 id="&#x8BBE;&#x7F6E;-content-security">&#x8BBE;&#x7F6E; Content-Security</h4>
-<pre><code>Content-Security-Policy: script-src &apos;self&apos;; object-src &apos;none&apos;;
-style-src cdn.example.org third-party.org; child-src https:
-</code></pre><h4 id="&#x8BBE;&#x7F6E;--&#x6807;&#x7B7E;">&#x8BBE;&#x7F6E; <meta> &#x6807;&#x7B7E;</h4>
-<pre><code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;script-src &apos;self&apos;; object-src &apos;none&apos;; style-src cdn.example.org third-party.org; child-src https:&quot;&gt;
-</code></pre><h4 id="&#x5177;&#x4F53;&#x914D;&#x7F6E;">&#x5177;&#x4F53;&#x914D;&#x7F6E;</h4>
-<pre><code>script-src &apos;self&apos;;  // js&#x53EA;&#x4FE1;&#x4EFB;&#x5F53;&#x524D;&#x57DF;&#x540D;
-object-src &apos;none&apos;;  // &lt;object&gt;&#x6807;&#x7B7E; &#x4E0D;&#x4FE1;&#x4EFB;&#x4EFB;&#x4F55;URL&#xFF0C;&#x5373;&#x4E0D;&#x52A0;&#x8F7D;&#x4EFB;&#x4F55;&#x8D44;&#x6E90;
-style-src cdn.example.org third-party.org;  // css &#x53EA;&#x4FE1;&#x4EFB; cdn.example.org&#x548C;third-party.org
-child-src https:    // &#x5176;&#x4ED6;&#x8D44;&#x6E90;&#xFF1A;&#x6CA1;&#x6709;&#x9650;&#x5236;
-</code></pre><p>&#x793A;&#x4F8B;&#xFF1A;</p>
-<pre><code>// &#x5404;&#x914D;&#x7F6E;&#x7684;&#x9ED8;&#x8BA4;&#x9009;&#x9879; self  &#x6240;&#x6709;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#x53EA;&#x80FD;&#x4ECE;&#x5F53;&#x524D;&#x57DF;&#x540D;&#x52A0;&#x8F7D;
-Content-Security-Policy: default-src &apos;self&apos;
-</code></pre><h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
-<ul>
-<li><a href="http://www.ruanyifeng.com/blog/2016/09/csp.html" target="_blank">http://www.ruanyifeng.com/blog/2016/09/csp.html</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP</a></li>
-</ul>
-<h2 id="&#x540C;&#x6E90;&#x7B56;&#x7565;">&#x540C;&#x6E90;&#x7B56;&#x7565;</h2>
-<p>same-origin policy</p>
-<p>&#x540C;&#x6E90;&#x653F;&#x7B56;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x662F;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x7684;&#x5B89;&#x5168;&#xFF0C;&#x9632;&#x6B62;&#x6076;&#x610F;&#x7684;&#x7F51;&#x7AD9;&#x7A83;&#x53D6;&#x6570;&#x636E;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x7F51;&#x7AD9;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;CSP&#x5934;&#x90E8;&#xFF0C;&#x5219;&#x6D4F;&#x89C8;&#x5668;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x7684;&#x540C;&#x6E90;&#x7B56;&#x7565;&#x3002;</p>
-<h3 id="&#x4EC0;&#x4E48;&#x662F;&#x540C;&#x6E90;">&#x4EC0;&#x4E48;&#x662F;&#x540C;&#x6E90;</h3>
-<p>&#x540C;&#x6E90; &#x6307; &#x57DF;&#x540D;&#x3001;&#x534F;&#x8BAE;&#x3001;&#x7AEF;&#x53E3;&#x90FD;&#x76F8;&#x540C;&#x3002;</p>
-<p>scheme + host + port &#x90FD;&#x76F8;&#x540C;&#x624D;&#x7B97;&#x662F;<strong>&#x540C;&#x6E90;</strong>&#x3002;</p>
-<p>&#x540C;&#x4E00;&#x57DF;&#x540D;&#x4E0B;&#x7684; http &#x548C; https&#x8BF7;&#x6C42; &#x5C5E;&#x4E8E;&#x4E0D;&#x540C;&#x6E90;</p>
-<h3 id="&#x540C;&#x6E90;&#x7B56;&#x7565;&#x7684;&#x9650;&#x5236;&#xFF1A;">&#x540C;&#x6E90;&#x7B56;&#x7565;&#x7684;&#x9650;&#x5236;&#xFF1A;</h3>
+                                <h2 id="css">CSS</h2>
+<p>Cascading Style Sheet &#x6837;&#x5F0F;&#x63CF;&#x8FF0;&#x8BED;&#x8A00;</p>
+<p>cascade &#x7011;&#x5E03;&#xFF1B;&#x7EA7;&#x8054;&#xFF1B;</p>
+<p>&#x4ECE;&#x5185;&#x5BB9;&#x4E2D;&#x5206;&#x79BB;&#x6837;&#x5F0F;&#xFF0C;&#x6709;&#x52A9;&#x4E8E;&#x590D;&#x7528;&#xFF0C;&#x66F4;&#x5BB9;&#x6613;&#x7EF4;&#x62A4;&#xFF0C;&#x540C;&#x6837;&#x7684;&#x5185;&#x5BB9;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x6837;&#x5F0F;&#x3002;</p>
+<h3 id="&#x4F7F;&#x7528;&#xFF1A;">&#x4F7F;&#x7528;&#xFF1A;</h3>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;style1.css&quot;&gt;
+</code></pre><p>&#x4E00;&#x6761;CSS&#x89C4;&#x5219;&#xFF1A;</p>
+<pre><code>selector {  // &#x82B1;&#x62EC;&#x53F7;&#x4E2D;&#x7684;&#x90E8;&#x5206;&#x4E3A;&#x58F0;&#x660E;
+    property&#xFF1A;value;
+    property: value;
+}
+</code></pre><h3 id="&#x5982;&#x4F55;&#x5DE5;&#x4F5C;">&#x5982;&#x4F55;&#x5DE5;&#x4F5C;</h3>
+<h3 id="&#x5C42;&#x53E0;-&#x548C;-&#x7EE7;&#x627F;">&#x5C42;&#x53E0; &#x548C; &#x7EE7;&#x627F;</h3>
+<h4 id="&#x5C42;&#x53E0;">&#x5C42;&#x53E0;</h4>
 <ol>
-<li>Cookie&#x3001;LocalStorage&#x3001;IndexDB&#x65E0;&#x6CD5;&#x8BFB;&#x53D6;</li>
-<li>DOM &#x65E0;&#x6CD5;&#x83B7;&#x53D6;</li>
-<li>Ajax &#x8BF7;&#x6C42;&#x4E0D;&#x80FD;&#x53D1;&#x9001;</li>
+<li>&#x6D4F;&#x89C8;&#x5668;&#x5BF9;HTML&#x5143;&#x7D20;&#x5B9A;&#x4E49;&#x7684;&#x9ED8;&#x8BA4;&#x6837;&#x5F0F;</li>
+<li>&#x5F00;&#x53D1;&#x8005;&#x5B9A;&#x4E49;&#x7684;&#x6837;&#x5F0F;<ol>
+<li>&#x5916;&#x8054;&#x6837;&#x5F0F;   style.css </li>
+<li>&#x5185;&#x8054;&#x6837;&#x5F0F;   &#x5728;&#x9875;&#x9762;&#x7684;&#x5934;&#x90E8;&#x5B9A;&#x4E49;&#xFF0C;&#x53EA;&#x5728;&#x672C;&#x9875;&#x9762;&#x751F;&#x6548;</li>
+<li>&#x884C;&#x5185;&#x6837;&#x5F0F;   &#x5B9A;&#x4E49;&#x5728;&#x7279;&#x5B9A;&#x5143;&#x7D20;&#x4E0A;</li>
 </ol>
-<h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+</li>
+</ol>
+<h4 id="&#x7EE7;&#x627F;">&#x7EE7;&#x627F;</h4>
+<h3 id="&#x9009;&#x62E9;&#x5668;-selectors">&#x9009;&#x62E9;&#x5668; Selectors</h3>
+<h4 id="tag-selectortype-selector">tag selector(type selector)</h4>
+<pre><code>body{
+    background-color: lightgray;
+}
+
+p{
+    color: blue;
+    text-decoration: underline;
+}
+</code></pre><h4 id="class-selector">class selector</h4>
+<p>&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x5143;&#x7D20;&#x7684; class &#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x5143;&#x7D20;&#x6307;&#x5B9A;&#x7C7B;&#x540D;&#x3002;&#x7C7B;&#x540D;&#x7531;&#x5F00;&#x53D1;&#x8005;&#x81EA;&#x5DF1;&#x6307;&#x5B9A;&#x3002; &#x6587;&#x6863;&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x53EF;&#x4EE5;&#x62E5;&#x6709;&#x540C;&#x4E00;&#x4E2A;&#x7C7B;&#x540D;&#x3002;</p>
+<pre><code>.title {    // &#x4EE5; . &#x5F00;&#x5934;&#x58F0;&#x660E;
+    color: yellow;
+}
+
+
+// html
+class selector &#x6BD4; tag selector &#x4F18;&#x5148;&#x7EA7;&#x66F4;&#x9AD8; 
+&lt;p class=&quot;title&quot;&gt;p2&lt;/p&gt;
+</code></pre><h4 id="id-selector">id selector</h4>
+<p>&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x5143;&#x7D20;&#x7684; id &#x5C5E;&#x6027;&#x4E3A;&#x8BE5;&#x5143;&#x7D20;&#x5236;&#x5B9A;ID&#x3002;ID&#x540D;&#x7531;&#x5F00;&#x53D1;&#x8005;&#x6307;&#x5B9A;&#x3002;&#x6BCF;&#x4E2A;ID&#x5728;&#x6587;&#x6863;&#x4E2D;&#x5FC5;&#x987B;&#x662F;&#x552F;&#x4E00;&#x7684;&#x3002;</p>
+<pre><code>#myname {   // &#x4EE5; # &#x5F00;&#x5934;&#x58F0;&#x660E;
+    color: purple;
+}
+
+// html
+&lt;p id=&quot;myname&quot;&gt;p3&lt;/p&gt;
+
+// id &#x6BD4; class &#x4F18;&#x5148;&#x7EA7;&#x66F4;&#x9AD8;
+&lt;p class=&quot;title&quot; id=&quot;myname&quot;&gt;p3&lt;/p&gt;
+</code></pre><h4 id="pseudo-classes-selector">Pseudo-classes selector</h4>
+<p>CSS&#x4F2A;&#x7C7B;&#xFF08;pseudo-class&#xFF09;&#x662F;&#x52A0;&#x5728;&#x9009;&#x62E9;&#x5668;&#x540E;&#x9762;&#x7684;&#x7528;&#x6765;&#x6307;&#x5B9A;&#x5143;&#x7D20;&#x72B6;&#x6001;&#x7684;&#x5173;&#x952E;&#x5B57;&#x3002;&#x6BD4;&#x5982;&#xFF0C;:hover &#x4F1A;&#x5728;&#x9F20;&#x6807;&#x60AC;&#x505C;&#x5728;&#x9009;&#x4E2D;&#x5143;&#x7D20;&#x4E0A;&#x65F6;&#x5E94;&#x7528;&#x76F8;&#x5E94;&#x7684;&#x6837;&#x5F0F;&#x3002;</p>
+<pre><code>.title:hover { 
+    color: yellow;
+}
+a {
+    color: red;
+}
+a:visited {
+    color: orange;
+}
+</code></pre><p>&#x4F2A;&#x7C7B;&#x5217;&#x8868;&#xFF1A;</p>
+<pre><code>:link       // link &#x6CA1;&#x6709;&#x8BBF;&#x95EE;&#x8FC7;
+:visited    // link &#x5DF2;&#x8BBF;&#x95EE;&#x8FC7;
+:active     // &#x88AB;&#x6FC0;&#x6D3B;&#x7684;&#x65F6;&#x5019;
+:hover      // &#x9F20;&#x6807;&#x505C;&#x7559;
+:focus      // link &#x88AB;&#x9009;&#x4E2D;&#x7684;&#x65F6;&#x5019;
+:first-child    // &#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;
+:nth-child  // &#x5B50;&#x5143;&#x7D20;&#x4E2D;&#xFF0C;&#x6309;&#x7167;&#x4F4D;&#x7F6E;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#xFF0C;&#x7B2C; n &#x4E2A;&#x5143;&#x7D20;
+:nth-last-child
+:nth-of-type
+:first-of-type
+:last-of-type
+:empty
+:target
+:checked
+:enabled
+:disabled
+
+&#x53C2;&#x8003;&#xFF1A;https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-child
+</code></pre><h4 id="&#x57FA;&#x4E8E;&#x5173;&#x7CFB;&#x7684;&#x9009;&#x62E9;&#x5668;">&#x57FA;&#x4E8E;&#x5173;&#x7CFB;&#x7684;&#x9009;&#x62E9;&#x5668;</h4>
+<pre><code>// &#x540E;&#x4EE3;&#x9009;&#x62E9;&#x5668;
+A E     
+&#x5143;&#x7D20;A&#x7684;&#x4EFB;&#x4E00;&#x540E;&#x4EE3;&#x5143;&#x7D20;E
+
+// &#x5B50;&#x9009;&#x62E9;&#x5668;
+A &gt; E
+&#x5143;&#x7D20;A&#x7684;&#x4EFB;&#x4E00;&#x5B50;&#x5143;&#x7D20;E(E&#x5FC5;&#x987B;&#x7D27;&#x6328;&#x7740;A)
+
+// &#x76F8;&#x90BB;&#x5144;&#x5F1F;&#x9009;&#x62E9;&#x5668;
+B + E
+&#x5143;&#x7D20;B&#x7684;&#x4EFB;&#x4E00;&#x4E0B;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x5143;&#x7D20;E(&#x7B2C;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x5143;&#x7D20;&#x5982;&#x679C;&#x662F;E&#xFF0C;&#x5219;&#x8D77;&#x4F5C;&#x7528;)  
+B + *   &#x5143;&#x7D20;B&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x5143;&#x7D20; 
+
+// &#x901A;&#x7528;&#x5144;&#x5F1F;&#x9009;&#x62E9;&#x5668;
+B ~ E
+&#x5143;&#x7D20;B&#x4E4B;&#x540E;&#x7684;&#x6240;&#x6709;&#x7C7B;&#x578B;&#x4E3A;E&#x7684;&#x5144;&#x5F1F;&#x5143;&#x7D20;
+
+B ~ *  &#x8868;&#x793A; &#x5143;&#x7D20;B&#x4E4B;&#x540E;&#x7684;&#x6240;&#x6709;&#x5144;&#x5F1F;&#x5143;&#x7D20;
+</code></pre><p>demo&#xFF1A;</p>
+<pre><code class="lang-css">// id &#x4E3A;data-table-1&#xFF0C;table &#x4E2D;&#x6BCF;&#x884C;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20; &#x4E3A; bolder&#xFF1B;&#x7B2C;&#x4E8C;&#x4E2A;&#x5143;&#x7D20;&#x4F7F;&#x7528;&#x7B49;&#x5BBD;&#x5B57;&#x4F53;&#x3002; 
+#data-table-1 td:first-child {font-weight: bolder;}
+#data-table-1 td:first-child + td {font-family: monospace;}
+
+
+a.homepage:hover, a.homepage:focus, a.homepage:active {
+  background-color: #666;
+}
+
+// &#x4F7F;&#x7528;CSS &#x521B;&#x5EFA;&#x4E0B;&#x4E86;&#x83DC;&#x5355;
+div.menu-bar ul ul {
+    display: none;
+}
+div.menu-bar ul:hover ul {
+    display: block;
+}
+</code></pre>
+<h3 id="&#x6846;&#x5C5E;&#x6027;">&#x6846;&#x5C5E;&#x6027;</h3>
+<h3 id="&#x6587;&#x5B57;&#x6837;&#x5F0F;">&#x6587;&#x5B57;&#x6837;&#x5F0F;</h3>
+<pre><code class="lang-css"><span class="hljs-selector-class">.class-font</span> {
+    <span class="hljs-attribute">color</span>: red;
+    <span class="hljs-attribute">font-family</span>: -apple-system;
+
+    <span class="hljs-comment">/* 1em &#x7B49;&#x4E8E; &#x5F53;&#x524D;&#x5143;&#x7D20;&#x7684;&#x7236;&#x5143;&#x7D20;&#x4E0A;&#x8BBE;&#x7F6E;&#x7684;&#x5B57;&#x4F53;&#x5927;&#x5C0F; */</span>
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2.5em</span>;   
+
+    <span class="hljs-comment">/* font-style: normal; */</span>
+    <span class="hljs-attribute">font-style</span>: italic;
+
+    <span class="hljs-comment">/* font-weight: normal; */</span>
+    <span class="hljs-attribute">font-weight</span>: bold;
+
+    <span class="hljs-comment">/* text-decoration: none; */</span>
+    <span class="hljs-comment">/* text-decoration: underline; */</span>
+    <span class="hljs-comment">/* text-decoration: overline; */</span>
+    <span class="hljs-attribute">text-decoration</span>: line-through;
+
+    <span class="hljs-comment">/* text-transform: none; */</span>
+    <span class="hljs-comment">/* text-transform: uppercase; */</span>
+    <span class="hljs-comment">/* text-transform: lowercase; */</span>
+    <span class="hljs-attribute">text-transform</span>: capitalize;
+
+    <span class="hljs-comment">/* &#x6C34;&#x5E73;&#x504F;&#x79FB; &#x5782;&#x76F4;&#x504F;&#x79FB; &#x6A21;&#x7CCA;&#x534A;&#x5F84; &#x9634;&#x5F71;&#x989C;&#x8272; */</span>
+    <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">4px</span> <span class="hljs-number">4px</span> <span class="hljs-number">5px</span> red;
+
+    <span class="hljs-comment">/* &#x6587;&#x672C;&#x5E03;&#x5C40; */</span>
+    <span class="hljs-comment">/* &#x5BF9;&#x9F50;&#x65B9;&#x5F0F; */</span>
+    <span class="hljs-comment">/* text-align: left; */</span>
+    <span class="hljs-comment">/* text-align: right; */</span>
+    <span class="hljs-comment">/* text-align: center; */</span>
+    <span class="hljs-attribute">text-align</span>: justify;
+
+    <span class="hljs-comment">/* &#x884C;&#x9AD8; 2.5&#x4E3A;&#x4E58;&#x6570; */</span>
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">2.5</span>;
+
+    <span class="hljs-comment">/* &#x5B57;&#x95F4;&#x8DDD; */</span>
+    <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">10px</span>;
+
+    <span class="hljs-comment">/* &#x5355;&#x8BCD;&#x95F4;&#x8DDD; */</span>
+    <span class="hljs-attribute">word-spacing</span>: <span class="hljs-number">50px</span>;
+}
+</code></pre>
+<h3 id="&#x52A8;&#x753B;-animation">&#x52A8;&#x753B; Animation</h3>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations</a></p>
+<p>&#x52A8;&#x753B; &#x4ECE;&#x4E00;&#x4E2A;CSS&#x6837;&#x5F0F;&#x8F6C;&#x6362;&#x5230;&#x53E6;&#x4E00;&#x4E2A;CSS&#x6837;&#x5F0F;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x5305;&#x62EC;&#xFF1A;</p>
 <ul>
-<li><a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" target="_blank">http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy</a></li>
+<li>&#x52A8;&#x753B;&#x7684;&#x6837;&#x5F0F;&#x89C4;&#x5219;</li>
+<li>&#x52A8;&#x753B;&#x5F00;&#x59CB;&#x3001;&#x7ED3;&#x675F;&#x3001;&#x4E2D;&#x95F4;&#x65F6;&#x523B;&#x7684;&#x5E27;</li>
 </ul>
-<h2 id="cors">CORS</h2>
-<p>Cross-Origin Resource Sharing &#x8DE8;&#x57DF;&#x8D44;&#x6E90;&#x5171;&#x4EAB;</p>
-<p>&#x8DE8;&#x57DF;&#x8D44;&#x6E90;&#x5171;&#x4EAB;(CORS) &#x662F;&#x4E00;&#x79CD;&#x673A;&#x5236;&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x989D;&#x5916;&#x7684; HTTP &#x5934;&#x6765;&#x544A;&#x8BC9;&#x6D4F;&#x89C8;&#x5668;  &#x8BA9;&#x8FD0;&#x884C;&#x5728;&#x4E00;&#x4E2A; origin (domain) &#x4E0A;&#x7684;Web&#x5E94;&#x7528;&#x88AB;&#x51C6;&#x8BB8;&#x8BBF;&#x95EE;&#x6765;&#x81EA;&#x4E0D;&#x540C;&#x6E90;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x6307;&#x5B9A;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x4ECE;&#x4E0E;&#x8BE5;&#x8D44;&#x6E90;&#x672C;&#x8EAB;&#x6240;&#x5728;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x540C;&#x7684;&#x57DF;&#x6216;&#x7AEF;&#x53E3;&#x8BF7;&#x6C42;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x65F6;&#xFF0C;&#x8D44;&#x6E90;&#x4F1A;&#x53D1;&#x8D77;&#x4E00;&#x4E2A;&#x8DE8;&#x57DF; HTTP &#x8BF7;&#x6C42;&#x3002;</p>
-<h3 id="&#x7B80;&#x5355;&#x8BF7;&#x6C42;">&#x7B80;&#x5355;&#x8BF7;&#x6C42;</h3>
-<p>&#x6D4F;&#x89C8;&#x5668;&#x53D1;&#x73B0;ajax&#x8BF7;&#x6C42;&#x65F6;&#x8DE8;&#x6E90;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x5728;request header&#x589E;&#x52A0;Origin&#x5B57;&#x6BB5;</p>
-<pre><code>GET /cors HTTP/1.1
-Origin: http://api.bob.com
-Host: api.alice.com
-Accept-Language: en-US
-Connection: keep-alive
-User-Agent: Mozilla/5.0
-</code></pre><p>&#x670D;&#x52A1;&#x5668;&#x6839;&#x636E;Origin&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x540C;&#x610F;&#x8FD9;&#x6B21;&#x8BF7;&#x6C42;&#x3002;&#x5982;&#x679C;Origin&#x6307;&#x5B9A;&#x7684;&#x57DF;&#x540D;&#x5728;&#x8BB8;&#x53EF;&#x8303;&#x56F4;&#x5185;&#xFF0C;&#x5219;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;response&#xFF0C;&#x4F1A;&#x5728;header &#x591A;&#x589E;&#x52A0;&#x51E0;&#x4E2A;&#x5B57;&#x6BB5;</p>
-<pre><code>Access-Control-Allow-Origin: http://api.bob.com     // &#x8868;&#x793A; server &#x63A5;&#x53D7;&#x7684;&#x57DF;&#x540D;&#x8BF7;&#x6C42;
-Access-Control-Allow-Credentials: true  // &#x544A;&#x77E5;&#x6D4F;&#x89C8;&#x5668;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x643A;&#x5E26;cookie
-Access-Control-Expose-Headers: FooBar   // 
-Content-Type: text/html; charset=utf-8
+<pre><code class="lang-css"><span class="hljs-selector-tag">p</span> {
+    <span class="hljs-attribute">animation-name</span>: slidein;
+    <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">3s</span>;
+    <span class="hljs-attribute">animation-delay</span>: <span class="hljs-number">5s</span>;
+    <span class="hljs-attribute">animation-iteration-count</span>: infinite;
+    <span class="hljs-attribute">animation-direction</span>: alternate;
+}
+
+@<span class="hljs-keyword">keyframes</span> slidein {
+    <span class="hljs-selector-tag">from</span> {
+        <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">100%</span>;
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">300%</span>;
+    }
+
+    75% {
+        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">300%</span>;
+        <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">25%</span>;
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">150%</span>;
+    }
+
+    <span class="hljs-selector-tag">to</span> {
+        <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">0%</span>;
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+    }
+}
+</code></pre>
+<h3 id="css-grid-and-flexbox-layout">CSS Grid and Flexbox layout</h3>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/Relationship_of_Grid_Layout" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/Relationship_of_Grid_Layout</a></li>
+</ul>
+<p>&#x7F51;&#x683C;&#x5E03;&#x5C40;&#x548C;&#x5F39;&#x6027;&#x5E03;&#x5C40;&#x7684;&#x533A;&#x522B;&#xFF1A;</p>
+<p>Flexbox &#x662F;&#x4E00;&#x7EF4;&#x5E03;&#x5C40;&#xFF08;&#x6CBF;&#x6A2A;&#x5411;&#x6216;&#x7EB5;&#x5411;&#xFF09;
+Grid &#x662F;&#x4E8C;&#x7EF4;&#x5E03;&#x5C40;&#xFF08;&#x540C;&#x65F6;&#x6CBF;&#x6A2A;&#x5411;&#x548C;&#x7EB5;&#x5411;&#xFF09;</p>
+<h3 id="flexbox">Flexbox</h3>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout</a></p>
+<h3 id="flex-flow&#x3001;flex-direction&#x3001;flex-wrapcontainer&#x5C5E;&#x6027;&#xFF0C;&#x5BF9;&#x5B50;&#x5143;&#x7D20;&#x751F;&#x6548;">flex-flow&#x3001;flex-direction&#x3001;flex-wrap(container&#x5C5E;&#x6027;&#xFF0C;&#x5BF9;&#x5B50;&#x5143;&#x7D20;&#x751F;&#x6548;)</h3>
+<pre><code class="lang-css">&#x6307;&#x5B9A;&#x4E86;&#x5185;&#x90E8;&#x5B50;&#x5143;&#x7D20;&#x5E03;&#x5C40;&#x7684;&#x4E3B;&#x8F74;&#x65B9;&#x5411;
+<span class="hljs-comment">/* The direction text is laid out in a line */</span>
+<span class="hljs-selector-tag">flex-direction</span>: <span class="hljs-selector-tag">row</span>;
+<span class="hljs-comment">/* Like &lt;row&gt;, but reversed */</span>
+<span class="hljs-selector-tag">flex-direction</span>: <span class="hljs-selector-tag">row-reverse</span>;
+<span class="hljs-comment">/* The direction in which lines of text are stacked */</span>
+<span class="hljs-selector-tag">flex-direction</span>: <span class="hljs-selector-tag">column</span>;
+<span class="hljs-comment">/* Like &lt;column&gt;, but reversed */</span>
+<span class="hljs-selector-tag">flex-direction</span>: <span class="hljs-selector-tag">column-reverse</span>;
+</code></pre>
+<p>flex-wrap</p>
+<pre><code class="lang-css">&#x6307;&#x5B9A;&#x4E86;&#x5185;&#x90E8;&#x5143;&#x7D20;&#x5355;&#x884C;&#x663E;&#x793A;&#x8FD8;&#x662F;&#x591A;&#x884C;&#x663E;&#x793A;&#xFF0C;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x6362;&#x884C;
+
+&#x53D6;&#x503C;&#xFF1A;
+flex-wrap: nowrap // default value
+flex-wrap: wrap
+flex-wrap: wrap-reverse
+</code></pre>
+<p>flex-flow </p>
+<pre><code class="lang-css">flex-flow &#x662F; flex-direction &#x548C; flex-wrap &#x7684;&#x7B80;&#x5199;&#x3002;
+
+flex-flow: row nowrap   // default value
+
+flex-flow: wrap
+flex-flow: column wrap-reverse;
+</code></pre>
+<h3 id="align-items-container&#x5C5E;&#x6027;&#xFF0C;&#x5BF9;&#x5B50;&#x5143;&#x7D20;&#x751F;&#x6548;">align-items (container&#x5C5E;&#x6027;&#xFF0C;&#x5BF9;&#x5B50;&#x5143;&#x7D20;&#x751F;&#x6548;)</h3>
+<pre><code class="lang-css">&#x8BBE;&#x7F6E;&#x5757;&#x4E2D;&#x7684;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&#x3002;
+&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x8BA9;&#x6BCF;&#x4E00;&#x5355;&#x884C;&#x7684;&#x5BB9;&#x5668;&#x5267;&#x4E2D;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6574;&#x4E2A;&#x5BB9;&#x5668;&#x3002;
+
+&#x5BF9;&#x6240;&#x6709;&#x76F4;&#x63A5;&#x5B50;&#x8282;&#x70B9;&#x7684; align-self &#x7EDF;&#x4E00;&#x8BBE;&#x7F6E;&#x3002;
+
+&#x8BBE;&#x7F6E; Flex &#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x65B9;&#x5411;&#x7684;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&#x3002;
+
+align-items: normal;
+align-items: stretch;
+
+align-items: center; // &#x5143;&#x7D20;&#x5728;&#x4FA7;&#x8F74;&#x5C45;&#x4E2D;
+align-items: flex-start;    // &#x5143;&#x7D20;&#x5411;&#x4FA7;&#x8F74;&#x8D77;&#x70B9;&#x5BF9;&#x9F50;
+align-items: flex-end;  // &#x5143;&#x7D20;&#x5411;&#x4FA7;&#x8F74;&#x7EC8;&#x70B9;&#x5BF9;&#x9F50;
+align-items: baseline;
+</code></pre>
+<h3 id="justify-content-container&#x5C5E;&#x6027;&#xFF0C;&#x5BF9;&#x5B50;&#x5143;&#x7D20;&#x751F;&#x6548;">justify-content (container&#x5C5E;&#x6027;&#xFF0C;&#x5BF9;&#x5B50;&#x5143;&#x7D20;&#x751F;&#x6548;)</h3>
+<pre><code class="lang-css">&#x5B9A;&#x4E49;&#x4E86;&#x5728;&#x4E3B;&#x8F74;&#x65B9;&#x5411;&#xFF0C;&#x5982;&#x4F55;&#x5206;&#x914D;&#x5143;&#x7D20;&#x76F4;&#x63A5;&#x7684;&#x7A7A;&#x95F4;&#x3002;
+&#x53EA;&#x9002;&#x7528;&#x4E8E; &#x591A;&#x884C; <span class="hljs-selector-tag">flex</span>&#x5BB9;&#x5668;&#x3002;
+
+&#x4F7F;&#x7528;&#x524D;&#x63D0;&#xFF1A;&#x6240;&#x6709;&#x5F39;&#x6027;&#x5143;&#x7D20;&#x7684; <span class="hljs-selector-tag">flex-glow</span> &#x7B49;&#x4E8E;0&#xFF0C;&#x624D;&#x751F;&#x6548;&#x3002;&#xFF08;&#x5982;&#x679C;&#x5B58;&#x5728;&#x81F3;&#x5C11;&#x4E00;&#x4E2A;&#x5F39;&#x6027;&#x5143;&#x7D20;&#xFF0C;&#x5219;&#x4F1A;&#x81EA;&#x52A8;&#x5360;&#x6EE1;&#x7A7A;&#x95F4;&#xFF09;
+
+&#x6CE8;&#x610F;&#xFF1A;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x4E3B;&#x52A8;&#x8BBE;&#x7F6E; <span class="hljs-selector-tag">flex</span>&#xFF0C;&#x6B64;&#x65F6; <span class="hljs-selector-tag">flex</span> &#x9ED8;&#x8BA4;&#x4E3A;&#xFF1A;<span class="hljs-selector-tag">flex</span>: <span class="hljs-selector-tag">inherit</span> <span class="hljs-selector-tag">inherit</span> <span class="hljs-selector-tag">auto</span>&#xFF0C;&#x5219; <span class="hljs-selector-tag">justify-content</span> &#x751F;&#x6548;
+</code></pre>
+<p>align-content &#x4E0E; align-items &#x7684;&#x533A;&#x522B;&#xFF1A;
+<a href="https://blog.csdn.net/sinat_27088253/article/details/51532992" target="_blank">https://blog.csdn.net/sinat_27088253/article/details/51532992</a></p>
+<h3 id="align-content-container&#x5C5E;&#x6027;&#xFF0C;&#x5BF9;&#x5B50;&#x5143;&#x7D20;&#x751F;&#x6548;">align-content (container&#x5C5E;&#x6027;&#xFF0C;&#x5BF9;&#x5B50;&#x5143;&#x7D20;&#x751F;&#x6548;)</h3>
+<pre><code class="lang-css">&#x5B9A;&#x4E49;&#x4E86;&#x4FA7;&#x8F74;&#x65B9;&#x5411;&#xFF0C;&#x5982;&#x4F55;&#x5206;&#x914D;&#x63A7;&#x4EF6;
+</code></pre>
+<h3 id="flex&#x3001;flex-grow&#x3001;flex-shrink&#x3001;flex-basis">flex&#x3001;flex-grow&#x3001;flex-shrink&#x3001;flex-basis</h3>
+<p>flex</p>
+<pre><code class="lang-css"><span class="hljs-selector-tag">flex</span>: 1 1 20<span class="hljs-selector-tag">px</span>;
+&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x5BF9;&#x5E94;&#xFF1A;
+    <span class="hljs-selector-tag">flex-grow</span>   &#x62C9;&#x4F38;&#x56E0;&#x5B50;(&#x6309;&#x767E;&#x5206;&#x6BD4;&#x8BA1;&#x7B97; <span class="hljs-selector-tag">default</span> 0)
+    <span class="hljs-selector-tag">flex-shrink</span> &#x6536;&#x7F29;&#x56E0;&#x5B50;&#xFF08;&#x6309;&#x767E;&#x5206;&#x6BD4;&#x8BA1;&#x7B97; <span class="hljs-selector-tag">default</span> 1&#xFF09;
+    <span class="hljs-selector-tag">flex-basis</span>  &#x6307;&#x5B9A;&#x4E86;<span class="hljs-selector-tag">flex</span>&#x5143;&#x7D20;&#x5728;&#x4E3B;&#x8F74;&#x65B9;&#x5411;&#x7684;&#x521D;&#x59CB;&#x5927;&#x5C0F;(<span class="hljs-selector-tag">default</span> <span class="hljs-selector-tag">auto</span>)
+
+<span class="hljs-selector-tag">flex</span>: <span class="hljs-selector-tag">auto</span> &#x7B49;&#x4EF7;&#x4E8E; <span class="hljs-selector-tag">flex</span>: 1 1 <span class="hljs-selector-tag">auto</span>
+&#x6839;&#x636E;&#x81EA;&#x8EAB;&#x5BBD;&#x9AD8;&#x8BBE;&#x7F6E;&#x5C3A;&#x5BF8;&#xFF0C;&#x4F1A;&#x4F38;&#x957F;&#x6216;&#x7F29;&#x77ED;&#x81EA;&#x8EAB;&#x4EE5;&#x9002;&#x5E94;&#x5BB9;&#x5668;
+
+<span class="hljs-selector-tag">flex</span>: <span class="hljs-selector-tag">initial</span> &#x7B49;&#x4EF7;&#x4E8E; <span class="hljs-selector-tag">flex</span>: 0 1 <span class="hljs-selector-tag">auto</span>
+&#x9ED8;&#x8BA4;&#x503C;&#x3002;&#x6839;&#x636E;&#x81EA;&#x8EAB;&#x5BBD;&#x9AD8;&#x8BBE;&#x7F6E;&#x5C3A;&#x5BF8;&#xFF0C;&#x4F1A;&#x7F29;&#x77ED;&#x81EA;&#x8EAB;&#x4EE5;&#x9002;&#x5E94;&#x5BB9;&#x5668;&#xFF0C;&#x4F46;&#x4E0D;&#x4F1A;&#x4F38;&#x957F;
+
+<span class="hljs-selector-tag">flex</span>: <span class="hljs-selector-tag">none</span> &#x7B49;&#x4EF7;&#x4E8E; <span class="hljs-selector-tag">flex</span>: 0 0 <span class="hljs-selector-tag">auto</span>
+&#x6839;&#x636E;&#x81EA;&#x8EAB;&#x5BBD;&#x9AD8;&#x8BBE;&#x7F6E;&#x5C3A;&#x5BF8;&#xFF0C;&#x4E0D;&#x4F1A;&#x4F38;&#x957F;&#x6216;&#x7F29;&#x77ED;&#x6765;&#x9002;&#x5E94;&#x5BB9;&#x5668;&#xFF0C;&#x5B8C;&#x5168;&#x662F;&#x975E;&#x5F39;&#x6027;&#x7684;&#x3002;
+
+<span class="hljs-selector-tag">flex</span> &#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;1&#x4E2A;&#xFF0C;2&#x4E2A;&#x6216;3&#x4E2A;&#x503C;&#x3002;
+
+<span class="hljs-selector-tag">flex</span>: 2 &#x8BBE;&#x7F6E;&#x4E86; <span class="hljs-selector-tag">flex-grow</span> &#x7B49;&#x4EF7;&#x4E8E; <span class="hljs-selector-tag">flex</span>: 2 1 <span class="hljs-selector-tag">auto</span>
+
+<span class="hljs-selector-tag">flex</span>: 30<span class="hljs-selector-tag">px</span> &#x8BBE;&#x7F6E;&#x4E86; <span class="hljs-selector-tag">flex-basis</span> &#x7B49;&#x4EF7;&#x4E8E;  <span class="hljs-selector-tag">flex</span>: 1 1 30<span class="hljs-selector-tag">px</span>
+
+<span class="hljs-selector-tag">flex</span>: 2 30<span class="hljs-selector-tag">px</span> &#x7B49;&#x4EF7;&#x4E8E; <span class="hljs-selector-tag">flex</span>: 2 1 30<span class="hljs-selector-tag">px</span>
+
+<span class="hljs-selector-tag">flex</span>: 2 2 &#x7B49;&#x4EF7;&#x4E8E; <span class="hljs-selector-tag">flex</span>: 2 2 <span class="hljs-selector-tag">auto</span>
+</code></pre>
+<h3 id="align-self">align-self</h3>
+<pre><code class="lang-css">
+<span class="hljs-selector-tag">align-self</span> &#x8BBE;&#x7F6E;&#x5F53;&#x524D;<span class="hljs-selector-tag">flex</span> &#x5143;&#x7D20;&#x7684;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&#xFF0C;&#x4F1A;&#x8986;&#x76D6; <span class="hljs-selector-tag">container</span> &#x8BBE;&#x7F6E;&#x7684; <span class="hljs-selector-tag">align-items</span> &#x7684;&#x503C;
+</code></pre>
+<h3 id="order">order</h3>
+<p>&#x89C4;&#x5B9A;&#x4E86; &#x5F39;&#x6027;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x53EF;&#x4F38;&#x7F29;&#x9879;&#x76EE;&#x5728;&#x5E03;&#x5C40;&#x65F6;&#x7684;&#x987A;&#x5E8F;&#x3002;&#x5177;&#x6709;&#x76F8;&#x540C;order&#x7684;&#x5143;&#x7D20;&#x6309;&#x4EE3;&#x7801;&#x987A;&#x5E8F;&#x5E03;&#x5C40;</p>
+<pre><code>default value 0
 </code></pre><h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
 <ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank">http://www.ruanyifeng.com/blog/2016/04/cors.html</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference</a></li>
 </ul>
 
                                 
@@ -2115,12 +2360,12 @@ Content-Type: text/html; charset=utf-8
 
             
                 
-                <a href="js6.html" class="navigation navigation-prev " aria-label="Previous page: javascript">
+                <a href="html.html" class="navigation navigation-prev " aria-label="Previous page: HTML">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="render.html" class="navigation navigation-next " aria-label="Next page: render">
+                <a href="js6.html" class="navigation navigation-next " aria-label="Next page: javascript">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2131,7 +2376,7 @@ Content-Type: text/html; charset=utf-8
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Content Security Policy","level":"5.1.4","depth":2,"next":{"title":"render","level":"5.1.5","depth":2,"path":"web/render.md","ref":"web/render.md","articles":[]},"previous":{"title":"javascript","level":"5.1.3","depth":2,"path":"web/js6.md","ref":"web/js6.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"web/csp.md","mtime":"2018-11-21T01:25:02.470Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-18T01:50:01.573Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CSS","level":"5.1.2","depth":2,"next":{"title":"javascript","level":"5.1.3","depth":2,"path":"web/js6.md","ref":"web/js6.md","articles":[]},"previous":{"title":"HTML","level":"5.1.1","depth":2,"path":"web/html.md","ref":"web/html.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"web/css.md","mtime":"2019-01-17T09:38:07.363Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-18T01:50:01.573Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
