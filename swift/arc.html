@@ -2082,78 +2082,83 @@
                                 <h2 id="arc-&#x76F8;&#x5173;">ARC &#x76F8;&#x5173;</h2>
 <h3 id="&#x7C7B;&#x5B9E;&#x4F8B;&#x4E4B;&#x95F4;&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;">&#x7C7B;&#x5B9E;&#x4F8B;&#x4E4B;&#x95F4;&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;</h3>
 <h4 id="1&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;-property-&#x90FD;&#x53EF;&#x80FD;&#x4E3A;-nil">1.&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; property &#x90FD;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
-<pre><code>class Person {
-    let name: String
-    init(name: String) { self.name = name }
-    var apartment: Apartment?
-    deinit { print(&quot;\(name) is being deinitialized&quot;) }
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+    <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">init</span>(name: <span class="hljs-type">String</span>) { <span class="hljs-keyword">self</span>.name = name }
+    <span class="hljs-keyword">var</span> apartment: <span class="hljs-type">Apartment</span>?
+    <span class="hljs-keyword">deinit</span> { <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;<span class="hljs-subst">\(name)</span> is being deinitialized&quot;</span>) }
 }
 
-class Apartment {
-    let unit: String
-    init(unit: String) { self.unit = unit }
-    weak var tenant: Person?
-    deinit { print(&quot;Apartment \(unit) is being deinitialized&quot;) }
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Apartment</span> </span>{
+    <span class="hljs-keyword">let</span> unit: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">init</span>(unit: <span class="hljs-type">String</span>) { <span class="hljs-keyword">self</span>.unit = unit }
+    <span class="hljs-keyword">weak</span> <span class="hljs-keyword">var</span> tenant: <span class="hljs-type">Person</span>?
+    <span class="hljs-keyword">deinit</span> { <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Apartment <span class="hljs-subst">\(unit)</span> is being deinitialized&quot;</span>) }
 }
-</code></pre><h4 id="2&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;-property-&#xFF0C;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x4E3A;-nil&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;-nil">2.&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; property &#xFF0C;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x4E3A; nil&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
-<pre><code>class Customer {
-    let name: String
-    var card: CreditCard?
+</code></pre>
+<h4 id="2&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;-property-&#xFF0C;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x4E3A;-nil&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;-nil">2.&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; property &#xFF0C;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x4E3A; nil&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Customer</span> </span>{
+    <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">var</span> card: <span class="hljs-type">CreditCard</span>?
 
-    init(name: String) {
-        self.name = name
+    <span class="hljs-keyword">init</span>(name: <span class="hljs-type">String</span>) {
+        <span class="hljs-keyword">self</span>.name = name
     }
 }
 
-class CreditCard {
-    let number: UInt64
-    unowned var customer: Customer
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreditCard</span> </span>{
+    <span class="hljs-keyword">let</span> number: <span class="hljs-type">UInt64</span>
+    <span class="hljs-keyword">unowned</span> <span class="hljs-keyword">var</span> customer: <span class="hljs-type">Customer</span>
 
-    init(number: UInt64, customer: Customer) {
-        self.number = number
-        self.customer = customer
-    }
-}
-</code></pre><h4 id="3&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;-property-&#x90FD;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;-nil">3.&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; property &#x90FD;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
-<pre><code>class Country {
-    let name: String
-    var capitalCity: City!
-    init(name: String, capitalName: String) {
-        self.name = name
-        self.capitalCity = City(name: capitalName, country: self)
-    }
-}
-
-class City {
-    let name: String
-    unowned let country: Country
-    init(name: String, country: Country) {
-        self.name = name
-        self.country = country
-    }
-}
-</code></pre><h3 id="closure-&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;">Closure &#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;</h3>
-<p>&#x4F7F;&#x7528; Capture List &#x6765;&#x907F;&#x514D;&#x5FAA;&#x73AF;&#x5E94;&#x7528;&#x3002;</p>
-<p><strong>&#x6CE8;&#x610F;</strong> &#x53EA;&#x6709;&#x8C03;&#x7528;&#x4E86; Closure &#x624D;&#x4F1A;&#x89E6;&#x53D1;&#x5FAA;&#x73AF;&#x5F15;&#x7528;</p>
-<h4 id="&#x53EF;&#x80FD;&#x4E3A;-nil">&#x53EF;&#x80FD;&#x4E3A; nil</h4>
-<p>&#x4F7F;&#x7528; [weak self]</p>
-<pre><code>lazy var asHTML: () -&gt; String = { [weak self] in
-    if let text = self?.text {
-        return &quot;&lt;\(self?.name)&gt;\(text)&lt;/\(self?.name)&gt;&quot;
-    } else {
-        return &quot;&lt;\(self?.name) /&gt;&quot;
-    }
-}
-</code></pre><h4 id="&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;-nil">&#x4E0D;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
-<p>&#x4F7F;&#x7528; [unowned self]</p>
-<pre><code>lazy var asHTML: () -&gt; String = { [unowned self] in
-    if let text = self.text {
-        return &quot;&lt;\(self.name)&gt;\(text)&lt;/\(self.name)&gt;&quot;
-    } else {
-        return &quot;&lt;\(self.name) /&gt;&quot;
+    <span class="hljs-keyword">init</span>(number: <span class="hljs-type">UInt64</span>, customer: <span class="hljs-type">Customer</span>) {
+        <span class="hljs-keyword">self</span>.number = number
+        <span class="hljs-keyword">self</span>.customer = customer
     }
 }
 </code></pre>
+<h4 id="3&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;-property-&#x90FD;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;-nil">3.&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; property &#x90FD;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Country</span> </span>{
+    <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">var</span> capitalCity: <span class="hljs-type">City</span>!
+    <span class="hljs-keyword">init</span>(name: <span class="hljs-type">String</span>, capitalName: <span class="hljs-type">String</span>) {
+        <span class="hljs-keyword">self</span>.name = name
+        <span class="hljs-keyword">self</span>.capitalCity = <span class="hljs-type">City</span>(name: capitalName, country: <span class="hljs-keyword">self</span>)
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">City</span> </span>{
+    <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">unowned</span> <span class="hljs-keyword">let</span> country: <span class="hljs-type">Country</span>
+    <span class="hljs-keyword">init</span>(name: <span class="hljs-type">String</span>, country: <span class="hljs-type">Country</span>) {
+        <span class="hljs-keyword">self</span>.name = name
+        <span class="hljs-keyword">self</span>.country = country
+    }
+}
+</code></pre>
+<h3 id="closure-&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;">Closure &#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;</h3>
+<p>&#x4F7F;&#x7528; Capture List &#x6765;&#x907F;&#x514D;&#x5FAA;&#x73AF;&#x5E94;&#x7528;&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;</strong> &#x53EA;&#x6709;&#x8C03;&#x7528;&#x4E86; Closure &#x624D;&#x4F1A;&#x89E6;&#x53D1;&#x5FAA;&#x73AF;&#x5F15;&#x7528;</p>
+<h4 id="1&#x53EF;&#x80FD;&#x4E3A;-nil">1.&#x53EF;&#x80FD;&#x4E3A; nil</h4>
+<p>&#x4F7F;&#x7528; [weak self]</p>
+<pre><code class="lang-Swift"><span class="hljs-built_in">lazy</span> <span class="hljs-keyword">var</span> asHTML: () -&gt; <span class="hljs-type">String</span> = { [<span class="hljs-keyword">weak</span> <span class="hljs-keyword">self</span>] <span class="hljs-keyword">in</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> text = <span class="hljs-keyword">self</span>?.text {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;<span class="hljs-subst">\(<span class="hljs-keyword">self</span>?.name)</span>&gt;<span class="hljs-subst">\(text)</span>&lt;/<span class="hljs-subst">\(<span class="hljs-keyword">self</span>?.name)</span>&gt;&quot;</span>
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;<span class="hljs-subst">\(<span class="hljs-keyword">self</span>?.name)</span> /&gt;&quot;</span>
+    }
+}
+</code></pre>
+<h4 id="2&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;-nil">2.&#x4E0D;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
+<p>&#x4F7F;&#x7528; [unowned self]</p>
+<pre><code class="lang-Swift"><span class="hljs-built_in">lazy</span> <span class="hljs-keyword">var</span> asHTML: () -&gt; <span class="hljs-type">String</span> = { [<span class="hljs-keyword">unowned</span> <span class="hljs-keyword">self</span>] <span class="hljs-keyword">in</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> text = <span class="hljs-keyword">self</span>.text {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;<span class="hljs-subst">\(<span class="hljs-keyword">self</span>.name)</span>&gt;<span class="hljs-subst">\(text)</span>&lt;/<span class="hljs-subst">\(<span class="hljs-keyword">self</span>.name)</span>&gt;&quot;</span>
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;<span class="hljs-subst">\(<span class="hljs-keyword">self</span>.name)</span> /&gt;&quot;</span>
+    }
+}
+</code></pre>
+
                                 
                                 </section>
                             
@@ -2196,7 +2201,7 @@ class City {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ARC中的循环引用","level":"4.2.6","depth":2,"next":{"title":"iOS系统","level":"4.3","depth":1,"path":"ios/basic/index.md","ref":"ios/basic/index.md","articles":[{"title":"编译","level":"4.3.1","depth":2,"path":"ios/basic/compile.md","ref":"ios/basic/compile.md","articles":[]},{"title":"链接","level":"4.3.2","depth":2,"path":"ios/basic/linker.md","ref":"ios/basic/linker.md","articles":[]},{"title":"App运行","level":"4.3.3","depth":2,"path":"ios/basic/startapp.md","ref":"ios/basic/startapp.md","articles":[]},{"title":"start-runtime","level":"4.3.4","depth":2,"path":"ios/basic/startruntime.md","ref":"ios/basic/startruntime.md","articles":[]},{"title":"目标文件","level":"4.3.5","depth":2,"path":"ios/basic/objectfile.md","ref":"ios/basic/objectfile.md","articles":[]},{"title":"Mach-O","level":"4.3.6","depth":2,"path":"ios/basic/macho.md","ref":"ios/basic/macho.md","articles":[]},{"title":"签名流程","level":"4.3.7","depth":2,"path":"ios/basic/signature.md","ref":"ios/basic/signature.md","articles":[]},{"title":"LinkMap文件","level":"4.3.8","depth":2,"path":"ios/basic/linkmap.md","ref":"ios/basic/linkmap.md","articles":[]},{"title":"C语言","level":"4.3.9","depth":2,"path":"ios/basic/c.md","ref":"ios/basic/c.md","articles":[]}]},"previous":{"title":"codable","level":"4.2.5","depth":2,"path":"swift/codable.md","ref":"swift/codable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"swift/arc.md","mtime":"2019-04-29T06:04:12.182Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-29T05:56:16.887Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ARC中的循环引用","level":"4.2.6","depth":2,"next":{"title":"iOS系统","level":"4.3","depth":1,"path":"ios/basic/index.md","ref":"ios/basic/index.md","articles":[{"title":"编译","level":"4.3.1","depth":2,"path":"ios/basic/compile.md","ref":"ios/basic/compile.md","articles":[]},{"title":"链接","level":"4.3.2","depth":2,"path":"ios/basic/linker.md","ref":"ios/basic/linker.md","articles":[]},{"title":"App运行","level":"4.3.3","depth":2,"path":"ios/basic/startapp.md","ref":"ios/basic/startapp.md","articles":[]},{"title":"start-runtime","level":"4.3.4","depth":2,"path":"ios/basic/startruntime.md","ref":"ios/basic/startruntime.md","articles":[]},{"title":"目标文件","level":"4.3.5","depth":2,"path":"ios/basic/objectfile.md","ref":"ios/basic/objectfile.md","articles":[]},{"title":"Mach-O","level":"4.3.6","depth":2,"path":"ios/basic/macho.md","ref":"ios/basic/macho.md","articles":[]},{"title":"签名流程","level":"4.3.7","depth":2,"path":"ios/basic/signature.md","ref":"ios/basic/signature.md","articles":[]},{"title":"LinkMap文件","level":"4.3.8","depth":2,"path":"ios/basic/linkmap.md","ref":"ios/basic/linkmap.md","articles":[]},{"title":"C语言","level":"4.3.9","depth":2,"path":"ios/basic/c.md","ref":"ios/basic/c.md","articles":[]}]},"previous":{"title":"codable","level":"4.2.5","depth":2,"path":"swift/codable.md","ref":"swift/codable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"swift/arc.md","mtime":"2019-04-29T06:05:30.450Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-29T06:05:36.567Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
