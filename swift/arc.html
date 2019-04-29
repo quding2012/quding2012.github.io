@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>android · 学习笔记</title>
+        <title>ARC中的循环引用 · 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="activity.html" />
+    <link rel="next" href="../ios/basic/" />
     
     
-    <link rel="prev" href="../web/json.html" />
+    <link rel="prev" href="codable.html" />
     
 
     </head>
@@ -1309,9 +1309,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="../swift/">
+        <li class="chapter " data-level="4.2" data-path="./">
             
-                <a href="../swift/">
+                <a href="./">
             
                     
                     Swift
@@ -1323,9 +1323,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.2.1" data-path="../swift/closure.html">
+        <li class="chapter " data-level="4.2.1" data-path="closure.html">
             
-                <a href="../swift/closure.html">
+                <a href="closure.html">
             
                     
                     Closure
@@ -1336,9 +1336,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.2" data-path="../swift/property.html">
+        <li class="chapter " data-level="4.2.2" data-path="property.html">
             
-                <a href="../swift/property.html">
+                <a href="property.html">
             
                     
                     Property
@@ -1349,9 +1349,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.3" data-path="../swift/generic.html">
+        <li class="chapter " data-level="4.2.3" data-path="generic.html">
             
-                <a href="../swift/generic.html">
+                <a href="generic.html">
             
                     
                     泛型
@@ -1362,9 +1362,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.4" data-path="../swift/where.html">
+        <li class="chapter " data-level="4.2.4" data-path="where.html">
             
-                <a href="../swift/where.html">
+                <a href="where.html">
             
                     
                     where
@@ -1375,9 +1375,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.5" data-path="../swift/codable.html">
+        <li class="chapter " data-level="4.2.5" data-path="codable.html">
             
-                <a href="../swift/codable.html">
+                <a href="codable.html">
             
                     
                     codable
@@ -1388,9 +1388,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.6" data-path="../swift/arc.html">
+        <li class="chapter active" data-level="4.2.6" data-path="arc.html">
             
-                <a href="../swift/arc.html">
+                <a href="arc.html">
             
                     
                     ARC中的循环引用
@@ -1963,9 +1963,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.2" data-path="./">
+        <li class="chapter " data-level="5.2" data-path="../android/">
             
-                <a href="./">
+                <a href="../android/">
             
                     
                     android
@@ -1977,9 +1977,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.2.1" data-path="activity.html">
+        <li class="chapter " data-level="5.2.1" data-path="../android/activity.html">
             
-                <a href="activity.html">
+                <a href="../android/activity.html">
             
                     
                     activity
@@ -2064,7 +2064,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >android</a>
+        <a href=".." >ARC中的循环引用</a>
     </h1>
 </div>
 
@@ -2079,8 +2079,81 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="index">index</h3>
+                                <h2 id="arc-&#x76F8;&#x5173;">ARC &#x76F8;&#x5173;</h2>
+<h3 id="&#x7C7B;&#x5B9E;&#x4F8B;&#x4E4B;&#x95F4;&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;">&#x7C7B;&#x5B9E;&#x4F8B;&#x4E4B;&#x95F4;&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;</h3>
+<h4 id="1&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;-property-&#x90FD;&#x53EF;&#x80FD;&#x4E3A;-nil">1.&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; property &#x90FD;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
+<pre><code>class Person {
+    let name: String
+    init(name: String) { self.name = name }
+    var apartment: Apartment?
+    deinit { print(&quot;\(name) is being deinitialized&quot;) }
+}
 
+class Apartment {
+    let unit: String
+    init(unit: String) { self.unit = unit }
+    weak var tenant: Person?
+    deinit { print(&quot;Apartment \(unit) is being deinitialized&quot;) }
+}
+</code></pre><h4 id="2&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;-property-&#xFF0C;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x4E3A;-nil&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;-nil">2.&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; property &#xFF0C;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x4E3A; nil&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
+<pre><code>class Customer {
+    let name: String
+    var card: CreditCard?
+
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class CreditCard {
+    let number: UInt64
+    unowned var customer: Customer
+
+    init(number: UInt64, customer: Customer) {
+        self.number = number
+        self.customer = customer
+    }
+}
+</code></pre><h4 id="3&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;-property-&#x90FD;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;-nil">3.&#x4E24;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; property &#x90FD;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
+<pre><code>class Country {
+    let name: String
+    var capitalCity: City!
+    init(name: String, capitalName: String) {
+        self.name = name
+        self.capitalCity = City(name: capitalName, country: self)
+    }
+}
+
+class City {
+    let name: String
+    unowned let country: Country
+    init(name: String, country: Country) {
+        self.name = name
+        self.country = country
+    }
+}
+</code></pre><h3 id="closure-&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;">Closure &#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;</h3>
+<p>&#x4F7F;&#x7528; Capture List &#x6765;&#x907F;&#x514D;&#x5FAA;&#x73AF;&#x5E94;&#x7528;&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;</strong> &#x53EA;&#x6709;&#x8C03;&#x7528;&#x4E86; Closure &#x624D;&#x4F1A;&#x89E6;&#x53D1;&#x5FAA;&#x73AF;&#x5F15;&#x7528;</p>
+<h4 id="&#x53EF;&#x80FD;&#x4E3A;-nil">&#x53EF;&#x80FD;&#x4E3A; nil</h4>
+<p>&#x4F7F;&#x7528; [weak self]</p>
+<pre><code>lazy var asHTML: () -&gt; String = { [weak self] in
+    if let text = self?.text {
+        return &quot;&lt;\(self?.name)&gt;\(text)&lt;/\(self?.name)&gt;&quot;
+    } else {
+        return &quot;&lt;\(self?.name) /&gt;&quot;
+    }
+}
+</code></pre><h4 id="&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;-nil">&#x4E0D;&#x53EF;&#x80FD;&#x4E3A; nil</h4>
+<p>&#x4F7F;&#x7528; [unowned self]</p>
+<pre><code>lazy var asHTML: () -&gt; String = { [unowned self] in
+    if let text = self.text {
+        return &quot;&lt;\(self.name)&gt;\(text)&lt;/\(self.name)&gt;&quot;
+    } else {
+        return &quot;&lt;\(self.name) /&gt;&quot;
+    }
+}
+</code></pre>
                                 
                                 </section>
                             
@@ -2107,12 +2180,12 @@
 
             
                 
-                <a href="../web/json.html" class="navigation navigation-prev " aria-label="Previous page: json的使用">
+                <a href="codable.html" class="navigation navigation-prev " aria-label="Previous page: codable">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="activity.html" class="navigation navigation-next " aria-label="Next page: activity">
+                <a href="../ios/basic/" class="navigation navigation-next " aria-label="Next page: iOS系统">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2123,7 +2196,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"android","level":"5.2","depth":1,"next":{"title":"activity","level":"5.2.1","depth":2,"path":"android/activity.md","ref":"android/activity.md","articles":[]},"previous":{"title":"json的使用","level":"5.1.7","depth":2,"path":"web/json.md","ref":"web/json.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"android/index.md","mtime":"2018-11-19T02:54:21.477Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-29T05:56:16.887Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ARC中的循环引用","level":"4.2.6","depth":2,"next":{"title":"iOS系统","level":"4.3","depth":1,"path":"ios/basic/index.md","ref":"ios/basic/index.md","articles":[{"title":"编译","level":"4.3.1","depth":2,"path":"ios/basic/compile.md","ref":"ios/basic/compile.md","articles":[]},{"title":"链接","level":"4.3.2","depth":2,"path":"ios/basic/linker.md","ref":"ios/basic/linker.md","articles":[]},{"title":"App运行","level":"4.3.3","depth":2,"path":"ios/basic/startapp.md","ref":"ios/basic/startapp.md","articles":[]},{"title":"start-runtime","level":"4.3.4","depth":2,"path":"ios/basic/startruntime.md","ref":"ios/basic/startruntime.md","articles":[]},{"title":"目标文件","level":"4.3.5","depth":2,"path":"ios/basic/objectfile.md","ref":"ios/basic/objectfile.md","articles":[]},{"title":"Mach-O","level":"4.3.6","depth":2,"path":"ios/basic/macho.md","ref":"ios/basic/macho.md","articles":[]},{"title":"签名流程","level":"4.3.7","depth":2,"path":"ios/basic/signature.md","ref":"ios/basic/signature.md","articles":[]},{"title":"LinkMap文件","level":"4.3.8","depth":2,"path":"ios/basic/linkmap.md","ref":"ios/basic/linkmap.md","articles":[]},{"title":"C语言","level":"4.3.9","depth":2,"path":"ios/basic/c.md","ref":"ios/basic/c.md","articles":[]}]},"previous":{"title":"codable","level":"4.2.5","depth":2,"path":"swift/codable.md","ref":"swift/codable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"swift/arc.md","mtime":"2019-04-29T06:04:12.182Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-29T05:56:16.887Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -65,7 +65,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="animation.html" />
+    <link rel="next" href="layout.html" />
     
     
     <link rel="prev" href="cpu.html" />
@@ -1388,6 +1388,19 @@
             
         </li>
     
+        <li class="chapter " data-level="4.2.6" data-path="../swift/arc.html">
+            
+                <a href="../swift/arc.html">
+            
+                    
+                    ARC中的循环引用
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1595,20 +1608,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4.5" data-path="animation.html">
-            
-                <a href="animation.html">
-            
-                    
-                    animation
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.4.6" data-path="layout.html">
+        <li class="chapter " data-level="4.4.5" data-path="layout.html">
             
                 <a href="layout.html">
             
@@ -1621,7 +1621,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4.7" data-path="response-chain.html">
+        <li class="chapter " data-level="4.4.6" data-path="response-chain.html">
             
                 <a href="response-chain.html">
             
@@ -1634,7 +1634,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4.8" data-path="image-render.html">
+        <li class="chapter " data-level="4.4.7" data-path="image-render.html">
             
                 <a href="image-render.html">
             
@@ -1647,7 +1647,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4.9" data-path="richtext.html">
+        <li class="chapter " data-level="4.4.8" data-path="richtext.html">
             
                 <a href="richtext.html">
             
@@ -1660,12 +1660,38 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4.10" data-path="calayer.md">
+        <li class="chapter " data-level="4.4.9" data-path="CALayer.html">
             
-                <span>
+                <a href="CALayer.html">
             
                     
-                    CALayer 子类
+                    CALayer子类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.10" data-path="CoreAnimation.html">
+            
+                <a href="CoreAnimation.html">
+            
+                    
+                    CoreAnimation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.11" data-path="CoreGraphics.html">
+            
+                <a href="CoreGraphics.html">
+            
+                    
+                    CoreGraphics
             
                 </a>
             
@@ -2080,18 +2106,24 @@ dispatch_async(backgroundQueue, ^{
 <li>shadows &#x9634;&#x5F71;</li>
 <li>edge antialiasing &#x6297;&#x952F;&#x9F7F;</li>
 <li>group opacity &#x534A;&#x900F;&#x660E;</li>
-<li>&#x8BBE;&#x7F6E;&#x5706;&#x89D2;</li>
+<li>cornerRadius &#x5706;&#x89D2;</li>
 <li>&#x6E10;&#x53D8;</li>
 </ul>
 <pre><code>shouldRasterize&#xFF08;&#x5149;&#x6805;&#x5316;&#xFF09;
 
 When the value of this property is true, the layer is rendered as a bitmap in its local coordinate space and then composited to the destination with any other content. Shadow effects and any filters in the filters property are rasterized and included in the bitmap.
-</code></pre><h4 id="instruments&#x76D1;&#x6D4B;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;">Instruments&#x76D1;&#x6D4B;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;</h4>
+</code></pre><h4 id="&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x6709;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;">&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x6709;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;</h4>
+<p>&#x542B;&#x6709;&#x900F;&#x660E;&#x5EA6;&#x7684;&#x89C6;&#x56FE;&#xFF0C;&#x5728;&#x663E;&#x793A;&#x524D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x56FE;&#x5C42;&#x7684;&#x5408;&#x6210;&#xFF0C;&#x5373;&#x5BF9;&#x91CD;&#x53E0;&#x89C6;&#x56FE;&#x7684;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x7684; R&#xFF0C;G&#xFF0C;B&#xFF0C;A &#x503C;&#x8FDB;&#x884C;&#x91CD;&#x8BA1;&#x7B97;&#xFF0C;&#x6700;&#x7EC8;&#x663E;&#x793A;&#x7EC4;&#x5408;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<h4 id="instruments&#x76D1;&#x6D4B;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;">Instruments&#x76D1;&#x6D4B;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;</h4>
 <p>Instruments&#x7684;Core Animation&#x5DE5;&#x5177;&#x4E2D;&#x6709;&#x51E0;&#x4E2A;&#x548C;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x76F8;&#x5173;&#x7684;&#x68C0;&#x67E5;&#x9009;&#x9879;&#xFF1A;</p>
 <h5 id="color-offscreen-rendered-yellow">Color Offscreen-Rendered Yellow</h5>
 <p>&#x5F00;&#x542F;&#x540E;&#x4F1A;&#x628A;&#x90A3;&#x4E9B;&#x9700;&#x8981;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7684;&#x56FE;&#x5C42;&#x9AD8;&#x4EAE;&#x6210;&#x9EC4;&#x8272;&#xFF0C;&#x8FD9;&#x5C31;&#x610F;&#x5473;&#x7740;&#x9EC4;&#x8272;&#x56FE;&#x5C42;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x3002;</p>
 <h5 id="color-hits-green-and-misses-red">Color Hits Green and Misses Red</h5>
 <p>&#x5982;&#x679C;shouldRasterize&#x88AB;&#x8BBE;&#x7F6E;&#x6210;YES&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x4F1A;&#x88AB;&#x7F13;&#x5B58;&#xFF0C;&#x5982;&#x679C;&#x56FE;&#x5C42;&#x662F;&#x7EFF;&#x8272;&#xFF0C;&#x5C31;&#x8868;&#x793A;&#x8FD9;&#x4E9B;&#x7F13;&#x5B58;&#x88AB;&#x590D;&#x7528;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x7EA2;&#x8272;&#x5C31;&#x8868;&#x793A;&#x7F13;&#x5B58;&#x4F1A;&#x88AB;&#x91CD;&#x590D;&#x521B;&#x5EFA;&#xFF0C;&#x8FD9;&#x5C31;&#x8868;&#x793A;&#x8BE5;&#x5904;&#x5B58;&#x5728;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x4E86;&#x3002;</p>
+<h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<ul>
+<li><a href="http://www.10tiao.com/html/585/201803/2654061295/1.html" target="_blank">http://www.10tiao.com/html/585/201803/2654061295/1.html</a></li>
+</ul>
 
                                 
                                 </section>
@@ -2124,7 +2156,7 @@ When the value of this property is true, the layer is rendered as a bitmap in it
                 </a>
                 
                 
-                <a href="animation.html" class="navigation navigation-next " aria-label="Next page: animation">
+                <a href="layout.html" class="navigation navigation-next " aria-label="Next page: layout">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2135,7 +2167,7 @@ When the value of this property is true, the layer is rendered as a bitmap in it
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gpu渲染","level":"4.4.4","depth":2,"next":{"title":"animation","level":"4.4.5","depth":2,"path":"ui/animation.md","ref":"ui/animation.md","articles":[]},"previous":{"title":"cpu渲染","level":"4.4.3","depth":2,"path":"ui/cpu.md","ref":"ui/cpu.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ui/gpu.md","mtime":"2019-03-12T06:27:54.726Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-12T04:05:04.809Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gpu渲染","level":"4.4.4","depth":2,"next":{"title":"layout","level":"4.4.5","depth":2,"path":"ui/layout.md","ref":"ui/layout.md","articles":[]},"previous":{"title":"cpu渲染","level":"4.4.3","depth":2,"path":"ui/cpu.md","ref":"ui/cpu.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ui/gpu.md","mtime":"2019-03-12T06:32:49.694Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-29T05:56:16.887Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
