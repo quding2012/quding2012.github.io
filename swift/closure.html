@@ -2108,6 +2108,60 @@ checkClosure = { [<span class="hljs-keyword">weak</span> <span class="hljs-keywo
             <span class="hljs-keyword">self</span>?.isLunar = <span class="hljs-literal">false</span>
         }
 </code></pre>
+<h3 id="&#x8BED;&#x6CD5;&#x7684;&#x4F18;&#x5316;">&#x8BED;&#x6CD5;&#x7684;&#x4F18;&#x5316;</h3>
+<h4 id="&#x6839;&#x636E;&#x4E0A;&#x4E0B;&#x6587;&#x63A8;&#x65AD;&#x53C2;&#x6570;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x7C7B;&#x578B;">&#x6839;&#x636E;&#x4E0A;&#x4E0B;&#x6587;&#x63A8;&#x65AD;&#x53C2;&#x6570;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x7C7B;&#x578B;</h4>
+<pre><code class="lang-Swift"><span class="hljs-keyword">let</span> names = [<span class="hljs-string">&quot;Chris&quot;</span>, <span class="hljs-string">&quot;Alex&quot;</span>, <span class="hljs-string">&quot;Ewa&quot;</span>, <span class="hljs-string">&quot;Barry&quot;</span>, <span class="hljs-string">&quot;Daniella&quot;</span>]
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sort</span><span class="hljs-params">(<span class="hljs-number">_</span> a: String, <span class="hljs-number">_</span> b: String)</span></span> -&gt; <span class="hljs-type">Bool</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+
+<span class="hljs-keyword">let</span> sort1: (<span class="hljs-type">String</span>, <span class="hljs-type">String</span>) -&gt; <span class="hljs-type">Bool</span> = { (a: <span class="hljs-type">String</span>, b: <span class="hljs-type">String</span>) -&gt; <span class="hljs-type">Bool</span> <span class="hljs-keyword">in</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+
+<span class="hljs-keyword">let</span> sort2: (<span class="hljs-type">String</span>, <span class="hljs-type">String</span>) -&gt; <span class="hljs-type">Bool</span> = { (a: <span class="hljs-type">String</span>, b: <span class="hljs-type">String</span>) <span class="hljs-keyword">in</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+
+<span class="hljs-keyword">let</span> sort3 = { (a: <span class="hljs-type">String</span>, b: <span class="hljs-type">String</span>) <span class="hljs-keyword">in</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+
+<span class="hljs-number">_</span> = names.sorted(by: sort2)
+
+reversedNames = names.sorted(by: { s1, s2 <span class="hljs-keyword">in</span> <span class="hljs-keyword">return</span> s1 &gt; s2 } )
+
+reversedNames = names.sorted(by: { s1, s2 <span class="hljs-keyword">in</span> s1 &gt; s2 } )
+
+reversedNames = names.sorted(by: { $<span class="hljs-number">0</span> &gt; $<span class="hljs-number">1</span> } )
+
+reversedNames = names.sorted(by: &gt;)
+</code></pre>
+<h4 id="trailing-closures">Trailing Closures</h4>
+<pre><code class="lang-Swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">someFunctionThatTakesAClosure</span><span class="hljs-params">(closure: <span class="hljs-params">()</span></span></span> -&gt; <span class="hljs-type">Void</span>) {
+    <span class="hljs-comment">// function body goes here</span>
+}
+
+<span class="hljs-comment">// &#x8C03;&#x7528;&#xFF1A;</span>
+someFunctionThatTakesAClosure() {
+    <span class="hljs-comment">// trailing closure&apos;s body goes here</span>
+}
+</code></pre>
+<h3 id="closure-&#x662F;-&#x5F15;&#x7528;&#x7C7B;&#x578B;">Closure &#x662F; &#x5F15;&#x7528;&#x7C7B;&#x578B;</h3>
+<p>&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF0C;&#x4E0D;&#x662F;&#x503C;&#x7C7B;&#x578B;&#x3002;</p>
+<h3 id="escaping-closure">Escaping Closure</h3>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x95ED;&#x5305;&#x88AB;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x51FD;&#x6570;return&#x4E4B;&#x540E;&#x624D;&#x88AB;&#x5524;&#x8D77;&#x6267;&#x884C;&#xFF08;return&#x540E; &#x4E0D;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x95ED;&#x5305;&#x662F;&#x9003;&#x9038;&#x95ED;&#x5305;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
+<ul>
+<li>&#x5F02;&#x6B65;&#x6267;&#x884C;&#x3002;&#x51FD;&#x6570; return &#x540E;&#xFF0C;&#x5F02;&#x6B65;&#x6267;&#x884C; &#x95ED;&#x5305;&#x3002;</li>
+<li>&#x95ED;&#x5305;&#x5B58;&#x50A8;&#x5728;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E2D;&#xFF0C;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x4F7F;&#x7528;&#x3002;</li>
+</ul>
+<pre><code class="lang-Swift"><span class="hljs-keyword">var</span> completionHandlers: [() -&gt; <span class="hljs-type">Void</span>] = []
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">someFunctionWithEscapingClosure</span><span class="hljs-params">(completionHandler: @escaping <span class="hljs-params">()</span></span></span> -&gt; <span class="hljs-type">Void</span>) {
+    completionHandlers.append(completionHandler)
+}
+</code></pre>
 
                                 
                                 </section>
@@ -2151,7 +2205,7 @@ checkClosure = { [<span class="hljs-keyword">weak</span> <span class="hljs-keywo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Closure","level":"4.2.1","depth":2,"next":{"title":"Property","level":"4.2.2","depth":2,"path":"swift/property.md","ref":"swift/property.md","articles":[]},"previous":{"title":"Swift","level":"4.2","depth":1,"path":"swift/index.md","ref":"swift/index.md","articles":[{"title":"Closure","level":"4.2.1","depth":2,"path":"swift/closure.md","ref":"swift/closure.md","articles":[]},{"title":"Property","level":"4.2.2","depth":2,"path":"swift/property.md","ref":"swift/property.md","articles":[]},{"title":"泛型","level":"4.2.3","depth":2,"path":"swift/generic.md","ref":"swift/generic.md","articles":[]},{"title":"where","level":"4.2.4","depth":2,"path":"swift/where.md","ref":"swift/where.md","articles":[]},{"title":"codable","level":"4.2.5","depth":2,"path":"swift/codable.md","ref":"swift/codable.md","articles":[]},{"title":"ARC中的循环引用","level":"4.2.6","depth":2,"path":"swift/arc.md","ref":"swift/arc.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"swift/closure.md","mtime":"2019-04-29T06:06:02.910Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-29T06:05:36.567Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Closure","level":"4.2.1","depth":2,"next":{"title":"Property","level":"4.2.2","depth":2,"path":"swift/property.md","ref":"swift/property.md","articles":[]},"previous":{"title":"Swift","level":"4.2","depth":1,"path":"swift/index.md","ref":"swift/index.md","articles":[{"title":"Closure","level":"4.2.1","depth":2,"path":"swift/closure.md","ref":"swift/closure.md","articles":[]},{"title":"Property","level":"4.2.2","depth":2,"path":"swift/property.md","ref":"swift/property.md","articles":[]},{"title":"泛型","level":"4.2.3","depth":2,"path":"swift/generic.md","ref":"swift/generic.md","articles":[]},{"title":"where","level":"4.2.4","depth":2,"path":"swift/where.md","ref":"swift/where.md","articles":[]},{"title":"codable","level":"4.2.5","depth":2,"path":"swift/codable.md","ref":"swift/codable.md","articles":[]},{"title":"ARC中的循环引用","level":"4.2.6","depth":2,"path":"swift/arc.md","ref":"swift/arc.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"swift/closure.md","mtime":"2019-04-29T06:47:00.281Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-29T06:06:42.821Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
