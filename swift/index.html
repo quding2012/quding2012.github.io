@@ -2107,6 +2107,62 @@
 </ul>
 </li>
 </ul>
+<h3 id="range-operator">Range Operator</h3>
+<p>&#x8303;&#x56F4; a range of values</p>
+<pre><code>// Closed Range &#x5DE6;&#x95ED;&#x53F3;&#x95ED; [1,5]
+for index in 1...5 {
+    //
+}
+
+// Half-Open Range Operator &#x5DE6;&#x95ED;&#x53F3;&#x5F00; [1,5)
+for index in 1..&lt;5 {
+    //
+}
+
+// One-Side Range
+for name in names[2...] {
+    //
+}
+
+for name in names[...2] {
+    // 0 1 2
+}
+
+for name in names[..&lt;2] {
+    // 0 1
+}
+
+let range = ...5
+</code></pre><h3 id="type-casting">Type Casting</h3>
+<h4 id="&#x7C7B;&#x578B;&#x68C0;&#x6D4B;-is--type-check-operator">&#x7C7B;&#x578B;&#x68C0;&#x6D4B; is  type check operator</h4>
+<p>&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x68C0;&#x6D4B; &#x662F;&#x5426;&#x662F;&#x5B50;&#x7C7B; &#x6216; &#x5B9E;&#x73B0;&#x4E86; protocol</p>
+<pre><code>for item in library {
+    if item is Movie {
+        print(&quot;Movie \(item.name)&quot;)
+    } else if item is Song {
+        print(&quot;Song \(item.name)&quot;)
+    }
+}
+</code></pre><h4 id="&#x7C7B;&#x578B;&#x8F6C;&#x6362;-as-&#x4E0E;-as">&#x7C7B;&#x578B;&#x8F6C;&#x6362; as? &#x4E0E; as!</h4>
+<p>&#x53EF;&#x4EE5;&#x8F6C;&#x6210;&#x7236;&#x7C7B; &#x6216; &#x5B9E;&#x73B0;&#x7684; protocol</p>
+<pre><code>// as? as!
+for item in library {
+    if let movie = item as? Movie {
+        print(&quot;Movie: \(movie.name), dir. \(movie.director)&quot;)
+    } else if let song = item as? Song {
+        print(&quot;Song: \(song.name), by \(song.artist)&quot;)
+    }
+}
+
+// &#x8F6C;&#x6210; Any &#x6216;&#x8005; AnyObject &#x76F4;&#x63A5;&#x4F7F;&#x7528; as &#x5373;&#x53EF;&#x3002;
+// as
+for item in library {
+    _ = item as? Movie
+    _ = item as AnyObject
+}
+</code></pre><h4 id="any-&#x4E0E;-anyobject">Any &#x4E0E; AnyObject</h4>
+<p><strong>Any</strong> &#x4EE3;&#x8868;&#x4E00;&#x4E2A;instance&#xFF0C;&#x5305;&#x62EC; Function
+<strong>AnyObject</strong> &#x4EE3;&#x8868;&#x4E00;&#x4E2A;Class &#x7684; instance </p>
 
                                 
                                 </section>
@@ -2150,7 +2206,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Swift","level":"4.2","depth":1,"next":{"title":"Closure","level":"4.2.1","depth":2,"path":"swift/closure.md","ref":"swift/closure.md","articles":[]},"previous":{"title":"NSDictionary","level":"4.1.2.17","depth":3,"path":"oc/keyword/NSDictionary.md","ref":"oc/keyword/NSDictionary.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"swift/index.md","mtime":"2019-01-04T02:19:12.269Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-29T06:06:42.821Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Swift","level":"4.2","depth":1,"next":{"title":"Closure","level":"4.2.1","depth":2,"path":"swift/closure.md","ref":"swift/closure.md","articles":[]},"previous":{"title":"NSDictionary","level":"4.1.2.17","depth":3,"path":"oc/keyword/NSDictionary.md","ref":"oc/keyword/NSDictionary.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"swift/index.md","mtime":"2019-04-30T06:23:41.152Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-30T06:17:28.332Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
