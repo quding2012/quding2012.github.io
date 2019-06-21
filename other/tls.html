@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>tcp · 学习笔记</title>
+        <title>tls · 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="mars.html" />
+    <link rel="next" href="rejex.html" />
     
     
-    <link rel="prev" href="comm.html" />
+    <link rel="prev" href="https.html" />
     
 
     </head>
@@ -217,7 +217,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2.2" data-path="tcp.html">
+        <li class="chapter " data-level="2.2.2" data-path="tcp.html">
             
                 <a href="tcp.html">
             
@@ -295,7 +295,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.8" data-path="tls.html">
+        <li class="chapter active" data-level="2.2.8" data-path="tls.html">
             
                 <a href="tls.html">
             
@@ -2077,7 +2077,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >tcp</a>
+        <a href=".." >tls</a>
     </h1>
 </div>
 
@@ -2092,85 +2092,88 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="tcp">TCP</h2>
-<p>ask</p>
-<pre><code>1. 3&#x6B21; &#x548C; 4&#x6B21; &#x63E1;&#x624B;
-2. &#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x4F20;&#x8F93; &#x662F;&#x53EF;&#x9760;&#x7684;
-3. &#x5982;&#x4F55; &#x5C3D;&#x53EF;&#x80FD;&#x5FEB;&#x7684;&#x4F20;&#x8F93;&#x6570;&#x636E;&#xFF1F;
-</code></pre><p>TCP&#x662F;&#x9762;&#x5411;&#x8FDE;&#x63A5;&#x7684;&#x3001;&#x53EF;&#x9760;&#x7684;&#x534F;&#x8BAE;&#x3002;</p>
-<p><strong>&#x9762;&#x5411;&#x8FDE;&#x63A5;</strong>&#x6307;&#x5728;&#x4EA4;&#x6362;&#x6570;&#x636E;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x9996;&#x5148;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x3002;</p>
-<p><strong>&#x9762;&#x50CF;&#x5B57;&#x8282;&#x6D41;&#x7684;&#x534F;&#x8BAE;</strong>&#x6307;&#x4E24;&#x7AEF;&#x72EC;&#x7ACB;&#x9009;&#x62E9;&#x81EA;&#x5DF1;&#x7684;&#x8BFB;&#x548C;&#x5199;&#x5927;&#x5C0F;&#xFF0C;&#x5E76;&#x4E0D;&#x5173;&#x6CE8;&#x5BF9;&#x65B9;&#x4E00;&#x6B21;&#x8BFB;&#x6216;&#x5199;&#x7684;&#x6570;&#x636E;&#x5927;&#x5C0F;&#x3002;</p>
-<p><strong>&#x53CC;&#x5DE5;&#x670D;&#x52A1;</strong>&#x6570;&#x636E;&#x53EF;&#x5411;&#x4E24;&#x4E2A;&#x65B9;&#x5411;&#x6D41;&#x52A8;&#xFF0C;&#x4E24;&#x4E2A;&#x65B9;&#x5411;&#x76F8;&#x4E92;&#x72EC;&#x7ACB;&#x3002;</p>
-<p><strong>&#x77E5;&#x8BC6;&#x70B9;</strong></p>
-<ol>
-<li>&#x8FDE;&#x63A5;&#x7BA1;&#x7406;</li>
-<li>&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x8BD5;&#x673A;&#x5236;</li>
-<li>&#x6570;&#x636E;&#x6D41;&#x4E0E;&#x7A97;&#x53E3;&#x7BA1;&#x7406;</li>
-<li>&#x62E5;&#x585E;&#x63A7;&#x5236;</li>
-<li>&#x4FDD;&#x6D3B;&#x673A;&#x5236;</li>
-</ol>
-<h3 id="&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x53EF;&#x9760;">&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x53EF;&#x9760;</h3>
+                                <h2 id="record-protocol">Record Protocol</h2>
+<pre><code>The TLS Record Protocol is a layered protocol.  At each layer,
+messages may include fields for length, description, and content.
+The Record Protocol takes messages to be transmitted, fragments the
+data into manageable blocks, optionally compresses the data, applies
+a MAC, encrypts, and transmits the result.  Received data is
+decrypted, verified, decompressed, reassembled, and then delivered to
+higher-level clients.
+</code></pre><p>TLS Connection &#x4F20;&#x9012;&#x6570;&#x636E;&#xFF0C;&#x9700;&#x8981;&#x4EE5;&#x4E0B;&#x53C2;&#x6570;&#xFF1A;</p>
 <ul>
-<li>&#x8FDE;&#x63A5;&#x7BA1;&#x7406; &#xFF08;&#x521B;&#x5EFA;&#x8FDE;&#x63A5;&#x548C;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#xFF09;&#xFF0C;&#x521B;&#x5EFA;&#x8FDE;&#x63A5;&#x540E;&#x624D;&#x4F1A;&#x53D1;&#x9001;&#x6570;&#x636E;</li>
-<li>&#x901A;&#x8FC7; &#x786E;&#x8BA4;&#x5E94;&#x7B54;ack &#x786E;&#x4FDD;&#x6570;&#x636E;&#x5DF2;&#x5230;&#x8FBE;</li>
-<li>&#x901A;&#x8FC7; &#x9A8C;&#x548C;checkSum &#x786E;&#x4FDD;&#x6570;&#x636E;&#x6CA1;&#x6709;&#x635F;&#x574F;</li>
-<li>&#x901A;&#x8FC7; &#x5E8F;&#x5217;&#x53F7; &#x786E;&#x4FDD;&#x6570;&#x636E;&#x7684;&#x987A;&#x5E8F;</li>
-<li>&#xFF08;&#x91CD;&#x53D1;&#x63A7;&#x5236;&#xFF09;&#x4E22;&#x5305;&#x540E;&#x7684;&#x91CD;&#x53D1;&#x673A;&#x5236;</li>
-<li>&#x901A;&#x8FC7;&#x7A97;&#x53E3;&#x63A7;&#x5236;&#xFF0C;&#x5B9E;&#x73B0;&#x9AD8;&#x901F;&#x4F20;&#x8F93;&#xFF0C;&#x51CF;&#x5C11;&#x5EF6;&#x8FDF;</li>
+<li>connectinon end&#x3002;&#x662F; client &#x6216; server</li>
+<li>RF algorithm&#x3002;&#x7528;&#x4E8E;&#x8BA1;&#x7B97; master_key</li>
+<li>bulk encryption algorithm&#x3002;&#x7528;&#x4E8E;&#x52A0;&#x5BC6;&#x6570;&#x636E;</li>
+<li>MAC algorithm&#x3002;&#x7528;&#x4E8E;&#x8BA1;&#x7B97; message &#x7684; MAC &#x503C;&#x3002;</li>
+<li>compression algorithm&#x3002; &#x538B;&#x7F29;&#x7B97;&#x6CD5;</li>
+<li>master secret&#x3002;48 bytes secret</li>
+<li>client random&#x3002;32 bytes </li>
+<li>server random&#x3002;3 random</li>
 </ul>
-<h3 id="1-&#x8FDE;&#x63A5;&#x7BA1;&#x7406;">1. &#x8FDE;&#x63A5;&#x7BA1;&#x7406;</h3>
-<p><img src="http://pc5ouzvhg.bkt.clouddn.com/WechatIMG246.jpeg" alt="img"></p>
-<p>&#x8BE6;&#x7EC6;&#x770B;&#x8FDE;&#x63A5;&#x7BA1;&#x7406;&#x7684;&#x77E5;&#x8BC6;&#xFF1A;
-<a href="https://blog.csdn.net/kuangdacaikuang/article/details/53386544" target="_blank">https://blog.csdn.net/kuangdacaikuang/article/details/53386544</a></p>
-<h4 id="&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;">&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</h4>
-<p>3&#x6B21;handshake</p>
-<p>&#x5BA2;&#x6237;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x7AEF;&#x901A;&#x8FC7;SYN&#x62A5;&#x6587;&#x6BB5;&#x4EA4;&#x6362;&#x5F7C;&#x6B64;&#x7684;seq&#x3002;</p>
-<h4 id="&#x7ED3;&#x675F;&#x8FDE;&#x63A5;">&#x7ED3;&#x675F;&#x8FDE;&#x63A5;</h4>
-<p>4&#x6B21;handshake</p>
-<h3 id="2-&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x8BD5;&#x673A;&#x5236;--&#xFF08;&#x53EF;&#x4EE5;&#x4E3B;&#x52A8;&#x91CD;&#x8BD5;&#xFF0C;1-1-1-5-10-&#x7C7B;&#x4F3C;&#x8FD9;&#x79CD;&#xFF09;">2. &#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x8BD5;&#x673A;&#x5236;  &#xFF08;&#x53EF;&#x4EE5;&#x4E3B;&#x52A8;&#x91CD;&#x8BD5;&#xFF0C;1 1 1 5 10 &#x7C7B;&#x4F3C;&#x8FD9;&#x79CD;&#xFF09;</h3>
-<p>&#x53D1;&#x9001;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x4E00;&#x76F4;&#x6CA1;&#x6709;&#x7B49;&#x5230;ack&#xFF0C;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;&#x4E86;&#x8BBE;&#x5B9A;&#x65F6;&#x95F4;&#x3002;</p>
-<pre><code>* &#x91CD;&#x53D1;&#x8D85;&#x65F6; &#x7684;&#x8BA1;&#x7B97;&#x3002;&#x901A;&#x8FC7;&#x5F80;&#x8FD4;&#x65F6;&#x95F4;&#x548C;&#x504F;&#x5DEE; &#x8BA1;&#x7B97;&#x6240;&#x5F97;&#x3002;&#x4E00;&#x822C;&#x4E3A;6s&#x3002;
-* &#x91CD;&#x53D1;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x6B21;&#x6570;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x4ECD;&#x7136;&#x6CA1;&#x6709;&#x7ED3;&#x679C;&#xFF0C;&#x4F1A;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#x3002;
-</code></pre><p>&#x5728;iOS&#x6D4B;&#x8BD5;&#xFF0C;tcp&#x91CD;&#x8BD5;&#x673A;&#x5236;&#xFF1A;&#x4E00;&#x5171;&#x8BD5;11&#x6B21;&#xFF0C;&#x524D;6&#x6B21;&#x95F4;&#x9694;1s&#xFF0C;&#x6700;&#x540E;&#x95F4;&#x9694; 32s&#xFF0C;&#x5171;&#x8017;&#x65F6;67s&#x3002;67s&#x540E;&#xFF0C;&#x8D85;&#x65F6;&#x3002;&#x524D;10s&#x6709;6&#x6B21;&#x91CD;&#x8BD5;&#x3002;
-&#x65F6;&#x95F4;&#x95F4;&#x9694;&#xFF1A;1&#x3001;1&#x3001;1&#x3001;1&#x3001;1&#x3001;2&#x3001;4&#x3001;8&#x3001;16&#x3001;32</p>
-<p>&#x91CD;&#x8BD5;&#x7684;&#x5173;&#x952E;&#x662F; <strong>&#x6839;&#x636E;&#x7ED9;&#x5B9A;&#x8FDE;&#x63A5;&#x7684;RTT&#x8BBE;&#x7F6E;RTO</strong></p>
-<p>&#x82E5; RTO &#x8BBE;&#x7F6E;&#x592A;&#x77ED;&#xFF0C;&#x53EF;&#x80FD;&#x5728;ACK&#x56DE;&#x6765;&#x4E4B;&#x524D;&#xFF0C;&#x5F00;&#x59CB;&#x91CD;&#x4F20;</p>
-<p>&#x82E5; RTO &#x8BBE;&#x7F6E;&#x592A;&#x957F;&#xFF0C;&#x5219;&#x53EF;&#x80FD;&#x4F1A;&#x5EF6;&#x8FDF;&#x91CD;&#x4F20;&#xFF0C;&#x964D;&#x4F4E;&#x7F51;&#x8DEF;&#x7684;&#x5229;&#x7528;&#x7387;</p>
-<p>&#x6839;&#x636E;&#x6BCF;&#x6B21;ACK&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x53EF;&#x4EE5;&#x786E;&#x5B9A; RTT&#x3002;RTT &#x662F;&#x4F1A;&#x52A8;&#x6001;&#x53D8;&#x5316;&#x7684;&#x3002;</p>
-<h5 id="&#x5E73;&#x6ED1;&#x7684;rtt&#x4F30;&#x8BA1;&#x503C;">&#x5E73;&#x6ED1;&#x7684;RTT&#x4F30;&#x8BA1;&#x503C;</h5>
-<p>&#x4F7F;&#x7528;n&#x4E2A;&#x6837;&#x672C;&#xFF0C;&#x901A;&#x8FC7;&#x6C42;&#x5E73;&#x5747;&#x503C;&#x6765;&#x8BA1;&#x7B97;&#x3002;&#x6BCF;&#x5F53;&#x6709;&#x65B0;&#x7684;&#x503C;&#xFF0C;RTT&#x7684;&#x4F30;&#x8BA1;&#x503C;&#x5C31;&#x4F1A;&#x6709;&#x66F4;&#x65B0;&#x3002;</p>
-<h3 id="3-&#x6570;&#x636E;&#x6D41;&#x4E0E;&#x7A97;&#x53E3;&#x7BA1;&#x7406;">3. &#x6570;&#x636E;&#x6D41;&#x4E0E;&#x7A97;&#x53E3;&#x7BA1;&#x7406;</h3>
-<p>TCP&#x7684;&#x6D41;&#x91CF;&#x63A7;&#x5236; &#x7528;&#x4E8E;&#x8C03;&#x8282; &#x53D1;&#x9001;&#x901F;&#x7387;&#x3002;&#x57FA;&#x4E8E;ACK&#x6570;&#x636E;&#x5305;&#x4E2D;&#x901A;&#x544A;<strong>&#x7A97;&#x53E3;&#x5927;&#x5C0F;</strong>&#x5B57;&#x6BB5;&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x63D0;&#x4F9B;&#x4E86;&#x660E;&#x786E;&#x7684;&#x63A5;&#x6536;&#x65B9;&#x8FD4;&#x56DE;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x907F;&#x514D;&#x63A5;&#x6536;&#x65B9;&#x7F13;&#x5B58;&#x6EA2;&#x51FA;&#x3002;</p>
-<h3 id="4-&#x62E5;&#x585E;&#x63A7;&#x5236;&#xFF08;&#x4E3A;&#x4E86;-&#x51CF;&#x5C11;&#x5931;&#x8D25;&#x7387;&#xFF0C;&#x63D0;&#x5347;&#x53D1;&#x9001;&#x901F;&#x5EA6;&#xFF09;">4. &#x62E5;&#x585E;&#x63A7;&#x5236;&#xFF08;&#x4E3A;&#x4E86; &#x51CF;&#x5C11;&#x5931;&#x8D25;&#x7387;&#xFF0C;&#x63D0;&#x5347;&#x53D1;&#x9001;&#x901F;&#x5EA6;&#xFF09;</h3>
-<p>&#x5F53;&#x8BA4;&#x4E3A;&#x7F51;&#x7EDC;&#x5373;&#x5C06;&#x8FDB;&#x5165;&#x62E5;&#x585E;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x51CF;&#x7F13;TCP&#x7684;&#x4F20;&#x8F93;&#x3002;&#x96BE;&#x70B9;&#x662F;&#xFF1A;&#x5982;&#x4F55;&#x5224;&#x65AD;&#x62E5;&#x585E;&#xFF1F;&#x5982;&#x4F55;&#x51CF;&#x7F13;TCP&#x4F20;&#x8F93;&#xFF1F;&#x4F55;&#x65F6;&#x6062;&#x590D;&#x901F;&#x5EA6;&#xFF1F;</p>
-<h4 id="&#x5982;&#x4F55;&#x5224;&#x65AD;&#x62E5;&#x585E;&#xFF1F;">&#x5982;&#x4F55;&#x5224;&#x65AD;&#x62E5;&#x585E;&#xFF1F;</h4>
-<p>&#x4E22;&#x5305;&#x7387; &#x88AB;&#x7528;&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x53D1;&#x751F;&#x62E5;&#x585E;</p>
-<h4 id="&#x51CF;&#x7F13;">&#x51CF;&#x7F13;</h4>
-<h3 id="5-&#x4FDD;&#x6D3B;&#x673A;&#x5236;&#xFF08;&#x5FC3;&#x8DF3;&#x5305;--keepalive&#x65F6;&#x95F4;-&#xFF09;">5. &#x4FDD;&#x6D3B;&#x673A;&#x5236;&#xFF08;&#x5FC3;&#x8DF3;&#x5305;  keepalive&#x65F6;&#x95F4; &#xFF09;</h3>
-<p>NAT&#x8D85;&#x65F6; &#x548C; &#x7F51;&#x7EDC;&#x72B6;&#x6001;&#x53D8;&#x5316; &#x90FD;&#x6709;&#x53EF;&#x80FD;&#x5BFC;&#x81F4; TCP&#x8FDE;&#x63A5;&#x65AD;&#x5F00;&#x3002;</p>
-<p>&#x5927;&#x90E8;&#x5206;NAT&#x8DEF;&#x7531;&#x5668;&#x5305;&#x542B;&#x8D85;&#x65F6;&#x673A;&#x5236;&#x3002;&#x5927;&#x90E8;&#x5206;&#x79FB;&#x52A8;&#x65E0;&#x7EBF;&#x7F51;&#x7EDC;&#x8FD0;&#x8425;&#x5546;&#x90FD;&#x5728;&#x94FE;&#x8DEF;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x901A;&#x8BAF;&#x65F6;&#xFF0C;&#x4F1A;&#x6DD8;&#x6C70; NAT &#x8868;&#x4E2D;&#x7684;&#x5BF9;&#x5E94;&#x9879;&#xFF0C;&#x9020;&#x6210;&#x94FE;&#x8DEF;&#x4E2D;&#x65AD;&#x3002;&#x56FD;&#x5185;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x662F; 5&#x5206;&#x949F;&#x3002;</p>
-<p>mars&#x4E2D;&#xFF0C;&#x6BCF;&#x9694;4.5 min&#x4F1A;&#x53D1;&#x9001;&#x4E00;&#x6B21;&#x667A;&#x80FD;&#x5FC3;&#x8DF3;&#x3002;&#x65F6;&#x95F4; &#x4F1A;&#x968F;&#x7740;&#x7F51;&#x7EDC;&#x7684;&#x597D;&#x574F;&#x3001;&#x6570;&#x636E;&#x53D1;&#x9001;&#x9891;&#x7387;&#x8C03;&#x6574;&#x3002;
-&#x4F1A;&#x8BB0;&#x5F55;&#x5FC3;&#x8DF3;&#x5931;&#x8D25;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x5F53;&#x6B21;&#x6570;&#x589E;&#x52A0;&#x65F6;&#x4F1A;&#x589E;&#x7F29;&#x77ED;&#x5FC3;&#x8DF3;&#x65F6;&#x95F4;&#x3002;</p>
-<p>&#x5176;&#x4ED6;&#x65F6;&#x95F4;&#x4F1A;&#x505A;&#x4E00;&#x6B21;&#x5FC3;&#x8DF3;&#xFF1A;</p>
+<h2 id="handsahke-protocol">Handsahke Protocol</h2>
+<p><img src="../asserts/img/tls1.png" alt="img"></p>
+<h4 id="1clienthello">1ClientHello</h4>
+<p>ClientHello &#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;&#x5305;&#x62EC;&#xFF1A;</p>
 <ul>
-<li>&#x5207;&#x5230;&#x524D;&#x53F0;</li>
-<li>&#x7F51;&#x7EDC;&#x53D8;&#x5316;</li>
+<li>client_version  (tls&#x7248;&#x672C;)</li>
+<li>random;    // ranome struct</li>
+<li>session_id (&#x53EF;&#x80FD;&#x4E3A;&#x7A7A;, &#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x5F53;&#x524D;&#x7684;connection)</li>
+<li>cipher_suites &#xFF08;client &#x652F;&#x6301;&#x7684;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5; list&#xFF09;</li>
+<li>compression_methods &#xFF08;client &#x652F;&#x6301;&#x7684;&#x538B;&#x7F29;&#x7B97;&#x6CD5;&#xFF09;</li>
 </ul>
-<p>&#x66F4;&#x591A;&#xFF1A;<a href="https://mp.weixin.qq.com/s/ghnmC8709DvnhieQhkLJpA?" target="_blank">https://mp.weixin.qq.com/s/ghnmC8709DvnhieQhkLJpA?</a></p>
-<h3 id="&#x672F;&#x8BED;">&#x672F;&#x8BED;</h3>
-<p><strong>SYN</strong> &#x5728;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x7528;&#x4E8E;&#x540C;&#x6B65;&#x5E8F;&#x5217;&#x53F7;
-<strong>FIN</strong> &#x8BE5;&#x4FDD;&#x6E29;&#x888B;&#x7684;&#x53D1;&#x9001;&#x65B9;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#x5411;&#x5BF9;&#x65B9;&#x53D1;&#x9001;&#x6570;&#x636E;
-<strong>ACK</strong> &#x786E;&#x8BA4;
-<strong>RST</strong> &#x91CD;&#x7F6E;&#x8FDE;&#x63A5;</p>
-<p><strong>ISN(c)</strong> &#x5BA2;&#x6237;&#x7AEF;&#x521D;&#x59CB;&#x5E8F;&#x5217;&#x53F7;
-<strong>ISN(s)</strong> &#x670D;&#x52A1;&#x5668;&#x7AEF;&#x521D;&#x59CB;&#x5E8F;&#x5217;&#x53F7;</p>
-<p><strong>RTT</strong> 
-<strong>RTO</strong> &#x91CD;&#x8BD5;&#x65F6;&#x95F4;</p>
-<h3 id="tcp&#x5934;&#x90E8;&#x683C;&#x5F0F;">tcp&#x5934;&#x90E8;&#x683C;&#x5F0F;</h3>
-<p><img src="http://pc5ouzvhg.bkt.clouddn.com/WechatIMG245.jpeg" alt="img"></p>
-<h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<pre><code>struct {
+    uint32 gmt_unix_time;   // current time
+    opaque random_bytes[28];    
+} Random;  32 bytes
+</code></pre><h4 id="2serverhello">2ServerHello</h4>
+<p>Server &#x5F53;&#x6536;&#x5230;&#x4E86; ClientHello &#x540E;&#xFF0C;&#x5411; client &#x53D1;&#x9001; ServerHello</p>
+<p>ServerHello &#x5305;&#x542B;&#x6570;&#x636E;&#xFF1A;</p>
 <ul>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=2649286458&amp;idx=1&amp;sn=320f690faa4f97f7a49a291d4de174a9&amp;chksm=8334c3b8b4434aae904b6d590027b100283ef175938610805dd33ca53f004bd3c56040b11fa6#rd" target="_blank">https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=2649286458&amp;idx=1&amp;sn=320f690faa4f97f7a49a291d4de174a9&amp;chksm=8334c3b8b4434aae904b6d590027b100283ef175938610805dd33ca53f004bd3c56040b11fa6#rd</a></li>
+<li>server_verison    ()</li>
+<li>random (&#x7531; server &#x751F;&#x6210;&#x7684; random struct)</li>
+<li>session_id  (&#x7528;&#x4E8E;&#x6807;&#x8BC6; connection&#xFF0C;&#x5982;&#x679C; ClientHello &#x6CA1;&#x6709;&#x4F20;&#xFF0C;&#x5219;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;)</li>
+<li>cipher_suite (&#x7531; server &#x9009;&#x4E2D;&#x7684;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;)</li>
+<li>compression_method (&#x7531; server &#x9009;&#x4E2D;&#x7684;&#x538B;&#x7F29;&#x7B97;&#x6CD5;)</li>
+</ul>
+<h4 id="3server-certificate">3Server Certificate</h4>
+<p>&#x5411; client &#x53D1;&#x9001;&#x8BC1;&#x4E66;&#x548C;&#x516C;&#x94A5;</p>
+<p>&#x6B64;&#x5904;&#x53D1;&#x9001;&#x7684;&#x662F;&#x4ECE;&#x6743;&#x5A01;&#x673A;&#x6784;&#x7533;&#x8BF7;&#x7684;CA&#x8BC1;&#x4E66;&#x3002;</p>
+<p>&#x8BC1;&#x4E66;&#x4E2D;&#x5305;&#x542B;&#x670D;&#x52A1;&#x5668;&#x516C;&#x94A5;&#x3001;&#x670D;&#x52A1;&#x5668;&#x57DF;&#x540D;&#xFF0C;&#x7136;&#x540E;&#x8BC1;&#x4E66;&#x901A;&#x8FC7;CA&#x79C1;&#x94A5;&#x7B7E;&#x540D;&#x3002;</p>
+<p>client &#x5728;&#x6536;&#x5230;&#x8BC1;&#x4E66;&#x540E;&#xFF0C;&#x4F1A;&#x4F7F;&#x7528;CA&#x7684;&#x516C;&#x94A5;&#x9A8C;&#x8BC1;&#x7B7E;&#x540D;&#xFF0C;&#x4EE5;&#x6B64;&#x6765;&#x9A8C;&#x8BC1; &#x670D;&#x52A1;&#x5668;&#x7684;&#x8EAB;&#x4EFD;&#x3001;&#x516C;&#x94A5;&#x548C;&#x57DF;&#x540D;&#x662F;&#x5426;&#x771F;&#x5B9E;&#x3002;</p>
+<h4 id="4certificate-request">4Certificate Request</h4>
+<p>&#x5411; client &#x8BF7;&#x6C42;&#x8BC1;&#x4E66;</p>
+<h4 id="5server-hello-done">5Server Hello Done</h4>
+<p>&#x5F53; ServerHello &#x548C; &#x76F8;&#x5173;&#x4FE1;&#x606F;&#x53D1;&#x9001;&#x5B8C;&#x540E;&#xFF0C;server &#x4F1A;&#x53D1;&#x9001; ServerHelloDone&#x3002;&#x4E4B;&#x540E;&#x4F1A;&#x7B49;&#x5F85; client &#x7684;&#x54CD;&#x5E94;&#x3002;</p>
+<h4 id="6client-certificate">6Client Certificate</h4>
+<p>&#x5F53; client &#x63A5;&#x6536;&#x5230;  ServerHelloDone &#x540E;&#x3002;&#x5982;&#x679C; server &#x8981;&#x6C42;&#x8BC1;&#x4E66;&#xFF0C;client &#x4F1A;&#x5411; server &#x53D1;&#x9001; ClientCertificate </p>
+<h4 id="7client-key-exchange-message">7Client Key Exchange Message</h4>
+<p>&#x7531; client &#x53D1;&#x9001;&#x3002; </p>
+<p>client &#x968F;&#x673A;&#x751F;&#x6210;&#x4E00;&#x4E2A;48&#x5B57;&#x8282;&#x7684; pre_master_key&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7; server-rsa-public-key &#x52A0;&#x5BC6;&#xFF0C;&#x53D1;&#x9001;&#x7ED9; server&#x3002;</p>
+<h4 id="8finished">8Finished</h4>
+<p>&#x6B64;&#x65F6;&#x53CC;&#x65B9;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x540C;&#x6837;&#x7684;&#x7B97;&#x6CD5;&#x8BA1;&#x7B97;&#x51FA; master_key &#x3002;master_key &#x4E3A;&#x56FA;&#x5B9A;&#x957F;&#x5EA6; 48 bytes</p>
+<pre><code>master_secret = PRF(pre_master_secret, &quot;master secret&quot;,
+                          ClientHello.random + ServerHello.random)
+                          [0..47];
+</code></pre><p>&#x76F8;&#x4E92;&#x53D1;&#x9001; Finished message&#x3002;</p>
+<p>Finished message &#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x534F;&#x5546;&#x597D;&#x7684; algorithms, master key &#x6765;&#x52A0;&#x5BC6;&#x7684;&#x6D88;&#x606F;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4E00;&#x65B9;&#x5DF2;&#x7ECF;&#x53D1;&#x9001;&#x4E86; Finished&#xFF0C;&#x5E76;&#x4E14;&#x63A5;&#x6536;&#x3001;&#x9A8C;&#x8BC1;&#x4E86;&#x5BF9;&#x65B9;&#x7684; Finished message&#xFF0C;&#x5219;&#x5C31;&#x53EF;&#x4EE5;&#x53D1;&#x9001; Application Data &#x4E86;</p>
+<pre><code> Application data messages are carried by the record layer and are
+   fragmented, compressed, and encrypted based on the current connection
+   state.  The messages are treated as transparent data to the record
+   layer.
+</code></pre><h3 id="&#x5176;&#x4ED6;">&#x5176;&#x4ED6;</h3>
+<h4 id="ca&#x8BA4;&#x8BC1;">CA&#x8BA4;&#x8BC1;</h4>
+<p>CA Certificate Authority&#xFF0C;&#x8D1F;&#x8D23;&#x53D1;&#x653E;&#x548C;&#x7BA1;&#x7406;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x7684;&#x6743;&#x5A01;&#x673A;&#x6784;&#x3002;</p>
+<p>CA&#x53D1;&#x653E;&#x7684;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#xFF0C;&#x8BC1;&#x660E;&#x8BC1;&#x4E66;&#x4E2D;&#x5217;&#x51FA;&#x7684;&#x7528;&#x6237;&#x673A;&#x6784;&#x5408;&#x6CD5;&#x62E5;&#x6709;&#x8BC1;&#x4E66;&#x4E2D;&#x5217;&#x51FA;&#x7684;&#x516C;&#x94A5;&#x3002;</p>
+<h4 id="mac">MAC</h4>
+<p>Message Authentication Code &#x6D88;&#x606F;&#x8BC6;&#x522B;&#x7801;</p>
+<p>&#x901A;&#x8FC7; MAC algorithm &#x8BA1;&#x7B97; message &#x751F;&#x6210; MAC&#xFF0C;&#x4F7F;&#x7528; MAC &#x6765;&#x6821;&#x9A8C;</p>
+<h3 id="&#x53C2;&#x8003;&#xFF1A;">&#x53C2;&#x8003;&#xFF1A;</h3>
+<ul>
+<li>tls:<a href="https://www.ietf.org/rfc/rfc5246.txt" target="_blank">https://www.ietf.org/rfc/rfc5246.txt</a></li>
+<li></li>
+<li><a href="https://juejin.im/entry/5a644a61f265da3e4c07e334" target="_blank">https://juejin.im/entry/5a644a61f265da3e4c07e334</a></li>
 </ul>
 
                                 
@@ -2199,12 +2202,12 @@
 
             
                 
-                <a href="comm.html" class="navigation navigation-prev " aria-label="Previous page: common">
+                <a href="https.html" class="navigation navigation-prev " aria-label="Previous page: https">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="mars.html" class="navigation navigation-next " aria-label="Next page: mars">
+                <a href="rejex.html" class="navigation navigation-next " aria-label="Next page: 正则表达式">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2215,7 +2218,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"tcp","level":"2.2.2","depth":2,"next":{"title":"mars","level":"2.2.3","depth":2,"path":"other/mars.md","ref":"other/mars.md","articles":[]},"previous":{"title":"common","level":"2.2.1","depth":2,"path":"other/comm.md","ref":"other/comm.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/tcp.md","mtime":"2018-12-29T05:28:11.130Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-21T11:10:31.761Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"tls","level":"2.2.8","depth":2,"next":{"title":"正则表达式","level":"2.2.9","depth":2,"path":"other/rejex.md","ref":"other/rejex.md","articles":[]},"previous":{"title":"https","level":"2.2.7","depth":2,"path":"other/https.md","ref":"other/https.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/tls.md","mtime":"2019-06-21T12:25:20.981Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-21T11:10:31.761Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

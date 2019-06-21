@@ -295,7 +295,20 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.8" data-path="../../../other/rejex.html">
+        <li class="chapter " data-level="2.2.8" data-path="../../../other/tls.html">
+            
+                <a href="../../../other/tls.html">
+            
+                    
+                    tls
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="../../../other/rejex.html">
             
                 <a href="../../../other/rejex.html">
             
@@ -2115,7 +2128,6 @@ const char * method_getTypeEncoding(Method m);
 IMP method_setImplementation(Method m, IMP imp);
 void method_exchangeImplementations(Method m1, Method m2);
 
-
 char * method_copyReturnType(Method m);
 char * method_copyArgumentType(Method m, unsigned int index);
 
@@ -2124,18 +2136,18 @@ void method_getArgumentType(Method m, unsigned int index, char *dst, size_t dst_
 
 struct objc_method_description * method_getDescription(Method m);
 </code></pre><h3 id="class">class</h3>
-<pre><code>BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types);
-
-Method class_getInstanceMethod(Class cls, SEL name);
+<pre><code>Method class_getInstanceMethod(Class cls, SEL name);
 Method class_getClassMethod(Class cls, SEL name);
 
 Method  _Nonnull * class_copyMethodList(Class cls, unsigned int *outCount);
 
+BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types);
 IMP class_replaceMethod(Class cls, SEL name, IMP imp, const char *types);
 
 IMP class_getMethodImplementation(Class cls, SEL name);
 IMP class_getMethodImplementation_stret(Class cls, SEL name);
-</code></pre><h2 id="&#x6E90;&#x7801;&#x5B9E;&#x73B0;">&#x6E90;&#x7801;&#x5B9E;&#x73B0;</h2>
+</code></pre><h3 id="&#x6E90;&#x7801;&#x5B9E;&#x73B0;">&#x6E90;&#x7801;&#x5B9E;&#x73B0;</h3>
+<h3 id="get-method">get method</h3>
 <pre><code>Method class_getClassMethod(Class cls, SEL sel)
 {
     if (!cls  ||  !sel) return nil;
@@ -2152,6 +2164,64 @@ static Method _class_getMethod(Class cls, SEL sel)
 {
     rwlock_reader_t lock(runtimeLock);
     return getMethod_nolock(cls, sel);
+}
+</code></pre><h3 id="add--replace-method">add &amp; replace method</h3>
+<pre><code>BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types)
+{
+    if (!cls) return NO;
+
+    rwlock_writer_t lock(runtimeLock);
+    return ! addMethod(cls, name, imp, types ?: &quot;&quot;, NO);
+}
+
+IMP class_replaceMethod(Class cls, SEL name, IMP imp, const char *types)
+{
+    if (!cls) return nil;
+
+    rwlock_writer_t lock(runtimeLock);
+    return addMethod(cls, name, imp, types ?: &quot;&quot;, YES);
+}
+
+// add &#x548C; replace &#x90FD;&#x8C03;&#x7528;&#x4E86; addMethod &#x65B9;&#x6CD5;
+static IMP addMethod(Class cls, SEL name, IMP imp, const char *types, bool replace)
+{
+    IMP result = nil;
+
+    method_t *m;
+    if ((m = getMethodNoSuper_nolock(cls, name))) {
+        // method &#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#xFF0C; already exists  
+        if (!replace) {
+            // add &#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x5904;&#x7406;&#xFF0C;&#x8FD4;&#x56DE;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684; imp
+            result = m-&gt;imp;
+        } else {
+            // replace &#x4F1A;&#x53D6;&#x51FA;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684; mehtod_t &#xFF0C;&#x7136;&#x540E;&#x66FF;&#x6362; imp
+            result = _method_setImplementation(cls, m, imp);
+        }
+    } else {
+        // method &#x8FD8;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x4F1A;&#x521B;&#x5EFA; &#x4E00;&#x4E2A; method_list_t&#xFF0C;&#x628A; method &#x6DFB;&#x52A0;&#x5230; method_list_t &#x4E2D;&#xFF0C;
+        // &#x7136;&#x540E;&#x628A; method_list_t &#x6DFB;&#x52A0;&#x5230; cls-&gt;data()-&gt;methods &#x4E2D;(class_rw_t &#x6240;&#x6709;&#x7684; class_array_t &#x4E2D;)
+        method_list_t *newlist;
+        newlist = (method_list_t *)calloc(sizeof(*newlist), 1);
+        newlist-&gt;entsizeAndFlags = 
+            (uint32_t)sizeof(method_t) | fixed_up_method_list;
+        newlist-&gt;count = 1;
+        newlist-&gt;first.name = name;
+        newlist-&gt;first.types = strdup(types);
+        if (!ignoreSelector(name)) {
+            newlist-&gt;first.imp = imp;
+        } else {
+            newlist-&gt;first.imp = (IMP)&amp;_objc_ignored_method;
+        }
+
+        prepareMethodLists(cls, &amp;newlist, 1, NO, NO);
+        // attachLists &#x4F1A;&#x6DFB;&#x52A0;&#x5230; methods &#x7684;&#x6700;&#x524D;&#x9762;&#xFF0C;&#x6240;&#x4EE5;&#x6BCF;&#x6B21;&#x987A;&#x5E8F;&#x4ECE; method_array_t &#x4E2D;&#x53D6; method_t &#x65F6;&#xFF0C;&#x90FD;&#x4F1A;&#x4F18;&#x5148;&#x53D6;&#x51FA;&#x540E;&#x6DFB;&#x52A0;&#x7684; method_t &#x3002;(&#x8FD9;&#x91CC;&#x89E3;&#x91CA;&#x4E86; category &#x6DFB;&#x52A0;&#x7684;&#x65B9;&#x6CD5;&#x4F1A;&#x4F18;&#x5148;&#x4E8E; class &#x7684;&#x65B9;&#x6CD5;&#x8C03;&#x7528;)
+        cls-&gt;data()-&gt;methods.attachLists(&amp;newlist, 1);
+        flushCaches(cls);
+
+        result = nil;
+    }
+
+    return result;
 }
 </code></pre>
                                 
@@ -2196,7 +2266,7 @@ static Method _class_getMethod(Class cls, SEL sel)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"method","level":"4.1.1.3.4","depth":4,"next":{"title":"ivar","level":"4.1.1.3.5","depth":4,"path":"oc/runtime/api/ivar.md","ref":"oc/runtime/api/ivar.md","articles":[]},"previous":{"title":"操作对象","level":"4.1.1.3.3","depth":4,"path":"oc/runtime/api/object.md","ref":"oc/runtime/api/object.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runtime/api/method.md","mtime":"2019-06-08T08:19:47.904Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-08T04:53:54.108Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"method","level":"4.1.1.3.4","depth":4,"next":{"title":"ivar","level":"4.1.1.3.5","depth":4,"path":"oc/runtime/api/ivar.md","ref":"oc/runtime/api/ivar.md","articles":[]},"previous":{"title":"操作对象","level":"4.1.1.3.3","depth":4,"path":"oc/runtime/api/object.md","ref":"oc/runtime/api/object.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runtime/api/method.md","mtime":"2019-06-10T04:20:26.739Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-21T11:10:31.761Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
