@@ -68,7 +68,7 @@
     <link rel="next" href="https.html" />
     
     
-    <link rel="prev" href="xlog.html" />
+    <link rel="prev" href="websocket.html" />
     
 
     </head>
@@ -256,20 +256,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.5" data-path="xlog.html">
-            
-                <a href="xlog.html">
-            
-                    
-                    xlog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="2.2.6" data-path="http.html">
+        <li class="chapter active" data-level="2.2.5" data-path="http.html">
             
                 <a href="http.html">
             
@@ -282,7 +269,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.7" data-path="https.html">
+        <li class="chapter " data-level="2.2.6" data-path="https.html">
             
                 <a href="https.html">
             
@@ -295,7 +282,46 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.8" data-path="rejex.html">
+        <li class="chapter " data-level="2.2.7" data-path="socket.html">
+            
+                <a href="socket.html">
+            
+                    
+                    socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="tls.html">
+            
+                <a href="tls.html">
+            
+                    
+                    tls
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="xlog.html">
+            
+                <a href="xlog.html">
+            
+                    
+                    xlog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="rejex.html">
             
                 <a href="rejex.html">
             
@@ -2081,21 +2107,27 @@
                                 
                                 <h2 id="http">http</h2>
 <h3 id="request">Request</h3>
-<pre><code>&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;
-&lt;headers&gt;
-
-&lt;entity-body&gt;
-
-
-Content-Type: application/x-www-form-urlencoded
-Content-Type: application/json
-
-
-POST http://www.example.com HTTP/1.1
+<p>&#x683C;&#x5F0F;</p>
+<pre><code>[Request Line] &lt;method&gt; &lt;request-URL&gt; &lt;version&gt; [CRLF]
+general-header
+request-header
+entity-header[CRLF]
+[CRLF]
+message-body
+</code></pre><pre><code>POST http://www.example.com HTTP/1.1
 Content-Type: application/x-www-form-urlencoded;charset=utf-8
+accept-language: zh-CN
 
 title=test&amp;sub%5B%5D=1&amp;sub%5B%5D=2&amp;sub%5B%5D=3
 </code></pre><h3 id="response">Response</h3>
+<p>&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre><code>[Status Line] &lt;version&gt; &lt;status code&gt; &lt;Reason Phrase&gt; [CRLF]
+general-header
+response-header
+entity-header[CRLF]
+[CRLF]
+message-body
+</code></pre><p>&#x793A;&#x4F8B;&#xFF1A;</p>
 <pre><code>HTTP/1.1 200 OK
 Content-Length: 3059
 Server: GWS/2.0
@@ -2107,47 +2139,101 @@ X9j; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/; domain=.google.com
 Connection: keep-alive
 
 &lt;html&gt;...&lt;/html&gt;
-</code></pre><h3 id="&#x72B6;&#x6001;&#x7801;">&#x72B6;&#x6001;&#x7801;</h3>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81#1xx%E6%B6%88%E6%81%AF" target="_blank">https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81#1xx%E6%B6%88%E6%81%AF</a></p>
-<pre><code>1xx&#x6D88;&#x606F;&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x5DF2;&#x88AB;&#x670D;&#x52A1;&#x5668;&#x63A5;&#x6536;&#xFF0C;&#x7EE7;&#x7EED;&#x5904;&#x7406;
-2xx&#x6210;&#x529F;&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x5DF2;&#x6210;&#x529F;&#x88AB;&#x670D;&#x52A1;&#x5668;&#x63A5;&#x6536;&#x3001;&#x7406;&#x89E3;&#x3001;&#x5E76;&#x63A5;&#x53D7;
-3xx&#x91CD;&#x5B9A;&#x5411;&#x2014;&#x2014;&#x9700;&#x8981;&#x540E;&#x7EED;&#x64CD;&#x4F5C;&#x624D;&#x80FD;&#x5B8C;&#x6210;&#x8FD9;&#x4E00;&#x8BF7;&#x6C42;
-4xx&#x8BF7;&#x6C42;&#x9519;&#x8BEF;&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x542B;&#x6709;&#x8BCD;&#x6CD5;&#x9519;&#x8BEF;&#x6216;&#x8005;&#x65E0;&#x6CD5;&#x88AB;&#x6267;&#x884C;
-5xx&#x670D;&#x52A1;&#x5668;&#x9519;&#x8BEF;&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x5728;&#x5904;&#x7406;&#x67D0;&#x4E2A;&#x6B63;&#x786E;&#x8BF7;&#x6C42;&#x65F6;&#x53D1;&#x751F;&#x9519;&#x8BEF;
-
-100 Continue
-
+</code></pre><h3 id="status-code-&#x72B6;&#x6001;&#x7801;">Status Code &#x72B6;&#x6001;&#x7801;</h3>
+<ul>
+<li>1xx &#x6D88;&#x606F;&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x5DF2;&#x88AB;&#x670D;&#x52A1;&#x5668;&#x63A5;&#x6536;&#xFF0C;&#x7EE7;&#x7EED;&#x5904;&#x7406; Request received, continuing process</li>
+<li>2xx &#x6210;&#x529F;&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x5DF2;&#x6210;&#x529F;&#x88AB;&#x670D;&#x52A1;&#x5668;&#x63A5;&#x6536;&#x3001;&#x7406;&#x89E3;&#x3001;&#x5E76;&#x63A5;&#x53D7;</li>
+<li>3xx &#x91CD;&#x5B9A;&#x5411;&#x2014;&#x2014;&#x9700;&#x8981;&#x540E;&#x7EED;&#x64CD;&#x4F5C;&#x624D;&#x80FD;&#x5B8C;&#x6210;&#x8FD9;&#x4E00;&#x8BF7;&#x6C42; Further action must be taken in order to<pre><code>  complete the request
+</code></pre></li>
+<li>4xx &#x8BF7;&#x6C42;&#x9519;&#x8BEF;&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x542B;&#x6709;&#x8BCD;&#x6CD5;&#x9519;&#x8BEF;&#x6216;&#x8005;&#x65E0;&#x6CD5;&#x88AB;&#x6267;&#x884C; Client Error - The request contains bad syntax or cannot be fulfilled</li>
+<li>5xx &#x670D;&#x52A1;&#x5668;&#x9519;&#x8BEF;&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x5728;&#x5904;&#x7406;&#x67D0;&#x4E2A;&#x6B63;&#x786E;&#x8BF7;&#x6C42;&#x65F6;&#x53D1;&#x751F;&#x9519;&#x8BEF; The server failed to fulfill an apparently<pre><code>  valid request
+</code></pre></li>
+</ul>
+<pre><code>100 Continue
 101 Switching Protocols
-
 &#x670D;&#x52A1;&#x5668;&#x5DF2;&#x7ECF;&#x7406;&#x89E3;&#x4E86;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x5C06;&#x901A;&#x8FC7;Upgrade&#x6D88;&#x606F;&#x5934;&#x901A;&#x77E5;&#x5BA2;&#x6237;&#x7AEF;&#x91C7;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x534F;&#x8BAE;&#x6765;&#x5B8C;&#x6210;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x3002;&#x5728;&#x53D1;&#x9001;&#x5B8C;&#x8FD9;&#x4E2A;&#x54CD;&#x5E94;&#x6700;&#x540E;&#x7684;&#x7A7A;&#x884C;&#x540E;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x5C06;&#x4F1A;&#x5207;&#x6362;&#x5230;&#x5728;Upgrade&#x6D88;&#x606F;&#x5934;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x90A3;&#x4E9B;&#x534F;&#x8BAE;&#x3002;WebSocket &#x4F7F;&#x7528;
 
 200 OK
-
 201 Created
-
 202 Accepted
 
 301 Moved Permanently **&#x91CD;&#x5B9A;&#x5411;**&#x8D44;&#x6E90;&#x88AB;&#x6C38;&#x4E45;&#x79FB;&#x52A8;&#x5230;&#x4E86;&#x65B0;&#x4F4D;&#x7F6E;
-
 304 Not Modified
 
 400 Bad Request
-
 401 
-
 403 Forbidden &#x670D;&#x52A1;&#x5668;&#x5DF2;&#x63A5;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#xFF0C;&#x4F46;&#x62D2;&#x7EDD;&#x6267;&#x884C;
-
 404 Not found
 
 500 Internal Server Error
-
 501 Not Implemented
-
 502 Bad Gateway
-</code></pre><h3 id="http20&#x548C;http1x&#x76F8;&#x6BD4;&#x7684;&#x65B0;&#x7279;&#x6027;">HTTP2.0&#x548C;HTTP1.X&#x76F8;&#x6BD4;&#x7684;&#x65B0;&#x7279;&#x6027;</h3>
+</code></pre><p>&#x53C2;&#x8003;&#xFF1A;<a href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81#1xx%E6%B6%88%E6%81%AF" target="_blank">https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81#1xx%E6%B6%88%E6%81%AF</a></p>
+<h3 id="header">header</h3>
+<h4 id="general-header">General Header</h4>
+<h5 id="upgrade">Upgrade</h5>
+<p>&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x673A;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x5207;&#x6362; protocol&#x3002;</p>
+<pre><code>client &#x901A;&#x8FC7; Upgrade &#x5217;&#x51FA;&#x5E0C;&#x671B;&#x4F7F;&#x7528;&#x7684; ptorocol
+
+server &#x8FD4;&#x56DE;&#x65B0;&#x9009;&#x5B9A;&#x7684; protocol&#xFF0C; &#x8FD4;&#x56DE;&#x7801;&#x4E3A; 101
+</code></pre><h5 id="content-type">Content-Type</h5>
+<pre><code>Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
+</code></pre><h5 id="hsts">HSTS</h5>
+<pre><code>Strict-Transport-Security: max-age=0
+
+HTTP Strict Transport Security&#xFF08;&#x901A;&#x5E38;&#x7B80;&#x79F0;&#x4E3A;HSTS&#xFF09;&#x662F;&#x4E00;&#x4E2A;&#x5B89;&#x5168;&#x529F;&#x80FD;&#xFF0C;&#x5B83;&#x544A;&#x8BC9;&#x6D4F;&#x89C8;&#x5668;&#x53EA;&#x80FD;&#x901A;&#x8FC7;HTTPS&#x8BBF;&#x95EE;&#x5F53;&#x524D;&#x8D44;&#x6E90;&#xFF0C;&#x800C;&#x4E0D;&#x662F;HTTP&#x3002;
+
+max-age=&lt;expire-time&gt;
+&#x8BBE;&#x7F6E;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x6536;&#x5230;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x540E;&#x7684;&lt;expire-time&gt;&#x79D2;&#x7684;&#x65F6;&#x95F4;&#x5185;&#x51E1;&#x662F;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;&#x57DF;&#x540D;&#x4E0B;&#x7684;&#x8BF7;&#x6C42;&#x90FD;&#x4F7F;&#x7528;HTTPS&#x8BF7;&#x6C42;&#x3002;
+</code></pre><h4 id="request-header">Request Header</h4>
+<pre><code>Host: www.w3.org
+&#x5FC5;&#x987B;&#x7684;&#x53C2;&#x6570;&#x3002;
+
+User-Agent: CERN-LineMode/2.15 libwww/2.17b3
+
+Location: http://www.w3.org/pub/WWW/People.html
+&#x91CD;&#x5B9A;&#x5411; 
+
+If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+&#x5047;&#x5982;&#x8BF7;&#x6C42;&#x7684;&#x8D44;&#x6E90;&#x5728;&#x8BE5;&#x65E5;&#x671F;&#x4E4B;&#x540E;&#x6CA1;&#x6709;modify&#xFF0C;&#x5219;&#x8FD4;&#x56DE; 304 &#xFF0C;&#x4E0D;&#x4F1A;&#x53CD;&#x56DE; entity
+</code></pre><h4 id="response-header">Response Header</h4>
+<h5 id="cache-control">Cache-Control</h5>
+<pre><code>Cache-Control: public, max-age=0
+</code></pre><h3 id="entity">Entity</h3>
+<h4 id="entity-header">Entity Header</h4>
+<pre><code>Allow: GET, HEAD, PUT
+&#x4E00;&#x822C;&#xFF0C;&#x8FD4;&#x56DE; 405(Method Not Allowed) &#x65F6;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE; Allow Header&#xFF0C;&#x5217;&#x51FA;&#x8BE5; Request-URI &#x652F;&#x6301;&#x7684; methods
+
+
+Content-Encoding         
+
+Content-Language         
+
+Content-Length           
+
+Content-Location         
+
+Content-MD5              
+
+Content-Range            
+
+Content-Type             
+
+Expires                  
+
+Last-Modified            
+
+extension-header
+</code></pre><h4 id="entity-body">Entity Body</h4>
+<h3 id="http20&#x548C;http1x&#x76F8;&#x6BD4;&#x7684;&#x65B0;&#x7279;&#x6027;">HTTP2.0&#x548C;HTTP1.X&#x76F8;&#x6BD4;&#x7684;&#x65B0;&#x7279;&#x6027;</h3>
 <ul>
 <li>tcp&#x8FDE;&#x63A5; &#x590D;&#x7528;</li>
 <li>header &#x538B;&#x7F29;</li>
+</ul>
+<h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<ul>
+<li>http: <a href="https://tools.ietf.org/html/rfc2616#section-5" target="_blank">https://tools.ietf.org/html/rfc2616#section-5</a></li>
 </ul>
 
                                 
@@ -2176,7 +2262,7 @@ Connection: keep-alive
 
             
                 
-                <a href="xlog.html" class="navigation navigation-prev " aria-label="Previous page: xlog">
+                <a href="websocket.html" class="navigation navigation-prev " aria-label="Previous page: WebSocket">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2192,7 +2278,7 @@ Connection: keep-alive
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"http","level":"2.2.6","depth":2,"next":{"title":"https","level":"2.2.7","depth":2,"path":"other/https.md","ref":"other/https.md","articles":[]},"previous":{"title":"xlog","level":"2.2.5","depth":2,"path":"other/xlog.md","ref":"other/xlog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/http.md","mtime":"2018-12-19T15:32:03.521Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-09T15:17:51.005Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"http","level":"2.2.5","depth":2,"next":{"title":"https","level":"2.2.6","depth":2,"path":"other/https.md","ref":"other/https.md","articles":[]},"previous":{"title":"WebSocket","level":"2.2.4","depth":2,"path":"other/websocket.md","ref":"other/websocket.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/http.md","mtime":"2019-06-22T11:02:51.790Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T12:30:02.711Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

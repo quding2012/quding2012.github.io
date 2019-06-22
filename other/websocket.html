@@ -65,7 +65,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="xlog.html" />
+    <link rel="next" href="http.html" />
     
     
     <link rel="prev" href="mars.html" />
@@ -256,20 +256,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.5" data-path="xlog.html">
-            
-                <a href="xlog.html">
-            
-                    
-                    xlog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.6" data-path="http.html">
+        <li class="chapter " data-level="2.2.5" data-path="http.html">
             
                 <a href="http.html">
             
@@ -282,7 +269,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.7" data-path="https.html">
+        <li class="chapter " data-level="2.2.6" data-path="https.html">
             
                 <a href="https.html">
             
@@ -295,7 +282,46 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.8" data-path="rejex.html">
+        <li class="chapter " data-level="2.2.7" data-path="socket.html">
+            
+                <a href="socket.html">
+            
+                    
+                    socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="tls.html">
+            
+                <a href="tls.html">
+            
+                    
+                    tls
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="xlog.html">
+            
+                <a href="xlog.html">
+            
+                    
+                    xlog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="rejex.html">
             
                 <a href="rejex.html">
             
@@ -2116,10 +2142,27 @@ Upgrade: websocket
 Connection: Upgrade
 Sec-WebSocket-Accept: fFBooB7FAkLlXgRSz0BT3v4hq5s=
 Sec-WebSocket-Location: ws://example.com/
+</code></pre><h3 id="&#x53D1;&#x9001;&#x6570;&#x636E;">&#x53D1;&#x9001;&#x6570;&#x636E;</h3>
+<p>WebSocket &#x901A;&#x8FC7;&#x6570;&#x636E;&#x5E27;(Data Frame)&#x7684;&#x65B9;&#x5F0F;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;&#x5E27;&#x90FD;&#x8981;&#x7ECF;&#x8FC7;&#x63A9;&#x7801;&#x5904;&#x7406;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x9001;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E27;&#x90FD;&#x4E0D;&#x80FD;&#x7ECF;&#x8FC7;&#x63A9;&#x7801;&#x5904;&#x7406;&#x3002;&#x5426;&#x5219;&#x5BF9;&#x65B9;&#x9700;&#x8981;&#x53D1;&#x9001;&#x5173;&#x95ED;&#x5E27;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x5E27;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5E27;&#x7C7B;&#x578B;&#x7684;&#x6807;&#x8BC6;&#x7801;&#xFF0C;&#x4E00;&#x4E2A;&#x8D1F;&#x8F7D;&#x957F;&#x5EA6;&#xFF0C;&#x548C;&#x8D1F;&#x8F7D;&#x3002;&#x8D1F;&#x8F7D;&#x5305;&#x62EC;&#x6269;&#x5C55;&#x5185;&#x5BB9;&#x548C;&#x5E94;&#x7528;&#x5185;&#x5BB9;&#x3002;</p>
+<p>RFC6455&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5E27;&#x7C7B;&#x578B;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>1&#xFF09;Opcode == 0 &#x7EE7;&#x7EED;&#xFF1A;
+&#x8868;&#x793A;&#x6B64;&#x5E27;&#x662F;&#x4E00;&#x4E2A;&#x7EE7;&#x7EED;&#x5E27;&#xFF0C;&#x9700;&#x8981;&#x62FC;&#x63A5;&#x5728;&#x4E0A;&#x4E00;&#x4E2A;&#x6536;&#x5230;&#x7684;&#x5E27;&#x4E4B;&#x540E;&#xFF0C;&#x6765;&#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x6D88;&#x606F;&#x3002;&#x7531;&#x4E8E;&#x8FD9;&#x79CD;&#x89E3;&#x6790;&#x7279;&#x6027;&#xFF0C;&#x975E;&#x63A7;&#x5236;&#x5E27;&#x7684;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x5FC5;&#x987B;&#x662F;&#x76F8;&#x540C;&#x7684;&#x987A;&#x5E8F;&#x3002;
+2&#xFF09;Opcode == 1 &#x6587;&#x672C;&#x5E27;&#x3002;
+3&#xFF09;Opcode == 2 &#x4E8C;&#x8FDB;&#x5236;&#x5E27;&#x3002;
+5&#xFF09;Opcode == 8 &#x5173;&#x95ED;&#x8FDE;&#x63A5;&#xFF08;&#x63A7;&#x5236;&#x5E27;&#xFF09;&#xFF1A;
+&#x6B64;&#x5E27;&#x53EF;&#x80FD;&#x4F1A;&#x5305;&#x542B;&#x5185;&#x5BB9;&#xFF0C;&#x4EE5;&#x8868;&#x793A;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#x7684;&#x539F;&#x56E0;&#x3002;&#x901A;&#x4FE1;&#x7684;&#x67D0;&#x4E00;&#x65B9;&#x53D1;&#x9001;&#x6B64;&#x5E27;&#x6765;&#x5173;&#x95ED;WebSocket&#x8FDE;&#x63A5;&#xFF0C;&#x6536;&#x5230;&#x6B64;&#x5E27;&#x7684;&#x4E00;&#x65B9;&#x5982;&#x679C;&#x4E4B;&#x524D;&#x6CA1;&#x6709;&#x53D1;&#x9001;&#x6B64;&#x5E27;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x540C;&#x6837;&#x7684;&#x5173;&#x95ED;&#x5E27;&#x4EE5;&#x786E;&#x8BA4;&#x5173;&#x95ED;&#x3002;&#x5982;&#x679C;&#x53CC;&#x65B9;&#x540C;&#x65F6;&#x53D1;&#x9001;&#x6B64;&#x5E27;&#xFF0C;&#x5219;&#x53CC;&#x65B9;&#x90FD;&#x9700;&#x8981;&#x53D1;&#x9001;&#x56DE;&#x5E94;&#x7684;&#x5173;&#x95ED;&#x5E27;&#x3002;&#x7406;&#x60F3;&#x60C5;&#x51B5;&#x670D;&#x52A1;&#x7AEF;&#x5728;&#x786E;&#x8BA4;WebSocket&#x8FDE;&#x63A5;&#x5173;&#x95ED;&#x540E;&#xFF0C;&#x5173;&#x95ED;&#x76F8;&#x5E94;&#x7684;TCP&#x8FDE;&#x63A5;&#xFF0C;&#x800C;&#x5BA2;&#x6237;&#x7AEF;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x670D;&#x52A1;&#x7AEF;&#x5173;&#x95ED;&#x6B64;TCP&#x8FDE;&#x63A5;&#xFF0C;&#x4F46;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#x4E5F;&#x53EF;&#x4EE5;&#x5173;&#x95ED;TCP&#x8FDE;&#x63A5;&#x3002;
+6&#xFF09;Opcode == 9 Ping&#xFF1A;
+&#x7C7B;&#x4F3C;&#x4E8E;&#x5FC3;&#x8DF3;&#xFF0C;&#x4E00;&#x65B9;&#x6536;&#x5230;Ping&#xFF0C;&#x5E94;&#x5F53;&#x7ACB;&#x5373;&#x53D1;&#x9001;Pong&#x4F5C;&#x4E3A;&#x54CD;&#x5E94;&#x3002;
+7&#xFF09;Opcode == 10 Pong&#xFF1A;
+&#x5982;&#x679C;&#x901A;&#x4FE1;&#x4E00;&#x65B9;&#x5E76;&#x6CA1;&#x6709;&#x53D1;&#x9001;Ping&#xFF0C;&#x4F46;&#x662F;&#x6536;&#x5230;&#x4E86;Pong&#xFF0C;&#x5E76;&#x4E0D;&#x8981;&#x6C42;&#x5B83;&#x8FD4;&#x56DE;&#x4EFB;&#x4F55;&#x4FE1;&#x606F;&#x3002;Pong&#x5E27;&#x7684;&#x5185;&#x5BB9;&#x5E94;&#x5F53;&#x548C;&#x6536;&#x5230;&#x7684;Ping&#x76F8;&#x540C;&#x3002;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x4E00;&#x65B9;&#x6536;&#x5230;&#x5F88;&#x591A;&#x7684;Ping&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x9700;&#x8981;&#x54CD;&#x5E94;&#x6700;&#x8FD1;&#x7684;&#x90A3;&#x4E00;&#x6B21;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;
 </code></pre><h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
 <ul>
-<li>&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<a href="https://tools.ietf.org/html/rfc6455" target="_blank">https://tools.ietf.org/html/rfc6455</a></li>
+<li><a href="https://tools.ietf.org/html/rfc6455" target="_blank">https://tools.ietf.org/html/rfc6455</a></li>
 <li><a href="http://www.ruanyifeng.com/blog/2017/05/websocket.html" target="_blank">http://www.ruanyifeng.com/blog/2017/05/websocket.html</a></li>
+<li><a href="http://www.52im.net/thread-1266-1-1.html" target="_blank">http://www.52im.net/thread-1266-1-1.html</a></li>
+<li><a href="http://www.52im.net/thread-1273-1-1.html" target="_blank">http://www.52im.net/thread-1273-1-1.html</a></li>
 </ul>
 
                                 
@@ -2153,7 +2196,7 @@ Sec-WebSocket-Location: ws://example.com/
                 </a>
                 
                 
-                <a href="xlog.html" class="navigation navigation-next " aria-label="Next page: xlog">
+                <a href="http.html" class="navigation navigation-next " aria-label="Next page: http">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2164,7 +2207,7 @@ Sec-WebSocket-Location: ws://example.com/
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"WebSocket","level":"2.2.4","depth":2,"next":{"title":"xlog","level":"2.2.5","depth":2,"path":"other/xlog.md","ref":"other/xlog.md","articles":[]},"previous":{"title":"mars","level":"2.2.3","depth":2,"path":"other/mars.md","ref":"other/mars.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/websocket.md","mtime":"2019-06-09T02:30:18.007Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-09T15:17:51.005Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"WebSocket","level":"2.2.4","depth":2,"next":{"title":"http","level":"2.2.5","depth":2,"path":"other/http.md","ref":"other/http.md","articles":[]},"previous":{"title":"mars","level":"2.2.3","depth":2,"path":"other/mars.md","ref":"other/mars.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/websocket.md","mtime":"2019-06-22T12:13:53.612Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T12:30:02.711Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
