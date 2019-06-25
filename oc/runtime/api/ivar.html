@@ -256,20 +256,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.5" data-path="../../../other/xlog.html">
-            
-                <a href="../../../other/xlog.html">
-            
-                    
-                    xlog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.6" data-path="../../../other/http.html">
+        <li class="chapter " data-level="2.2.5" data-path="../../../other/http.html">
             
                 <a href="../../../other/http.html">
             
@@ -282,12 +269,25 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.7" data-path="../../../other/https.html">
+        <li class="chapter " data-level="2.2.6" data-path="../../../other/https.html">
             
                 <a href="../../../other/https.html">
             
                     
                     https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="../../../other/socket.html">
+            
+                <a href="../../../other/socket.html">
+            
+                    
+                    socket
             
                 </a>
             
@@ -308,7 +308,20 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.9" data-path="../../../other/rejex.html">
+        <li class="chapter " data-level="2.2.9" data-path="../../../other/xlog.html">
+            
+                <a href="../../../other/xlog.html">
+            
+                    
+                    xlog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="../../../other/rejex.html">
             
                 <a href="../../../other/rejex.html">
             
@@ -2106,7 +2119,105 @@ struct class_ro_t {
     const ivar_list_t * ivars;
     // ...
 };
-</code></pre><p>objc_class-&gt;data() &#x4F1A;&#x8FD4;&#x56DE; class_rw_t&#x3002; class_rw_t-&gt;ro &#x6301;&#x6709; class_ro_t&#x3002;class_ro_t &#x4E2D;&#x6301;&#x6709; ivars &#x7528;&#x4E8E;&#x4FDD;&#x5B58; class &#x7684; Ivar&#x3002;</p>
+</code></pre><h3 id="offset">offset</h3>
+<p>&#x6307;&#x5F53;&#x524D; ivar &#x7684;&#x5185;&#x5B58;&#x8D77;&#x59CB;&#x5730;&#x5740;</p>
+<p>&#x5BF9;&#x9F50;&#x89C4;&#x5219;&#xFF1A;</p>
+<ul>
+<li>&#x8D77;&#x59CB;&#x5730;&#x5740;&#x662F;&#x957F;&#x5EA6;&#x7684;&#x6574;&#x6570;&#x500D;</li>
+<li>64&#x4F4D;&#xFF0C;struct &#x957F;&#x5EA6;&#x662F;8&#x7684;&#x500D;&#x6570;&#x3002;32&#x4F4D;&#xFF0C;struct &#x957F;&#x5EA6;&#x662F;4&#x7684;&#x500D;&#x6570;</li>
+</ul>
+<pre><code>@interface RuntimeTest3 () {
+    int8_t age1;
+    NSString *firstName;
+    int32_t age;
+    NSString *lastName;
+}
+
+/*
+ NSString *firstName;
+ NSString *lastName;
+ int32_t age;
+ int8_t age1;
+
+ &#x5BF9;&#x9F50;&#x7B56;&#x7565;&#x4E3A;&#xFF1A;
+ 0--------
+ isa
+ 8--------
+ firstName
+ 16--------
+ lastName
+ 24--------
+ age
+ 28--------
+ age1
+
+ &#x5B9E;&#x4F8B;&#x5927;&#x5C0F;&#x4E3A; 32 bytes
+ */
+
+/*
+ int8_t age1;
+ NSString *firstName;
+ NSString *lastName;
+ int32_t age;
+
+ &#x5BF9;&#x9F50;&#x7B56;&#x7565;&#x4E3A;&#xFF1A;
+ 0--------
+ isa
+ 8--------
+ age1      (&#x8FD9;&#x91CC;&#x8981;&#x5BF9;&#x9F50; btyes)
+ 16--------
+ firstName
+ 24--------
+ lastName
+ 32--------
+ age
+
+ &#x5B9E;&#x4F8B;&#x5927;&#x5C0F;&#x4E3A; 40 bytes
+ */
+
+/*
+ int8_t age1;
+ NSString *firstName;
+ int32_t age;
+ NSString *lastName;
+
+ &#x5BF9;&#x9F50;&#x7B56;&#x7565;&#x4E3A;&#xFF1A;
+ 0--------
+ isa
+ 8--------
+ age1      (&#x8FD9;&#x91CC;&#x8981;&#x5BF9;&#x9F50; btyes)
+ 16--------
+ firstName
+ 24--------
+ age
+ 32--------
+ lastName
+
+ &#x5B9E;&#x4F8B;&#x5927;&#x5C0F;&#x4E3A; 40 bytes
+ */
+
+/*
+ int8_t age1;
+ int32_t age;
+ NSString *firstName;
+ NSString *lastName;
+
+ &#x5BF9;&#x9F50;&#x7B56;&#x7565;&#x4E3A;&#xFF1A;
+ 0--------
+ isa
+ 8--------
+ age1
+ 12--------
+ age
+ 16--------
+ firstName
+ 24--------
+ lastName
+
+ &#x5B9E;&#x4F8B;&#x5927;&#x5C0F;&#x4E3A; 32 bytes
+ */
+</code></pre><h3 id="&#x5B58;&#x50A8;">&#x5B58;&#x50A8;</h3>
+<p>objc_class-&gt;data() &#x4F1A;&#x8FD4;&#x56DE; class_rw_t&#x3002; class_rw_t-&gt;ro &#x6301;&#x6709; class_ro_t&#x3002;class_ro_t &#x4E2D;&#x6301;&#x6709; ivars &#x7528;&#x4E8E;&#x4FDD;&#x5B58; class &#x7684; Ivar&#x3002;</p>
 <pre><code>objc_class
     -&gt;data()  // class_rw_t&#x3002;
     -&gt;ro()    // class_ro_t&#x3002;class_ro_t
@@ -2122,8 +2233,6 @@ struct class_ro_t {
     Element first;
 };
 </code></pre>
-<p>class_addIvar &#x53EA;&#x80FD;&#x5728; objc_allocateClassPair &#x548C; objc_registerClassPair &#x4E4B;&#x95F4;&#x8C03;&#x7528;&#x3002;</p>
-<p>&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x7C7B;&#x4E0D;&#x652F;&#x6301;&#x6DFB;&#x52A0; ivar&#x3002;</p>
 <h2 id="runtime-api">runtime api</h2>
 <h3 id="ivar">ivar</h3>
 <pre><code>const char * ivar_getName(Ivar v);
@@ -2153,13 +2262,16 @@ const char* ivar_getTypeEncoding(Ivar ivar)
     return ivar-&gt;type;
 }
 </code></pre><h3 id="class-api">class api</h3>
-<pre><code>Ivar class_getClassVariable(Class cls, const char *name);
+<pre><code>// &#x9996;&#x5148;&#x4F1A;&#x904D;&#x5386;&#x81EA;&#x5DF1;&#xFF0C;&#x7136;&#x540E;&#x67E5;&#x627E;&#x7236;&#x7C7B; &#x76F4;&#x5230;&#x627E;&#x5230;
+Ivar class_getClassVariable(Class cls, const char *name);
 Ivar class_getInstanceVariable(Class cls, const char *name);
 
-// his function may only be called after objc_allocateClassPair and before objc_registerClassPair. 
- *       Adding an instance variable to an existing class is not supported.
+
+// class_addIvar &#x53EA;&#x80FD;&#x5728; objc_allocateClassPair &#x548C; objc_registerClassPair &#x4E4B;&#x95F4;&#x8C03;&#x7528;&#x3002;
+// &#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x7C7B;&#x4E0D;&#x652F;&#x6301;&#x6DFB;&#x52A0; ivar&#x3002;
 BOOL class_addIvar(Class cls, const char *name, size_t size, uint8_t alignment, const char *types);
 
+// &#x53EA;&#x4F1A;&#x904D;&#x5386;&#x5F53;&#x524D;&#x7C7B;&#x7684; var &#xFF0C;&#x4E0D;&#x4F1A;&#x53BB;&#x7236;&#x7C7B;&#x67E5;&#x627E;
 Ivar  _Nonnull * class_copyIvarList(Class cls, unsigned int *outCount);
 
 const uint8_t * class_getIvarLayout(Class cls);
@@ -2403,7 +2515,7 @@ id objc_loadWeakRetained(id *location)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ivar","level":"4.1.1.3.5","depth":4,"next":{"title":"category","level":"4.1.1.3.6","depth":4,"path":"oc/runtime/api/category.md","ref":"oc/runtime/api/category.md","articles":[]},"previous":{"title":"method","level":"4.1.1.3.4","depth":4,"path":"oc/runtime/api/method.md","ref":"oc/runtime/api/method.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runtime/api/ivar.md","mtime":"2019-06-08T08:16:19.803Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-21T11:10:31.761Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ivar","level":"4.1.1.3.5","depth":4,"next":{"title":"category","level":"4.1.1.3.6","depth":4,"path":"oc/runtime/api/category.md","ref":"oc/runtime/api/category.md","articles":[]},"previous":{"title":"method","level":"4.1.1.3.4","depth":4,"path":"oc/runtime/api/method.md","ref":"oc/runtime/api/method.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runtime/api/ivar.md","mtime":"2019-06-25T05:53:57.678Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-25T06:20:41.418Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

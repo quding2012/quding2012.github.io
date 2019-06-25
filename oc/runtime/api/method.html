@@ -256,20 +256,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.5" data-path="../../../other/xlog.html">
-            
-                <a href="../../../other/xlog.html">
-            
-                    
-                    xlog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.6" data-path="../../../other/http.html">
+        <li class="chapter " data-level="2.2.5" data-path="../../../other/http.html">
             
                 <a href="../../../other/http.html">
             
@@ -282,12 +269,25 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.7" data-path="../../../other/https.html">
+        <li class="chapter " data-level="2.2.6" data-path="../../../other/https.html">
             
                 <a href="../../../other/https.html">
             
                     
                     https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="../../../other/socket.html">
+            
+                <a href="../../../other/socket.html">
+            
+                    
+                    socket
             
                 </a>
             
@@ -308,7 +308,20 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.9" data-path="../../../other/rejex.html">
+        <li class="chapter " data-level="2.2.9" data-path="../../../other/xlog.html">
+            
+                <a href="../../../other/xlog.html">
+            
+                    
+                    xlog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="../../../other/rejex.html">
             
                 <a href="../../../other/rejex.html">
             
@@ -2136,9 +2149,11 @@ void method_getArgumentType(Method m, unsigned int index, char *dst, size_t dst_
 
 struct objc_method_description * method_getDescription(Method m);
 </code></pre><h3 id="class">class</h3>
-<pre><code>Method class_getInstanceMethod(Class cls, SEL name);
+<pre><code>// &#x904D;&#x5386;&#x67E5;&#x627E;&#x7236;&#x7C7B; method
+Method class_getInstanceMethod(Class cls, SEL name);
 Method class_getClassMethod(Class cls, SEL name);
 
+// &#x8FD4;&#x56DE;&#x5F53;&#x524D; class &#x5185;&#x5B58;&#x50A8;&#x7684; methods  (cls-&gt;data()-&gt;methods)
 Method  _Nonnull * class_copyMethodList(Class cls, unsigned int *outCount);
 
 BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types);
@@ -2266,7 +2281,7 @@ static IMP addMethod(Class cls, SEL name, IMP imp, const char *types, bool repla
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"method","level":"4.1.1.3.4","depth":4,"next":{"title":"ivar","level":"4.1.1.3.5","depth":4,"path":"oc/runtime/api/ivar.md","ref":"oc/runtime/api/ivar.md","articles":[]},"previous":{"title":"操作对象","level":"4.1.1.3.3","depth":4,"path":"oc/runtime/api/object.md","ref":"oc/runtime/api/object.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runtime/api/method.md","mtime":"2019-06-10T04:20:26.739Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-21T11:10:31.761Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"method","level":"4.1.1.3.4","depth":4,"next":{"title":"ivar","level":"4.1.1.3.5","depth":4,"path":"oc/runtime/api/ivar.md","ref":"oc/runtime/api/ivar.md","articles":[]},"previous":{"title":"操作对象","level":"4.1.1.3.3","depth":4,"path":"oc/runtime/api/object.md","ref":"oc/runtime/api/object.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runtime/api/method.md","mtime":"2019-06-25T06:20:07.422Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-25T06:20:41.418Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

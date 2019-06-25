@@ -256,20 +256,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.5" data-path="../../../other/xlog.html">
-            
-                <a href="../../../other/xlog.html">
-            
-                    
-                    xlog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.6" data-path="../../../other/http.html">
+        <li class="chapter " data-level="2.2.5" data-path="../../../other/http.html">
             
                 <a href="../../../other/http.html">
             
@@ -282,12 +269,25 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.7" data-path="../../../other/https.html">
+        <li class="chapter " data-level="2.2.6" data-path="../../../other/https.html">
             
                 <a href="../../../other/https.html">
             
                     
                     https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="../../../other/socket.html">
+            
+                <a href="../../../other/socket.html">
+            
+                    
+                    socket
             
                 </a>
             
@@ -308,7 +308,20 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.9" data-path="../../../other/rejex.html">
+        <li class="chapter " data-level="2.2.9" data-path="../../../other/xlog.html">
+            
+                <a href="../../../other/xlog.html">
+            
+                    
+                    xlog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="../../../other/rejex.html">
             
                 <a href="../../../other/rejex.html">
             
@@ -2110,21 +2123,17 @@ objc_constructInstance
 objc_destructInstance
     Destroys an instance of a class without freeing memory and removes any of its associated references.
 </code></pre><h3 id="&#x6E90;&#x7801;">&#x6E90;&#x7801;</h3>
-<pre><code>// Class&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x5411;objc_class&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6307;&#x9488;
-typedef struct objc_class* Class;   
+<pre><code>typedef struct objc_class* Class;   
 
-// id &#x662F;&#x6307;&#x5411; objc_object &#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6307;&#x9488;
 typedef struct objc_object* id; 
 
-// &#x4E00;&#x4E2A; class &#x7684; &#x5B9E;&#x4F8B;
 struct objc_object {
-    Class isa  OBJC_ISA_AVAILABILITY;
+    Class isa;
 };
 
 struct objc_class : objc_object {
     Class superclass;
     cache_t cache;
-
 
     /// data &#x8FD4;&#x56DE;&#x7684;&#x662F; class_rw_t* &#x6307;&#x9488;&#xFF0C;class_rw_t &#x5B58;&#x50A8;&#x4E86; class &#x7684; ivars&#x3001;methods&#x3001;protocols&#x7B49;&#x4FE1;&#x606F;
     class_data_bits_t bits;    // class_rw_t * plus custom rr/alloc flags
@@ -2134,9 +2143,6 @@ struct objc_class : objc_object {
     void setData(class_rw_t *newData) {
         bits.setData(newData);
     }
-
-
-
 }
 </code></pre><h3 id="classrwt">class_rw_t</h3>
 <p>rw &#x4E3A; readwrite</p>
@@ -2161,14 +2167,13 @@ struct objc_class : objc_object {
     uint32_t flags;
     uint32_t instanceStart;
     uint32_t instanceSize;
-    const uint8_t * ivarLayout;
+    const uint8_t * ivarLayout; // &lt;- &#x8BB0;&#x5F55;&#x4E86;&#x54EA;&#x4E9B;&#x662F; strong &#x7684; ivar
+    const uint8_t * weakIvarLayout; // &lt;- &#x8BB0;&#x5F55;&#x4E86;&#x54EA;&#x4E9B;&#x662F; weak &#x7684; ivar
 
     const char * name;
     method_list_t * baseMethodList;
     protocol_list_t * baseProtocols;
     const ivar_list_t * ivars;
-
-    const uint8_t * weakIvarLayout;
     property_list_t *baseProperties;
 
     method_list_t *baseMethods() const {
@@ -2218,7 +2223,7 @@ struct objc_class : objc_object {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"操作class、创建Class、实例化对象","level":"4.1.1.3.2","depth":4,"next":{"title":"操作对象","level":"4.1.1.3.3","depth":4,"path":"oc/runtime/api/object.md","ref":"oc/runtime/api/object.md","articles":[]},"previous":{"title":"获取library","level":"4.1.1.3.1","depth":4,"path":"oc/runtime/api/library.md","ref":"oc/runtime/api/library.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runtime/api/class.md","mtime":"2019-06-08T07:59:05.712Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-21T11:10:31.761Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"操作class、创建Class、实例化对象","level":"4.1.1.3.2","depth":4,"next":{"title":"操作对象","level":"4.1.1.3.3","depth":4,"path":"oc/runtime/api/object.md","ref":"oc/runtime/api/object.md","articles":[]},"previous":{"title":"获取library","level":"4.1.1.3.1","depth":4,"path":"oc/runtime/api/library.md","ref":"oc/runtime/api/library.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/runtime/api/class.md","mtime":"2019-06-25T06:20:33.361Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-25T06:20:41.418Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

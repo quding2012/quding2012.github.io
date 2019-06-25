@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="rejex.html" />
+    <link rel="next" href="xlog.html" />
     
     
-    <link rel="prev" href="https.html" />
+    <link rel="prev" href="socket.html" />
     
 
     </head>
@@ -256,20 +256,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.5" data-path="xlog.html">
-            
-                <a href="xlog.html">
-            
-                    
-                    xlog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.6" data-path="http.html">
+        <li class="chapter " data-level="2.2.5" data-path="http.html">
             
                 <a href="http.html">
             
@@ -282,12 +269,25 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.7" data-path="https.html">
+        <li class="chapter " data-level="2.2.6" data-path="https.html">
             
                 <a href="https.html">
             
                     
                     https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="socket.html">
+            
+                <a href="socket.html">
+            
+                    
+                    socket
             
                 </a>
             
@@ -308,7 +308,20 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.9" data-path="rejex.html">
+        <li class="chapter " data-level="2.2.9" data-path="xlog.html">
+            
+                <a href="xlog.html">
+            
+                    
+                    xlog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="rejex.html">
             
                 <a href="rejex.html">
             
@@ -2168,8 +2181,12 @@ higher-level clients.
 <p>CA&#x53D1;&#x653E;&#x7684;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#xFF0C;&#x8BC1;&#x660E;&#x8BC1;&#x4E66;&#x4E2D;&#x5217;&#x51FA;&#x7684;&#x7528;&#x6237;&#x673A;&#x6784;&#x5408;&#x6CD5;&#x62E5;&#x6709;&#x8BC1;&#x4E66;&#x4E2D;&#x5217;&#x51FA;&#x7684;&#x516C;&#x94A5;&#x3002;</p>
 <h4 id="mac">MAC</h4>
 <p>Message Authentication Code &#x6D88;&#x606F;&#x8BC6;&#x522B;&#x7801;</p>
-<p>&#x901A;&#x8FC7; MAC algorithm &#x8BA1;&#x7B97; message &#x751F;&#x6210; MAC&#xFF0C;&#x4F7F;&#x7528; MAC &#x6765;&#x6821;&#x9A8C;</p>
-<h3 id="&#x53C2;&#x8003;&#xFF1A;">&#x53C2;&#x8003;&#xFF1A;</h3>
+<p>&#x901A;&#x8FC7; MAC algorithm &#x8BA1;&#x7B97; message &#x751F;&#x6210; MAC&#xFF0C;&#x4F7F;&#x7528; MAC &#x6765;&#x6821;&#x9A8C;&#x6D88;&#x606F;&#x7684;&#x5B8C;&#x6574;&#x6027;&#x3002;</p>
+<h4 id="hmac">HMAC</h4>
+<p>Hash-based Message Authentication Code  &#x54C8;&#x5E0C;&#x6D88;&#x606F;&#x8BA4;&#x8BC1;&#x7801;</p>
+<p>HMAC&#x8FD0;&#x7B97;&#x5229;&#x7528;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#xFF0C;&#x4EE5;&#x4E00;&#x4E2A;&#x5BC6;&#x94A5;&#x548C;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x4E3A;&#x8F93;&#x5165;&#xFF0C;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x6458;&#x8981;&#x4F5C;&#x4E3A;&#x8F93;&#x51FA;&#x3002;</p>
+<pre><code>HMAC&#xFF08;K&#xFF0C;M&#xFF09;
+</code></pre><h3 id="&#x53C2;&#x8003;&#xFF1A;">&#x53C2;&#x8003;&#xFF1A;</h3>
 <ul>
 <li>tls:<a href="https://www.ietf.org/rfc/rfc5246.txt" target="_blank">https://www.ietf.org/rfc/rfc5246.txt</a></li>
 <li></li>
@@ -2202,12 +2219,12 @@ higher-level clients.
 
             
                 
-                <a href="https.html" class="navigation navigation-prev " aria-label="Previous page: https">
+                <a href="socket.html" class="navigation navigation-prev " aria-label="Previous page: socket">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="rejex.html" class="navigation navigation-next " aria-label="Next page: 正则表达式">
+                <a href="xlog.html" class="navigation navigation-next " aria-label="Next page: xlog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2218,7 +2235,7 @@ higher-level clients.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"tls","level":"2.2.8","depth":2,"next":{"title":"正则表达式","level":"2.2.9","depth":2,"path":"other/rejex.md","ref":"other/rejex.md","articles":[]},"previous":{"title":"https","level":"2.2.7","depth":2,"path":"other/https.md","ref":"other/https.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/tls.md","mtime":"2019-06-21T12:25:20.981Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-21T11:10:31.761Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"tls","level":"2.2.8","depth":2,"next":{"title":"xlog","level":"2.2.9","depth":2,"path":"other/xlog.md","ref":"other/xlog.md","articles":[]},"previous":{"title":"socket","level":"2.2.7","depth":2,"path":"other/socket.md","ref":"other/socket.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/tls.md","mtime":"2019-06-24T07:04:10.215Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-25T06:20:41.418Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
