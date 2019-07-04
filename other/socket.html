@@ -2107,101 +2107,103 @@
                                 
                                 <h3 id="api">api</h3>
 <p>client&#x7AEF;&#xFF1A;</p>
-<pre><code>// create socket
-int fd = socket(AF_INET, SOCK_STREAM  , 0);
-BOOL success = (fd!=-1);
-int err;
-struct sockaddr_in addr;
+<pre><code class="lang-c"><span class="hljs-comment">// create socket</span>
+<span class="hljs-keyword">int</span> fd = socket(AF_INET, SOCK_STREAM  , <span class="hljs-number">0</span>);
+BOOL success = (fd!=<span class="hljs-number">-1</span>);
+<span class="hljs-keyword">int</span> err;
+<span class="hljs-keyword">struct</span> sockaddr_in addr;
 
-if (success) { // create success
-    NSLog(@&quot;socket success&quot;);
-    memset(&amp;addr, 0, sizeof(addr));
-    addr.sin_len=sizeof(addr);
+<span class="hljs-keyword">if</span> (success) { <span class="hljs-comment">// create success</span>
+    NSLog(@<span class="hljs-string">&quot;socket success&quot;</span>);
+    <span class="hljs-built_in">memset</span>(&amp;addr, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(addr));
+    addr.sin_len=<span class="hljs-keyword">sizeof</span>(addr);
     addr.sin_family=AF_INET;
     addr.sin_addr.s_addr=INADDR_ANY;
-    // &#x7ED1;&#x5B9A;&#x5BA2;&#x6237;&#x7AEF;&#x7684; ip &#x4E0E; &#x4E00;&#x4E2A;&#x7AEF;&#x53E3;
-    err = bind(fd, (const struct sockaddr *)&amp;addr, sizeof(addr));
-    success=(err==0);
+    <span class="hljs-comment">// &#x7ED1;&#x5B9A;&#x5BA2;&#x6237;&#x7AEF;&#x7684; ip &#x4E0E; &#x4E00;&#x4E2A;&#x7AEF;&#x53E3;</span>
+    err = bind(fd, (<span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> sockaddr *)&amp;addr, <span class="hljs-keyword">sizeof</span>(addr));
+    success=(err==<span class="hljs-number">0</span>);
 }
 
-if (success) {
-    struct sockaddr_in peeraddr;
-    memset(&amp;peeraddr, 0, sizeof(peeraddr));
-    peeraddr.sin_len=sizeof(peeraddr);
+<span class="hljs-keyword">if</span> (success) {
+    <span class="hljs-keyword">struct</span> sockaddr_in peeraddr;
+    <span class="hljs-built_in">memset</span>(&amp;peeraddr, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(peeraddr));
+    peeraddr.sin_len=<span class="hljs-keyword">sizeof</span>(peeraddr);
     peeraddr.sin_family=AF_INET;
-    peeraddr.sin_port=htons(1024);
-    peeraddr.sin_addr.s_addr=inet_addr(&quot;172.16.10.120&quot;); // &#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;
-    socklen_t addrLen;
-    addrLen =sizeof(peeraddr);
+    peeraddr.sin_port=htons(<span class="hljs-number">1024</span>);
+    peeraddr.sin_addr.s_addr=inet_addr(<span class="hljs-string">&quot;172.16.10.120&quot;</span>); <span class="hljs-comment">// &#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;</span>
+    <span class="hljs-keyword">socklen_t</span> addrLen;
+    addrLen =<span class="hljs-keyword">sizeof</span>(peeraddr);
 
-    // &#x4E0E;&#x670D;&#x52A1;&#x5668;&#x8FDE;&#x63A5;&#xFF0C;3&#x6B21;&#x63E1;&#x624B;
-    err = connect(fd, (struct sockaddr *)&amp;peeraddr, addrLen);
-    success = (err==0);
-    if (success) {
-        err = getsockname(fd, (struct sockaddr *)&amp;addr, &amp;addrLen);
-        success = (err==0);
-        if (success) {
-            NSLog(@&quot;connect success,local address:%s,port:%d&quot;,inet_ntoa(addr.sin_addr),ntohs(addr.sin_port));
-            char buf[1024];
-            do {
-                printf(&quot;input message:&quot;);
-                scanf(&quot;%s&quot;,buf);
-                // &#x53D1;&#x9001;&#x6570;&#x636E;
-                send(fd, buf, 1024, 0);
-            } while (strcmp(buf, &quot;exit&quot;)!=0);
+    <span class="hljs-comment">// &#x4E0E;&#x670D;&#x52A1;&#x5668;&#x8FDE;&#x63A5;&#xFF0C;3&#x6B21;&#x63E1;&#x624B;</span>
+    err = connect(fd, (<span class="hljs-keyword">struct</span> sockaddr *)&amp;peeraddr, addrLen);
+    success = (err==<span class="hljs-number">0</span>);
+    <span class="hljs-keyword">if</span> (success) {
+        err = getsockname(fd, (<span class="hljs-keyword">struct</span> sockaddr *)&amp;addr, &amp;addrLen);
+        success = (err==<span class="hljs-number">0</span>);
+        <span class="hljs-keyword">if</span> (success) {
+            NSLog(@<span class="hljs-string">&quot;connect success,local address:%s,port:%d&quot;</span>,inet_ntoa(addr.sin_addr),ntohs(addr.sin_port));
+            <span class="hljs-keyword">char</span> buf[<span class="hljs-number">1024</span>];
+            <span class="hljs-keyword">do</span> {
+                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;input message:&quot;</span>);
+                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>,buf);
+                <span class="hljs-comment">// &#x53D1;&#x9001;&#x6570;&#x636E;</span>
+                send(fd, buf, <span class="hljs-number">1024</span>, <span class="hljs-number">0</span>);
+            } <span class="hljs-keyword">while</span> (<span class="hljs-built_in">strcmp</span>(buf, <span class="hljs-string">&quot;exit&quot;</span>)!=<span class="hljs-number">0</span>);
         }
-    } else{
-        NSLog(@&quot;connect failed&quot;);
+    } <span class="hljs-keyword">else</span>{
+        NSLog(@<span class="hljs-string">&quot;connect failed&quot;</span>);
     }
 }
-</code></pre><p>server&#x7AEF;</p>
-<pre><code>int err;
-int fd = socket(AF_INET, SOCK_STREAM  , 0);
-BOOL success=(fd!=-1);
+</code></pre>
+<p>server&#x7AEF;</p>
+<pre><code class="lang-c"><span class="hljs-keyword">int</span> err;
+<span class="hljs-keyword">int</span> fd = socket(AF_INET, SOCK_STREAM  , <span class="hljs-number">0</span>);
+BOOL success=(fd!=<span class="hljs-number">-1</span>);
 
-if (success) {
-    NSLog(@&quot;socket success&quot;);
-    struct sockaddr_in addr;
-    memset(&amp;addr, 0, sizeof(addr));
-    addr.sin_len=sizeof(addr);
+<span class="hljs-keyword">if</span> (success) {
+    NSLog(@<span class="hljs-string">&quot;socket success&quot;</span>);
+    <span class="hljs-keyword">struct</span> sockaddr_in addr;
+    <span class="hljs-built_in">memset</span>(&amp;addr, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(addr));
+    addr.sin_len=<span class="hljs-keyword">sizeof</span>(addr);
     addr.sin_family=AF_INET;
-    addr.sin_port=htons(1024);
+    addr.sin_port=htons(<span class="hljs-number">1024</span>);
     addr.sin_addr.s_addr=INADDR_ANY;
-    err = bind(fd, (const struct sockaddr *)&amp;addr, sizeof(addr));
-    success=(err==0);
+    err = bind(fd, (<span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> sockaddr *)&amp;addr, <span class="hljs-keyword">sizeof</span>(addr));
+    success=(err==<span class="hljs-number">0</span>);
 }
 
-if (success) {
-    NSLog(@&quot;bind(&#x7ED1;&#x5B9A;) success&quot;);
-    err = listen(fd, 5);//&#x5F00;&#x59CB;&#x76D1;&#x542C;
-    success=(err==0);
+<span class="hljs-keyword">if</span> (success) {
+    NSLog(@<span class="hljs-string">&quot;bind(&#x7ED1;&#x5B9A;) success&quot;</span>);
+    err = listen(fd, <span class="hljs-number">5</span>);<span class="hljs-comment">//&#x5F00;&#x59CB;&#x76D1;&#x542C;</span>
+    success=(err==<span class="hljs-number">0</span>);
 }
 
-if (success) {
-    NSLog(@&quot;listen success&quot;);
-    while (true) {
-        struct sockaddr_in peeraddr;
-        int peerfd;
-        socklen_t addrLen;
-        addrLen=sizeof(peeraddr);
-        NSLog(@&quot;prepare accept&quot;);
-        peerfd= accept(fd, (struct sockaddr *)&amp;peeraddr, &amp;addrLen);
-        success=(peerfd!=-1);
-        if (success) {
-            NSLog(@&quot;accept success,remote address:%s,port:%d&quot;,inet_ntoa(peeraddr.sin_addr),ntohs(peeraddr.sin_port));
-            char buf[1024];
-            ssize_t count;
-            size_t len=sizeof(buf);
-            do {
-                count=recv(peerfd, buf, len, 0);
+<span class="hljs-keyword">if</span> (success) {
+    NSLog(@<span class="hljs-string">&quot;listen success&quot;</span>);
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+        <span class="hljs-keyword">struct</span> sockaddr_in peeraddr;
+        <span class="hljs-keyword">int</span> peerfd;
+        <span class="hljs-keyword">socklen_t</span> addrLen;
+        addrLen = <span class="hljs-keyword">sizeof</span>(peeraddr);
+        NSLog(@<span class="hljs-string">&quot;prepare accept&quot;</span>);
+        peerfd = accept(fd, (<span class="hljs-keyword">struct</span> sockaddr *)&amp;peeraddr, &amp;addrLen);
+        success = (peerfd!=<span class="hljs-number">-1</span>);
+        <span class="hljs-keyword">if</span> (success) {
+            NSLog(@<span class="hljs-string">&quot;accept success,remote address:%s,port:%d&quot;</span>,inet_ntoa(peeraddr.sin_addr),ntohs(peeraddr.sin_port));
+            <span class="hljs-keyword">char</span> buf[<span class="hljs-number">1024</span>];
+            <span class="hljs-keyword">ssize_t</span> count;
+            <span class="hljs-keyword">size_t</span> len=<span class="hljs-keyword">sizeof</span>(buf);
+            <span class="hljs-keyword">do</span> {
+                count=recv(peerfd, buf, len, <span class="hljs-number">0</span>);
                 NSString* str = [NSString stringWithCString:buf encoding:NSUTF8StringEncoding];
-                NSLog(@&quot;%@&quot;,str);
-            } while (strcmp(buf, &quot;exit&quot;)!=0);
+                NSLog(@<span class="hljs-string">&quot;%@&quot;</span>,str);
+            } <span class="hljs-keyword">while</span> (<span class="hljs-built_in">strcmp</span>(buf, <span class="hljs-string">&quot;exit&quot;</span>)!=<span class="hljs-number">0</span>);
         }
         close(peerfd);
     }
 }
 </code></pre>
+
                                 
                                 </section>
                             
@@ -2244,7 +2246,7 @@ if (success) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"socket","level":"2.2.7","depth":2,"next":{"title":"tls","level":"2.2.8","depth":2,"path":"other/tls.md","ref":"other/tls.md","articles":[]},"previous":{"title":"https","level":"2.2.6","depth":2,"path":"other/https.md","ref":"other/https.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/socket.md","mtime":"2019-06-22T12:29:47.982Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T12:30:02.711Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"socket","level":"2.2.7","depth":2,"next":{"title":"tls","level":"2.2.8","depth":2,"path":"other/tls.md","ref":"other/tls.md","articles":[]},"previous":{"title":"https","level":"2.2.6","depth":2,"path":"other/https.md","ref":"other/https.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"other/socket.md","mtime":"2019-06-23T08:03:05.915Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-04T15:09:59.318Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
