@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>RxCocoa · 学习笔记</title>
+        <title>FSM 状态机 · 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../ios/bug/" />
+    <link rel="next" href="../other/" />
     
     
-    <link rel="prev" href="rxswift.html" />
+    <link rel="prev" href="programing_paradigm.html" />
     
 
     </head>
@@ -119,9 +119,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="../computer/">
+        <li class="chapter " data-level="2.1" data-path="./">
             
-                <a href="../computer/">
+                <a href="./">
             
                     
                     计算机系统
@@ -133,9 +133,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="../computer/cpu.html">
+        <li class="chapter " data-level="2.1.1" data-path="cpu.html">
             
-                <a href="../computer/cpu.html">
+                <a href="cpu.html">
             
                     
                     CPU
@@ -146,9 +146,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2" data-path="../computer/assembly_language.html">
+        <li class="chapter " data-level="2.1.2" data-path="assembly_language.html">
             
-                <a href="../computer/assembly_language.html">
+                <a href="assembly_language.html">
             
                     
                     汇编语言
@@ -159,9 +159,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3" data-path="../computer/posix.html">
+        <li class="chapter " data-level="2.1.3" data-path="posix.html">
             
-                <a href="../computer/posix.html">
+                <a href="posix.html">
             
                     
                     POSIX
@@ -172,9 +172,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4" data-path="../computer/programing_paradigm.html">
+        <li class="chapter " data-level="2.1.4" data-path="programing_paradigm.html">
             
-                <a href="../computer/programing_paradigm.html">
+                <a href="programing_paradigm.html">
             
                     
                     编程范式
@@ -185,9 +185,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.5" data-path="../computer/fsm_engine.html">
+        <li class="chapter active" data-level="2.1.5" data-path="fsm_engine.html">
             
-                <a href="../computer/fsm_engine.html">
+                <a href="fsm_engine.html">
             
                     
                     FSM 状态机
@@ -1827,9 +1827,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6" data-path="./">
+        <li class="chapter " data-level="4.6" data-path="../mvvm/">
             
-                <a href="./">
+                <a href="../mvvm/">
             
                     
                     mvvm
@@ -1841,9 +1841,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.6.1" data-path="rx-mvvm.html">
+        <li class="chapter " data-level="4.6.1" data-path="../mvvm/rx-mvvm.html">
             
-                <a href="rx-mvvm.html">
+                <a href="../mvvm/rx-mvvm.html">
             
                     
                     rx-mvvm
@@ -1854,9 +1854,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6.2" data-path="rxswift.html">
+        <li class="chapter " data-level="4.6.2" data-path="../mvvm/rxswift.html">
             
-                <a href="rxswift.html">
+                <a href="../mvvm/rxswift.html">
             
                     
                     RxSwift
@@ -1867,9 +1867,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.6.3" data-path="rxcocoa.html">
+        <li class="chapter " data-level="4.6.3" data-path="../mvvm/rxcocoa.html">
             
-                <a href="rxcocoa.html">
+                <a href="../mvvm/rxcocoa.html">
             
                     
                     RxCocoa
@@ -2194,7 +2194,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >RxCocoa</a>
+        <a href=".." >FSM 状态机</a>
     </h1>
 </div>
 
@@ -2209,96 +2209,78 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="rxcocoa">RxCocoa</h3>
-<h4 id="binder">Binder</h4>
-<p>Observer &#xFF0C;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x5F81;&#xFF1A;</p>
-<ol>
-<li>&#x4E0D;&#x5904;&#x7406;error</li>
-<li>&#x9ED8;&#x8BA4; &#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x6267;&#x884C; </li>
-</ol>
-<p>Binder &#x4E3B;&#x8981;&#x7528;&#x6765;&#x7ED9; View &#x589E;&#x52A0; Observer&#xFF0C;&#x65B9;&#x4FBF; &#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x66F4;&#x65B0;ui&#xFF0C;&#x5E76;&#x4E14;&#x4E0D;&#x5904;&#x7406;error&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
-<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Reactive</span> <span class="hljs-title">where</span> <span class="hljs-title">Base</span>: <span class="hljs-title">UITabBarItem</span> </span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">var</span> badgeValue: <span class="hljs-type">Binder</span>&lt;<span class="hljs-type">String</span>?&gt; {
-        <span class="hljs-keyword">return</span> <span class="hljs-type">Binder</span>(<span class="hljs-keyword">self</span>.base) { tabBarItem, badgeValue <span class="hljs-keyword">in</span>
-            tabBarItem.badgeValue = badgeValue
-        }
-    }   
-}
-</code></pre>
-<h4 id="driver">Driver</h4>
-<p>Observable sequence&#xFF0C;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x5F81;&#xFF1A;</p>
-<ol>
-<li>&#x4E0D;&#x4F1A;&#x5931;&#x8D25;(&#x5982;&#x679C;&#x5931;&#x8D25;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;&#x6709;&#x9ED8;&#x8BA4;&#x503C;)</li>
-<li>&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x5904;&#x7406; observer</li>
-<li>&#x5171;&#x4EAB;&#x72B6;&#x6001;&#x53D8;&#x5316;&#xFF0C;&#x6709; shareReplay(1) &#x7684;&#x884C;&#x4E3A;</li>
-</ol>
-<p>Driver &#x4E3B;&#x8981;&#x6700;&#x9002;&#x5408;&#x7528;&#x6765;&#x66F4;&#x65B0; View</p>
-<pre><code class="lang-Swift"><span class="hljs-keyword">let</span> observable = <span class="hljs-type">Observable</span>.just(<span class="hljs-number">1</span>)
-<span class="hljs-keyword">let</span> driver = observable.asDriver(onErrorJustReturn: <span class="hljs-number">0</span>)
-<span class="hljs-comment">//asDriver() &#x7B49;&#x4EF7;&#x4E8E;</span>
-<span class="hljs-keyword">let</span> driver = observable
-  .observeOn(<span class="hljs-type">MainScheduler</span>.instance)       <span class="hljs-comment">// &#x4E3B;&#x7EBF;&#x7A0B;&#x76D1;&#x542C;</span>
-  .catchErrorJustReturn(onErrorJustReturn) <span class="hljs-comment">// &#x65E0;&#x6CD5;&#x4EA7;&#x751F;&#x9519;&#x8BEF;</span>
-  .share(replay: <span class="hljs-number">1</span>, scope: .whileConnected)<span class="hljs-comment">// &#x5171;&#x4EAB;&#x72B6;&#x6001;&#x53D8;&#x5316;</span>
-</code></pre>
-<h4 id="controlproperty">ControlProperty</h4>
-<p>&#x65E2;&#x662F;Observable&#xFF0C;&#x53C8;&#x662F; Observer&#xFF0C;&#x7528;&#x4E8E;&#x5C01;&#x88C5;UI&#x63A7;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5177;&#x6709;&#x4E00;&#x4E0B;&#x7279;&#x70B9;&#xFF1A;</p>
-<ol>
-<li>&#x4E0D;&#x4EA7;&#x751F;error</li>
-<li>&#x8BA2;&#x9605; &#x548C; &#x76D1;&#x542C; &#x90FD;&#x5728; &#x4E3B;&#x7EBF;&#x7A0B;</li>
-<li>&#x5171;&#x4EAB;&#x72B6;&#x6001;&#x53D8;&#x5316;&#xFF0C;&#x6709; shareReplay(1) &#x7684;&#x884C;&#x4E3A;</li>
-<li>&#x6709;&#x521D;&#x59CB;&#x503C;</li>
-</ol>
-<p>&#x4F7F;&#x7528;&#xFF1A;</p>
-<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Reactive</span> <span class="hljs-title">where</span> <span class="hljs-title">Base</span>: <span class="hljs-title">UITextField</span> </span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">var</span> text: <span class="hljs-type">ControlProperty</span>&lt;<span class="hljs-type">String</span>?&gt; {
-        <span class="hljs-keyword">return</span> base.rx.controlPropertyWithDefaultEvents(
-            getter: { textField <span class="hljs-keyword">in</span>
-                textField.text
-            },
-            setter: { textField, value <span class="hljs-keyword">in</span>
-                <span class="hljs-comment">// This check is important because setting text value always clears control state</span>
-                <span class="hljs-comment">// including marked text selection which is imporant for proper input </span>
-                <span class="hljs-comment">// when IME input method is used.</span>
-                <span class="hljs-keyword">if</span> textField.text != value {
-                    textField.text = value
-                }
-            }
-        )
-    }
+                                <h2 id="fsm-finite-state-machine-&#x6709;&#x9650;&#x72B6;&#x6001;&#x673A;">FSM (Finite State Machine) &#x6709;&#x9650;&#x72B6;&#x6001;&#x673A;</h2>
+<p>&#x5728;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x5185;&#x6709;&#x591A;&#x4E2A;&#x72B6;&#x6001;&#xFF0C;&#x7528;&#x4E8E;&#x8868;&#x793A;&#x591A;&#x4E2A;&#x72B6;&#x6001;&#x3001;&#x72B6;&#x6001;&#x4E4B;&#x95F4;&#x5207;&#x6362;&#x7684;&#x52A8;&#x4F5C;&#x7684;&#x6A21;&#x578B;</p>
+<ul>
+<li>state</li>
+<li>event(action)</li>
+</ul>
+<p>&#x6BCF;&#x5F53;&#x6536;&#x5230;&#x4E00;&#x4E2A; event &#x540E;&#xFF0C;&#x6839;&#x636E;&#x5F53;&#x524D;&#x7684; state &#x5207;&#x6362;&#x5230;&#x65B0;&#x7684; state </p>
+<p>&#x8F93;&#x51FA; = &#x5F53;&#x524D;&#x72B6;&#x6001; + &#x8F93;&#x5165;</p>
+<h3 id="&#x4F2A;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4F2A;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
+<pre><code class="lang-c">FSMEngine {
+
+    var curStateId
+    var curState
+
+    // -1 no change 0 state changed
+    func receiveInput(_ dict) -&gt; Int
+
+    func start()
 }
 
-<span class="hljs-comment">// as observable</span>
-textField.rx.text.bind(to: label.rx.text)
-
-<span class="hljs-comment">// as observer</span>
-<span class="hljs-keyword">let</span> observable = <span class="hljs-type">Observable</span>.from([<span class="hljs-string">&quot;1&quot;</span>])
-observable.bind(to: textField.rx.text)
-</code></pre>
-<h4 id="controlevent">ControlEvent</h4>
-<p>Observable&#xFF0C;&#x7528;&#x4E8E;&#x5C01;&#x88C5; UI&#x63A7;&#x4EF6;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x70B9;&#xFF1A;</p>
-<ol>
-<li>&#x4E0D;&#x4EA7;&#x751F;error</li>
-<li>&#x8BA2;&#x9605; &#x548C; &#x76D1;&#x542C; &#x90FD;&#x5728; &#x4E3B;&#x7EBF;&#x7A0B;</li>
-<li>&#x5171;&#x4EAB;&#x72B6;&#x6001;&#x53D8;&#x5316;</li>
-<li>&#x6CA1;&#x6709;&#x521D;&#x59CB;&#x503C;</li>
-</ol>
-<p>&#x4F7F;&#x7528;&#xFF1A;</p>
-<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Reactive</span> <span class="hljs-title">where</span> <span class="hljs-title">Base</span>: <span class="hljs-title">UIButton</span> </span>{    
-    <span class="hljs-comment">/// Reactive wrapper for `TouchUpInside` control event.</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">var</span> tap: <span class="hljs-type">ControlEvent</span>&lt;<span class="hljs-type">Void</span>&gt; {
-        <span class="hljs-keyword">return</span> controlEvent(.touchUpInside)
-    }
+FSMEvent {
+    load = 0
+    unload,
+    systemCallback,
+    pingCallback
 }
 
-<span class="hljs-comment">// as observable</span>
-btn.rx.tap.subscribe(onNext: {
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;tapped&quot;</span>)
-}).disposed(by: disposebag)
+FSMState {
+    invalid,
+    unloaded,
+    loading,
+    wifi,
+    wwan,
+    unreachable
+}
+
+State {
+    // init
+    func state()
+
+    // receive event 
+    func onEvent(event) -&gt; FSMState?
+}
 </code></pre>
-<h4 id="signal">Signal</h4>
-<h4 id="bag">Bag</h4>
-<p>&#x7528;&#x4E8E;&#x56DE;&#x6536;</p>
+<h3 id="&#x72B6;&#x6001;&#x56FE;&#xFF1A;">&#x72B6;&#x6001;&#x56FE;&#xFF1A;</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x5DE6;&#x5BF9;&#x9F50;</th>
+<th style="text-align:center">&#x53F3;&#x5BF9;&#x9F50;</th>
+<th style="text-align:center">&#x5C45;&#x4E2D;&#x5BF9;&#x9F50;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x5355;&#x5143;&#x683C;</td>
+<td style="text-align:center">&#x5355;&#x5143;&#x683C;</td>
+<td style="text-align:center">&#x5355;&#x5143;&#x683C;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x5355;&#x5143;&#x683C;</td>
+<td style="text-align:center">&#x5355;&#x5143;&#x683C;</td>
+<td style="text-align:center">&#x5355;&#x5143;&#x683C;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-c">    <span class="hljs-function">invalid    unloaded    loading    wifi    wwan    unreachable
+    load        loading                
+    unload        unload    unload    unload    unload    unload
+systemCallback            <span class="hljs-title">loaded</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span>    <span class="hljs-title">loaded</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span>    <span class="hljs-title">loaded</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span>    <span class="hljs-title">loaded</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span>
+pingCallback            <span class="hljs-title">loaded</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span>    <span class="hljs-title">loaded</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span>    <span class="hljs-title">loaded</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span>    <span class="hljs-title">loaded</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span>
+</span></code></pre>
 
                                 
                                 </section>
@@ -2326,12 +2308,12 @@ btn.rx.tap.subscribe(onNext: {
 
             
                 
-                <a href="rxswift.html" class="navigation navigation-prev " aria-label="Previous page: RxSwift">
+                <a href="programing_paradigm.html" class="navigation navigation-prev " aria-label="Previous page: 编程范式">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../ios/bug/" class="navigation navigation-next " aria-label="Next page: 常见bug">
+                <a href="../other/" class="navigation navigation-next " aria-label="Next page: 网络">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2342,7 +2324,7 @@ btn.rx.tap.subscribe(onNext: {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RxCocoa","level":"4.6.3","depth":2,"next":{"title":"常见bug","level":"4.7","depth":1,"path":"ios/bug/index.md","ref":"ios/bug/index.md","articles":[]},"previous":{"title":"RxSwift","level":"4.6.2","depth":2,"path":"mvvm/rxswift.md","ref":"mvvm/rxswift.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"mvvm/rxcocoa.md","mtime":"2018-11-30T09:27:36.139Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-19T06:13:29.111Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"FSM 状态机","level":"2.1.5","depth":2,"next":{"title":"网络","level":"2.2","depth":1,"path":"other/index.md","ref":"other/index.md","articles":[{"title":"common","level":"2.2.1","depth":2,"path":"other/comm.md","ref":"other/comm.md","articles":[]},{"title":"tcp","level":"2.2.2","depth":2,"path":"other/tcp.md","ref":"other/tcp.md","articles":[]},{"title":"mars","level":"2.2.3","depth":2,"path":"other/mars.md","ref":"other/mars.md","articles":[]},{"title":"WebSocket","level":"2.2.4","depth":2,"path":"other/websocket.md","ref":"other/websocket.md","articles":[]},{"title":"http","level":"2.2.5","depth":2,"path":"other/http.md","ref":"other/http.md","articles":[]},{"title":"https","level":"2.2.6","depth":2,"path":"other/https.md","ref":"other/https.md","articles":[]},{"title":"socket","level":"2.2.7","depth":2,"path":"other/socket.md","ref":"other/socket.md","articles":[]},{"title":"tls","level":"2.2.8","depth":2,"path":"other/tls.md","ref":"other/tls.md","articles":[]},{"title":"xlog","level":"2.2.9","depth":2,"path":"other/xlog.md","ref":"other/xlog.md","articles":[]},{"title":"正则表达式","level":"2.2.10","depth":2,"path":"other/rejex.md","ref":"other/rejex.md","articles":[]}]},"previous":{"title":"编程范式","level":"2.1.4","depth":2,"path":"computer/programing_paradigm.md","ref":"computer/programing_paradigm.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"computer/fsm_engine.md","mtime":"2019-09-19T06:15:27.006Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-19T06:13:29.111Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
