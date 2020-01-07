@@ -2356,30 +2356,6 @@
 <li>&#x5BF9;&#x8C61;&#x3002;(atomic, strong, readwrite)</li>
 <li>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;  (atomic, assign, readwrite)</li>
 </ul>
-<h3 id="kvo&#x539F;&#x7406;">KVO&#x539F;&#x7406;</h3>
-<h4 id="&#x4F7F;&#x7528;&#xFF1A;">&#x4F7F;&#x7528;&#xFF1A;</h4>
-<pre><code>- (void)init {}
-    [obj addObserver:self forKeyPath:@&quot;obj_property_name&quot; options:NSKeyValueChangeNewKey context:nil];
-}
-- (void)dealloc {
-    [obj removeObserver:self forKeyPath:@&quot;obj_property_name&quot;];
-}
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSKeyValueChangeKey,id&gt; *)change context:(void *)context {
-    //
-}
-</code></pre><h4 id="&#x5177;&#x4F53;&#x539F;&#x7406;">&#x5177;&#x4F53;&#x539F;&#x7406;</h4>
-<ol>
-<li>kvo &#x57FA;&#x4E8E;runtime &#x5B9E;&#x73B0;</li>
-<li>&#x5F53;Person&#x5BF9;&#x8C61;&#x7684;&#x67D0;&#x4E2A; property &#x88AB;&#x89C2;&#x5BDF;&#x540E;&#xFF0C;&#x4F1A;&#x91CD;&#x65B0;&#x751F;&#x6210;&#x4E00;&#x4E2A;setter &#x5728;&#x590D;&#x5236;&#x7684;&#x524D;&#x540E;&#x8C03;&#x7528; willChangeValueForKey: &#x548C; didChangeValueForKey: &#xFF0C;&#x4ECE;&#x800C; observeValueForKey:ofObject:change:context: &#x4E5F;&#x4F1A;&#x88AB;&#x8C03;&#x7528;</li>
-<li>&#x5B9E;&#x9645;Person&#x5BF9;&#x8C61;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;Person&#x7684;&#x5B50;&#x7C7B; NSKVONotifying_Person &#xFF0C;&#x7136;&#x540E;Person&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;&#x6307;&#x5411; NSKVONotifying_Person&#x3002;</li>
-</ol>
-<p>NSKVONotifying_Person &#x7684;set&#x91CD;&#x5199;&#x4E3A;&#xFF1A;</p>
-<pre><code>- (void)setName:(NSString *)name {
-    [self willChangeValueForKey: @&quot;name&quot;];
-    [super setName: name]; // &#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;setName&#xFF0C;&#x5373;&#x4F7F;&#x6211;&#x4EEC;&#x91CD;&#x5199;&#x4E86;setName &#x4E5F;&#x4F1A;&#x6B63;&#x5E38;&#x8C03;&#x7528;
-    [self didChangeValueForKey: @&quot;name&quot;];
-}
-</code></pre><p>&#x53C2;&#x8003;&#xFF1A;<a href="https://zhuanlan.zhihu.com/p/34273366" target="_blank">https://zhuanlan.zhihu.com/p/34273366</a></p>
 
                                 
                                 </section>
@@ -2423,7 +2399,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"common","level":"2.2.1","depth":2,"next":{"title":"tcp","level":"2.2.2","depth":2,"path":"network/tcp.md","ref":"network/tcp.md","articles":[]},"previous":{"title":"网络","level":"2.2","depth":1,"path":"network/index.md","ref":"network/index.md","articles":[{"title":"common","level":"2.2.1","depth":2,"path":"network/comm.md","ref":"network/comm.md","articles":[]},{"title":"tcp","level":"2.2.2","depth":2,"path":"network/tcp.md","ref":"network/tcp.md","articles":[]},{"title":"mars","level":"2.2.3","depth":2,"path":"network/mars.md","ref":"network/mars.md","articles":[]},{"title":"WebSocket","level":"2.2.4","depth":2,"path":"network/websocket.md","ref":"network/websocket.md","articles":[]},{"title":"http","level":"2.2.5","depth":2,"path":"network/http.md","ref":"network/http.md","articles":[]},{"title":"https","level":"2.2.6","depth":2,"path":"network/https.md","ref":"network/https.md","articles":[]},{"title":"socket","level":"2.2.7","depth":2,"path":"network/socket.md","ref":"network/socket.md","articles":[]},{"title":"TLS","level":"2.2.8","depth":2,"path":"network/tls.md","ref":"network/tls.md","articles":[]},{"title":"xlog","level":"2.2.9","depth":2,"path":"network/xlog.md","ref":"network/xlog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"network/comm.md","mtime":"2018-12-19T05:51:41.936Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-02T01:59:11.625Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"common","level":"2.2.1","depth":2,"next":{"title":"tcp","level":"2.2.2","depth":2,"path":"network/tcp.md","ref":"network/tcp.md","articles":[]},"previous":{"title":"网络","level":"2.2","depth":1,"path":"network/index.md","ref":"network/index.md","articles":[{"title":"common","level":"2.2.1","depth":2,"path":"network/comm.md","ref":"network/comm.md","articles":[]},{"title":"tcp","level":"2.2.2","depth":2,"path":"network/tcp.md","ref":"network/tcp.md","articles":[]},{"title":"mars","level":"2.2.3","depth":2,"path":"network/mars.md","ref":"network/mars.md","articles":[]},{"title":"WebSocket","level":"2.2.4","depth":2,"path":"network/websocket.md","ref":"network/websocket.md","articles":[]},{"title":"http","level":"2.2.5","depth":2,"path":"network/http.md","ref":"network/http.md","articles":[]},{"title":"https","level":"2.2.6","depth":2,"path":"network/https.md","ref":"network/https.md","articles":[]},{"title":"socket","level":"2.2.7","depth":2,"path":"network/socket.md","ref":"network/socket.md","articles":[]},{"title":"TLS","level":"2.2.8","depth":2,"path":"network/tls.md","ref":"network/tls.md","articles":[]},{"title":"xlog","level":"2.2.9","depth":2,"path":"network/xlog.md","ref":"network/xlog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"network/comm.md","mtime":"2020-01-07T01:49:59.257Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-07T01:52:25.820Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
