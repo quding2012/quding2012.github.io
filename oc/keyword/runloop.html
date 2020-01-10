@@ -2267,8 +2267,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="runloop">runloop</h3>
+                                <h2 id="runloop">runloop</h2>
 <h3 id="&#x4E00;&#x4E9B;&#x7591;&#x95EE;">&#x4E00;&#x4E9B;&#x7591;&#x95EE;</h3>
+<ul>
+<li>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x6709; runloop &#xFF0C;&#x89E3;&#x51B3;&#x4E86;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;</li>
+<li>runloop &#x8FD0;&#x884C;&#x539F;&#x7406;</li>
+<li>runloop &#x5982;&#x4F55;&#x4F7F;&#x7528;</li>
+<li>&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#x6709;&#x54EA;&#x4E9B;&#x5730;&#x65B9;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF1F;</li>
+</ul>
 <ul>
 <li>RunLoop&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x6240;&#x5904;&#x7684;&#x89D2;&#x8272;</li>
 <li>RunLoop&#x5177;&#x4F53;&#x4F5C;&#x7528;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#x6709;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x7C7B;&#x4F3C;&#x7684;&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x4EE3;&#x66FF;&#x89D2;&#x8272;&#xFF1F;</li>
@@ -2279,7 +2285,6 @@
 <li>mainRunLoop &#x4E0E; &#x5176;&#x4ED6;RunLoop&#x7684;&#x533A;&#x522B;&#xFF1F;&#x6709;&#x54EA;&#x4E9B;&#x7279;&#x6743;&#xFF1F;</li>
 <li>&#x5177;&#x4F53;&#x5982;&#x4F55;&#x8FD0;&#x8F6C;&#xFF1F;</li>
 </ul>
-<p><img src="../../asserts/img/runloop.png" alt="img"></p>
 <h3 id="runloop-&#x7B80;&#x4ECB;">Runloop &#x7B80;&#x4ECB;</h3>
 <p>&#x6240;&#x8C13; Runloop &#x5C31;&#x662F; &#x82F9;&#x679C;&#x8BBE;&#x8BA1;&#x7684;&#x4E00;&#x79CD; <strong>&#x5728;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF0C;&#x6301;&#x7EED;&#x8C03;&#x5EA6;&#x5404;&#x79CD;&#x4EFB;&#x52A1;</strong> &#x7684;&#x8FD0;&#x884C;&#x673A;&#x5236;&#x3002;</p>
 <p>&#x4F2A;&#x4EE3;&#x7801;&#xFF1A;</p>
@@ -2345,11 +2350,32 @@ main runloop&#x4E2D;&#x589E;&#x52A0;&#x4E00;&#x4E2A;timer &#x5982;&#x679C;&#x53E
 };
 </code></pre>
 <p>&#x6DFB;&#x52A0; obsrver</p>
-<pre><code class="lang-Swift"><span class="hljs-type">CFRunLoopRef</span> loop = <span class="hljs-type">CFRunLoopGetMain</span>();
-<span class="hljs-type">CFRunLoopObserverRef</span> observer = <span class="hljs-type">CFRunLoopObserverCreateWithHandler</span>(<span class="hljs-type">NULL</span>, kCFRunLoopBeforeSources, <span class="hljs-literal">true</span>, <span class="hljs-number">0</span>, ^(<span class="hljs-type">CFRunLoopObserverRef</span> observer, <span class="hljs-type">CFRunLoopActivity</span> activity) {
-    <span class="hljs-type">NSLog</span>(@<span class="hljs-string">&quot;observer %lu&quot;</span>, activity);
-});
-<span class="hljs-type">CFRunLoopAddObserver</span>(loop, observer, kCFRunLoopCommonModes);
+<pre><code class="lang-java">- (<span class="hljs-keyword">void</span>)setupObserverRef:(CFRunLoopRef)runloopRef {
+    CFRunLoopObserverRef observer =
+        CFRunLoopObserverCreateWithHandler(NULL,
+                                           kCFRunLoopEntry | kCFRunLoopBeforeTimers | kCFRunLoopBeforeSources | kCFRunLoopBeforeWaiting | kCFRunLoopAfterWaiting | kCFRunLoopExit,
+                                           <span class="hljs-keyword">true</span>,
+                                           <span class="hljs-number">0</span>,
+                                           ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
+        <span class="hljs-keyword">if</span> ((activity &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) {
+            NSLog(@<span class="hljs-string">&quot;=== observer %lu kCFRunLoopEntry&quot;</span>, activity);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (((activity &gt;&gt; <span class="hljs-number">1</span>) &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) {
+            NSLog(@<span class="hljs-string">&quot;=== observer %lu kCFRunLoopBeforeTimers&quot;</span>, activity);
+        }  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (((activity &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) {
+            NSLog(@<span class="hljs-string">&quot;=== observer %lu kCFRunLoopBeforeSources&quot;</span>, activity);
+        }  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (((activity &gt;&gt; <span class="hljs-number">5</span>) &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) {
+            NSLog(@<span class="hljs-string">&quot;=== observer %lu kCFRunLoopBeforeWaiting&quot;</span>, activity);
+        }  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (((activity &gt;&gt; <span class="hljs-number">6</span>) &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) {
+            NSLog(@<span class="hljs-string">&quot;=== observer %lu kCFRunLoopAfterWaiting&quot;</span>, activity);
+        }  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (((activity &gt;&gt; <span class="hljs-number">7</span>) &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) {
+            NSLog(@<span class="hljs-string">&quot;=== observer %lu kCFRunLoopExit&quot;</span>, activity);
+        } <span class="hljs-keyword">else</span> {
+            NSLog(@<span class="hljs-string">&quot;=== observer %lu kCFRunLoopAllActivities&quot;</span>, activity);
+        }
+    });
+<span class="hljs-comment">//    CFRunLoopAddObserver(runloopRef, observer, kCFRunLoopCommonModes);</span>
+    CFRunLoopAddObserver(runloopRef, observer, kCFRunLoopDefaultMode);
+}
 </code></pre>
 <h3 id="runloop-&#x6E90;&#x7801;">Runloop &#x6E90;&#x7801;</h3>
 <pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">__CFRunLoop</span> </span>{
@@ -2440,17 +2466,17 @@ float fps = _count / delta;
 _count = 0;
 </code></pre><h3 id="&#x5361;&#x987F;&#x76D1;&#x542C;">&#x5361;&#x987F;&#x76D1;&#x542C;</h3>
 <p>&#x542F;&#x52A8;&#x5B50;&#x7EBF;&#x7A0B;&#xFF0C;&#x5B9A;&#x65F6;&#x50CF;&#x4E3B;&#x7EBF;&#x7A0B;&#x53D1;&#x9001; ping&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x65F6;&#x6CA1;&#x6709;&#x6536;&#x5230;pong&#xFF0C;&#x5219;&#x8BA4;&#x4E3A; &#x6B64;&#x65F6;&#x4E3B;&#x7EBF;&#x7A0B;&#x5361;&#x987F;&#x3002;&#x83B7;&#x53D6;&#x5F53;&#x65F6;&#x7684; stack trace</p>
-<p>&#x53C2;&#x8003;&#xFF1A;</p>
-<ul>
-<li><a href="http://mrpeak.cn/blog/ui-detect/" target="_blank">http://mrpeak.cn/blog/ui-detect/</a></li>
-<li><a href="http://ios.jobbole.com/93085/" target="_blank">http://ios.jobbole.com/93085/</a></li>
-</ul>
-<h3 id="performselectorafterdelay">performSelector:afterDelay:</h3>
 <h3 id="&#x53C2;&#x8003;&#xFF1A;">&#x53C2;&#x8003;&#xFF1A;</h3>
 <ul>
 <li><a href="https://blog.ibireme.com/2015/05/18/runloop/" target="_blank">https://blog.ibireme.com/2015/05/18/runloop/</a></li>
+<li><a href="https://stackoverflow.com/questions/7222449/nsdefaultrunloopmode-vs-nsrunloopcommonmodes" target="_blank">https://stackoverflow.com/questions/7222449/nsdefaultrunloopmode-vs-nsrunloopcommonmodes</a></li>
+<li><a href="https://www.jianshu.com/p/ccceb83a5511" target="_blank">https://www.jianshu.com/p/ccceb83a5511</a></li>
+<li><a href="https://juejin.im/post/5a352c6c5188251fbd33b345#heading-10" target="_blank">https://juejin.im/post/5a352c6c5188251fbd33b345#heading-10</a></li>
 <li><a href="https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw" target="_blank">https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw</a></li>
 <li>MrPeak: <a href="https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw" target="_blank">https://mp.weixin.qq.com/s/XbdezDo2xu-9SaSmid2pbw</a></li>
+<li><a href="http://mrpeak.cn/blog/ui-detect/" target="_blank">http://mrpeak.cn/blog/ui-detect/</a></li>
+<li><a href="http://mrpeak.cn/blog/ios-runloop/" target="_blank">http://mrpeak.cn/blog/ios-runloop/</a></li>
+<li><a href="http://ios.jobbole.com/93085/" target="_blank">http://ios.jobbole.com/93085/</a></li>
 </ul>
 
                                 
@@ -2495,7 +2521,7 @@ _count = 0;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"runloop","level":"3.1.2.9","depth":3,"next":{"title":"AssociatedObject","level":"3.1.2.10","depth":3,"path":"oc/keyword/associatedObject.md","ref":"oc/keyword/associatedObject.md","articles":[]},"previous":{"title":"autoreleasepool","level":"3.1.2.8","depth":3,"path":"oc/keyword/autoreleasepool.md","ref":"oc/keyword/autoreleasepool.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/keyword/runloop.md","mtime":"2018-12-29T03:35:00.906Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-08T02:32:00.050Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"runloop","level":"3.1.2.9","depth":3,"next":{"title":"AssociatedObject","level":"3.1.2.10","depth":3,"path":"oc/keyword/associatedObject.md","ref":"oc/keyword/associatedObject.md","articles":[]},"previous":{"title":"autoreleasepool","level":"3.1.2.8","depth":3,"path":"oc/keyword/autoreleasepool.md","ref":"oc/keyword/autoreleasepool.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"oc/keyword/runloop.md","mtime":"2020-01-10T06:33:29.181Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-10T02:42:04.574Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
