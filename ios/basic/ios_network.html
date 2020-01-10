@@ -1,0 +1,2557 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>iOS 网络相关 · 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="quding0308">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="rejex.html" />
+    
+    
+    <link rel="prev" href="c.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">概述</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">计算机基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../computer/">
+            
+                <a href="../../computer/">
+            
+                    
+                    计算机系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../../computer/cpu.html">
+            
+                <a href="../../computer/cpu.html">
+            
+                    
+                    CPU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../../computer/assembly_language.html">
+            
+                <a href="../../computer/assembly_language.html">
+            
+                    
+                    汇编语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../../computer/posix.html">
+            
+                <a href="../../computer/posix.html">
+            
+                    
+                    POSIX
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../../computer/programing_paradigm.html">
+            
+                <a href="../../computer/programing_paradigm.html">
+            
+                    
+                    编程范式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../../computer/fsm_engine.html">
+            
+                <a href="../../computer/fsm_engine.html">
+            
+                    
+                    FSM 状态机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../../computer/sync_async.html">
+            
+                <a href="../../computer/sync_async.html">
+            
+                    
+                    同步与异步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../../computer/concurrency.html">
+            
+                <a href="../../computer/concurrency.html">
+            
+                    
+                    并发
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../network/">
+            
+                <a href="../../network/">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../../network/comm.html">
+            
+                <a href="../../network/comm.html">
+            
+                    
+                    common
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../../network/tcp.html">
+            
+                <a href="../../network/tcp.html">
+            
+                    
+                    tcp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../../network/mars.html">
+            
+                <a href="../../network/mars.html">
+            
+                    
+                    mars
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="../../network/websocket.html">
+            
+                <a href="../../network/websocket.html">
+            
+                    
+                    WebSocket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="../../network/http.html">
+            
+                <a href="../../network/http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="../../network/https.html">
+            
+                <a href="../../network/https.html">
+            
+                    
+                    https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="../../network/socket.html">
+            
+                <a href="../../network/socket.html">
+            
+                    
+                    socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="../../network/tls.html">
+            
+                <a href="../../network/tls.html">
+            
+                    
+                    TLS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="../../network/xlog.html">
+            
+                <a href="../../network/xlog.html">
+            
+                    
+                    xlog
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../algorithm/">
+            
+                <a href="../../algorithm/">
+            
+                    
+                    数据结构与算法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../../algorithm/basic/">
+            
+                <a href="../../algorithm/basic/">
+            
+                    
+                    基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1.1" data-path="../../algorithm/basic/recursion.html">
+            
+                <a href="../../algorithm/basic/recursion.html">
+            
+                    
+                    递归
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.1.2" data-path="../../algorithm/basic/stack.html">
+            
+                <a href="../../algorithm/basic/stack.html">
+            
+                    
+                    栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.1.3" data-path="../../algorithm/basic/queue.html">
+            
+                <a href="../../algorithm/basic/queue.html">
+            
+                    
+                    队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.1.4" data-path="../../algorithm/basic/b-tree.html">
+            
+                <a href="../../algorithm/basic/b-tree.html">
+            
+                    
+                    B树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.1.5" data-path="../../algorithm/basic/DynamicProgramming.html">
+            
+                <a href="../../algorithm/basic/DynamicProgramming.html">
+            
+                    
+                    动态规划
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.1.6" data-path="../../algorithm/basic/graph-bfs-dfs.html">
+            
+                <a href="../../algorithm/basic/graph-bfs-dfs.html">
+            
+                    
+                    图的BFS、DFS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.1.7" data-path="../../algorithm/basic/PriorityQueue.html">
+            
+                <a href="../../algorithm/basic/PriorityQueue.html">
+            
+                    
+                    优先队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../../algorithm/sort/">
+            
+                <a href="../../algorithm/sort/">
+            
+                    
+                    排序
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.2.1" data-path="../../algorithm/sort/sort1.html">
+            
+                <a href="../../algorithm/sort/sort1.html">
+            
+                    
+                    基础排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2.2" data-path="../../algorithm/sort/sort2.html">
+            
+                <a href="../../algorithm/sort/sort2.html">
+            
+                    
+                    归并排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2.3" data-path="../../algorithm/sort/sort3.html">
+            
+                <a href="../../algorithm/sort/sort3.html">
+            
+                    
+                    快速排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2.4" data-path="../../algorithm/sort/sort4.html">
+            
+                <a href="../../algorithm/sort/sort4.html">
+            
+                    
+                    桶排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="../../algorithm/linkedlist.html">
+            
+                <a href="../../algorithm/linkedlist.html">
+            
+                    
+                    链表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="../../algorithm/graph.html">
+            
+                <a href="../../algorithm/graph.html">
+            
+                    
+                    图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.5" data-path="../../algorithm/dijkstra.html">
+            
+                <a href="../../algorithm/dijkstra.html">
+            
+                    
+                    求最短路径
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.6" data-path="../../algorithm/symbolTable/">
+            
+                <a href="../../algorithm/symbolTable/">
+            
+                    
+                    符号表
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.6.1" data-path="../../algorithm/symbolTable/hashTable.html">
+            
+                <a href="../../algorithm/symbolTable/hashTable.html">
+            
+                    
+                    哈希表
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.7" data-path="../../algorithm/binarytree/">
+            
+                <a href="../../algorithm/binarytree/">
+            
+                    
+                    二叉树
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.7.1" data-path="../../algorithm/binarytree/travesal.html">
+            
+                <a href="../../algorithm/binarytree/travesal.html">
+            
+                    
+                    二叉树遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.7.2" data-path="../../algorithm/binarytree/binaryheap.html">
+            
+                <a href="../../algorithm/binarytree/binaryheap.html">
+            
+                    
+                    二叉堆
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.8" data-path="../../algorithm/search/">
+            
+                <a href="../../algorithm/search/">
+            
+                    
+                    搜索
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.8.1" data-path="../../algorithm/search/dfs.html">
+            
+                <a href="../../algorithm/search/dfs.html">
+            
+                    
+                    深度优先搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.8.2" data-path="../../algorithm/search/bfs.html">
+            
+                <a href="../../algorithm/search/bfs.html">
+            
+                    
+                    广度优先搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.8.3" data-path="../../algorithm/search/binarySearch.html">
+            
+                <a href="../../algorithm/search/binarySearch.html">
+            
+                    
+                    广度优先搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.9" data-path="../../algorithm/other/">
+            
+                <a href="../../algorithm/other/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.9.1" data-path="../../algorithm/other/fibonacci.html">
+            
+                <a href="../../algorithm/other/fibonacci.html">
+            
+                    
+                    斐波切纳数列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.9.2" data-path="../../algorithm/other/gongyueshu.html">
+            
+                <a href="../../algorithm/other/gongyueshu.html">
+            
+                    
+                    求最大公约数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.9.3" data-path="../../algorithm/other/yuesefu.html">
+            
+                <a href="../../algorithm/other/yuesefu.html">
+            
+                    
+                    约瑟夫问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.9.4" data-path="../../algorithm/other/lcsubstring.html">
+            
+                <a href="../../algorithm/other/lcsubstring.html">
+            
+                    
+                    最长公共子串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.9.5" data-path="../../algorithm/other/lcsubsequence.html">
+            
+                <a href="../../algorithm/other/lcsubsequence.html">
+            
+                    
+                    最长公共子序列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.9.6" data-path="../../algorithm/other/dp-bag.html">
+            
+                <a href="../../algorithm/other/dp-bag.html">
+            
+                    
+                    背包问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">iOS 开发</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../oc/">
+            
+                <a href="../../oc/">
+            
+                    
+                    Objective-C
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../oc/runtime/">
+            
+                <a href="../../oc/runtime/">
+            
+                    
+                    runtime
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="../../oc/runtime/runtime-model.html">
+            
+                <a href="../../oc/runtime/runtime-model.html">
+            
+                    
+                    对象模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../../oc/runtime/runtime-msg.html">
+            
+                <a href="../../oc/runtime/runtime-msg.html">
+            
+                    
+                    消息分发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3" data-path="../../oc/runtime/api/">
+            
+                <a href="../../oc/runtime/api/">
+            
+                    
+                    API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.3.1" data-path="../../oc/runtime/api/library.html">
+            
+                <a href="../../oc/runtime/api/library.html">
+            
+                    
+                    获取library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.2" data-path="../../oc/runtime/api/class.html">
+            
+                <a href="../../oc/runtime/api/class.html">
+            
+                    
+                    操作class、创建Class、实例化对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.3" data-path="../../oc/runtime/api/object.html">
+            
+                <a href="../../oc/runtime/api/object.html">
+            
+                    
+                    操作对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.4" data-path="../../oc/runtime/api/method.html">
+            
+                <a href="../../oc/runtime/api/method.html">
+            
+                    
+                    method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.5" data-path="../../oc/runtime/api/ivar.html">
+            
+                <a href="../../oc/runtime/api/ivar.html">
+            
+                    
+                    ivar
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.6" data-path="../../oc/runtime/api/category.html">
+            
+                <a href="../../oc/runtime/api/category.html">
+            
+                    
+                    category
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.7" data-path="../../oc/runtime/api/protocol.html">
+            
+                <a href="../../oc/runtime/api/protocol.html">
+            
+                    
+                    protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.8" data-path="../../oc/runtime/api/property.html">
+            
+                <a href="../../oc/runtime/api/property.html">
+            
+                    
+                    property
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.9" data-path="../../oc/runtime/api/selector.html">
+            
+                <a href="../../oc/runtime/api/selector.html">
+            
+                    
+                    selector
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.10" data-path="../../oc/runtime/api/associatedObject.html">
+            
+                <a href="../../oc/runtime/api/associatedObject.html">
+            
+                    
+                    associatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.11" data-path="../../oc/runtime/api/objc_cache.html">
+            
+                <a href="../../oc/runtime/api/objc_cache.html">
+            
+                    
+                    objc_cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.12" data-path="../../oc/runtime/api/sendMsg.html">
+            
+                <a href="../../oc/runtime/api/sendMsg.html">
+            
+                    
+                    sendMessage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3.13" data-path="../../oc/runtime/api/other.html">
+            
+                <a href="../../oc/runtime/api/other.html">
+            
+                    
+                    其他api
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../oc/keyword/">
+            
+                <a href="../../oc/keyword/">
+            
+                    
+                    ObjC其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="startruntime.html">
+            
+                <a href="startruntime.html">
+            
+                    
+                    start-runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" data-path="../../oc/keyword/NSObject.html">
+            
+                <a href="../../oc/keyword/NSObject.html">
+            
+                    
+                    NSObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" data-path="../../oc/keyword/atomic.html">
+            
+                <a href="../../oc/keyword/atomic.html">
+            
+                    
+                    atomic
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" data-path="../../oc/keyword/synchronized.html">
+            
+                <a href="../../oc/keyword/synchronized.html">
+            
+                    
+                    synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.5" data-path="../../oc/keyword/arc.html">
+            
+                <a href="../../oc/keyword/arc.html">
+            
+                    
+                    arc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.6" data-path="../../oc/keyword/refCount.html">
+            
+                <a href="../../oc/keyword/refCount.html">
+            
+                    
+                    referecne count
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.7" data-path="../../oc/keyword/weak.html">
+            
+                <a href="../../oc/keyword/weak.html">
+            
+                    
+                    weak
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.8" data-path="../../oc/keyword/autoreleasepool.html">
+            
+                <a href="../../oc/keyword/autoreleasepool.html">
+            
+                    
+                    autoreleasepool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.9" data-path="../../oc/keyword/runloop.html">
+            
+                <a href="../../oc/keyword/runloop.html">
+            
+                    
+                    runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.10" data-path="../../oc/keyword/associatedObject.html">
+            
+                <a href="../../oc/keyword/associatedObject.html">
+            
+                    
+                    AssociatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.11" data-path="../../oc/keyword/copy.html">
+            
+                <a href="../../oc/keyword/copy.html">
+            
+                    
+                    copy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.12" data-path="../../oc/keyword/block.html">
+            
+                <a href="../../oc/keyword/block.html">
+            
+                    
+                    block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.13" data-path="../../oc/keyword/StripedMap.html">
+            
+                <a href="../../oc/keyword/StripedMap.html">
+            
+                    
+                    StripedMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.14" data-path="../../oc/keyword/build.html">
+            
+                <a href="../../oc/keyword/build.html">
+            
+                    
+                    build
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.15" data-path="../../oc/keyword/gcd.html">
+            
+                <a href="../../oc/keyword/gcd.html">
+            
+                    
+                    GCD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.16" data-path="../../oc/keyword/swift-oc.html">
+            
+                <a href="../../oc/keyword/swift-oc.html">
+            
+                    
+                    Swift与ObjC比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.17" data-path="../../oc/keyword/audio.html">
+            
+                <a href="../../oc/keyword/audio.html">
+            
+                    
+                    音频
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.18" data-path="../../oc/keyword/NSDictionary.html">
+            
+                <a href="../../oc/keyword/NSDictionary.html">
+            
+                    
+                    NSDictionary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../swift/">
+            
+                <a href="../../swift/">
+            
+                    
+                    Swift
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../swift/closure.html">
+            
+                <a href="../../swift/closure.html">
+            
+                    
+                    Closure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../swift/property.html">
+            
+                <a href="../../swift/property.html">
+            
+                    
+                    Property
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../../swift/generic.html">
+            
+                <a href="../../swift/generic.html">
+            
+                    
+                    泛型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="../../swift/where.html">
+            
+                <a href="../../swift/where.html">
+            
+                    
+                    where
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../../swift/codable.html">
+            
+                <a href="../../swift/codable.html">
+            
+                    
+                    codable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.6" data-path="../../swift/arc.html">
+            
+                <a href="../../swift/arc.html">
+            
+                    
+                    ARC中的循环引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    iOS系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="compile.html">
+            
+                <a href="compile.html">
+            
+                    
+                    编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="linker.html">
+            
+                <a href="linker.html">
+            
+                    
+                    链接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="startapp.html">
+            
+                <a href="startapp.html">
+            
+                    
+                    App运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="objectfile.html">
+            
+                <a href="objectfile.html">
+            
+                    
+                    目标文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="macho.html">
+            
+                <a href="macho.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="signature.html">
+            
+                <a href="signature.html">
+            
+                    
+                    签名流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="linkmap.html">
+            
+                <a href="linkmap.html">
+            
+                    
+                    LinkMap文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.8" data-path="c.html">
+            
+                <a href="c.html">
+            
+                    
+                    C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.3.9" data-path="ios_network.html">
+            
+                <a href="ios_network.html">
+            
+                    
+                    iOS 网络相关
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.10" data-path="rejex.html">
+            
+                <a href="rejex.html">
+            
+                    
+                    正则表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../../ui/">
+            
+                <a href="../../ui/">
+            
+                    
+                    UI渲染
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../ui/screen.html">
+            
+                <a href="../../ui/screen.html">
+            
+                    
+                    显示器原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="../../ui/render.html">
+            
+                <a href="../../ui/render.html">
+            
+                    
+                    render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="../../ui/cpu.html">
+            
+                <a href="../../ui/cpu.html">
+            
+                    
+                    cpu渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.4" data-path="../../ui/gpu.html">
+            
+                <a href="../../ui/gpu.html">
+            
+                    
+                    gpu渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.5" data-path="../../ui/layout.html">
+            
+                <a href="../../ui/layout.html">
+            
+                    
+                    layout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.6" data-path="../../ui/response-chain.html">
+            
+                <a href="../../ui/response-chain.html">
+            
+                    
+                    响应链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.7" data-path="../../ui/image-render.html">
+            
+                <a href="../../ui/image-render.html">
+            
+                    
+                    图片解压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.8" data-path="../../ui/richtext.html">
+            
+                <a href="../../ui/richtext.html">
+            
+                    
+                    富文本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.9" data-path="../../ui/CALayer.html">
+            
+                <a href="../../ui/CALayer.html">
+            
+                    
+                    CALayer子类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.10" data-path="../../ui/CoreAnimation.html">
+            
+                <a href="../../ui/CoreAnimation.html">
+            
+                    
+                    CoreAnimation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.11" data-path="../../ui/CoreGraphics.html">
+            
+                <a href="../../ui/CoreGraphics.html">
+            
+                    
+                    CoreGraphics
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../optimize/">
+            
+                <a href="../optimize/">
+            
+                    
+                    App优化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../optimize/crash.html">
+            
+                <a href="../optimize/crash.html">
+            
+                    
+                    Crash优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../optimize/kadun.html">
+            
+                <a href="../optimize/kadun.html">
+            
+                    
+                    卡顿优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.3" data-path="../optimize/memory.html">
+            
+                <a href="../optimize/memory.html">
+            
+                    
+                    内存优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.4" data-path="../optimize/appsize.html">
+            
+                <a href="../optimize/appsize.html">
+            
+                    
+                    减小ipa包体积
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../property/">
+            
+                <a href="../property/">
+            
+                    
+                    专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.6.1" data-path="../property/data.html">
+            
+                <a href="../property/data.html">
+            
+                    
+                    操作二进制文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.2" data-path="../property/rx-mvvm.html">
+            
+                <a href="../property/rx-mvvm.html">
+            
+                    
+                    rx-mvvm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.3" data-path="../property/rxswift.html">
+            
+                <a href="../property/rxswift.html">
+            
+                    
+                    RxSwift
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.4" data-path="../property/rxcocoa.html">
+            
+                <a href="../property/rxcocoa.html">
+            
+                    
+                    RxCocoa
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.5" data-path="../property/iosbug.html">
+            
+                <a href="../property/iosbug.html">
+            
+                    
+                    常见bug
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Web 开发</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../web/basic/">
+            
+                <a href="../../web/basic/">
+            
+                    
+                    基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../web/basic/url.html">
+            
+                <a href="../../web/basic/url.html">
+            
+                    
+                    URL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../web/basic/html.html">
+            
+                <a href="../../web/basic/html.html">
+            
+                    
+                    HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../web/basic/css.html">
+            
+                <a href="../../web/basic/css.html">
+            
+                    
+                    CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../web/basic/layout.html">
+            
+                <a href="../../web/basic/layout.html">
+            
+                    
+                    布局相关
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../../web/basic/event.html">
+            
+                <a href="../../web/basic/event.html">
+            
+                    
+                    事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../../web/basic/less.html">
+            
+                <a href="../../web/basic/less.html">
+            
+                    
+                    less介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="../../web/basic/csp.html">
+            
+                <a href="../../web/basic/csp.html">
+            
+                    
+                    Content Security Policy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="../../web/basic/render.html">
+            
+                <a href="../../web/basic/render.html">
+            
+                    
+                    页面渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="../../web/basic/web_optimize.html">
+            
+                <a href="../../web/basic/web_optimize.html">
+            
+                    
+                    页面加载优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.10" data-path="../../web/basic/json.html">
+            
+                <a href="../../web/basic/json.html">
+            
+                    
+                    json的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../web/js/">
+            
+                <a href="../../web/js/">
+            
+                    
+                    JavaScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../web/js/js-extension.html">
+            
+                <a href="../../web/js/js-extension.html">
+            
+                    
+                    JavaScript 基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../../web/js/js-object.html">
+            
+                <a href="../../web/js/js-object.html">
+            
+                    
+                    对象和原型链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../../web/js/module.html">
+            
+                <a href="../../web/js/module.html">
+            
+                    
+                    Module 模块化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../../web/js/event-loop.html">
+            
+                <a href="../../web/js/event-loop.html">
+            
+                    
+                    Event Loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.5" data-path="../../web/js/es6.html">
+            
+                <a href="../../web/js/es6.html">
+            
+                    
+                    ES6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">其他</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../android/">
+            
+                <a href="../../android/">
+            
+                    
+                    android
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../../android/activity.html">
+            
+                <a href="../../android/activity.html">
+            
+                    
+                    activity
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../other/index.md">
+            
+                <span>
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../other/longconnection.md">
+            
+                <span>
+            
+                    
+                    长连方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >iOS 网络相关</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="ios-&#x7F51;&#x7EDC;&#x76F8;&#x5173;">iOS &#x7F51;&#x7EDC;&#x76F8;&#x5173;</h2>
+<h3 id="urlsession">URLSession</h3>
+<p><img src="../../asserts/img/network1.png" alt="img"></p>
+<pre><code class="lang-shell">URLSession
+
+URLSessionConfiguration
+
+URLSessionTask
+    URLSessionDataTask
+    URLSessionDownloadTask
+    URLSessionUploadTask
+    URLSessionStreamTask
+
+URLSessionTask &#x4E2D;&#x5305;&#x542B;&#xFF1A;
+    URLRequest
+    URLResponse
+
+HTTPURLResponse
+</code></pre>
+<h4 id="demo">Demo</h4>
+<pre><code class="lang-objective-c">#import &lt;AFNetworking/AFNetworking.h&gt;
+
+@interface MyNetworkTest () &lt;NSURLSessionDataDelegate&gt;
+
+@property (nonatomic, strong) NSURLSession *urlSession;
+
+@end
+
+@implementation MyNetworkTest
+
+- (void)start {
+    NSURL *url = [NSURL URLWithString:@&quot;https://blog.quding0308.com/&quot;];
+
+    NSURLSessionDataTask *task = [self.urlSession dataTaskWithURL:url];
+    [task resume];
+}
+
+- (NSURLSession *)urlSession {
+    if (_urlSession == nil) {
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        _urlSession = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:NSOperationQueue.mainQueue];
+    }
+    return _urlSession;
+}
+
+#pragma mark - NSURLSessionTaskDelegate &amp; NSURLSessionDataDelegate
+// https &#x8BC1;&#x4E66;&#x6821;&#x9A8C; session &#x7EA7;&#x522B;
+- (void)URLSession:(NSURLSession *)session
+didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+ completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
+    NSLog(@&quot;=== session didReceiveChallenge&quot;);
+    NSLog(@&quot;%@&quot;, challenge.protectionSpace.authenticationMethod);
+
+    // 1.&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x53D7;&#x4FDD;&#x62A4;&#x7A7A;&#x95F4;&#x4E2D;&#x62FF;&#x5230;&#x8BC1;&#x4E66;&#x7684;&#x7C7B;&#x578B;
+    // 2.&#x5224;&#x65AD;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x8BC1;&#x4E66;&#x662F;&#x5426;&#x662F;&#x670D;&#x52A1;&#x5668;&#x4FE1;&#x4EFB;&#x7684;
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        NSLog(@&quot;&#x662F;&#x670D;&#x52A1;&#x5668;&#x4FE1;&#x4EFB;&#x7684;&#x8BC1;&#x4E66;&quot;);
+        // 3.&#x6839;&#x636E;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x53D7;&#x4FDD;&#x62A4;&#x7A7A;&#x95F4;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8BC1;&#x4E66;
+        //         void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *)
+        //         &#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x7684;completionHandler block&#x63A5;&#x6536;&#x4E24;&#x4E2A;&#x53C2;&#x6570;:
+        //         &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;: &#x4EE3;&#x8868;&#x5982;&#x4F55;&#x5904;&#x7406;&#x8BC1;&#x4E66;
+        //         &#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;: &#x4EE3;&#x8868;&#x9700;&#x8981;&#x5904;&#x7406;&#x54EA;&#x4E2A;&#x8BC1;&#x4E66;
+        //&#x521B;&#x5EFA;&#x8BC1;&#x4E66;
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        // 4.&#x8BC1;&#x4E66;
+        completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+    } else {
+        // &#x5141;&#x8BB8; NSURLSession &#x4F7F;&#x7528;&#x4E0D;&#x5B89;&#x5168;&#x7684; SSL &#x8FDE;&#x63A5;
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    }
+}
+
+// task &#x7EA7;&#x522B;
+- (void)URLSession:(NSURLSession *)session
+              task:(NSURLSessionTask *)task
+didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+ completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler {
+    [self URLSession:session didReceiveChallenge:challenge completionHandler:completionHandler];
+}
+
+// &#x91CD;&#x5B9A;&#x5411;&#x56DE;&#x8C03;
+- (void)URLSession:(NSURLSession *)session
+              task:(NSURLSessionTask *)task
+willPerformHTTPRedirection:(NSHTTPURLResponse *)response
+        newRequest:(NSURLRequest *)request
+ completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler {
+    NSLog(@&quot;=== willPerformHTTPRedirection&quot;);
+}
+
+// &#x63A5;&#x6536;&#x5230; response header
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
+    NSLog(@&quot;=== didReceiveResponse&quot;);
+
+    completionHandler(NSURLSessionResponseAllow);
+}
+
+// &#x63A5;&#x6536;&#x5230;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data {
+    NSLog(@&quot;=== didReceiveData&quot;);
+}
+
+// &#x6570;&#x636E;&#x63A5;&#x6536;&#x5B8C;&#x6210;&#xFF0C;&#x7F13;&#x5B58;&#x5230;&#x672C;&#x5730; (&#x5F53; didReceiveData &#x8C03;&#x7528;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x672C;&#x5730;&#x505A;&#x7F13;&#x5B58;&#xFF0C;&#x5219;&#x4F1A;&#x8C03;&#x7528;)
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+ willCacheResponse:(NSCachedURLResponse *)proposedResponse
+ completionHandler:(void (^)(NSCachedURLResponse * _Nullable cachedResponse))completionHandler {
+    NSLog(@&quot;=== willCacheResponse&quot;);
+    completionHandler(proposedResponse);
+}
+
+// &#x8BF7;&#x6C42;&#x5B8C;&#x6210;
+- (void)URLSession:(NSURLSession *)session
+              task:(NSURLSessionTask *)task
+didCompleteWithError:(NSError *)error {
+    NSLog(@&quot;=== didCompleteWithError&quot;);
+}
+@end
+</code></pre>
+<h3 id="afnetworking">AFNetworking</h3>
+<p><strong>AFNetworking &#x5E93;&#x4E2D;&#x4E00;&#x5171;&#x6709; 6 &#x4E2A;&#x6587;&#x4EF6;</strong></p>
+<ul>
+<li>2 &#x4E2A; SessionManager<ul>
+<li>AFURLSessionManager</li>
+<li>AFHTTPSessionManager</li>
+</ul>
+</li>
+<li>2 &#x4E2A; Serialization<ul>
+<li>AFURLRequestSerialization</li>
+<li>AFURLResponseSerialization</li>
+</ul>
+</li>
+<li>AFNetworkReachabilityManager</li>
+<li>AFSecurityPolicy</li>
+</ul>
+<h4 id="afnetworkreachabilitymanager">AFNetworkReachabilityManager</h4>
+<p>&#x6BCF;&#x6B21;&#x8C03;&#x7528; [AFNetworkReachabilityManager manager] &#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5B9E;&#x4F8B;</p>
+<h4 id="afsecuritypolicy">AFSecurityPolicy</h4>
+<h5 id="afsslpinningmode">AFSSLPinningMode</h5>
+<p>&#x6709; 3 &#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x8BBE;&#x7F6E;&#xFF1A;</p>
+<p><strong>AFSSLPinningModeNone</strong></p>
+<p>&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x3002;&#x4FE1;&#x4EFB;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x8FD4;&#x56DE;&#x7684;&#x8BC1;&#x4E66;&#xFF0C;iOS &#x7CFB;&#x7EDF;&#x4F1A;&#x6821;&#x9A8C;&#x8BC1;&#x4E66;&#x7684;&#x6709;&#x6548;&#x6027;&#x3002;</p>
+<p><strong>AFSSLPinningModePublicKey</strong></p>
+<p>&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684; publickey (&#x672C;&#x5730;&#x8BBE;&#x7F6E;&#x8BC1;&#x4E66;&#xFF0C;&#x7136;&#x540E;&#x4ECE;&#x8BC1;&#x4E66;&#x4E2D;&#x8BFB;&#x53D6; publickey &#x6765;&#x8BBE;&#x7F6E;)</p>
+<p>&#x9488;&#x5BF9;&#x67D0;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5C06;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x8BC1;&#x4E66;&#x4E2D;&#x7684; publickeys &#x4E0E;&#x672C;&#x5730;&#x4FDD;&#x5B58;&#x7684;&#x8BC1;&#x4E66;&#x4E2D;&#x7684; publickey &#x8FDB;&#x884C;&#x6821;&#x9A8C;&#x3002;&#x5982;&#x679C;&#x4E24;&#x8005;&#x6709;&#x4EA4;&#x96C6;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x6821;&#x9A8C;&#x901A;&#x8FC7;&#x3002;</p>
+<p><strong>AFSSLPinningModeCertificate</strong></p>
+<p>&#x9488;&#x5BF9;&#x67D0;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5C06;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x8BC1;&#x4E66; &#x4E0E;&#x672C;&#x5730;&#x4FDD;&#x5B58;&#x7684;&#x8BC1;&#x4E66; &#x8FDB;&#x884C;&#x6821;&#x9A8C;&#x3002;&#x5982;&#x679C;&#x4E24;&#x8005;&#x4E4B;&#x95F4;&#x6709;&#x76F8;&#x540C;&#x7684;&#x8BC1;&#x4E66;&#xFF0C;&#x5219;&#x6821;&#x9A8C;&#x901A;&#x8FC7;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;</p>
+<ol>
+<li>AFSSLPinningModePublicKey &#x53EA;&#x6BD4;&#x5BF9;&#x8BC1;&#x4E66;&#x91CC;&#x7684; publickey&#xFF0C;&#x5373;&#x4F7F;&#x670D;&#x52A1;&#x5668;&#x8BC1;&#x4E66;&#x6709;&#x6240;&#x53D8;&#x52A8;&#xFF0C;&#x53EA;&#x8981; public key &#x4E0D;&#x53D8;&#xFF0C;&#x5C31;&#x80FD;&#x901A;&#x8FC7;&#x9A8C;&#x8BC1;&#x3002;&#x5982;&#x679C;&#x8BC1;&#x4E66;&#x8FC7;&#x671F;&#x4E86;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x66F4;&#x6362;&#x65B0;&#x8BC1;&#x4E66;&#xFF0C;&#x53EA;&#x9700;&#x4FDD;&#x8BC1; publickey &#x4E0D;&#x53D8;&#x5373;&#x53EF;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4E0D;&#x9700;&#x8981;&#x66F4;&#x65B0;</li>
+<li>AFSSLPinningModeCertificate &#x4F1A;&#x5BF9;&#x6BD4;&#x8BC1;&#x4E66;&#x91CC;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;&#xFF0C;&#x5305;&#x62EC;&#x8BC1;&#x4E66;&#x7684; pubkey&#x3001;&#x8FC7;&#x671F;&#x65F6;&#x95F4; &#x7B49;&#x3002;&#x6BD4; AFSSLPinningModePublicKey &#x66F4;&#x5B89;&#x5168;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x8BC1;&#x4E66;&#x8FC7;&#x671F;&#xFF0C;&#x5FC5;&#x987B;&#x66F4;&#x65B0;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x66F4;&#x6362;&#x8BC1;&#x4E66;&#x3002;</li>
+</ol>
+<p>pin &#x4E3A; &#x5927;&#x5934;&#x9488;&#xFF0C; pinned &#x6307;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x7F6E;&#x9876;&#x7684;&#xFF08;&#x7528;&#x5927;&#x5934;&#x9488;&#x522B;&#x4F4F;&#x4E86;&#xFF0C;&#x56FA;&#x5B9A;&#x7684;&#xFF09;</p>
+<h5 id="&#x8BBE;&#x7F6E;&#x8BC1;&#x4E66;&#xFF1A;">&#x8BBE;&#x7F6E;&#x8BC1;&#x4E66;&#xFF1A;</h5>
+<ol>
+<li>&#x901A;&#x8FC7; certificatesInBundle:(NSBundle *)bundle &#x6765;&#x83B7;&#x53D6;&#x8BC1;&#x4E66;&#xFF0C;&#x5176;&#x4E2D; bundle &#x4E2D;&#x6240;&#x6709;&#x4EE5; .cer &#x7ED3;&#x5C3E;&#x7684;&#x8BC1;&#x4E66;&#x90FD;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x3002; </li>
+<li>certificatesInBundle &#x8FD4;&#x56DE;&#x7684; Set&#xFF0C; &#x8C03;&#x7528; setPinnedCertificates &#x8BBE;&#x7F6E;&#x8BC1;&#x4E66;</li>
+</ol>
+<pre><code class="lang-c">AFSecurityPolicy *policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey];
+
+NSSet *certificates = [AFSecurityPolicy certificatesInBundle:[NSBundle mainBundle]];
+[policy setPinnedCertificates:certificates];
+</code></pre>
+<h5 id="&#x5B89;&#x5168;&#x7B56;&#x7565;">&#x5B89;&#x5168;&#x7B56;&#x7565;</h5>
+<p><strong>allowInvalidCertificates</strong> </p>
+<p>&#x662F;&#x5426;&#x5141;&#x8BB8;&#x65E0;&#x6548;&#x7684;&#x8BC1;&#x4E66;&#xFF0C;&#x662F;&#x5426;&#x6821;&#x9A8C;&#x8BC1;&#x4E66;&#x7684;&#x6709;&#x6548;&#x6027;(&#x6CE8;&#x610F;&#xFF0C;&#x5982;&#x679C;&#x6821;&#x9A8C;&#x8BC1;&#x4E66;&#x7ED3;&#x679C;&#x4E3A; kSecTrustResultUnspecified &#xFF0C;&#x4E5F;&#x8BA4;&#x4E3A;&#x53EF;&#x7528;)&#x3002;</p>
+<p>&#x5982;&#x679C;&#x662F;&#x81EA;&#x5EFA;&#x8BC1;&#x4E66;&#xFF0C;&#x5219;&#x4F1A;&#x88AB;&#x7CFB;&#x7EDF;&#x8BA4;&#x4E3A;&#x662F;&#x65E0;&#x6548;&#x8BC1;&#x4E66;&#xFF0C;&#x6B64;&#x5C5E;&#x6027;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4E3A; YES&#xFF0C;</p>
+<p><strong>validatesDomainName</strong></p>
+<p>&#x662F;&#x5426;&#x9700;&#x8981;&#x9A8C;&#x8BC1;&#x57DF;&#x540D;&#x3002;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x4E0B;&#x8F7D;&#x7684;&#x8BC1;&#x4E66;&#x8BFB;&#x53D6;&#x5305;&#x542B;&#x7684;domain&#xFF0C;&#x7136;&#x540E;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5305;&#x542B;&#x5F53;&#x524D;&#x7684;&#x8BC1;&#x4E66;</p>
+<p>&#x5047;&#x5982;&#x8BC1;&#x4E66;&#x7684;&#x57DF;&#x540D;&#x4E0E;&#x4F60;&#x8BF7;&#x6C42;&#x7684;&#x57DF;&#x540D;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x9700;&#x628A;&#x8BE5;&#x9879;&#x8BBE;&#x7F6E;&#x4E3A;NO&#x3002;</p>
+<p>&#x9002;&#x7528;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ol>
+<li>&#x9002;&#x7528; ip &#x66FF;&#x6362;&#x4E86; &#x57DF;&#x540D;&#x8BF7;&#x6C42;&#xFF0C;&#x6B64;&#x5C5E;&#x6027;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4E3A; NO</li>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x7684;&#x662F;&#x5B50;&#x57DF;&#x540D;&#xFF0C;&#x800C;&#x8BC1;&#x4E66;&#x4E0A;&#x7684;  &#x662F;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#x3002;&#x56E0;&#x4E3A;SSL&#x8BC1;&#x4E66;&#x4E0A;&#x7684;&#x57DF;&#x540D;&#x662F;&#x72EC;&#x7ACB;&#x7684;</li>
+</ol>
+<h4 id="&#x9274;&#x6743;&#x76F8;&#x5173;">&#x9274;&#x6743;&#x76F8;&#x5173;</h4>
+<p>&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x67D0;&#x57DF;&#x540D;&#xFF0C;&#x5355;&#x72EC;&#x5904;&#x7406;&#x4E0D;&#x505A; https &#x7684;&#x8BC1;&#x4E66;&#x6821;&#x9A8C;</p>
+<pre><code class="lang-objective-c">[_sessionManager setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition(NSURLSession * _Nonnull session, NSURLAuthenticationChallenge * _Nonnull challenge, NSURLCredential *__autoreleasing  _Nullable * _Nullable credential) {
+    if ([challenge.protectionSpace.host isEqualToString:@&quot;com.xx.www&quot;]) {
+        return NSURLSessionAuthChallengePerformDefaultHandling;
+    } else if (credential) {
+        return NSURLSessionAuthChallengeUseCredential;
+    } else {
+        return NSURLSessionAuthChallengePerformDefaultHandling;
+    }
+}];
+</code></pre>
+<h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<ul>
+<li><a href="https://juejin.im/post/5a332b6a6fb9a0451e3fd6b0" target="_blank">https://juejin.im/post/5a332b6a6fb9a0451e3fd6b0</a></li>
+<li>&#x4E0D;&#x5B89;&#x5168;&#x7684;https&#x793A;&#x4F8B;  <a href="https://badssl.com/" target="_blank">https://badssl.com/</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="c.html" class="navigation navigation-prev " aria-label="Previous page: C语言">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="rejex.html" class="navigation navigation-next " aria-label="Next page: 正则表达式">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"iOS 网络相关","level":"3.3.9","depth":2,"next":{"title":"正则表达式","level":"3.3.10","depth":2,"path":"ios/basic/rejex.md","ref":"ios/basic/rejex.md","articles":[]},"previous":{"title":"C语言","level":"3.3.8","depth":2,"path":"ios/basic/c.md","ref":"ios/basic/c.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"ios/basic/ios_network.md","mtime":"2019-12-25T02:20:42.626Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-10T10:43:45.800Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
