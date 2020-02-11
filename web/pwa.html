@@ -2422,6 +2422,51 @@ self.addEventListener(<span class="hljs-string">&apos;sync&apos;</span>, <span c
 
 doSomeStuff &#x8FD4;&#x56DE; promise&#xFF0C;&#x505A;&#x60F3;&#x505A;&#x7684;&#x4E8B;&#x3002;&#x5982;&#x679C; reject &#x5219;&#x4E0B;&#x6B21;&#x4F1A;&#x91CD;&#x8BD5;
 </code></pre>
+<h2 id="push-notification">Push Notification</h2>
+<pre><code class="lang-JavaScript"><span class="hljs-comment">// subscribe to push notifications</span>
+serviceWorkerRegistration.pushManager.subscribe(options)
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">pushSubscription</span>) </span>{
+  <span class="hljs-comment">// handle subscription</span>
+});
+
+
+<span class="hljs-comment">// &#x5728; sw.js &#x4E2D;&#x76D1;&#x542C; push</span>
+self.addEventListener(<span class="hljs-string">&apos;push&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+  <span class="hljs-keyword">if</span> (!(self.Notification &amp;&amp; self.Notification.permission === <span class="hljs-string">&apos;granted&apos;</span>)) {
+    <span class="hljs-keyword">return</span>;
+  }
+
+  <span class="hljs-keyword">var</span> data = {};
+  <span class="hljs-keyword">if</span> (event.data) {
+    data = event.data.json();
+  }
+  <span class="hljs-keyword">var</span> title = data.title || <span class="hljs-string">&quot;Something Has Happened&quot;</span>;
+  <span class="hljs-keyword">var</span> message = data.message || <span class="hljs-string">&quot;Here&apos;s something you might want to check out.&quot;</span>;
+  <span class="hljs-keyword">var</span> icon = <span class="hljs-string">&quot;images/new-notification.png&quot;</span>;
+
+  <span class="hljs-keyword">var</span> notification = <span class="hljs-keyword">new</span> Notification(title, {
+    body: message,
+    tag: <span class="hljs-string">&apos;simple-push-demo-notification&apos;</span>,
+    icon: icon
+  });
+
+  notification.addEventListener(<span class="hljs-string">&apos;click&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (clients.openWindow) {
+      clients.openWindow(<span class="hljs-string">&apos;https://example.blog.com/2015/03/04/something-new.html&apos;</span>);
+    }
+  });
+});
+</code></pre>
+<h2 id="&#x4E0E;-service-worker-&#x53D1;&#x6D88;&#x606F;">&#x4E0E; Service Worker &#x53D1;&#x6D88;&#x606F;</h2>
+<pre><code class="lang-JavaScript"><span class="hljs-comment">// &#x53D1;&#x6D88;&#x606F;</span>
+serviceWorker.postMessage(<span class="hljs-string">&apos;Hi service worker&apos;</span>);
+
+
+<span class="hljs-comment">// &#x5728; sw.js &#x4E2D;&#x76D1;&#x542C;&#x6D88;&#x606F;</span>
+self.addEventListener(<span class="hljs-string">&apos;message&apos;</span>, (event) =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`The client sent me a message: <span class="hljs-subst">${event.data}</span>`</span>);
+});
+</code></pre>
 <h2 id="debug-&#x8C03;&#x8BD5;">Debug &#x8C03;&#x8BD5;</h2>
 <p>&#x6559;&#x7A0B;&#xFF1A;<a href="https://lavas-project.github.io/pwa-book/chapter04/4-service-worker-debug.html" target="_blank">https://lavas-project.github.io/pwa-book/chapter04/4-service-worker-debug.html</a></p>
 <p>&#x5728; Chrome DevTools &#x7684; Application &#x6807;&#x7B7E;&#x9875;&#x52FE;&#x9009; Update on reload&#xFF0C;Chrome &#x4F1A;&#x5728;&#x6BCF;&#x6B21;&#x5237;&#x65B0;&#x65F6;&#x53BB;&#x8BBF;&#x95EE; Service Worker &#x6587;&#x4EF6;&#x5E76;&#x91CD;&#x65B0;&#x5B89;&#x88C5;&#x548C;&#x6FC0;&#x6D3B;&#x3002;</p>
@@ -2476,7 +2521,7 @@ doSomeStuff &#x8FD4;&#x56DE; promise&#xFF0C;&#x505A;&#x60F3;&#x505A;&#x7684;&#x4
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PWA","level":"4.1.11","depth":2,"next":{"title":"JavaScript","level":"4.2","depth":1,"path":"web/js/index.md","ref":"web/js/index.md","articles":[{"title":"JavaScript 基础","level":"4.2.1","depth":2,"path":"web/js/js-extension.md","ref":"web/js/js-extension.md","articles":[]},{"title":"对象和原型链","level":"4.2.2","depth":2,"path":"web/js/js-object.md","ref":"web/js/js-object.md","articles":[]},{"title":"Module 模块化","level":"4.2.3","depth":2,"path":"web/js/module.md","ref":"web/js/module.md","articles":[]},{"title":"Event Loop","level":"4.2.4","depth":2,"path":"web/js/event-loop.md","ref":"web/js/event-loop.md","articles":[]},{"title":"ES6","level":"4.2.5","depth":2,"path":"web/js/es6.md","ref":"web/js/es6.md","articles":[]}]},"previous":{"title":"json的使用","level":"4.1.10","depth":2,"path":"web/basic/json.md","ref":"web/basic/json.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"web/pwa.md","mtime":"2020-02-09T15:29:24.736Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-09T15:27:53.737Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PWA","level":"4.1.11","depth":2,"next":{"title":"JavaScript","level":"4.2","depth":1,"path":"web/js/index.md","ref":"web/js/index.md","articles":[{"title":"JavaScript 基础","level":"4.2.1","depth":2,"path":"web/js/js-extension.md","ref":"web/js/js-extension.md","articles":[]},{"title":"对象和原型链","level":"4.2.2","depth":2,"path":"web/js/js-object.md","ref":"web/js/js-object.md","articles":[]},{"title":"Module 模块化","level":"4.2.3","depth":2,"path":"web/js/module.md","ref":"web/js/module.md","articles":[]},{"title":"Event Loop","level":"4.2.4","depth":2,"path":"web/js/event-loop.md","ref":"web/js/event-loop.md","articles":[]},{"title":"ES6","level":"4.2.5","depth":2,"path":"web/js/es6.md","ref":"web/js/es6.md","articles":[]}]},"previous":{"title":"json的使用","level":"4.1.10","depth":2,"path":"web/basic/json.md","ref":"web/basic/json.md","articles":[]},"dir":"ltr"},"config":{"plugins":["code","expandable-chapters","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"quding0308","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"web/pwa.md","mtime":"2020-02-11T10:07:59.502Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-11T10:08:10.911Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
